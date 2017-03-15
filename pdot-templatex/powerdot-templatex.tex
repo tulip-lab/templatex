@@ -1,0 +1,457 @@
+%% 
+%% ---------------------------------------------------------------
+%% Copyright (C) 2012 Gang Li
+%% ---------------------------------------------------------------
+%%
+%% This work is the default powerdot template file in TULIP Lab and may be
+%% distributed and/or modified under the conditions of the LaTeX Project Public
+%% License, either version 1.3 of this license or (at your option) any later
+%% version. The latest version of this license is in
+%% http://www.latex-project.org/lppl.txt and version 1.3 or later is part of all
+%% distributions of LaTeX version 2003/12/01 or later.
+%%
+%% This work has the LPPL maintenance status "maintained".
+%%
+%% This Current Maintainer of this work is Gang Li.
+%%
+%% {$HeadURL: http://xp-dev.com/svn/TULIP/presentation/pdotemplatex/trunk/powerdot-templatex.tex $}
+%% {$LastChangedDate: 2012-11-02 16:19:18 +1100 (Fri, 02 Nov 2012) $}
+%% {$LastChangedRevision: 85 $}
+%% {$LastChangedBy: gangli $}
+%%
+%% 
+
+% Document Class
+\documentclass[
+ size=12pt,
+ paper=smartboard, %a4paper, smartboard, screen
+ mode=present, %present, handout, print
+ display=slides, % slidesnotes, notes, slides
+ style=tulip,  % TULIP Lab style
+ pauseslide,
+ fleqn,leqno,clock]{powerdot}
+
+\usepackage{amssymb}
+\usepackage{amsmath} 
+\usepackage{rotating}
+\usepackage{graphicx}
+\usepackage{boxedminipage}
+\usepackage{media9}
+\usepackage{rotate}
+\usepackage{calc}
+\usepackage[absolute]{textpos}
+\usepackage{psfrag,overpic}
+\usepackage{fouriernc}
+\usepackage{pstricks,pst-node,pst-text,pst-3d,pst-grad}
+\usepackage{moreverb,epsfig,color,subfigure}
+\usepackage{color}
+\usepackage{pstricks}
+\usepackage{pstricks-add}
+\usepackage{pst-text}
+\usepackage{pst-node, pst-tree}
+\usepackage{booktabs}
+\usepackage{etex}
+\usepackage{breqn}
+\usepackage{multirow}
+% \usepackage{pst-rel-points}
+
+\usepackage{listings}
+\lstset{frameround=fttt, 
+frame=trBL, 
+stringstyle=\ttfamily,
+backgroundcolor=\color{yellow!20},
+basicstyle=\footnotesize\ttfamily}
+\lstnewenvironment{code}{
+\lstset{frame=single,escapeinside=`',
+backgroundcolor=\color{yellow!20},
+basicstyle=\footnotesize\ttfamily}
+}{}
+
+
+\usepackage{hyperref}
+\hypersetup{ % TODO: PDF meta Data
+  pdftitle={Presentation Title},
+  pdfauthor={Gang Li},
+  pdfpagemode={FullScreen},
+  pdfborder={0 0 0}
+}
+
+
+% \usepackage{auto-pst-pdf}
+% package to show source code
+
+\definecolor{LightGray}{rgb}{0.9,0.9,0.9}
+\newlength{\pixel}\setlength\pixel{0.000714285714\slidewidth}
+\setlength{\TPHorizModule}{\slidewidth}
+\setlength{\TPVertModule}{\slideheight}
+\newcommand\highlight[1]{\fbox{#1}}
+\newcommand\icite[1]{{\footnotesize [#1]}}
+
+\newcommand\twotonebox[2]{\fcolorbox{pdcolor2}{pdcolor2}{#1\vphantom{#2}}\fcolorbox{pdcolor2}{white}{#2\vphantom{#1}}}
+\newcommand\twotoneboxo[2]{\fcolorbox{pdcolor2}{pdcolor2}{#1}\fcolorbox{pdcolor2}{white}{#2}}
+\newcommand\vpspace[1]{\vphantom{\vspace{#1}}}
+\newcommand\hpspace[1]{\hphantom{\hspace{#1}}}
+\newcommand\COMMENT[1]{}
+
+\newcommand\placepos[3]{\hbox to\z@{\kern#1
+        \raisebox{-#2}[\z@][\z@]{#3}\hss}\ignorespaces} 
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%% title
+%%% TODO: Customize to your Own Title, Name, Address
+%%%
+\title{Presentation Title}
+\author{Gang Li  
+\\
+Deakin University 
+% \href{mailto:gangli@acm.org}{gangli@acm.org}
+% \and % more authors
+}
+\date{01 November 2012}
+
+
+% Customize the setting of slides
+\pdsetup{
+% TODO: Customize the left footer, and right footer
+lf=\href{http://www.tulip.org.au}{\copyright \emph{TULIP Lab} (G. Li)},
+rf={Presentation Title},
+}
+
+
+% Starts the document
+\begin{document}
+
+\maketitle 
+
+%%==========================================================================================
+%%
+\begin{slide}[toc=,bm=]{Table of Content}
+ \tableofcontents[type=1,content=futuresections]
+%  \tableofcontents[content=sections]
+\end{slide}
+%%
+%%==========================================================================================
+
+\section{Background}
+
+\begin{slide}{Pause longer}
+\begin{itemize}
+\item A \pause
+\item B \pause[2]
+\item C
+\end{itemize}
+\end{slide}
+
+
+\section{Aggregation Functions}
+
+
+%%==========================================================================================
+%%
+\begin{slide}{Multi-Criteria Decision Making}
+\twotonebox{Problem}{\parbox{.8\textwidth}
+{A customer wants to select a product
+that is \emph{inexpensive}, \emph{good quality},
+and with \emph{good service}.
+Choices have been narrowed down to three products
+with following utility values:
+}}
+\smallskip
+\begin{tabular}{ c| c c c | c }
+\toprule
+\centering
+\texttt{Product}  & \texttt{Price} & \texttt{Quality} & \texttt{Service}  & Overall Rating \\
+\midrule
+\onslide*{2}{\textcolor{red}{$P_1$}} \onslide*{-1,3-}{{$P_1$}} 
+&  \onslide*{2}{\textcolor{red}{$0.4$}} \onslide*{-1,3-}{{$0.4$}}   
+&  \onslide*{2}{\textcolor{red}{$0.3$}} \onslide*{-1,3-}{{$0.3$}}   
+&  \onslide*{2}{\textcolor{red}{$0.8$}} \onslide*{-1,3-}{{$0.8$}}   
+& \onslide*{2}{\textcolor{red}{?}} \onslide*{-1,3-}{{?}}  \\
+\onslide*{3}{\textcolor{red}{$P_2$}} \onslide*{-2,4-}{{$P_2$}} 
+&  \onslide*{3}{\textcolor{red}{$0.1$}} \onslide*{-2,4-}{{$0.1$}} 
+&  \onslide*{3}{\textcolor{red}{$0.6$}} \onslide*{-2,4-}{{$0.6$}} 
+&  \onslide*{3}{\textcolor{red}{$0.5$}} \onslide*{-2,4-}{{$0.5$}} 
+& \onslide*{3}{\textcolor{red}{?}}  \onslide*{-2,4-}{{?}}  \\
+\onslide*{4}{\textcolor{red}{$P_3$}} \onslide*{-3,5-}{{$P_3$}} 
+&  \onslide*{4}{\textcolor{red}{$0.6$}} \onslide*{-3,5-}{{$0.6$}} 
+&  \onslide*{4}{\textcolor{red}{$0.4$}} \onslide*{-3,5-}{{$0.4$}} 
+&  \onslide*{4}{\textcolor{red}{$0.3$}} \onslide*{-3,5-}{{$0.3$}} 
+& \onslide*{4}{\textcolor{red}{?}} \onslide*{-3,5-}{{?}}  \\
+\bottomrule
+\end{tabular}
+\bigskip
+\begin{center}
+ \onslide{5}{\twotonebox{\Huge ?}{\large \emph{Which is the \textcolor{red}{best} product}}}
+\end{center}
+\end{slide}
+%%
+%%==========================================================================================
+
+%%==========================================================================================
+%%
+\begin{slide}[toc=,bm=]{Aggregation Functions --- WAM}
+\twotonebox{Problem}{\parbox{.8\textwidth}
+{A customer wants to select a product
+that is \emph{inexpensive}, \emph{good quality},
+and with \emph{good service}.
+Choices have been narrowed down to three products
+with following utility values:
+}}
+\smallskip
+\begin{tabular}{ c| c c c | c }
+\toprule
+\centering
+\texttt{Product}  & \texttt{Price} & \texttt{Quality} & \texttt{Service}  & Overall Rating \\
+\midrule
+\onslide*{3}{\textcolor{red}{$P_1$}} \onslide*{-2,4-}{{$P_1$}} 
+&  \onslide*{3}{\textcolor{red}{$0.4$}} \onslide*{-2,4-}{{$0.4$}}   
+&  \onslide*{3}{\textcolor{red}{$0.3$}} \onslide*{-2,4-}{{$0.3$}}   
+&  \onslide*{3}{\textcolor{red}{$0.8$}} \onslide*{-2,4-}{{$0.8$}}   
+& \onslide*{3}{\textcolor{red}{?}} \onslide*{4-}{{$0.475$}}  \\
+\onslide*{4}{\textcolor{red}{$P_2$}} \onslide*{-3,5-}{{$P_2$}} 
+&  \onslide*{4}{\textcolor{red}{$0.1$}} \onslide*{-3,5-}{{$0.1$}} 
+&  \onslide*{4}{\textcolor{red}{$0.6$}} \onslide*{-3,5-}{{$0.6$}} 
+&  \onslide*{4}{\textcolor{red}{$0.5$}} \onslide*{-3,5-}{{$0.5$}} 
+& \onslide*{4}{\textcolor{red}{?}} \onslide*{5-}{{$0.325$}}  \\
+\onslide*{5}{\textcolor{red}{$P_3$}} \onslide*{-4,6-}{{$P_3$}} 
+&  \onslide*{5}{\textcolor{red}{$0.6$}} \onslide*{-4,6-}{{$0.6$}} 
+&  \onslide*{5}{\textcolor{red}{$0.4$}} \onslide*{-4,6-}{{$0.4$}} 
+&  \onslide*{5}{\textcolor{red}{$0.3$}} \onslide*{-4,6-}{{$0.3$}} 
+& \onslide*{5}{\textcolor{red}{?}} \onslide*{6-}{{\rnode{t1}{$0.950$}}}  \\
+\midrule
+\onslide*{2-}{\texttt{Weights}}  
+& \onslide*{2-}{$0.5$}	 
+& \onslide*{2-}{$0.25$}	 
+& \onslide*{2-}{$0.25$}	& \\
+\bottomrule
+\end{tabular}
+\smallskip
+\twocolumn[lcolwidth=.54\textwidth,rcolwidth=.34\textwidth]
+{\scriptsize
+\begin{itemize}[type=0]
+	\item<2-> Weighted Arithmetic Mean 
+% \tiny
+\begin{description}[type=0]
+ \item[$P_1$]<3-> $0.5(0.4)+0.25(0.3)+0.25(0.8) = 0.475$\\
+ \item[$P_2$]<4-> $0.5(0.1)+0.25(0.6)+0.25(0.5) = 0.325$\\
+ \item[$P_3$]<5-> $0.5(0.6)+0.25(0.4)+0.25(0.3) = 0.950$
+\end{description}
+\end{itemize}
+}
+{
+\medskip %\vspace{.5cm}
+\vspace{\stretch{1}}
+\onslide*{7-}{\centering \twotonebox{?}{
+\emph{the 
+\onslide*{7}{\textcolor{red}{best}} 
+\onslide*{8-}{\rnode[tc]{T1}{\textcolor{red}{best}} 
+\psset{arrowscale=2,arrows=->}
+\nccurve[linecolor=red,angleA=45,angleB=180]{T1}{t1}}
+product}}}
+}
+\vspace{\stretch{1}}
+\end{slide}
+%%
+%%==========================================================================================
+%%==========================================================================================
+%%  
+\begin{slide}[toc={Choquet Integral},bm=]{Fuzzy Measure}
+\twotonebox{\rotatebox{0}{Definition}}{\parbox{.8\textwidth}
+{
+A \emph{fuzzy measure} is a set of functions $v: 2^N \to [0,1]$
+on all possible combinations of $n$ criteria,
+which satisifies:
+\begin{itemize}
+ \item $v(A) \le v(B)$ whenever $A \subset B$;
+ \item $v(\emptyset) = 0$ and $v(N) = 1$.
+\end{itemize}  
+}}
+\medskip
+\onslide*{2-}{ \begin{itemize}
+\item  Since $A \subseteq N$ is a \emph{coalition} of criteria,
+$v(A)$ represents the importance of this coalition.
+\end{itemize}
+}
+\end{slide}
+%%
+%%==========================================================================================
+
+%%==========================================================================================
+%%  
+\begin{slide}[toc=,bm=]{\emph{Choquet Integral} --- Summary}
+\begin{itemize}[type=1]
+\item<1-> The Choquet Integral generalises many important aggregation functions including 
+the \emph{mean}, \emph{weighted arithmetic mean}, \emph{maximum}, 
+\emph{minimum} and \emph{ordered weighted average}.
+\begin{itemize}[type=1]
+\item<2-> Unlike WAM which allocates a weight to each input,
+it assigns a weight to all the subsets of inputs, 
+hence $2^n$ parameters.
+\end{itemize}
+\item<3-> \emph{K-Additivity}:
+$k$-additive fuzzy measures model no interaction of groups with more than $k$ criteria
+\begin{itemize}[type=1]
+ \item<4-> It allows an arbitrary reduction in complexity at the expense of modelling ability.
+ \item<5-> In the case of $3$-addivitity,
+we can model the interactions of pairs and triples,
+but not of larger groups.
+\end{itemize}
+\end{itemize}
+\end{slide}
+%%
+%%==========================================================================================
+
+
+\section{Application and Analysis}
+
+%%==========================================================================================
+%%  
+\begin{slide}{Data Collection}
+\begin{description}[type=1]
+\item[Source] <1-> 
+\emph{Tripadvisor} website (\url{www.tripadvisor.com})
+\item[Extractor] <2-> 
+\emph{Visual Web Ripper} %(\url{www.visualwebripper.com})  
+\item[Data] <3-> 
+\begin{itemize}
+ \item<4-> $8561$ records about ratings on \emph{Singapore} hotel \emph{features} and overall \emph{ratings};
+ \item<5-> \emph{Demographic}, \emph{Region}, \emph{Travel Types}, etc
+\end{itemize} 
+\end{description}
+% \medskip
+\end{slide}
+%%
+%%==========================================================================================
+
+%%==========================================================================================
+%%  
+\begin{slide}[toc=,bm=]{Data Collection}
+\begin{itemize}
+ \item<1-> Hotel Rating Data Collections:
+\end{itemize}
+\onslide*{2-}
+{ \footnotesize \centering
+\begin{tabular}{cccr}
+\toprule
+\textbf{Travel Type} & \textbf{Region} & \multicolumn{1}{c}{\textbf{Size}}\\
+\midrule
+\multirow{4}{*}{Business}  & Asia & $1210$ instances\\
+  & Europe & $581$ instances\\
+  & North America & $407$ instances \\
+  & Oceania & $381$ instances\\
+\midrule
+      \multirow{4}{*}{Couple}  & Asia & $1169$ instances\\
+ & Europe & $1389$ instances\\
+ &North America & $320$ instances\\
+  & Oceania & $1188$ instances\\
+\midrule
+        \multirow{4}{*}{Family}  & Asia & $951$ instances\\
+ & Europe & $309$ instances\\
+& North America & $131$ instances\\
+  & Oceania & $525$ instances\\
+\midrule
+\multicolumn{2}{r}{\textbf{Total:}} & \textbf{8561} instances \\
+\bottomrule
+\end{tabular}
+}
+\end{slide}
+%%
+%%==========================================================================================
+
+%%==========================================================================================
+%%  
+\begin{slide}[toc=,bm=]{Model Evaluation}
+\begin{itemize}
+ \item<1-> \emph{Choquet Integral} is evaluated against typical aggregation methods such as AM, WAM and OWA;
+ \item<2-> Evaluation using the \emph{mean absolute  error} (MAE) based on $10$-fold cross validation.
+\end{itemize}
+\onslide*{2-}
+{ \footnotesize \centering
+\begin{tabular}{c c c c c}
+\toprule
+&   &\multicolumn{3}{c}{\textbf{Data Sets}}\\
+\multicolumn{2}{c}{\textbf{Algorithms}}   & Business  & Couple & Family     \\
+\midrule
+\multicolumn{2}{c}{\textbf{AM}}    &$0.0757$ & $0.0689$& $0.0706$ \\
+\multicolumn{2}{c}{\textbf{OWA}}     &$0.0718$ & $0.0666$& $0.0682$ \\
+\multicolumn{2}{c}{\textbf{WAM}}    &$0.0701$ & $0.0633$& $0.0665$ \\
+\midrule
+\multirow{6}{*}{\textbf{CI}}
+& $kadd = 1$ &     $0.0701$ & $0.0633$& $0.0665$ \\
+& $kadd = 2$ &    $0.0661$ & $0.0614$& $0.0646$ \\
+& $kadd = 3$ &     $0.0618$ & $0.0556$& $0.0611$ \\
+& $kadd = 4$ &     $0.0619$ & $0.0561$& $0.0620$ \\
+& $kadd = 5$ &     $0.0579$ & $0.0541$& $0.0598$ \\
+& $kadd = 6$ &     \underline{0.0576} & \underline{0.0540}& \underline{0.0591} \\
+\bottomrule
+\end{tabular}
+}
+\end{slide}
+%%
+%%==========================================================================================
+
+\section{Conclusion}
+
+
+\begin{slide}[toc=,bm=]{Related Resources}
+\begin{thebibliography}{1}
+\bibitem{LLVR12} Gang Li, Rob Law, Huy Quan Vu, Jia Rong. 
+Discovering the Hotel Selection Preferences of Hong Kong Inbound Travelers Using the Choquet Integral, 
+\emph{Tourism Management}, Accepted on 21/10/2012
+\footnote{An extensive invesigation on \emph{HK} hotels preferences.}
+
+\bibitem{VBL12} Huy Quan Vu, Gleb Beliakov, Gang Li. 
+A Choquet Ingtegral Toolbox and its Application in Customer's Preference Analysis, 
+in \emph{Data Mining Applications with R}, Book Chapter, \emph{Elsevier} 2013
+\footnote{RFMTool usage and a case study on \emph{Singapore} hotels preferences.}
+\footnote{RFMTool: A R toolbox package publically available at TULIP Portal: \url{http://www.tulip.org.au/resources/rfmtool}}
+\end{thebibliography}
+\end{slide}
+
+
+\begin{slide}[toc=,bm=]{Conclusion}
+\begin{itemize}
+\item This work has extended practical capability of feature-based sentiment mining; \pause
+
+\item introduced a new aggregation techniques for effective MCMD modeling; \pause
+ 
+\item constructed a hotel preference profile for travels from different areas and under different travel modes.
+This will be also helpful for hotel managers in strategic planning and decision making.
+\end{itemize}
+\pause
+\begin{center}
+\textcolor{red}{\scalebox{1.5}{Questions?}}
+\end{center}
+\end{slide}
+
+
+% TODO: Question Page
+\begin{wideslide}[toc=,bm=]{Contact Information}
+\centering
+\vspace{\stretch{1}}
+\twocolumn[
+lcolwidth=0.35\linewidth,
+rcolwidth=0.65\linewidth
+]
+{
+% \centerline{\includegraphics[scale=.2]{tulip-logo.eps}}
+}
+{
+\vspace{\stretch{1}}
+Dr \emph{Gang Li}\\
+School of Information Technology\\
+Deakin University, VIC 3125, Australia
+\begin{description}
+ \item[Lab] \url{http://www.tulip.org.au} 
+%  \item[Email] gangli@acm.org
+\end{description}
+} 
+\vspace{\stretch{1}}
+\end{wideslide}
+
+
+
+\end{document}
+
+\endinput

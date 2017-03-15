@@ -1,0 +1,407 @@
+%% 
+%% ---------------------------------------------------------------
+%% Copyright (C) 2012 Gang Li
+%% ---------------------------------------------------------------
+%%
+%% This work is the default powerdot-tulip test file and may be
+%% distributed and/or modified under the conditions of the LaTeX Project Public
+%% License, either version 1.3 of this license or (at your option) any later
+%% version. The latest version of this license is in
+%% http://www.latex-project.org/lppl.txt and version 1.3 or later is part of all
+%% distributions of LaTeX version 2003/12/01 or later.
+%%
+%% This work has the LPPL maintenance status "maintained".
+%%
+%% This Current Maintainer of this work is Gang Li.
+%%
+%% {$HeadURL: svn://cloud.tulip.org.au/WAEERepository/presentation/powerdot-tulip/trunk/powerdot-tulip.tex $}
+%% {$LastChangedDate: 2015-12-02 18:35:25 +0800 (Wed, 02 Dec 2015) $}
+%% {$LastChangedRevision: 205 $}
+%% {$LastChangedBy: gangli $}
+%%
+
+\documentclass[
+ size=12pt,
+ paper=smartboard, %a4paper, smartboard, screen
+ mode=present, %present, handout, print
+ display=slides, % slidesnotes, notes, slides
+% nohandoutpagebreaks,
+% pauseslide,
+style=tulip,
+% nopagebreaks,
+% hlentries=true,
+% hlsections = true,
+pauseslide,
+fleqn,leqno,clock]{powerdot}
+
+\hypersetup{pdfpagemode=FullScreen}
+% \usepackage[toc,highlight,blackslide,slidesonly,sounds,HA]{HA-prosper}
+
+\usepackage{amssymb}
+\usepackage{amsmath} 
+\usepackage{rotating}
+\usepackage{graphicx}
+\usepackage{boxedminipage}
+\usepackage{media9}
+\usepackage{rotate}
+\usepackage{calc}
+\usepackage[absolute]{textpos}
+\usepackage{psfrag,overpic}
+\usepackage{fouriernc}
+\usepackage{pstricks,pst-node,pst-text,pst-3d,pst-grad}
+\usepackage{moreverb,epsfig,color,subfigure}
+\usepackage{color}
+\usepackage{pstricks}
+\usepackage{pstricks-add}
+\usepackage{pst-text}
+\usepackage{pst-node, pst-tree}
+\usepackage{booktabs}
+\usepackage{etex}
+\usepackage{breqn}
+\usepackage{multirow}
+
+
+\usepackage{listings}
+\lstset{frameround=fttt, 
+frame=trBL, 
+stringstyle=\ttfamily,
+backgroundcolor=\color{yellow!20},
+basicstyle=\footnotesize\ttfamily}
+\lstnewenvironment{code}{
+\lstset{frame=single,escapeinside=`',
+backgroundcolor=\color{yellow!20},
+basicstyle=\footnotesize\ttfamily}
+}{}
+
+
+\usepackage{fouriernc}
+\usepackage{hyperref}
+
+\title{TULIP Lab Powerdot Example}
+\author{Gang Li  
+\\
+Deakin University 
+% \href{mailto:gangli@acm.org}{gangli@acm.org}
+}
+
+\pdsetup{
+% theslide=\arabic{slide}~/~\pageref*{lastslide},
+% theslide=\arabic{slide},
+rf=\href{http://www.tulip.org.au}{\copyright \emph{TULIP Lab} (G. Li)},
+cf=\hyperlink{blankslide}{Powerdot Example},
+trans=Fade,
+list={labelsep=1em,leftmargin=*,itemsep=0pt,topsep=5pt,parsep=0pt},
+% counters={theorem,lemma},
+% randomdots,dmaxdots=80
+}
+
+
+\begin{document}
+
+\maketitle 
+
+\begin{slide}[toc=,bm=]{Overview}
+\tableofcontents[content=sections]
+\end{slide}
+\section{First section}
+\begin{slide}[toc=,bm=]{Overview of the first section}
+\tableofcontents[content=currentsection,type=1]
+\end{slide}
+\begin{slide}{Some slide}
+\end{slide}
+
+\begin{slide}{Content}
+  \begin{itemize}
+    \item Introduction\pause
+    \item Background
+    \item Method \pause
+      \begin{itemize}
+      \item Algorithm
+      \item Proof
+      \end{itemize}
+    \item Experiment
+    \item Conclusions
+  \end{itemize}
+\end{slide}
+
+
+\section{Itemize Pause}
+
+
+\begin{slide}{Pause longer}
+\begin{itemize}
+\item A \pause
+\item B \pause[2]
+\item C
+\end{itemize}
+\end{slide}
+
+
+\begin{slide}{Multiple pauses}
+power\pause dot \pause
+\begin{itemize}
+\item Let me pause\ldots \pause
+\item \ldots while I talk \pause and chew bubble gum. \pause
+\item Perhaps you’ll be persuaded.
+\item Perhaps not.
+\end{itemize}
+\end{slide}
+
+
+\begin{slide}{Type 1 itemize}
+\begin{itemize}[type=1]
+\item A \pause
+\item B \pause
+\item C
+\end{itemize}
+\end{slide}
+
+\begin{slide}{Type 1 enumerate}
+\begin{enumerate}[type=1]%[label=\romani*)]
+\item A \pause
+\item B \pause
+\item C
+\end{enumerate}
+\end{slide}
+
+
+\begin{slide}{Nested lists}
+\begin{itemize}
+\item A\pause
+\begin{itemize}[type=1]
+\item B\pause
+\end{itemize}
+\item C
+\end{itemize}
+\end{slide}
+
+\section{Overlay}
+
+\begin{slide}{Active itemize}
+\begin{itemize}[type=1]
+\item<1> A
+\item<2> B
+\item<3> C
+\end{itemize}
+\end{slide}
+
+\begin{slide}{Simple onslide}
+\onslide{1,2}{power}\onslide{2}{dot}
+\end{slide}
+
+\begin{slide}{Simple onslide+}
+\texttt{onslide }: \onslide{1}{power}\onslide{2}{dot}\\
+\texttt{onslide+}: \onslide+{1}{power}\onslide+{2}{dot}
+\end{slide}
+
+\begin{slide}{Simple onslide*}
+\texttt{onslide }: \onslide{1}{power}\onslide{2}{dot}\\
+\texttt{onslide+}: \onslide+{1}{power}\onslide+{2}{dot}\\
+\texttt{onslide*}: \onslide*{1}{power}\onslide*{2}{dot}
+\end{slide}
+
+\begin{slide}{Lists}
+\onslide{10}{on overlay 10 only}\par
+\onslide{-5}{on every overlay before and including overlay 5}\par
+\onslide{5-}{on every overlay after and including overlay 5}\par
+\onslide{2-5}{on overlays 2 through 5, inclusive}\par
+\onslide{-3,5-7,9-}{on every overlay except overlays 4 and 8}
+\end{slide}
+
+\begin{slide}{Relative overlays}
+\begin{itemize}
+\item A \pause
+\item B \onslide{+1}{(visible 1 overlay after B)}\pause
+\item C \onslide{+2-}{(appears 2 overlays after C, visible until the end)}
+\pause
+\item D \onslide{+1-6}{(appears 1 overlay after D, visible until overlay 6)}
+\pause
+\item E \pause
+\item F \pause
+\item G \onslide{+1-+3}{(appears 1 overlay after G for 3 overlays)}\pause
+\item H \pause
+\item I \pause
+\item J \pause
+\item K
+\end{itemize}
+\end{slide}
+
+
+\begin{slide}{Slide 2}
+  \begin{itemize}
+    \item<1-> Here
+    \begin{itemize}
+      \item<2-> we
+      \begin{itemize}
+        \item<3-> demonstrate
+        \begin{itemize}
+          \item<4-> the itemize environment
+        \end{itemize}
+      \end{itemize}
+    \end{itemize}
+  \end{itemize}
+\end{slide}
+
+\begin{slide}{Slide 3}
+  \begin{enumerate}[type=1]
+    \item<1> Here
+    \begin{enumerate}
+      \item<2> we
+      \begin{enumerate}
+        \item<3> demonstrate
+        \begin{enumerate}
+          \item<4> the enumerate environment
+        \end{enumerate}
+      \end{enumerate}
+    \end{enumerate}
+  \end{enumerate}
+\end{slide}
+
+
+\section{Codings}
+
+\begin{slide}[method=direct]{Slide 2}
+Steps 1 and 2:
+\begin{code}
+compute a;`\pause'
+compute b;
+\end{code}
+\end{slide}
+
+\begin{slide}[method=file]{Slide 3}
+Steps 1 and 2:
+\begin{code}
+compute a;`\pause'
+compute b;
+\end{code}
+\end{slide}
+
+
+%% Coding Example
+\begin{slide}[method=direct]{Hello World in C}
+  \begin{lstlisting}[language=c,gobble=4]
+    #include <stdio.h>
+
+    int main(int c, char **v) {
+      fprintf(stdout, "Hello, world!\n");
+      return 0;
+    }
+  \end{lstlisting}
+\end{slide}
+\begin{note}{Personal Note}
+ This is a test. Let us try
+\begin{description}
+ \item[ab] ab 
+ \item[bb] ab 
+ \item[bb] ab 
+\end{description}
+\end{note}
+
+\section{Citations}
+
+\begin{slide}{Cite}
+\cite{someone}
+\end{slide}
+
+\begin{slide}{References}
+\begin{thebibliography}{1}
+\bibitem{someone} Article of someone.
+\end{thebibliography}
+\end{slide}
+
+% \begin{slide}{References (1)}
+% \bibliographystyle{plain}
+% \nobibliography{YourBib}
+% \bibentry{someone1}
+% \bibentry{someone2}
+% \end{slide}
+% \begin{slide}{References (2)}
+% \bibentry{someone3}
+% \end{slide}
+
+% \begin{slide}{Slide}
+% \cite{someone}
+% \end{slide}
+% 
+% \begin{slide}{References}
+% \bibliographystyle{plain}
+% % \bibliography{YourBib}
+% \end{slide}
+
+
+\section{Two Columns}
+
+\begin{slide}{Two columns}
+Here are two columns.
+
+\twocolumn[
+lfrprop={linestyle=dotted,linewidth=3pt},
+lfrheight=4cm,rfrheight=5cm,lineheight=3cm,topsep=0.3cm
+]{left}{right}
+
+% \hline
+Another two columns:
+
+\twocolumn[
+\savevalue{lfrheight}=3cm,
+\savevalue{lfrprop}={
+linestyle=dotted,framearc=.2,linewidth=3pt},
+rfrheight=\usevalue{lfrheight},
+rfrprop=\usevalue{lfrprop}
+]{left}{right}
+
+
+Those were two columns.
+\end{slide}
+
+\begin{slide}[method=direct]{Two Columns}
+  \begin{lstlisting}[language=c,gobble=4]
+    #include <stdio.h>
+
+    int main(int c, char **v) {
+      fprintf(stdout, "Hello, world!\n");
+      return 0;
+    }
+  \end{lstlisting}
+Another two columns:
+
+\twocolumn[
+\savevalue{lfrheight}=3cm,
+\savevalue{lfrprop}={
+linestyle=dotted,framearc=.2,linewidth=3pt},
+rfrheight=\usevalue{lfrheight},
+rfrprop=\usevalue{lfrprop}
+]{
+\begin{itemize}
+\item A \pause
+\item B \pause[2]
+\item C
+\end{itemize}
+}
+{
+     \centerline{\includegraphics[scale=.3]{logos/tulip-logo.eps}}
+}
+
+\end{slide}
+
+
+
+\section{Misc}
+
+\begin{emptyslide}{}
+\centering
+\vspace{\stretch{1}}
+\includegraphics[height=0.8\slideheight]{logos/tulip-logo.eps}
+\vspace{\stretch{1}}
+\end{emptyslide}
+
+
+\begin{slide}[toc=,bm={LaTeX, i*i=-1}]{\color{red}\LaTeX, $i^2=-1$}
+My slide contents.
+\end{slide}
+
+
+
+\end{document}
+
+\endinput

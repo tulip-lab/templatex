@@ -1,0 +1,267 @@
+% ------------------------------------------------------------------------
+% AMS-LaTeX definitions:     Thesis ++++ Template ************
+% ------------------------------------------------------------------------
+% Honours Thesis Template Defended on February 2010
+% ------------------------------------------------------------------------
+
+
+\documentclass[12pt]{report}
+
+%=================================================================
+% for comments
+\newcount\DraftStatus  % 0 suppresses notes to selves in text
+% TODO: set to 0 for final version
+\DraftStatus=1   
+%=================================================================
+\usepackage{color}
+\definecolor{darkgreen}{rgb}{0,0.5,0}
+\definecolor{purple}{rgb}{1,0,1}
+% \draftnote{color}{comment} inserts a colored comment in the text
+\newcommand{\draftnote}[2]{\ifnum\DraftStatus=1
+	\marginpar{
+		\tiny\raggedright
+		\hbadness=10000
+        \def\baselinestretch{0.5}
+        \textcolor{#1}{\textsf{\hspace{0pt}#2}}}
+     \fi}
+% TODO: add yourself here for paper comments registration:
+\newcommand{\gangli}[1]{\draftnote{red}{[GLi: #1]}}
+\newcommand{\YOURNAME}[1]{\draftnote{blue}{[XX: #1]}}
+%other colors include blue, red, purple, cyan, darkgreen, etc.
+%=================================================================
+%
+% for Version control information
+% 
+\usepackage{svnkw}
+%
+\svnidlong
+{$HeadURL: http://xp-dev.com/svn/TULIP/papers/thesistemplatex/trunk/thesis.tex $}
+{$LastChangedDate: 2013-12-16 14:25:19 +1100 (Mon, 16 Dec 2013) $}
+{$LastChangedRevision: 277 $}
+{$LastChangedBy: gangli $}
+\svnid{$Id: thesis.tex 277 2013-12-16 03:25:19Z gangli $}
+% TODO: add yourself here for SVN information registration:
+\svnRegisterAuthor{gangli}{Gang Li}
+\svnRegisterAuthor{ligang}{Gang Li}
+\svnRegisterAuthor{YOURACCOUNT}{Your Name}
+%\newcommand{\svnfooter}{Last Changed Rev: \svnkw{LastChangedRevision}}
+% Don't forget to set the svn property 'svn:keywords' to
+% 'HeadURL LastChangedDate LastChangedRevision LastChangedBy' or
+% 'Id' or both depending if you use \svnidlong and/or \svnid
+% TODO: Include this into Draft Output
+%\fancyfoot[LO,LE]{R\svnrev\ (\svnfiledate)}
+%\fancyfoot[RO,RE]{Last changed by: \svnFullAuthor{\svnauthor}}
+
+
+
+%=================================================================
+
+% ------------------------------------------------------------------------
+%=================================================================
+% general packages
+\usepackage{graphicx,color}
+\usepackage{graphics}
+\usepackage{algorithm}
+\usepackage{algorithmic}
+\usepackage[centertags]{amsmath}
+\usepackage{amsfonts}
+%\usepackage{epic,multibox,fancybox}
+\usepackage{lscape}
+\usepackage{amssymb}
+\usepackage{amsthm}
+\usepackage{newlfont}
+\usepackage{breqn}
+\usepackage{multirow}
+\usepackage{subfig}
+\usepackage{cite}
+\usepackage{url}
+
+
+\usepackage{xthesis} %DAL Thesis Style
+\usepackage{xtocinc} %Include Table of Contents as the first entry in TOC
+%                     Faculty of Grad Studies insists on this!?
+%\usepackage[active]{srcltx}  %SRC Specials for DVI search
+% Fuzz -------------------------------------------------------------------
+\hfuzz2pt % Don't bother to report over-full boxes if over-edge is < 2pt
+% Line spacing -----------------------------------------------------------
+\newlength{\defbaselineskip}
+\setlength{\defbaselineskip}{\baselineskip}
+\newcommand{\setlinespacing}[1]%
+           {\setlength{\baselineskip}{#1 \defbaselineskip}}
+\newcommand{\doublespacing}{\setlength{\baselineskip}%
+                           {2.0 \defbaselineskip}}
+\newcommand{\singlespacing}{\setlength{\baselineskip}{\defbaselineskip}}
+%=================================================================
+% for math notations
+% ----------------------------------------------------------------
+\vfuzz2pt % Don't report over-full v-boxes if over-edge is small
+\hfuzz2pt % Don't report over-full h-boxes if over-edge is small
+% THEOREMS -------------------------------------------------------
+\newtheorem{thm}{Theorem}[section]
+\newtheorem{cor}[thm]{Corollary}
+\newtheorem{lem}[thm]{Lemma}
+\newtheorem{prop}[thm]{Proposition}
+\theoremstyle{definition}
+\newtheorem{defn}[thm]{Definition}
+\theoremstyle{remark}
+\newtheorem{rem}[thm]{Remark}
+\numberwithin{equation}{section}
+% MATH -----------------------------------------------------------
+\newcommand{\norm}[1]{\left\Vert#1\right\Vert}
+\newcommand{\abs}[1]{\left\vert#1\right\vert}
+\newcommand{\set}[1]{\left\{#1\right\}}
+\newcommand{\Real}{\mathbb R}
+\newcommand{\eps}{\varepsilon}
+\newcommand{\To}{\longrightarrow}
+\newcommand{\BX}{\mathbf{B}(X)}
+% ----------------------------------------------------------------
+\newcommand{\I}{{\mathcal I}}
+\newcommand{\Id}{{\mathcal I} }
+\newcommand{\Dc}{{\mathcal D}}
+\newcommand{\J}{{\mathcal J}}
+\newcommand{\Dn}{{\mathcal D}_n}
+\newcommand{\Dd}{{\mathcal D}_n }
+\renewcommand{\P}{{\mathcal P}}
+\newcommand{\Nu}{{\mathcal N} }
+\newcommand{\B}{{\mathcal B}}
+\newcommand{\Bf}{{\bf B}}
+\newcommand{\Y}{{\bf Y}}
+\newcommand{\A}{{\mathcal A}}
+
+\newcommand{\V}{{\mathcal V}}
+\newcommand{\M}{{\mathcal M}}
+\newcommand{\F}{{\mathcal F}}
+\newcommand{\Fd}{{\mathcal F}}
+\newcommand{\BF}{{\mathcal BF}_n}
+\newcommand{\BFd}{{\mathcal BF}_n}
+\newcommand{\TF}{{\mathcal TF}_n}
+\newcommand{\TFd}{{\mathcal TF}_n}
+\newcommand{\G}{{\mathcal G}}
+\newcommand{\X}{{\mathcal X}}
+\newcommand{\E}{{\mathcal E}}
+\newcommand{\K}{{\mathcal K}}
+\newcommand{\T}{{\mathcal T}_n}
+\renewcommand{\H}{{\mathcal H}}
+
+\newtheorem{Remark}{Remark}
+\newtheorem{proposition}{Proposition}
+\newtheorem{theorem}{Theorem}
+%\renewcommand{\thetheorem}{\arabic{theorem}}
+\newtheorem{lemma}{Lemma}
+\newtheorem{corollary}{Corollary}
+%\renewcommand{\thelemma}{\arabic{lemma}}
+%\renewcommand{\thecorollary}{\arabic{corollary}}
+\newtheorem{example}{Example}
+%\renewcommand{\theexample}{\arabic{example}}
+\newtheorem{definition}{Definition}
+%\renewcommand{\thedefinition}{\arabic{definition}}
+\newtheorem{Algorithms}{Algorithm}
+
+\newcommand{\bu}{{\mathbf 1} }
+\newcommand{\bo}{{\mathbf 0} }
+\newcommand{\N}{\mbox{{\sl l}}\!\mbox{{\sl N}}}
+
+
+\newcommand{\rb}[1]{\raisebox{1.5ex}[0pt]{#1}}
+
+\def\uint{[0,1]}
+\def\proof{{\scshape Proof}. \ignorespaces}
+\def\endproof{{\hfill \vbox{\hrule\hbox{%
+   \vrule height1.3ex\hskip1.0ex\vrule}\hrule
+  }}\par}
+%=================================================================
+
+\hypersetup
+{
+    pdfauthor={Gang Li},
+    pdfsubject={TULIP Thesis},
+    pdftitle={FLIP},
+    pdfkeywords={TULIP, Lab}
+}
+
+
+%%% ----------------------------------------------------------------------
+\setlength{\tclineskip}{1.05\baselineskip}
+%%% ----------------------------------------------------------------------
+\begin{document}
+
+%\nobib
+%\draft
+%\nofront
+
+%\permissionfalse
+
+\dedicate{To \ldots} % dedicate page, for example "To my parents, To my family, ......"
+
+%\nolistoftables
+
+%\nolistoffigures
+
+\copyrightyear{201X} 
+\submitdate{Month 201X}
+\convocation{Month}{201X}
+
+% \hon  
+\phd
+
+% ------------------------------------------------------------------------
+
+\title{Title of your Thesis}
+
+\author{Your full name}
+
+%\twosupervisors
+
+\supervisor{Your principle supervisor's full name}
+
+%\firstreader{Your associate supervisor's full name}
+
+
+
+% ------------------------------------------------------------------------
+{
+\typeout{:?0000} % Don't bother with over/under-full boxes
+\beforepreface
+\typeout{:?1111} % Process All Errors from Here on
+}
+% ------------------------------------------------------------------------
+%\setcounter{page}{1}
+%\tableofcontents
+
+% ------------------------------------------------------------------------
+{ \typeout{Acknowledgement}
+\include{ack}
+}
+
+{ \typeout{Publication List}
+\include{pub}
+}
+
+{ \typeout{Abstract}
+\include{abs}
+}
+
+% ------------------------------------------------------------------------
+\afterpreface
+\def\baselinestretch{1}
+\setlinespacing{1.66}
+\cleardoublepage
+% ------------------------------------------------------------------------
+\include{chapter01} %\cleardoublepage
+\include{chapter02} %\cleardoublepage
+\include{chapter03} %\cleardoublepage
+%\include{chapterXX} %\cleardoublepage
+\include{conclusion} %\cleardoublepage
+
+% ------------------------------------------------------------------------
+%GATHER{xBib.bib}   % For Gather Purpose Only
+%GATHER{Thesis.bbl} % For Gather Purpose Only
+\setlinespacing{1.44}
+\bibliographystyle{abbrv}
+\bibliography{bib/reference}
+
+% ------------------------------------------------------------------------
+
+
+\end{document}
+% ------------------------------------------------------------------------

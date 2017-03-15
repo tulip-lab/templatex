@@ -1,0 +1,306 @@
+\documentclass{amsart}
+\synctex=1
+
+%=================================================================
+% LaTeXDiff
+%  latexdiff-vc --svn --pdf --force -r 10XX -r HEAD filename.tex
+%  latexdiff-vc --svn --flatten --pdf --force -r 10XX -r HEAD filename.tex
+%  View pdf to see difference
+%
+%=================================================================
+% for comments
+\newcount\DraftStatus  % 0 suppresses notes to selves in text
+\DraftStatus=1   % TODO: set to 0 for final version
+%=================================================================
+\usepackage{color}
+\definecolor{darkgreen}{rgb}{0,0.5,0}
+\definecolor{purple}{rgb}{1,0,1}
+% \draftnote{color}{comment} inserts a colored comment in the text
+\newcommand{\draftnote}[2]{\ifnum\DraftStatus=1
+	\marginpar{
+		\tiny\raggedright
+		\hbadness=10000
+        \def\baselinestretch{0.8}
+        \textcolor{#1}{\textsf{\hspace{0pt}#2}}}
+     \fi}
+% add yourself here:
+\newcommand{\gangli}[1]{\draftnote{red}{[GLi: #1]}}
+\newcommand{\eva}[1]{\draftnote{darkgreen}{[QLi: #1]}}
+%other colors include blue, red, purple, cyan, darkgreen, etc.
+%=================================================================
+\newcommand{\HRule}{\rule{\linewidth}{0.5mm}}
+
+%=================================================================
+% for Version control information
+\usepackage{svn-multi}
+%
+\svnidlong
+{$HeadURL: svn://202.200.82.197/XSYURepository/staff/napang/papers/2015/intrdetect/trunk/templatex.tex $}
+{$LastChangedDate: 2015-06-07 12:37:44 +1000 (Sun, 07 Jun 2015) $}
+{$LastChangedRevision: 297 $}
+{$LastChangedBy: gangli $}
+\svnid{$Id: templatex.tex 297 2015-06-07 02:37:44Z gangli $}
+\svnRegisterAuthor{qianli}{Qian Li}
+\svnRegisterAuthor{gangli}{Gang Li}
+%\newcommand{\svnfooter}{Last Changed Rev: \svnkw{LastChangedRevision}}
+% Don't forget to set the svn property 'svn:keywords' to
+% 'HeadURL LastChangedDate LastChangedRevision LastChangedBy' or
+% 'Id' or both depending if you use \svnidlong and/or \svnid
+\usepackage{amsmath}
+\usepackage{fancyhdr}
+\pagestyle{fancy}
+\fancyhead{} % clear all header fields
+\fancyhead[RO,LE]{\slshape \rightmark}
+\fancyhead[LO,RE]{\ensuremath{\Rightarrow}\textbf{\textbf{[Confidential Draft]}}\ensuremath{\Leftarrow}}
+\fancyhead[CO,CE]{}
+\fancyfoot{} % clear all footer fields
+\fancyfoot[CE,CO]{\thepage}
+%\fancyfoot[LO,LE]{R\svnfilerev\ (\svnday-\svnmonth-\svnyear\ \svnhour:\svnminute)}
+\fancyfoot[LO,LE]{R\svnrev\ (\svnfiledate)}
+\fancyfoot[RO,RE]{Last changed by: \svnFullAuthor{\svnauthor}}
+\setlength{\headheight}{12pt}
+\renewcommand{\headrulewidth}{0.4pt}
+\renewcommand{\footrulewidth}{0.4pt}
+%=================================================================
+
+%=================================================================
+% for math notations
+% ----------------------------------------------------------------
+\vfuzz2pt % Don't report over-full v-boxes if over-edge is small
+\hfuzz2pt % Don't report over-full h-boxes if over-edge is small
+% THEOREMS -------------------------------------------------------
+\newtheorem{thm}{Theorem}[section]
+\newtheorem{cor}[thm]{Corollary}
+\newtheorem{lem}[thm]{Lemma}
+\newtheorem{prop}[thm]{Proposition}
+\theoremstyle{definition}
+\newtheorem{defn}[thm]{Definition}
+\theoremstyle{remark}
+\newtheorem{rem}[thm]{Remark}
+\numberwithin{equation}{section}
+% MATH -----------------------------------------------------------
+\newcommand{\norm}[1]{\left\Vert#1\right\Vert}
+\newcommand{\abs}[1]{\left\vert#1\right\vert}
+\newcommand{\set}[1]{\left\{#1\right\}}
+\newcommand{\Real}{\mathbb R}
+\newcommand{\eps}{\varepsilon}
+\newcommand{\To}{\longrightarrow}
+\newcommand{\BX}{\mathbf{B}(X)}
+% ----------------------------------------------------------------
+\newcommand{\I}{{\cal I}}
+\newcommand{\Id}{{\cal I} }
+\newcommand{\Dc}{{\cal D}}
+\newcommand{\J}{{\cal J}}
+\newcommand{\Dn}{{\cal D}_n}
+\newcommand{\Dd}{{\cal D}_n }
+\renewcommand{\P}{{\cal P}}
+\newcommand{\Nu}{{\cal N} }
+\newcommand{\B}{{\cal B}}
+\newcommand{\Bf}{{\bf B}}
+\newcommand{\Y}{{\bf Y}}
+\newcommand{\A}{{\cal A}}
+
+\newcommand{\V}{{\cal V}}
+\newcommand{\M}{{\cal M}}
+\newcommand{\F}{{\cal F}}
+\newcommand{\Fd}{{\cal F}}
+\newcommand{\BF}{{\cal BF}_n}
+\newcommand{\BFd}{{\cal BF}_n}
+\newcommand{\TF}{{\cal TF}_n}
+\newcommand{\TFd}{{\cal TF}_n}
+\newcommand{\G}{{\cal G}}
+\newcommand{\X}{{\cal X}}
+\newcommand{\E}{{\cal E}}
+\newcommand{\K}{{\cal K}}
+\newcommand{\T}{{\cal T}_n}
+\renewcommand{\H}{{\cal H}}
+
+\newtheorem{Remark}{Remark}
+\newtheorem{proposition}{Proposition}
+\newtheorem{theorem}{Theorem}
+%\renewcommand{\thetheorem}{\arabic{theorem}}
+\newtheorem{lemma}{Lemma}
+\newtheorem{corollary}{Corollary}
+%\renewcommand{\thelemma}{\arabic{lemma}}
+%\renewcommand{\thecorollary}{\arabic{corollary}}
+\newtheorem{example}{Example}
+%\renewcommand{\theexample}{\arabic{example}}
+\newtheorem{definition}{Definition}
+%\renewcommand{\thedefinition}{\arabic{definition}}
+\newtheorem{Algorithms}{Algorithm}
+
+\newcommand{\bu}{{\mathbf 1} }
+\newcommand{\bo}{{\mathbf 0} }
+\newcommand{\N}{\mbox{{\sl l}}\!\mbox{{\sl N}}}
+
+\def\uint{[0,1]}
+\def\proof{{\scshape Proof}. \ignorespaces}
+\def\endproof{{\hfill \vbox{\hrule\hbox{%
+   \vrule height1.3ex\hskip1.0ex\vrule}\hrule
+  }}\par}
+%=================================================================
+%=================================================================
+% general packages
+\usepackage{graphicx,color}
+\usepackage{algorithm}
+\usepackage{algorithmic}
+\usepackage{amsmath}
+\usepackage{amssymb}
+\usepackage{breqn}
+\usepackage{subfigure}
+\usepackage{multirow}
+\usepackage{psfrag}
+\usepackage{url}
+\usepackage{hyperref}
+\usepackage{breakurl}
+\usepackage{cite}
+%\usepackage[dcucite]{harvard}
+\usepackage{booktabs}
+\usepackage{rotating}
+\usepackage{colortbl}
+%%\usepackage{spelling}
+%\usepackage{algpseudocode} 
+%\usepackage{paralist}
+%\usepackage{epstopdf}
+%=================================================================
+% 9 packages
+\usepackage{amsmath}
+\usepackage{geometry}
+%\usepackage{graphicx}
+\usepackage{nag}
+\usepackage{microtype}
+\usepackage{siunitx}
+\usepackage{cleveref}
+%\usepackage{hyperref}
+%\usepackage{booktabs}
+\usepackage{nicefrac}
+\usepackage{lipsum}
+
+
+\hypersetup
+{
+    pdfauthor={Gang Li},
+    pdfsubject={TULIP Lab},
+    pdftitle={Report},
+    pdfkeywords={TULIP, Research}
+}
+
+
+%=================================================================
+\begin{document}
+
+%=================================================================
+% Preamble which will need to be changed for submission
+% 
+\title[A Short Running Title]{Title of This Paper}%
+
+\author{Author 1}  
+\address[A.~1]{School of Information Technology \\
+Deakin University, 221 Burwood Highway \\
+Vic 3125, Australia}%
+\email[A.~1]{xxx@deakin.edu.au} 
+
+\author{Author 2}  
+\address[A.~2]{School of Information Technology \\
+Deakin University, 221 Burwood Highway \\
+Vic 3125, Australia}%
+\email[A.~2]{xxx@deakin.edu.au} 
+
+
+\author{Author 3}  
+\address[A.~3]{School of Information Technology \\
+Deakin University, 221 Burwood Highway \\
+Vic 3125, Australia}%
+\email[A.~3]{xxx@deakin.edu.au} 
+
+%\thanks{Thanks to \ldots}%
+\subjclass{Artificial Intelligence}%
+\keywords{Machine Learning, Data Mining, ...}%
+\date{\svndate}%
+
+\begin{abstract}
+The abstract will be put here, .... 
+\end{abstract}
+
+
+\maketitle
+\tableofcontents
+
+
+\newpage
+
+%=================================================================
+
+\section{Introduction}\label{sec-intro}
+
+\HRule
+
+\gangli{This is comment from Gang.}
+
+Test citation~\cite{liu2014ordinal}
+
+This is for~\cref{tbl:overall-experiments}.
+
+This is for~\cref{sec-conclusions}.
+
+We have  \SI{10}{\hertz},
+\si{\kilogram\metre\per\second},
+the range: \SIrange{10}{100}{\hertz}.
+
+Number: 
+\num{123}.
+\numlist{10;30;50;70},
+\numrange{10}{30},
+\SIlist{10;30;45}{\metre},
+and
+\SI{10}{\percent}
+
+$\nicefrac[]{1}{2}$,
+
+
+For~\cref{eq:test}, 
+as shown below:
+
+\begin{equation}\label{eq:test}
+a = b \times \sqrt{ab}
+\end{equation}
+
+\section{Preliminaries} \label{sec-preliminaries}
+
+\lipsum
+
+
+\section{Method} \label{sec-method}
+
+\section{Experiment and Analysis} \label{sec-experiment}
+
+\begin{table}  \centering
+  \caption{Precision Comparison on Event Detection Methods}
+  \label{tbl:overall-experiments}
+  \begin{tabular}{cccc}
+\toprule
+    % after \\: \hline or \cline{col1-col2} \cline{col3-col4} ...
+    & OR Event Detection & AC Event Detection & TC Event Detection \\
+\midrule
+    precision & 0.83 & 0.69 & 0.46 \\
+    recall & 0.68 & 0.48 & 0.36 \\
+    F-score & 0.747 & 0.57 & 0.4 \\
+\bottomrule
+\end{tabular}
+\end{table}
+
+\section{Conclusions} \label{sec-conclusions}
+
+\section*{Acknowledgment}
+
+The authors would like to thank \ldots
+
+% ----------------------------------------------------------------
+\newpage
+\bibliographystyle{plain}
+\bibliography{references}
+%=================================================================
+
+
+\end{document}
+

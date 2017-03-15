@@ -1,0 +1,161 @@
+%% 
+%% ---------------------------------------------------------------
+%% Copyright (C) 2012 Gang Li
+%% ---------------------------------------------------------------
+%%
+%% This work is distributed and/or modified under the conditions of the LaTeX Project Public
+%% License, either version 1.3 of this license or (at your option) any later
+%% version. The latest version of this license is in
+%% http://www.latex-project.org/lppl.txt and version 1.3 or later is part of all
+%% distributions of LaTeX version 2003/12/01 or later.
+%%
+%% This work has the LPPL maintenance status "maintained".
+%%
+%% This Current Maintainer of this work is Gang Li.
+%%
+%% {$HeadURL: svn://cloud.tulip.org.au/WAEERepository/presentation/powerdot-tulip/trunk/pstricks-tulip.tex $}
+%% {$LastChangedDate: 2015-12-02 18:24:20 +0800 (Wed, 02 Dec 2015) $}
+%% {$LastChangedRevision: 204 $}
+%% {$LastChangedBy: gangli $}
+%%
+\documentclass[12pt]{article}
+\usepackage{pstricks-add}
+\usepackage{pst-node, pst-tree}
+\usepackage{color}
+
+
+\psset{braceWidthInner=7\pslinewidth,braceWidthOuter=5\pslinewidth}
+\def\Wert#1{\makebox[1.75em][r]{$#1$}~}
+
+
+\begin{document}
+
+%%==========================================================================================
+%%
+\begin{pspicture}
+\psset{arrowscale=2,arrows=->}
+\def\psBox#1#2{\psframebox[fillcolor=#1,fillstyle=solid]{\parbox{1.5cm}{\centering #2}}}
+
+$
+\psmatrix[colsep= 1cm]
+& 
+\psBox{green!30}{$v(1,2,3)$} \\
+\psBox{green!30}{$v(1,2)$} & \psBox{green!30}{$v(1,3)$} & \psBox{green!30}{$v(2,3)$} \\
+\psBox{green!30}{$v(1)$} & \psBox{green!30}{$v(2)$} & \psBox{green!30}{$v(3)$} \\
+&
+\psBox{green!30}{$0$} 
+\endpsmatrix
+$
+\end{pspicture}
+
+
+%%==========================================================================================
+%%
+\begin{pspicture}
+\psset{arrowscale=2,arrows=->}
+\def\psBox#1#2{\psframebox[fillcolor=#1,fillstyle=solid]{\parbox{1.5cm}{\centering #2}}}
+
+$
+\psmatrix[colsep= 1cm]
+& 
+\psBox{orange}{$v(1,2,3)$} \\
+\psBox{green!30}{$v(1,2)$} & \psBox{orange}{$v(1,3)$} & \psBox{green!30}{$v(2,3)$} \\
+\psBox{green!30}{$v(1)$} & \psBox{green!30}{$v(2)$} & \psBox{orange}{$v(3)$} \\
+&
+\psBox{orange}{$0$} 
+\endpsmatrix
+$
+
+\ncline{1,2}{2,2}
+\ncline{2,2}{3,3}
+\ncline{3,3}{4,2}
+\end{pspicture}
+
+
+%%==========================================================================================
+%%
+\begin{pspicture}
+\psset{arrowscale=2,arrows=<-}
+\def\psBox#1#2{\psdblframebox[fillcolor=#1,fillstyle=solid]{\parbox{1cm}{\centering #2}}}
+\def\psedge{\ncdiag[angleA=180,angleB=0,arm=1.5]}
+%  \psset{angleB=180,linearc=5pt}
+
+\pstree[levelsep=145pt,treemode=L]{
+\TR[name=aggresult]{\psBox{green!30}{\Huge ?}}
+}
+{\pstree[levelsep=145pt,treemode=L]{
+ \TR[name=aggfunc]{\psdblframebox[fillcolor=green!30,fillstyle=solid]
+{\parbox{2.2cm}{\centering Aggregation\\Function}}}
+}  
+{
+\TR[name=M1]{\psBox{white}{$0.6$}}
+\TR[name=EN]{\psBox{white}{$0.3$}}
+\TR[name=M2]{\psBox{white}{$0.2$}}
+\TR[name=P1]{\psBox{white}{$0.8$}}
+\TR[name=P2]{\psBox{white}{$0.7$}}
+\TR[name=EM]{\psBox{white}{$0.6$}}
+}
+}
+\nput*{180}{M1}{ Maths $1$}
+\nput*{180}{EN}{ English}
+\nput*{180}{M2}{ Maths $2$}
+\nput*{180}{P1}{ \begin{tabular}{r}Physics\\ \footnotesize (mathematical) \end{tabular}}
+\nput*{180}{P2}{ Physics $1$}
+\nput*{180}{EM}{ Extra Maths}
+
+% \nput*{90}{aggfunc}{\large Aggregation\\Function}
+\nput*{90}{aggresult}{\large Output}
+\end{pspicture}
+
+
+
+
+
+%%==========================================================================================
+%%
+\begin{pspicture}
+\pstree[levelsep=35pt,ArrowInside=->,ArrowInsidePos=.75, 
+arrowscale=2,labelsep=14pt] 
+{\Tr{$\{1,2,3\}$}}{ 
+\pstree{\Tr[name=OT]{$\{1,2\}$}}{ 
+\Tr[name=One]{$\{1\}$} 
+} 
+\pstree{\Tr[name=OThree]{$\{1,3\}$}}{ 
+\psset{linestyle=none,ArrowInside=none}{ 
+\pstree{\Tr[name=Two]{$\{2\}$}} 
+{\psset{linestyle=solid,ArrowInside=->}\Tr[name=Phi]{$\{\phi\}$}}} 
+} 
+\pstree{\Tr[name=TThree]{$\{2,3\}$}}{ 
+{\Tr[name=Three]{$\{3\}$}} 
+\ncline[ArrowInsidePos=.9]{TThree}{Two}
+\ncline[ArrowInsidePos=.9]{OThree}{One} 
+\ncline[ArrowInsidePos=.9]{OThree}{Three} 
+\ncline{One}{Phi} 
+\ncline{Three}{Phi} 
+\ncline[ArrowInsidePos=.9]{OT}{Two} 
+} 
+}
+\end{pspicture}
+
+
+%%==========================================================================================
+%%
+\begin{figure}
+%  \def\VPh{\vphantom{\displaystyle\sum_{i=n}^m {i^2}}}
+\psset{arrowscale=2,arrows=->}
+\def\psBox#1#2{\psframebox[fillcolor=#1,fillstyle=solid]{#2}}
+% 
+\rnode{t1}{\psBox{green!30}{abc}} 
+\begin{itemize}
+ \item Try this one \rnode[rc]{T1}{series} \nccurve[angleB=-75]{T1}{t1}
+\end{itemize}
+% 
+% {\psframebox[fillcolor=#1,fillstyle=solid]{\VPh\displaystyle#2}}
+% 
+\end{figure}
+
+
+
+
+
+\end{document}
