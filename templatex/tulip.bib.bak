@@ -33,7 +33,7 @@
 }
 
 @Article{BLVW14J01,
-  author  = {Beliakov, G. and Li, G. and Vu, H.Q. and Wilkin, T.},
+  author  = {Beliakov, Gleb and Li, Gang and Vu, Huy Quan and Wilkin, Tim},
   title   = {Characterizing compactness of geometrical clusters using fuzzy measures},
   journal = {Fuzzy Systems, IEEE Transactions on},
   year    = {2014},
@@ -65,15 +65,16 @@
   year      = {2014},
 }
 
-@Book{CMHSJLLEKLZ13B01,
-  title        = {Behavior and Social Computing},
-  year         = {2013},
-  author       = {Cao, Longbing and Motoda, Hiroshi and Srivastava, Jaideep and Lim, Ee-Peng and King, Irwi and Yu, Philip S. and Nejdl, Wolfgang and Xu, Guandong and Li, Gang and Zhang, Ya},
-  optdoi       = {http://dx.doi.org/10.1007/978-3-319-04048-6},
-  optisbn      = {978-3-319-04047-9},
-  optpublisher = {Springer},
-  optseries    = {Lecture Notes in Computer Science},
-  optvolume    = {8178},
+@Proceedings{CMSLKYNXLZ13P01,
+  title     = {Behavior and Social Computing},
+  year      = {2013},
+  editor    = {Cao, Longbing and Motoda, Hiroshi and Srivastava, Jaideep and Lim, Ee-Peng and King, Irwin and Yu, Philip S. and Nejdl, Wolfgang and Xu, Guandong and Li, Gang and Zhang, Ya},
+  volume    = {8178},
+  series    = {Lecture Notes in Computer Science},
+  publisher = {Springer},
+  month     = {August},
+  doi       = {10.1007/978-3-319-04048-6},
+  url       = {http://dx.doi.org/10.1007/978-3-319-04048-6},
 }
 
 @Article{CLP11J02,
@@ -153,17 +154,16 @@
   Url                      = {http://springerlink.metapress.com/content/j09bcctjg4atbgk5/?p=09485e115ee64419b2a189c140d6de47&pi=0}
 }
 
-@Article{Dai2004,
-  Title                    = {Software Warehouse: Its Design, Management And Application},
-  Author                   = {Dai, Honghua and Wei, Dai and Li, Gang},
-  Journal                  = {International Journal of Software Engineering and Knowledge Engineering},
-  Year                     = {2004},
-  Number                   = {4},
-  Pages                    = {395--406},
-  Volume                   = {14},
-
-  Doi                      = {10.1142/S0218194004001683},
-  Url                      = {http://dx.doi.org/10.1142/S0218194004001683}
+@Article{DWL04J02,
+  author  = {Dai, Honghua and Wei, Dai and Li, Gang},
+  title   = {Software Warehouse: Its Design, Management And Application},
+  journal = {International Journal of Software Engineering and Knowledge Engineering},
+  year    = {2004},
+  volume  = {14},
+  number  = {4},
+  pages   = {395--406},
+  doi     = {10.1142/S0218194004001683},
+  url     = {http://dx.doi.org/10.1142/S0218194004001683},
 }
 
 @Article{DLMT10J01,
@@ -210,20 +210,19 @@
 }
 
 @InProceedings{GLYTD06C05,
-  Title                    = {Abnormal Behavior Detection for Early Warning of Terrorist Attack},
-  Author                   = {Geng, Xin and Li, Gang and Ye, Yangdong and Tu, Yiqing and Dai, Honghua},
-  Booktitle                = {Australian Conference on Artificial Intelligence},
-  Year                     = {2006},
-  Editor                   = {Abdul Sattar and Byeong Ho Kang},
-  Pages                    = {1002--1009},
-  Publisher                = {Springer},
-  Series                   = {Lecture Notes in Computer Science},
-  Volume                   = {4304},
-
-  Doi                      = {10.1007/11941439_112},
-  Owner                    = {gangli},
-  Timestamp                = {2008.01.12},
-  Url                      = {http://dx.doi.org/10.1007/11941439_112}
+  author    = {Geng, Xin and Li, Gang and Ye, Yangdong and Tu, Yiqing and Dai, Honghua},
+  title     = {Abnormal Behavior Detection for Early Warning of Terrorist Attack},
+  booktitle = {Australian Conference on Artificial Intelligence},
+  year      = {2006},
+  editor    = {Abdul Sattar and Byeong Ho Kang},
+  volume    = {4304},
+  series    = {Lecture Notes in Computer Science},
+  pages     = {1002--1009},
+  publisher = {Springer},
+  doi       = {10.1007/11941439_112},
+  owner     = {gangli},
+  timestamp = {2008.01.12},
+  url       = {http://dx.doi.org/10.1007/11941439_112},
 }
 
 @InProceedings{GZZLD06C04,
@@ -352,16 +351,16 @@
   timestamp = {2014.01.06},
 }
 
-@InCollection{LRLL11IC01,
+@InProceedings{LRLL11C01,
   author      = {Leung, Rosanna and Rong, Jia and Li, Gang and Law, Rob},
   title       = {An Analysis on Human Personality and Hotel Web Design: a Kohonen Network Approach},
   booktitle   = {Information and Communication Technologies in Tourism 2011},
-  publisher   = {Springer Vienna},
   year        = {2011},
   editor      = {Law, Rob and Fuchs, Matthias and Ricci, Francesco},
   pages       = {573-585},
-  isbn        = {978-3-7091-0503-0},
+  publisher   = {Springer Vienna},
   affiliation = {School of Hotel and Tourism Management, Hong Kong Polytechnic University, Hong Kong SAR, China},
+  isbn        = {978-3-7091-0503-0},
   keyword     = {Economics/Management Science},
   url         = {http://dx.doi.org/10.1007/978-3-7091-0503-0_46},
 }
@@ -501,7 +500,7 @@
 }
 
 @Article{LLQRZ15J01,
-  author   = {Gang Li and Rob Law and Huy Quan Vu and Jia Rong and Xinyuan (Roy) Zhao},
+  author   = {Li, Gang and Law, Rob and Vu, Huy Quan and Rong, Jia Rong and Zhao, Xinyuan},
   title    = {Identifying emerging hotel preferences using Emerging Pattern Mining technique},
   journal  = {Tourism Management},
   year     = {2015},
@@ -526,20 +525,21 @@
   timestamp = {2010.01.21},
 }
 
-@InProceedings{LLTY06C02,
-  author    = {Li, Gang and Liu, Dong and Tu, Yiqing and Ye, Yangdong},
-  title     = {Finding the Optimal Cardinality Value for Information Bottleneck Method},
-  booktitle = {Advanced Data Mining and Applications, Second International Conference, ADMA 2006, Xi'an, China, August 14-16, 2006, Proceedings},
-  year      = {2006},
-  editor    = {Xue Li and Osmar R. Za\"{\i}ane and Zhanhuai Li},
-  volume    = {4093},
-  series    = {Lecture Notes in Computer Science},
-  pages     = {594--605},
-  publisher = {Springer},
-  doi       = {10.1007/11811305_66},
-  owner     = {gangli},
-  timestamp = {2008.01.12},
-  url       = {http://dx.doi.org/10.1007/11811305_66},
+@InProceedings{LLTY06C03,
+  Title                    = {Finding the Optimal Cardinality Value for Information Bottleneck Method},
+  Author                   = {Li, Gang and Liu, Dong and Tu, Yiqing and Ye, Yangdong},
+  Booktitle                = {Advanced Data Mining and Applications, Second International Conference, ADMA 2006, Xi'an, China, August 14-16, 2006, Proceedings},
+  Year                     = {2006},
+  Editor                   = {Xue Li and Osmar R. Za\"{\i}ane and Zhanhuai Li},
+  Pages                    = {594--605},
+  Publisher                = {Springer},
+  Series                   = {Lecture Notes in Computer Science},
+  Volume                   = {4093},
+
+  Doi                      = {10.1007/11811305_66},
+  Owner                    = {gangli},
+  Timestamp                = {2008.01.12},
+  Url                      = {http://dx.doi.org/10.1007/11811305_66}
 }
 
 @InProceedings{LLYR06C01,
@@ -579,15 +579,6 @@
 }
 
 @Article{LNLTHLG14J05,
-  author    = {Li, Qian and Niu, Wenjia and Li, Gang and Tong, Endong and Hu, Yue and Liu, Ping and Guo, Li},
-  title     = {Recover Fault Services via Complex Service-to-Node Mappings in Wireless Sensor Networks},
-  journal   = {Journal of Network and Systems Management},
-  year      = {2014},
-  pages     = {1--28},
-  publisher = {Springer},
-}
-
-@Article{LNLTHLG14J06,
   author    = {Li, Qian and Niu, Wenjia and Li, Gang and Tong, Endong and Hu, Yue and Liu, Ping and Guo, Li},
   title     = {Recover Fault Services via Complex Service-to-Node Mappings in Wireless Sensor Networks},
   journal   = {Journal of Network and Systems Management},
@@ -666,7 +657,7 @@
 }
 
 @Article{NLTSLHVG14J06,
-  author   = {Wenjia Niu and Gang Li and Endong Tong and Quan Z. Sheng and Qian Li and Yue Hu and Athanasios V. Vasilakos and Li Guo},
+  author   = {Wenjia, Niu and Li, Gang and Tong, Endong and Sheng, Quan Z. and Li, Qian and Hu, Yue and Vasilakos, Athanasios V. and Guo, Li},
   title    = {A block-aware hybrid data dissemination with hotspot elimination in wireless sensor network},
   journal  = {Journal of Network and Computer Applications},
   year     = {2014},
@@ -714,22 +705,8 @@
   publisher = {Elsevier},
 }
 
-@InBook{VQHBL14IB01,
-  pages     = {247 - 272},
-  title     = {Chapter 9 - A Choquet Integral Toolbox and Its Application in Customer Preference Analysis},
-  publisher = {Academic Press},
-  year      = {2014},
-  author    = {Quan Vu, Huy and Beliakov, Gleb and Li, Gang},
-  editor    = {Zhao, Yanchang and Cen, Yonghua},
-  address   = {Boston},
-  isbn      = {978-0-12-411511-8},
-  booktitle = {Data Mining Applications with R},
-  doi       = {http://dx.doi.org/10.1016/B978-0-12-411511-8.00009-8},
-  url       = {http://www.sciencedirect.com/science/article/pii/B9780124115118000098},
-}
-
 @Article{RLZ13J08,
-  author    = {Ren, Yongli and Li Gang and Zhou, Wanlei},
+  author    = {Ren, Yongli and Li, Gang and Zhou, Wanlei},
   title     = {A Learning Method for Top-N Recommendations with Incomplete Data},
   journal   = {Social Network Analysis and Mining},
   year      = {2013},
@@ -835,15 +812,6 @@
   organization = {Australian Computer Society, Inc.},
 }
 
-@InProceedings{RTLC02,
-  author       = {Ren, Yongli and Ye, Yangdong and Li, Gang},
-  title        = {The density connectivity information bottleneck},
-  booktitle    = {Young Computer Scientists, 2008. ICYCS 2008. The 9th International Conference for},
-  year         = {2008},
-  pages        = {1783--1788},
-  organization = {IEEE},
-}
-
 @InProceedings{RYL08C03,
   Title                    = {The Density-based Agglomerative Information Bottleneck},
   Author                   = {Ren, Yongli and Ye, Yangdong and Li, Gang},
@@ -898,7 +866,7 @@
 }
 
 @Article{RLC09J02,
-  author    = {Rong,, Jia and Li,, Gang and Chen,, Yi-Ping Phoebe},
+  author    = {Rong, Jia and Li, Gang and Chen, Yi-Ping Phoebe},
   title     = {Acoustic feature selection for automatic emotion recognition from speech},
   journal   = {Information Processing and Management},
   year      = {2008},
@@ -932,22 +900,23 @@
   doi     = {10.1016/j.tourman.2011.08.006},
 }
 
-@InProceedings{SLC08C05,
-  author    = {Schmidt, Sam and Li, Gang and Chen, Yi-Ping Phoebe},
-  title     = {Medical Knowledge Discovery from a Regional Asthma Dataset},
-  booktitle = {Advanced Intelligent Computing Theories and Applications. With Aspects of Artificial Intelligence, 4th International Conference on Intelligent Computing, ICIC 2008 Shanghai, China, September 15-18, 2008 Proceedings},
-  year      = {2008},
-  volume    = {5227/2008},
-  series    = {Lecture Notes in Computer Science},
-  pages     = {888--895},
-  publisher = {Springer Berlin / Heidelberg},
-  doi       = {10.1007/978-3-540-85984-0},
-  owner     = {gangli},
-  timestamp = {2008.10.17},
-  url       = {http://dx.doi.org/10.1007/978-3-540-85984-0_107},
+@InProceedings{SLC08C02,
+  Title                    = {Medical Knowledge Discovery from a Regional Asthma Dataset},
+  Author                   = {Schmidt, Sam and Li, Gang and Chen, Yi-Ping Phoebe},
+  Booktitle                = {Advanced Intelligent Computing Theories and Applications. With Aspects of Artificial Intelligence, 4th International Conference on Intelligent Computing, ICIC 2008 Shanghai, China, September 15-18, 2008 Proceedings},
+  Year                     = {2008},
+  Pages                    = {888--895},
+  Publisher                = {Springer Berlin / Heidelberg},
+  Series                   = {Lecture Notes in Computer Science},
+  Volume                   = {5227/2008},
+
+  Doi                      = {10.1007/978-3-540-85984-0},
+  Owner                    = {gangli},
+  Timestamp                = {2008.10.17},
+  Url                      = {http://dx.doi.org/10.1007/978-3-540-85984-0_107}
 }
 
-@InProceedings{SVJRLC08C06,
+@InProceedings{SVJRLC08C05,
   author    = {Schmidt, Sam and Vuillermin, Peter and Jenner, Bernard and Ren, Yongli and Li, Gang and Chen, Yi-Ping Phoebe},
   title     = {Mining Medical Data: Bridging the Knowledge Divide},
   booktitle = {eResearch Australasia 2008},
@@ -983,13 +952,13 @@
   pages   = {38-51},
 }
 
-@InCollection{TNLTTC12C05,
+@InProceedings{TNLTTC12C05,
   author    = {Tong, Endong and Niu, Wenjia and Li, Gang and Tang, Hui and Tang, Ding and Ci, Song},
   title     = {Hierarchical workflow management in wireless sensor network},
   booktitle = {PRICAI 2012: Trends in Artificial Intelligence},
-  publisher = {Springer},
   year      = {2012},
   pages     = {601--612},
+  publisher = {Springer},
 }
 
 @InProceedings{TNTLZ12C06,
@@ -1020,23 +989,24 @@
   Url                      = {http://dx.doi.org/10.1007/11538059_49}
 }
 
-@InProceedings{TLD06C03,
-  author    = {Tu, Yiqing and Li, Gang and Dai, Honghua},
-  title     = {Integrating Local One-Class Classifiers for Image Retrieval},
-  booktitle = {Advanced Data Mining and Applications, Second International Conference, ADMA 2006, Xi'an, China, August 14-16, 2006, Proceedings},
-  year      = {2006},
-  editor    = {Xue Li and Osmar R. Za\"{\i}ane and Zhanhuai Li},
-  volume    = {4093},
-  series    = {Lecture Notes in Computer Science},
-  pages     = {213--222},
-  publisher = {Springer},
-  doi       = {10.1007/11811305_24},
-  owner     = {gangli},
-  timestamp = {2008.01.12},
-  url       = {http://dx.doi.org/10.1007/11811305_24},
+@InProceedings{TLD06C02,
+  Title                    = {Integrating Local One-Class Classifiers for Image Retrieval},
+  Author                   = {Tu, Yiqing and Li, Gang and Dai, Honghua},
+  Booktitle                = {Advanced Data Mining and Applications, Second International Conference, ADMA 2006, Xi'an, China, August 14-16, 2006, Proceedings},
+  Year                     = {2006},
+  Editor                   = {Xue Li and Osmar R. Za\"{\i}ane and Zhanhuai Li},
+  Pages                    = {213--222},
+  Publisher                = {Springer},
+  Series                   = {Lecture Notes in Computer Science},
+  Volume                   = {4093},
+
+  Doi                      = {10.1007/11811305_24},
+  Owner                    = {gangli},
+  Timestamp                = {2008.01.12},
+  Url                      = {http://dx.doi.org/10.1007/11811305_24}
 }
 
-@InBook{VBL13B02,
+@InBook{VBL13B01,
   chapter   = {A Choquet Ingtegral Toolbox and its Application in Customer's Preference Analysis},
   title     = {Data Mining Applications with R},
   publisher = {Elsevier},
@@ -1103,8 +1073,8 @@
   issue   = {10},
 }
 
-@InProceedings{WGRL09IC04,
-  author    = {Jinlong Wang and Ke Gao and Yongli Ren and Gang Li},
+@InProceedings{WGRL09C04,
+  author    = {Wang, Jinlong and Gao, Ke Gao and Ren, Yongli and Li, Gang},
   title     = {Journal ranking based on social information},
   booktitle = {Proceedings of the 2009 Joint International Conference on Digital Libraries, JCDL 2009, Austin, TX, USA, June 15-19, 2009},
   year      = {2009},
@@ -1201,15 +1171,6 @@
   publisher = {Springer},
 }
 
-@InCollection{WNLYS12IC01,
-  author    = {Wang, Xiaofeng and Niu, Wenjia and Li, Gang and Yang, Xinghua and Shi, Zhongzhi},
-  title     = {Mining frequent agent action patterns for effective multi-agent-based web service composition},
-  booktitle = {Agents and Data Mining Interaction},
-  publisher = {Springer},
-  year      = {2012},
-  pages     = {211--227},
-}
-
 @InProceedings{WWVL10C03,
   author    = {Wu, Shunyao and Wang, Jinlong and Vu, Huy Quan and Li, Gang},
   title     = {Text clustering with important words using normalization},
@@ -1298,7 +1259,7 @@
 }
 
 @InProceedings{ZLRZX13C06,
-  author       = {Zhu, T and Li, G and Ren, Y and Zhou, W and Xiong, P},
+  author       = {Zhu, Tianqing and Li, Gang and Ren, Yongli and Zhou, Wanlei and Xiong, Ping},
   title        = {Privacy preserving for tagging recommender systems},
   booktitle    = {IEEE/WIC/ACM International Joint Conferences on Web Intelligence (WI) and Intelligent Agent Technologies (IAT) 2013},
   year         = {2013},
@@ -1343,15 +1304,7 @@
   publisher = {IEEE},
 }
 
-@Article{ZLZXY15J02,
-  author    = {Zhu, Tianqing and Li, Gang and Zhou, Wanlei and Xiong, Ping and Yuan, Cao},
-  title     = {Privacy Preserving Topic Model for Tagging Recommender Systems},
-  journal   = {Knowledge and Information Systems},
-  year      = {2015},
-  publisher = {Springer},
-}
-
-@Article{ZLRZX15J03,
+@Article{ZLRZX15J02,
   author    = {Zhu, Tianqing and Li, Gang and Ren, Yongli and Zhou, Wanlei and Xiong, Ping},
   title     = {Privacy Preserving Data Release for Tagging Recommender System},
   journal   = {Web Intelligence},
@@ -1361,7 +1314,7 @@
   publisher = {IOS Press},
 }
 
-@Article{XZNL15J04,
+@Article{XZNL15J03,
   author    = {Xiong, Ping and Zhu, Tianqing and Niu, Wenjia and Li, Gang},
   title     = {A differentially private algorithm for location data release},
   journal   = {Knowledge and Information Systems},
@@ -1370,7 +1323,7 @@
   publisher = {Springer},
 }
 
-@Article{NTLWTG15J05,
+@Article{NTLWTG15J04,
   author    = {Niu, Wenjia and Tong, Endong and Li, Qian and Li, Gang and Wen, Xuemin and Tan, Jianlong and Guo, Li},
   title     = {Exploring probabilistic follow relationship to prevent collusive peer-to-peer piracy},
   journal   = {Knowledge and Information Systems},
@@ -1379,7 +1332,7 @@
   publisher = {Springer},
 }
 
-@Article{L15J06,
+@Article{L15J05,
   author    = {Li, Gang},
   title     = {Big data related technologies, challenges and future prospects},
   journal   = {Information Technology \& Tourism},
@@ -1393,18 +1346,17 @@
 }
 
 @Article{VLLZ17J01,
-  author   = {Huy Quan Vu, Gang Li, Rob Law, Yanchun Zhang},
-  title    = {Travel Diaries Analysis by Sequential Rule Mining},
-  journal  = {Journal of Travel Research},
-  year     = {2017},
-  pages    = {0047287517692446},
-  abstract = {Because of the inefficiency in analyzing the comprehensive travel data, tourism managers are facing the challenge of gaining insights into travelers’ behavior and preferences. In most cases, existing techniques are incapable of capturing the sequential patterns hidden in travel data. To address these issues, this article proposes to analyze the travelers’ behavior through geotagged photos and sequential rule mining. Travel diaries, constructed from the photo sequences, can capture comprehensive travel information, and then sequential patterns can be discovered to infer the potential destinations. The effectiveness of the proposed framework is demonstrated in a case study of Australian outbound tourism, using a data set of more than 890,000 photos from 3,623 travelers. The introduced framework has the potential to benefit tourism researchers and practitioners from capturing and understanding the behaviors and preferences of travelers. The findings can support destination-marketing organizations (DMOs) in promoting appropriate destinations to prospective travelers.},
-  doi      = {https://doi.org/10.1177/0047287517692446},
-  url      = {http://journals.sagepub.com/doi/10.1177/0047287517692446},
+  author  = {Vu, Huy Quan and Li, Gang and Law, Rob and Zhang, Yanchun},
+  title   = {Travel Diaries Analysis by Sequential Rule Mining},
+  journal = {Journal of Travel Research},
+  year    = {2017},
+  pages   = {0047287517692446},
+  doi     = {https://doi.org/10.1177/0047287517692446},
+  url     = {http://journals.sagepub.com/doi/10.1177/0047287517692446},
 }
 
 @Article{XCLLL16J01,
-  author   = {Yuemei Xu, Song Ci, Yang Li, Tao Lin, Gang Li},
+  author   = {Xu, Yuemei and Ci, Song and Li, Yang and Lin, Tao and Li, Gang},
   title    = {Design and evaluation of coordinated in-network caching model for content centric networking},
   journal  = {Computer Networks},
   year     = {2016},
@@ -1417,21 +1369,19 @@
 }
 
 @Article{LLTJ16J02,
-  author   = {Shaowu Liu, Gang Li, Truyen Tran, and Yuan Jiang},
+  author   = {Liu, Shaowu and Li, Gang and Tran, Truyen and and Jiang, Yuan},
   title    = {Preference Relation-based Markov Random Fields},
   journal  = {Machine Learning},
   year     = {2016},
   pages    = {1-24},
-  abstract = {Abstract
-
-A preference relation-based Top-N recommendation approach is proposed to capture both second-order and higher-order interactions among users and items. Traditionally Top-N recommendation was achieved by predicting the item ratings first, and then inferring the item rankings, based on the assumption of availability of explicit feedback such as ratings, and the assumption that optimizing the ratings is equivalent to optimizing the item rankings. Nevertheless, both assumptions are not always true in real world applications. The proposed approach drops these assumptions by exploiting preference relations, a more practical user feedback. Furthermore, the proposed approach enjoys the representational power of Markov Random Fields thus side information such as item and user attributes can be easily incorporated. Comparing to related work, the proposed approach has the unique property of modeling both second-order and higher-order interactions among users and items. To the best of our knowledge, this is the first time both types of interactions have been captured in preference-relation based methods. Experimental results on public datasets demonstrate that both types of interactions have been properly captured, and significantly improved Top-N recommendation performance has been achieved.},
+  abstract = {A preference relation-based Top-N recommendation approach is proposed to capture both second-order and higher-order interactions among users and items. Traditionally Top-N recommendation was achieved by predicting the item ratings first, and then inferring the item rankings, based on the assumption of availability of explicit feedback such as ratings, and the assumption that optimizing the ratings is equivalent to optimizing the item rankings. Nevertheless, both assumptions are not always true in real world applications. The proposed approach drops these assumptions by exploiting preference relations, a more practical user feedback. Furthermore, the proposed approach enjoys the representational power of Markov Random Fields thus side information such as item and user attributes can be easily incorporated. Comparing to related work, the proposed approach has the unique property of modeling both second-order and higher-order interactions among users and items. To the best of our knowledge, this is the first time both types of interactions have been captured in preference-relation based methods. Experimental results on public datasets demonstrate that both types of interactions have been properly captured, and significantly improved Top-N recommendation performance has been achieved.},
   doi      = {http://dx.doi.org/10.1007/s10994-017-5630-z},
   keywords = {Recommender systems Collaborative filtering Preference relation Pairwise preference Markov Random Fields},
   url      = {http://dx.doi.org/10.1007/s10994-017-5630-z},
 }
 
 @Article{FLL16J03,
-  author   = {Wei Fan, Gang Li, Rob Law},
+  author   = {Fan, Wei and Li, Gang and Law, Rob},
   title    = {Temporal Analysis of Tourism Research Collaboration Network.},
   journal  = {Journal of Hospitality \& Tourism Research},
   year     = {2016},
@@ -1440,7 +1390,7 @@ A preference relation-based Top-N recommendation approach is proposed to capture
 }
 
 @Article{ZTHNL16J04,
-  author   = {Bo Zhang, Endong Tong, Jie Hao, Wenjia Niu, Gang Li},
+  author   = {Zhang, Bo and Tong, Endong and Hao, Jie and Niu, Wenjia and Li, Gang},
   title    = {Energy Efficient Sleep Schedule with Service Coverage Guarantee in Wireless Sensor Networks},
   journal  = {Journal of Network and Systems Management},
   year     = {2016},
@@ -1453,7 +1403,7 @@ A preference relation-based Top-N recommendation approach is proposed to capture
 }
 
 @Article{LT16J05,
-  author  = {Gang Li, Yiqing Tu},
+  author  = {Li, Gang and Tu, Yiqing},
   title   = {Book Review "Advances in Crowdsourcing"},
   journal = {Information Technology \& Tourism},
   year    = {2016},
@@ -1462,43 +1412,44 @@ A preference relation-based Top-N recommendation approach is proposed to capture
   url     = {http://link.springer.com/article/10.1007/s40558-015-0034-z},
 }
 
-@Article{RLZ16J06,
-  author  = {Yongli Ren, Gang Li, Wanlei Zhou.},
+@Article{RLZ16J11,
+  author  = {Ren, Yongli and Li, Gang and Zhou, Wanlei},
   title   = {A survey of recommendation techniques based on offline data processing},
   journal = {Concurrency and Computation: Practice and Experience},
-  year    = {2016},
+  year    = {2015},
   volume  = {27},
   pages   = {3915-3942},
+  doi     = {10.1002/cpe.3370},
   url     = {http://dx.doi.org/10.1002/cpe.3370},
 }
 
-@Article{BLS15J07,
-  author   = {Gleb Beliakov, Gang Li, Shaowu Liu},
+@Article{BLS15J06,
+  author   = {Beliakov, Gleb and Li, Gang and Liu, Shaowu},
   title    = {Parallel bucket sorting on graphics processing units based on convex optimization.},
   journal  = {Optimization},
   year     = {2015},
   volume   = {64},
   pages    = {1033-1055},
-  abstract = {We found an interesting relation between convex optimization and sorting problem. We present a parallel algorithm to compute multiple order statistics of the data by minimizing a number of related convex functions. The computed order statistics serve as splitters that group the data into buckets suitable for parallel bitonic sorting. This led us to a parallel bucket sort algorithm, which we implemented for many-core architecture of graphics processing units (GPUs). The proposed sorting method is competitive to the state-of-the-art GPU sorting algorithms and is superior to most of them for long sorting keys.},
+  abstract = {We found an interesting relation between convex optimization and sorting problem. We present a parallel algorithm to compute multiple order statistics of the data by minimizing a number of related convex functions. The computed order statistics serve as splitters that group the data into buckets suitable for parallel bitonic sorting. This led us to a parallel bucket sort algorithm, which we implemented for many-core architecture of graphics processing units (GPUs). The proposed sorting method is competitive to the state-of-the-art GPU sorting algorithms and is superior to most ofthem for long sorting keys.},
   doi      = {10.1080/02331934.2013.836645},
   keywords = {convex optimization, cutting plane method, GPU, parallel sorting, parallel selection, order statistic},
   url      = {http://dx.doi.org/10.1080/02331934.2013.836645},
 }
 
-@Article{VLLY15J08,
-  author   = {Huy Quan Vu, Gang Li, Rob Law, Ben Haobin Yip},
+@Article{VLLY15J07,
+  author   = {Vu, Huy Quan and Li, Gang and Law, Rob and Yip, Ben Haobin},
   title    = {Exploring the travel behaviors of inbound tourists to Hong Kong using Geotagged photos.},
   journal  = {Tourism Management},
   year     = {2015},
   volume   = {46},
   pages    = {222-232},
-  abstract = {Insight into tourist travel behaviors is crucial for managers engaged in strategic planning and decision making to create a sustainable tourism industry. However, they continue to face significant challenges in fully capturing and understanding the behavior of international tourists. The challenges are primarily due to the inefficient data collection approaches currently in use. In this paper, we present a new approach to this task by exploiting the socially generated and user-contributed geotagged photos now made publicly available on the Internet. Our case study focuses on Hong Kong inbound tourism using 29,443 photos collected from 2100 tourists. We demonstrate how a dataset constructed from such geotagged photos can help address such challenges as well as provide useful practical implications for destination development, transportation planning, and impact management. This study has the potential to benefit tourism researchers worldwide from better understanding travel behavior and developing sustainable tourism industries.},
+  abstract = {Insight into tourist travel behaviors is crucial for managers engaged in strategic planning and decision making to create a sustainable tourism industry. However, they continue to face significant challenges in fully capturing and understanding the behavior of international tourists. The challenges are primarily due to the inefficient data collection approaches currently in use. In this paper, we present a new approach to this task by exploiting the socially generated and user-contributed geotagged photos now made publicly available on the Internet. Our case study focuses on HongKong inbound tourism using 29,443 photos collected from 2100 tourists. We demonstrate how a dataset constructed from such geotagged photos can help address such challenges as well as provide useful practical implications for destination development, transportation planning, and impact management. This study has the potential to benefit tourism researchers worldwide from better understanding travel behavior and developing sustainable tourism industries.},
   doi      = {10.1016/j.tourman.2014.07.003},
   url      = {http://dx.doi.org/10.1016/j.tourman.2014.07.003},
 }
 
-@Article{LLVRZ15J09,
-  author   = {Gang Li, Rob Law, Huy Quan Vu, Jia Rong, Xinyuan Roy Zhao.},
+@Article{LLVRZ15J08,
+  author   = {Li, Gang and Law, Rob and Vu, Huy Quan and Rong, Jia and Zhao, Xinyuan Roy},
   title    = {Identifying emerging hotel preferences using Emerging Pattern Mining technique.},
   journal  = {Tourism Management},
   year     = {2015},
@@ -1509,8 +1460,8 @@ A preference relation-based Top-N recommendation approach is proposed to capture
   url      = {http://dx.doi.org/10.1016/j.tourman.2014.06.015},
 }
 
-@Article{ZXLZ15J10,
-  author   = {Tianqing Zhu, Ping Xiong, Gang Li, Wanlei Zhou},
+@Article{ZXLZ15J09,
+  author   = {Zhu, Tianqing and Xiong, Ping and Li, Gang and Zhou, Wanlei},
   title    = {Correlated differential privacy: hiding information in non-IID data set},
   journal  = {IEEE Transactions on Information Forensics and Security},
   year     = {2015},
@@ -1522,8 +1473,8 @@ A preference relation-based Top-N recommendation approach is proposed to capture
   url      = {https://doi.org/10.1109/TIFS.2014.2368363},
 }
 
-@Article{LNGBLC15J11,
-  author  = {Gang Li, Wenjia Niu, Li Guo, Lynn Batten, Yinlong Liu, Guoyong Cai},
+@Article{LNGBLC15J10,
+  author  = {Li, Gang and Niu, Wenjia and Guo, Li and Batten, Lynn and Liu, Yinlong and Cai, Guoyong Cai},
   title   = {Securing cyberspace.},
   journal = {Concurrency and Computation: Practice and Experience},
   year    = {2015},
@@ -1534,7 +1485,7 @@ A preference relation-based Top-N recommendation approach is proposed to capture
 }
 
 @Article{NMXHB17JO2,
-  author   = {Iynkaran Natgunanathan, Abid Mehmood, Yong Xiang, Guang Hua, Gang Li, Shaun Bangay},
+  author   = {Natgunanathan, Iynkaran and Mehmood, Abid and Xiang, Yong and Hua, Guang and Li, Gang and Bangay, Shaun},
   title    = {An overview of protection of privacy in multibiometrics},
   journal  = {Multimedia Tools and Applications},
   year     = {2017},
@@ -1546,43 +1497,43 @@ A preference relation-based Top-N recommendation approach is proposed to capture
   url      = {http://dx.doi.org/10.1007/s11042-017-4596-y},
 }
 
-@Book{SVL16B01,
+@Proceedings{SVL16P03,
   title     = {Intelligent Information Processing VIII},
-  publisher = {Springer International Publishing},
   year      = {2016},
-  editor    = {Zhongzhi Shi Sunil Vadera Gang Li},
+  editor    = {Shi, Zhongzhi and Vadera, Sunil and Li, Gang},
   volume    = {486},
   number    = {278},
   series    = {IFIP Advances in Information and Communication Technology},
-  edition   = {1},
+  publisher = {Springer International Publishing},
   doi       = {10.1007/978-3-319-48390-0},
+  edition   = {1},
   url       = {http://www.springer.com/gp/book/9783319483894},
 }
 
-@Book{BL16B02,
+@Proceedings{BL16P02,
   title     = {Applications and Techniques in Information Security},
-  publisher = {Springer Singapore},
   year      = {2016},
-  editor    = {Lynn Batten Gang Li},
+  editor    = {Batten, Lynn and Li, Gang},
   volume    = {651},
   number    = {163},
   series    = {Communications in Computer and Information Science},
-  edition   = {1},
+  publisher = {Springer Singapore},
   isbn      = {1865-0929},
   doi       = {10.1007/978-981-10-2741-3},
+  edition   = {1},
   url       = {http://www.springer.com/gp/book/9789811027406},
 }
 
-@InCollection{LY16IC01,
+@Proceedings{LY16IP01,
   title     = {2016 4th International Conference on Enterprise Systems (ES)},
-  booktitle = {2016 4th International Conference on Enterprise Systems (ES)},
   year      = {2016},
   editor    = {Gang Li, Yale Yu},
+  booktitle = {2016 4th International Conference on Enterprise Systems (ES)},
   url       = {http://ieeexplore.ieee.org/xpl/mostRecentIssue.jsp?punumber=7879536},
 }
 
-@InProceedings{MRLL15C01,
-  author    = {M. Tissera and R. Doss and G. Li and L. Batten},
+@InProceedings{TDLB15C01,
+  author    = {Tissera, Menik and Doss, Robin and Li, Gang and Batten, Lynn},
   title     = {Fast and energy efficient data storage for information discovery in multi-dimensional WSNs},
   booktitle = {2015 International Telecommunication Networks and Applications Conference (ITNAC)},
   year      = {2015},
@@ -1593,15 +1544,16 @@ A preference relation-based Top-N recommendation approach is proposed to capture
 }
 
 @InProceedings{ZPLS17C01,
-  author    = {Dali Zhu, Na Pang, Gang Li, Shaowu Liu},
+  author    = {Zhu, Dali and Pang, Na and Li, Gang and Liu, Shaowu},
   title     = {NotiFi: A Ubiqutious WiFi-based Abnormal Activity Detection System},
   booktitle = {The International Joint Conference on Neural Networks (IJCNN 2017)},
   year      = {2017},
   pages     = {14-19},
+  url       = {https://opus.lib.uts.edu.au/bitstream/10453/104384/1/NotiFi.pdf},
 }
 
 @InProceedings{ZPLR16C01,
-  author    = {Dali Zhu, Na Pang, Gang Li, Wenjing Rong},
+  author    = {Zhu, Dali and Pang, Na and Li, Gang and Rong, Wenjing},
   title     = {Opportunistic Probe: An Efficient Adaptive Detection Model for Collaborative Intrusion Detection},
   booktitle = {The 22nd IEEE International Conference on Parallel and Distributed Systems (ICPADS2016)},
   year      = {2016},
@@ -1611,7 +1563,7 @@ A preference relation-based Top-N recommendation approach is proposed to capture
 }
 
 @InProceedings{ZPLL16C02,
-  author    = {Dali Zhu, Na Pang, Gang Li, Shaowu Liu},
+  author    = {Zhu, Dali and Pang, Na and Li, Gang and Liu, Shaowu},
   title     = {WiseFi: Activity Localization and Recognition on Commodity Off-the-shelf WiFi Devices.},
   booktitle = {The 18th IEEE International Conference on High Performance Computing and Communications (HPCC 2016)},
   year      = {2016},
@@ -1619,7 +1571,7 @@ A preference relation-based Top-N recommendation approach is proposed to capture
 }
 
 @InProceedings{ZPLRF16C03,
-  author    = {Dali Zhu, Na Pang, Gang Li, Wenjing Rong, Zheming Fan},
+  author    = {Zhu, Dali and Pang, Na and Li, Gang and Rong, Wenjing and Fan, Zheming},
   title     = {WiN: Non-Invasive Abnormal Activity Detection Leveraging Fine-grained WiFi Signals},
   booktitle = {IEEE TrustCom2016},
   year      = {2016},
@@ -1629,7 +1581,7 @@ A preference relation-based Top-N recommendation approach is proposed to capture
 }
 
 @InProceedings{LNL16C04,
-  author    = {Qian Li, Wenjia Niu, Gang Li},
+  author    = {Li, Qian and Niu, Wenjia and Li, Gang},
   title     = {Riemannian Optimization with Subspace Tracking for Low-rank Recovery},
   booktitle = {International Joint Conference on Neural Network (IJCNN)},
   year      = {2016},
@@ -1639,17 +1591,18 @@ A preference relation-based Top-N recommendation approach is proposed to capture
 }
 
 @Article{ZLZY17J03,
-  author   = {Tianqing Zhu, Gang Li, Wanlei Zhou, and Philip S Yu},
+  author   = {Zhu, Tianqing and Li, Gang and Zhou, Wanlei and Yu, Philip S},
   title    = {Differentially Private Data Publishing and Analysis: a Survey},
   journal  = {IEEE Transactions on Knowledge and Data Engineering},
   year     = {2017},
   abstract = {Differential privacy is an essential and prevalent privacy model that has been widely explored in recent decades. This survey provides acomprehensive and structured overview of two research directions: differentially private data publishing and differentially private data analysis. We compare the diverse release mechanisms of differentially private data publishing given a variety of input data in terms of query type, the maximum number of queries, efficiency, and accuracy. We identify two basic frameworks for differentially private data analysis and list the typical algorithms used within each framework. The results are compared and discussed based on output accuracy and efficiency. Further, we propose several possible directions for future research and possible applications.},
   doi      = {10.1109/TKDE.2017.2697856},
   keywords = {differential privacy, privacy preserving data publishing, privacy preserving data analysis},
+  url      = {https://doi.org/10.1109/TKDE.2017.2697856},
 }
 
 @Article{LNBL17J04,
-  author  = {Li Gang, Niu Wenjia, Batten, Lynn, Liu Jiqiang},
+  author  = {Li, Gang and Niu, Wenjia and Batten, Lynn and Liu, Jiqiang},
   title   = {New Advances in Securing Cyberspace and Curbing Crowdturfing},
   journal = {Concurrency and Computation: Practice and Experience},
   year    = {2017},
@@ -1658,14 +1611,16 @@ A preference relation-based Top-N recommendation approach is proposed to capture
 }
 
 @Article{VLLZ17J05,
-  author  = {Huy Quan Vu, Gang Li, Rob Law, Yanchun Zhang},
+  author  = {Vu, Huy Quan and Li, Gang and Law, Rob and Zhang, Yanchun Zhang},
   title   = {Tourist Activity Analysis by Leveraging Mobile Social Media Data},
   journal = {Journal of Travel Research},
   year    = {2017},
+  doi     = {10.1177/0047287517722232},
+  url     = {https://www.researchgate.net/publication/317357104_Tourist_Activity_Analysis_By_Leveraging_Mobile_Social_Media_Data},
 }
 
 @Article{ZLXZ17J06,
-  author   = {Tianqing Zhu, Gang Li, Ping Xiong, Wanlei Zhou},
+  author   = {Zhu, Tianqing and Li, Gang and Xiong, Ping and Zhou, Wanlei},
   title    = {Answering Differentially Private Queries for Continual Datasets Release},
   journal  = {Future Generation Computer Systems},
   year     = {2017},
@@ -1675,7 +1630,7 @@ A preference relation-based Top-N recommendation approach is proposed to capture
 }
 
 @Article{LNTBC17J07,
-  author  = {Gang Li, Wenjia Niu, Jianlong Tan, Lynn Batten, Liang Chang},
+  author  = {Li, Gang and Niu, Wenjia and Tan, Jianlong and Batten, Lynn and Chang, Liang},
   title   = {Curbing Collusive Cyber-gossips for Business Brand Management},
   journal = {Enterprise Information Systems},
   year    = {2017},
@@ -1683,21 +1638,22 @@ A preference relation-based Top-N recommendation approach is proposed to capture
 }
 
 @InProceedings{LWLCXG17C02,
-  author    = {Qian Li, Zhichao Wang, Gang Li, Yanan Cao, Gang Xiong, and Li Guo},
+  author    = {Li, Qian and Wang, Zhichao and Li, Gang and Cao, Yanan and Xiong, Gang and and Guo, Li},
   title     = {Learning Robust Low-Rank Approximation for Crowdsourcing on Riemannian Manifold},
   booktitle = {International Conference on Computational Science (ICCS 2017)},
   year      = {2017},
+  url       = {https://doi.org/10.1016/j.procs.2017.05.179},
 }
 
 @InProceedings{LLYLWL17C03,
-  author    = {Min Li, Yunzheng Liu, Min Yu, Gang Li, Yongjian Wang and Chao Liu},
+  author    = {Li, Min and Liu, Yunzheng and Yu, Min and Li, Gang and Wang, Yongjian and Liu, Chao},
   title     = {FEPDF: A Robust Feature Extractor for Malicious PDF Detection},
   booktitle = {The 16th IEEE International Conference on Trust, Security and Privacy in Computing and Communications (IEEE TrustCom-17)},
   year      = {2017},
 }
 
 @InProceedings{WLL17C04,
-  author    = {Elise Wong, Rob Law, Gang Li},
+  author    = {Wong, Elise and Law, Rob and Li, Gang},
   title     = {Reviewing Geotagging Research in Tourism},
   booktitle = {The 5th International Conference on Sustainble Development (ICSD 2017)},
   year      = {2017},
@@ -1708,14 +1664,14 @@ A preference relation-based Top-N recommendation approach is proposed to capture
 }
 
 @InProceedings{LLTJ15C02,
-  author    = {Shaowu Liu, Gang Li, Truyen Tran, Yuan Jiang},
+  author    = {Liu, Shaowu and Li, Gang and Tran, Truyen and Yuan Jiang},
   title     = {Preference Relation-based Markov Random Fields},
   booktitle = {Asian Conference on Machine Learning (ACML)},
   year      = {2015},
 }
 
 @InProceedings{LNL15C03,
-  author    = {Qian Li, Wenjia Niu, Gang Li,},
+  author    = {Li, Qian and Niu, Wenjia and Li, Gang},
   title     = {Lingo: Linearized Grassmannian Optimization for Nuclear Norm Minimization},
   booktitle = {The 24th ACM International Conference on Information and Knowledge Management (CIKM 2015)},
   year      = {2015},
@@ -1730,10 +1686,100 @@ A preference relation-based Top-N recommendation approach is proposed to capture
 }
 
 @InProceedings{RLZ13C07,
-  author    = {Yongli Ren, Gang Li, Wanlei Zhou},
+  author    = {Ren, Yongli and Li, Gang and Zhou, Wanlei},
   title     = {Recommendation Techniques Based on Off-Line Data Processing a Multifaceted Survey},
   booktitle = {The 9th International Conference on Semantics, Knowledge and Grids (SKG)},
   year      = {2013},
+}
+
+@Article{LNLG16J06,
+  author   = {Li, Qian and Niu, Wenjia and Li, Gang and Guo, Li},
+  title    = {Boosting Imbalanced Data Learning with Wiener Process Oversampling},
+  journal  = {Frontiers of Computer Science},
+  year     = {2016},
+  abstract = {Learning from imbalanced data is a challenging task in a wide range of applications, which attracts significant research efforts from machine learning and data mining community. As a natural approach to this issue, oversampling balances the training samples through replicating existingsamples or synthesizing new samples. In general, synthesization outperforms replication by supplying additional information on the minority class. However, the additional information needs to follow the same normal distribution of the training set, which further constrains the new samples within thepredefined range of training set. In this paper, we present the Wiener process oversampling (WPO) technique that brings the physics phenomena into sample synthesization. WPO constructs a robust decision region by expanding the attribute ranges in training set while keeping the same normal distribution. The satisfactory performance of WPO can be achieved with much lower computing complexity. In addition, by integrating WPO with ensemble learning, the WPOBoost algorithm outperformsmany prevalent imbalance learning solutions.},
+  url      = {https://www.researchgate.net/publication/310435649_Boosting_imbalanced_data_learning_with_Wiener_process_oversampling},
+}
+
+@InProceedings{WNLYS11C02,
+  author    = {Wang, Xiaofeng and Niu, Wenjia and Li, Gang and Yang, Xinghua and Shi, Zhongzhi},
+  title     = {Mining Frequent Agent Action Patterns for Effective Multi-agent-Based Web Service Composition},
+  booktitle = {Agents and Data Mining Interaction. Workshop (7th : 2011 : Taipei, Taiwan)},
+  year      = {2011},
+  editor    = {Cao, Longbing and Bazzan, Ana L. C. and Symeonidis, Andreas L and Gorodetsky, Vladimir I and Weiss, Gerhard and Yu, Philip S.},
+  pages     = {211-227},
+  doi       = {10.1007/978-3-642-27609-5_14},
+  keywords  = {action Mining, DDL reasoning, multi-agent, planning, service composition},
+  url       = {http://hdl.handle.net/10536/DRO/DU:30044959},
+}
+
+@InProceedings{SLC08CO6,
+  author    = {Schmidt, Sam and Li, Gang and Chen, Yi-Ping Phoebe},
+  title     = {Prediction of paediatric asthma hospitalisation using data mining techniques},
+  booktitle = {PRIB 2008 : The 3rd IAPR International Conference on Pattern Recognition in BioInformatics},
+  year      = {2008},
+  editor    = {Chetty, Madhu and Ahmad, Shandar and Ngom, Alioune and Teng, Shyh Wei},
+  month     = {15-17 October},
+  publisher = {Springer Berlin / Heidelberg},
+}
+
+@InProceedings{BPL06C06,
+  author    = {Blashki, Katherine and Perera, Dharani and Li, Gang},
+  title     = {A user requirement study on the needs of visual artists with upper limb disabilities},
+  booktitle = {Information Resources Management Association. International Conference (2006 : Washington, D.C.)},
+  year      = {2006},
+  editor    = {Khosrow-Pour, Mehdi},
+  pages     = {160-163},
+  month     = {21-24 May},
+  publisher = {Idea Group Publishing},
+}
+
+@InProceedings{TZLD02C04,
+  author    = {Tu, Y and Zhuang, L and Li, Gang and Dai, Honghua},
+  title     = {A Java applet for causal discovery},
+  booktitle = {International Conference on Intelligent Technologies and Third Vietnam-Japan Symposium on Fuzzy Systems and Applications (3rd : 2002 : Hanoi, Vietnam)},
+  year      = {2002},
+  editor    = {Hoang Phuong, Nguyen and Nguyen, H and Santiprabhob, P.},
+  pages     = {262-266},
+  month     = {3-5 December},
+  publisher = {Science and Technics Publishing House},
+  url       = {http://hdl.handle.net/10536/DRO/DU:30004869},
+}
+
+@Proceedings{NLLTGHB15P01,
+  title     = {Applications and Techniques in Information Security},
+  year      = {2015},
+  editor    = {Niu, Wenjia and Li ,Gang and Liu, Jiqiang and Tan, Jianlong and Guo, Li and Han, Zhen and Batten, Lynn},
+  series    = {Communications in Computer and Information Science},
+  publisher = {Springer},
+  month     = {4-6 November},
+  isbn      = {9783662486825},
+  doi       = {10.1007/978-3-662-48683-2},
+}
+
+@Proceedings{BLNW14P01,
+  title     = {Applications and Techniques in Information Security},
+  year      = {2014},
+  editor    = {Batten, Lynn and Li, Gang and Niu, Wenjia and Warren, Matthew},
+  series    = {Communications in Computer and Information Science},
+  publisher = {Springer},
+  month     = {November},
+  isbn      = {9783662456699},
+  doi       = {10.1007/978-3-662-45670-5},
+  url       = {https://link.springer.com/book/10.1007%2F978-3-662-45670-5#editorsandaffiliations},
+}
+
+@Proceedings{WWLDX16P04,
+  title  = {Proceedings of 2016 International Conference on Behavioral, Economic, Socio – Cultural Computing},
+  year   = {2016},
+  editor = {Wang, Paul and Wang, Leon S.L. and Li, Gang and Demazeau, Yves and Xu, Guandong},
+}
+
+@InProceedings{PZLL17C05,
+  author    = {Pang, Na and Zhu, Dali and Li,Gang and Liu, Shaowu},
+  title     = {WarnFi: Non-Invasive WiFi-based Abnormal Activity Sensing Using Non-parametric Model.},
+  booktitle = {2017 Military Communications Conference (2017 MILCOM).},
+  year      = {2017},
 }
 
 @Comment{jabref-meta: databaseType:bibtex;}
