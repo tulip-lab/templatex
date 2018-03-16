@@ -1,5 +1,5 @@
 
-# configure gitinfo package
+# Configure gitinfo Package
 
 ------------------
 Please configure the gitinfo package follow the below step before you work with the tulip tempaltex
