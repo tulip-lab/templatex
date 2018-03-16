@@ -32,20 +32,21 @@
 
 %=================================================================
 % for Version control information
-\usepackage{svn-multi}
-%
-\svnidlong
-{$HeadURL: svn://202.200.82.197/XSYURepository/staff/napang/papers/2015/intrdetect/trunk/templatex.tex $}
-{$LastChangedDate: 2015-06-07 12:37:44 +1000 (Sun, 07 Jun 2015) $}
-{$LastChangedRevision: 297 $}
-{$LastChangedBy: gangli $}
-\svnid{$Id: templatex.tex 297 2015-06-07 02:37:44Z gangli $}
-\svnRegisterAuthor{qianli}{Qian Li}
-\svnRegisterAuthor{gangli}{Gang Li}
+%\usepackage{svn-multi}
+%%
+%\svnidlong
+%{$HeadURL: svn://202.200.82.197/XSYURepository/staff/napang/papers/2015/intrdetect/trunk/templatex.tex $}
+%{$LastChangedDate: 2015-06-07 12:37:44 +1000 (Sun, 07 Jun 2015) $}
+%{$LastChangedRevision: 297 $}
+%{$LastChangedBy: gangli $}
+%\svnid{$Id: templatex.tex 297 2015-06-07 02:37:44Z gangli $}
+%\svnRegisterAuthor{qianli}{Qian Li}
+%\svnRegisterAuthor{gangli}{Gang Li}
 %\newcommand{\svnfooter}{Last Changed Rev: \svnkw{LastChangedRevision}}
 % Don't forget to set the svn property 'svn:keywords' to
 % 'HeadURL LastChangedDate LastChangedRevision LastChangedBy' or
 % 'Id' or both depending if you use \svnidlong and/or \svnid
+\usepackage{gitinfo}
 \usepackage{amsmath}
 \usepackage{fancyhdr}
 \pagestyle{fancy}
@@ -56,8 +57,8 @@
 \fancyfoot{} % clear all footer fields
 \fancyfoot[CE,CO]{\thepage}
 %\fancyfoot[LO,LE]{R\svnfilerev\ (\svnday-\svnmonth-\svnyear\ \svnhour:\svnminute)}
-\fancyfoot[LO,LE]{R\svnrev\ (\svnfiledate)}
-\fancyfoot[RO,RE]{Last changed by: \svnFullAuthor{\svnauthor}}
+\fancyfoot[LO,LE]{Last change Date: \gitCommitterIsoDate}
+\fancyfoot[RO,RE]{Last changed by: \gitCommitterName}
 \setlength{\headheight}{12pt}
 \renewcommand{\headrulewidth}{0.4pt}
 \renewcommand{\footrulewidth}{0.4pt}
@@ -159,7 +160,7 @@
 \usepackage{rotating}
 \usepackage{colortbl}
 %%\usepackage{spelling}
-%\usepackage{algpseudocode} 
+%\usepackage{algpseudocode}
 %\usepackage{paralist}
 %\usepackage{epstopdf}
 %=================================================================
@@ -191,35 +192,35 @@
 
 %=================================================================
 % Preamble which will need to be changed for submission
-% 
+%
 \title[A Short Running Title]{Title of This Paper}%
 
-\author{Author 1}  
+\author{Author 1}
 \address[A.~1]{School of Information Technology \\
 Deakin University, 221 Burwood Highway \\
 Vic 3125, Australia}%
-\email[A.~1]{xxx@deakin.edu.au} 
+\email[A.~1]{xxx@deakin.edu.au}
 
-\author{Author 2}  
+\author{Author 2}
 \address[A.~2]{School of Information Technology \\
 Deakin University, 221 Burwood Highway \\
 Vic 3125, Australia}%
-\email[A.~2]{xxx@deakin.edu.au} 
+\email[A.~2]{xxx@deakin.edu.au}
 
 
-\author{Author 3}  
+\author{Author 3}
 \address[A.~3]{School of Information Technology \\
 Deakin University, 221 Burwood Highway \\
 Vic 3125, Australia}%
-\email[A.~3]{xxx@deakin.edu.au} 
+\email[A.~3]{xxx@deakin.edu.au}
 
 %\thanks{Thanks to \ldots}%
 \subjclass{Artificial Intelligence}%
 \keywords{Machine Learning, Data Mining, ...}%
-\date{\svndate}%
+\date{\gitCommitterDate}%
 
 \begin{abstract}
-The abstract will be put here, .... 
+The abstract will be put here, ....
 \end{abstract}
 
 
@@ -247,7 +248,7 @@ We have  \SI{10}{\hertz},
 \si{\kilogram\metre\per\second},
 the range: \SIrange{10}{100}{\hertz}.
 
-Number: 
+Number:
 \num{123}.
 \numlist{10;30;50;70},
 \numrange{10}{30},
@@ -258,7 +259,7 @@ and
 $\nicefrac[]{1}{2}$,
 
 
-For~\cref{eq:test}, 
+For~\cref{eq:test},
 as shown below:
 
 \begin{equation}\label{eq:test}
