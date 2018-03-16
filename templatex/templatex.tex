@@ -46,7 +46,7 @@
 % Don't forget to set the svn property 'svn:keywords' to
 % 'HeadURL LastChangedDate LastChangedRevision LastChangedBy' or
 % 'Id' or both depending if you use \svnidlong and/or \svnid
-\usepackage{gitinfo}
+\usepackage{gitinfo2}
 \usepackage{amsmath}
 \usepackage{fancyhdr}
 \pagestyle{fancy}
@@ -59,6 +59,11 @@
 %\fancyfoot[LO,LE]{R\svnfilerev\ (\svnday-\svnmonth-\svnyear\ \svnhour:\svnminute)}
 \fancyfoot[LO,LE]{\scriptsize{Last change Date: \gitCommitterIsoDate}}
 \fancyfoot[RO,RE]{\scriptsize{Last changed by: \gitCommitterName}}
+
+\fancyfoot[LO,LE]{\scriptsize{Version Number: \gitVtagn}}
+\fancyfoot[RO,RE]{\scriptsize{Branch: \gitBranch}}
+
+
 \setlength{\headheight}{12pt}
 \renewcommand{\headrulewidth}{0.4pt}
 \renewcommand{\footrulewidth}{0.4pt}
