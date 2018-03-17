@@ -2,13 +2,17 @@
 \synctex=1
 
 %=================================================================
-% LaTeXDiff
-%  latexdiff-vc --svn --pdf --force -r 10XX -r HEAD filename.tex
-%  latexdiff-vc --svn --flatten --pdf --force -r 10XX -r HEAD filename.tex
+% gitlatexdiff
+%
+%  https://gitlab.com/git-latexdiff/git-latexdiff
+%=================================================================
+%  git latexdiff HEAD  HEAD~5 --main templatex.tex
+%  git latexdiff HEAD~1  --main templatex.tex
 %  View pdf to see difference
 %
 %=================================================================
-% for comments
+% for marginal comments
+%
 \newcount\DraftStatus  % 0 suppresses notes to selves in text
 \DraftStatus=1   % TODO: set to 0 for final version
 %=================================================================
@@ -25,40 +29,72 @@
      \fi}
 % add yourself here:
 \newcommand{\gangli}[1]{\draftnote{red}{[GLi: #1]}}
-\newcommand{\eva}[1]{\draftnote{darkgreen}{[QLi: #1]}}
-%other colors include blue, red, purple, cyan, darkgreen, etc.
-%=================================================================
+\newcommand{\qwu}[1]{\draftnote{darkgreen}{[QWu: #1]}}
+% other colors include blue, red, purple, cyan, darkgreen, etc.
 \newcommand{\HRule}{\rule{\linewidth}{0.5mm}}
+%
+%=================================================================
+
 
 %=================================================================
-% for Version control information
-\usepackage{svn-multi}
 %
-\svnidlong
-{$HeadURL: svn://202.200.82.197/XSYURepository/staff/napang/papers/2015/intrdetect/trunk/templatex.tex $}
-{$LastChangedDate: 2015-06-07 12:37:44 +1000 (Sun, 07 Jun 2015) $}
-{$LastChangedRevision: 297 $}
-{$LastChangedBy: gangli $}
-\svnid{$Id: templatex.tex 297 2015-06-07 02:37:44Z gangli $}
-\svnRegisterAuthor{qianli}{Qian Li}
-\svnRegisterAuthor{gangli}{Gang Li}
-%\newcommand{\svnfooter}{Last Changed Rev: \svnkw{LastChangedRevision}}
-% Don't forget to set the svn property 'svn:keywords' to
-% 'HeadURL LastChangedDate LastChangedRevision LastChangedBy' or
-% 'Id' or both depending if you use \svnidlong and/or \svnid
-\usepackage{amsmath}
+% general packages
+%
+%=================================================================
+\usepackage{graphicx,color}
+\usepackage{algorithm}
+\usepackage{algorithmic}
+%\usepackage{algpseudocode}
+\usepackage{breqn}
+\usepackage{subfigure}
+\usepackage{multirow}
+\usepackage{psfrag}
+\usepackage{url}
+\usepackage{hyperref}
+\usepackage{breakurl}
+\usepackage{cite}
+\usepackage{natbib}
+\usepackage{booktabs}
+\usepackage{rotating}
+\usepackage{colortbl}
+%%\usepackage{spelling}
+%\usepackage{paralist}
+\usepackage{geometry}
+%\usepackage{graphicx}
+%\usepackage{epstopdf}
+\usepackage{nag}
+\usepackage{microtype}
+\usepackage{siunitx}
+\usepackage{cleveref}
+%\usepackage{booktabs}
+\usepackage{nicefrac}
+\usepackage{lipsum}
+%
+%=================================================================
+
+
+%=================================================================
+%
+% Version control information
+%
+%=================================================================
+\usepackage{gitinfo2}
+%=================================================================
 \usepackage{fancyhdr}
 \pagestyle{fancy}
 \fancyhead{} % clear all header fields
-\fancyhead[RO,LE]{\slshape \rightmark}
-\fancyhead[LO,RE]{\ensuremath{\Rightarrow}\textbf{\textbf{[Confidential Draft]}}\ensuremath{\Leftarrow}}
+\fancyhead[RO,LE]{\textsl{\rightmark}}
+\fancyhead[LO,RE]{\ensuremath{\Rightarrow}
+		\textbf{\textbf{[CONFIDENTIAL]}}\ensuremath{\Leftarrow}}
 \fancyhead[CO,CE]{}
+%=================================================================
 \fancyfoot{} % clear all footer fields
-\fancyfoot[CE,CO]{\thepage}
-%\fancyfoot[LO,LE]{R\svnfilerev\ (\svnday-\svnmonth-\svnyear\ \svnhour:\svnminute)}
-\fancyfoot[LO,LE]{R\svnrev\ (\svnfiledate)}
-\fancyfoot[RO,RE]{Last changed by: \svnFullAuthor{\svnauthor}}
-\setlength{\headheight}{12pt}
+\fancyfoot[CE,CO]{\textbf{\thepage}} 
+\fancyfoot[LO,LE]{\includegraphics[height=.9\headheight]{figures/tulip-icon.png}
+		\gitVtagn-\gitBranch\ (\gitCommitterDate)}
+\fancyfoot[RO,RE]{Committed by: \textsl{\gitCommitterName}}
+
+%\setlength{\headheight}{12pt}
 \renewcommand{\headrulewidth}{0.4pt}
 \renewcommand{\footrulewidth}{0.4pt}
 %=================================================================
@@ -66,9 +102,13 @@
 %=================================================================
 % for math notations
 % ----------------------------------------------------------------
-\vfuzz2pt % Don't report over-full v-boxes if over-edge is small
-\hfuzz2pt % Don't report over-full h-boxes if over-edge is small
+\usepackage{amsmath}
+\usepackage{amssymb}
+%\vfuzz2pt % Don't report over-full v-boxes if over-edge is small
+%\hfuzz2pt % Don't report over-full h-boxes if over-edge is small
+%
 % THEOREMS -------------------------------------------------------
+%
 \newtheorem{thm}{Theorem}[section]
 \newtheorem{cor}[thm]{Corollary}
 \newtheorem{lem}[thm]{Lemma}
@@ -99,7 +139,7 @@
 \newcommand{\Bf}{{\bf B}}
 \newcommand{\Y}{{\bf Y}}
 \newcommand{\A}{{\cal A}}
-
+% ----------------------------------------------------------------
 \newcommand{\V}{{\cal V}}
 \newcommand{\M}{{\cal M}}
 \newcommand{\F}{{\cal F}}
@@ -114,112 +154,72 @@
 \newcommand{\K}{{\cal K}}
 \newcommand{\T}{{\cal T}_n}
 \renewcommand{\H}{{\cal H}}
-
+% ----------------------------------------------------------------
 \newtheorem{Remark}{Remark}
 \newtheorem{proposition}{Proposition}
 \newtheorem{theorem}{Theorem}
-%\renewcommand{\thetheorem}{\arabic{theorem}}
 \newtheorem{lemma}{Lemma}
 \newtheorem{corollary}{Corollary}
-%\renewcommand{\thelemma}{\arabic{lemma}}
-%\renewcommand{\thecorollary}{\arabic{corollary}}
 \newtheorem{example}{Example}
-%\renewcommand{\theexample}{\arabic{example}}
 \newtheorem{definition}{Definition}
-%\renewcommand{\thedefinition}{\arabic{definition}}
 \newtheorem{Algorithms}{Algorithm}
-
+% ----------------------------------------------------------------
 \newcommand{\bu}{{\mathbf 1} }
 \newcommand{\bo}{{\mathbf 0} }
 \newcommand{\N}{\mbox{{\sl l}}\!\mbox{{\sl N}}}
-
+% ----------------------------------------------------------------
 \def\uint{[0,1]}
 \def\proof{{\scshape Proof}. \ignorespaces}
 \def\endproof{{\hfill \vbox{\hrule\hbox{%
    \vrule height1.3ex\hskip1.0ex\vrule}\hrule
   }}\par}
+%
 %=================================================================
-%=================================================================
-% general packages
-\usepackage{graphicx,color}
-\usepackage{algorithm}
-\usepackage{algorithmic}
-\usepackage{amsmath}
-\usepackage{amssymb}
-\usepackage{breqn}
-\usepackage{subfigure}
-\usepackage{multirow}
-\usepackage{psfrag}
-\usepackage{url}
-\usepackage{hyperref}
-\usepackage{breakurl}
-\usepackage{cite}
-%\usepackage[dcucite]{harvard}
-\usepackage{booktabs}
-\usepackage{rotating}
-\usepackage{colortbl}
-%%\usepackage{spelling}
-%\usepackage{algpseudocode} 
-%\usepackage{paralist}
-%\usepackage{epstopdf}
-%=================================================================
-% 9 packages
-\usepackage{amsmath}
-\usepackage{geometry}
-%\usepackage{graphicx}
-\usepackage{nag}
-\usepackage{microtype}
-\usepackage{siunitx}
-\usepackage{cleveref}
-%\usepackage{hyperref}
-%\usepackage{booktabs}
-\usepackage{nicefrac}
-\usepackage{lipsum}
-
-
 \hypersetup
 {
-    pdfauthor={Gang Li},
+    pdfauthor={\gitAuthorName},
     pdfsubject={TULIP Lab},
-    pdftitle={Report},
-    pdfkeywords={TULIP, Research}
+    pdftitle={},
+    pdfkeywords={TULIP Lab, Data Science},
+	bookmarks=true,  
 }
 
 
 %=================================================================
+%
 \begin{document}
-
+%
 %=================================================================
 % Preamble which will need to be changed for submission
-% 
+%
 \title[A Short Running Title]{Title of This Paper}%
 
-\author{Author 1}  
+\author{Author 1}
 \address[A.~1]{School of Information Technology \\
 Deakin University, 221 Burwood Highway \\
 Vic 3125, Australia}%
-\email[A.~1]{xxx@deakin.edu.au} 
+\email[A.~1]{xxx@deakin.edu.au}
 
-\author{Author 2}  
+\author{Gang Li}
 \address[A.~2]{School of Information Technology \\
 Deakin University, 221 Burwood Highway \\
-Vic 3125, Australia}%
-\email[A.~2]{xxx@deakin.edu.au} 
+VIC 3125, Australia}%
+\email[A.~2]{gang.li@deakin.edu.au}
 
 
-\author{Author 3}  
+\author{Author 3}
 \address[A.~3]{School of Information Technology \\
 Deakin University, 221 Burwood Highway \\
 Vic 3125, Australia}%
-\email[A.~3]{xxx@deakin.edu.au} 
+\email[A.~3]{xxx@deakin.edu.au}
 
 %\thanks{Thanks to \ldots}%
 \subjclass{Artificial Intelligence}%
 \keywords{Machine Learning, Data Mining, ...}%
-\date{\svndate}%
+\date{\gitAuthorDate}%
 
 \begin{abstract}
-The abstract will be put here, .... 
+The abstract will be put here, ....
 \end{abstract}
 
 
@@ -237,7 +237,11 @@ The abstract will be put here, ....
 
 \gangli{This is comment from Gang.}
 
-Test citation~\cite{liu2014ordinal}
+Test citation~\cite{BJL11J01}
+
+~\citep{BJL11J01}
+
+~\citet{BJL11J01}
 
 This is for~\cref{tbl:overall-experiments}.
 
@@ -247,7 +251,7 @@ We have  \SI{10}{\hertz},
 \si{\kilogram\metre\per\second},
 the range: \SIrange{10}{100}{\hertz}.
 
-Number: 
+Number:
 \num{123}.
 \numlist{10;30;50;70},
 \numrange{10}{30},
@@ -258,7 +262,7 @@ and
 $\nicefrac[]{1}{2}$,
 
 
-For~\cref{eq:test}, 
+For~\cref{eq:test},
 as shown below:
 
 \begin{equation}\label{eq:test}
@@ -297,7 +301,8 @@ The authors would like to thank \ldots
 
 % ----------------------------------------------------------------
 \newpage
-\bibliographystyle{plain}
+%\bibliographystyle{plain}
+\bibliographystyle{newapa}
 \bibliography{tulip}
 %=================================================================
 
