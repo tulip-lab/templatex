@@ -2,13 +2,15 @@
 \synctex=1
 
 %=================================================================
-% LaTeXDiff
-%  latexdiff-vc --svn --pdf --force -r 10XX -r HEAD filename.tex
-%  latexdiff-vc --svn --flatten --pdf --force -r 10XX -r HEAD filename.tex
+% gitlatexdiff
+%=================================================================
+%  git latexdiff HEAD  HEAD~5 --main templatex.tex
+%  git latexdiff HEAD~1  --main templatex.tex
 %  View pdf to see difference
 %
 %=================================================================
-% for comments
+% for marginal comments
+%
 \newcount\DraftStatus  % 0 suppresses notes to selves in text
 \DraftStatus=1   % TODO: set to 0 for final version
 %=================================================================
@@ -26,52 +28,81 @@
 % add yourself here:
 \newcommand{\gangli}[1]{\draftnote{red}{[GLi: #1]}}
 \newcommand{\eva}[1]{\draftnote{darkgreen}{[QLi: #1]}}
-%other colors include blue, red, purple, cyan, darkgreen, etc.
-%=================================================================
+% other colors include blue, red, purple, cyan, darkgreen, etc.
 \newcommand{\HRule}{\rule{\linewidth}{0.5mm}}
+%
+%=================================================================
+
 
 %=================================================================
-% for Version control information
-%\usepackage{svn-multi}
-%%
-%\svnidlong
-%{$HeadURL: svn://202.200.82.197/XSYURepository/staff/napang/papers/2015/intrdetect/trunk/templatex.tex $}
-%{$LastChangedDate: 2015-06-07 12:37:44 +1000 (Sun, 07 Jun 2015) $}
-%{$LastChangedRevision: 297 $}
-%{$LastChangedBy: gangli $}
-%\svnid{$Id: templatex.tex 297 2015-06-07 02:37:44Z gangli $}
-%\svnRegisterAuthor{qianli}{Qian Li}
-%\svnRegisterAuthor{gangli}{Gang Li}
-%\newcommand{\svnfooter}{Last Changed Rev: \svnkw{LastChangedRevision}}
-% Don't forget to set the svn property 'svn:keywords' to
-% 'HeadURL LastChangedDate LastChangedRevision LastChangedBy' or
-% 'Id' or both depending if you use \svnidlong and/or \svnid
-\usepackage{gitinfo2}
+%
+% general packages
+%
+%=================================================================
+\usepackage{graphicx,color}
+\usepackage{algorithm}
+\usepackage{algorithmic}
 \usepackage{amsmath}
+\usepackage{amssymb}
+\usepackage{breqn}
+\usepackage{subfigure}
+\usepackage{multirow}
+\usepackage{psfrag}
+\usepackage{url}
+\usepackage{hyperref}
+\usepackage{breakurl}
+\usepackage{cite}
+%\usepackage[dcucite]{harvard}
+\usepackage{booktabs}
+\usepackage{rotating}
+\usepackage{colortbl}
+%%\usepackage{spelling}
+%\usepackage{algpseudocode}
+%\usepackage{paralist}
+%\usepackage{epstopdf}
+\usepackage{geometry}
+%\usepackage{graphicx}
+\usepackage{nag}
+\usepackage{microtype}
+\usepackage{siunitx}
+\usepackage{cleveref}
+%\usepackage{hyperref}
+%\usepackage{booktabs}
+\usepackage{nicefrac}
+\usepackage{lipsum}
+%
+%=================================================================
+
+
+
+%=================================================================
+%
+% Version control information
+%
+%=================================================================
+\usepackage{gitinfo2}
+%=================================================================
 \usepackage{fancyhdr}
 \pagestyle{fancy}
 \fancyhead{} % clear all header fields
-\fancyhead[RO,LE]{\slshape \rightmark}
-\fancyhead[LO,RE]{\ensuremath{\Rightarrow}\textbf{\textbf{[Confidential Draft]}}\ensuremath{\Leftarrow}}
+\fancyhead[RO,LE]{\textsl{\rightmark}}
+\fancyhead[LO,RE]{\ensuremath{\Rightarrow}\textbf{\textbf{[CONFIDENTIAL]}}\ensuremath{\Leftarrow}}
 \fancyhead[CO,CE]{}
+%=================================================================
 \fancyfoot{} % clear all footer fields
 \fancyfoot[CE,CO]{\thepage}
-%\fancyfoot[LO,LE]{R\svnfilerev\ (\svnday-\svnmonth-\svnyear\ \svnhour:\svnminute)}
-\fancyfoot[LO,LE]{\scriptsize{Last change Date: \gitCommitterIsoDate}}
-\fancyfoot[RO,RE]{\scriptsize{Last changed by: \gitCommitterName}}
-
-\fancyfoot[LO,LE]{\scriptsize{Version Number: \gitVtagn}}
-\fancyfoot[RO,RE]{\scriptsize{Branch: \gitBranch}}
-
+\fancyfoot[LO,LE]{\includegraphics[height=\headheight]{figures/tulip-icon.png}V\gitVtagn-B\gitBranch}
+\fancyfoot[RO,RE]{\gitCommitterName \ on: \gitCommitterDate }
 
 \setlength{\headheight}{12pt}
-\renewcommand{\headrulewidth}{0.4pt}
-\renewcommand{\footrulewidth}{0.4pt}
+%\renewcommand{\headrulewidth}{0.4pt}
+%\renewcommand{\footrulewidth}{0.4pt}
 %=================================================================
 
 %=================================================================
 % for math notations
 % ----------------------------------------------------------------
+\usepackage{amsmath}
 \vfuzz2pt % Don't report over-full v-boxes if over-edge is small
 \hfuzz2pt % Don't report over-full h-boxes if over-edge is small
 % THEOREMS -------------------------------------------------------
@@ -145,50 +176,13 @@
    \vrule height1.3ex\hskip1.0ex\vrule}\hrule
   }}\par}
 %=================================================================
-%=================================================================
-% general packages
-\usepackage{graphicx,color}
-\usepackage{algorithm}
-\usepackage{algorithmic}
-\usepackage{amsmath}
-\usepackage{amssymb}
-\usepackage{breqn}
-\usepackage{subfigure}
-\usepackage{multirow}
-\usepackage{psfrag}
-\usepackage{url}
-\usepackage{hyperref}
-\usepackage{breakurl}
-\usepackage{cite}
-%\usepackage[dcucite]{harvard}
-\usepackage{booktabs}
-\usepackage{rotating}
-\usepackage{colortbl}
-%%\usepackage{spelling}
-%\usepackage{algpseudocode}
-%\usepackage{paralist}
-%\usepackage{epstopdf}
-%=================================================================
-% 9 packages
-\usepackage{amsmath}
-\usepackage{geometry}
-%\usepackage{graphicx}
-\usepackage{nag}
-\usepackage{microtype}
-\usepackage{siunitx}
-\usepackage{cleveref}
-%\usepackage{hyperref}
-%\usepackage{booktabs}
-\usepackage{nicefrac}
-\usepackage{lipsum}
-
 
 \hypersetup
 {
     pdfauthor={Gang Li},
     pdfsubject={TULIP Lab},
     pdftitle={Report},
-    pdfkeywords={TULIP, Research}
+    pdfkeywords={TULIP, Draft}
 }
 
 
