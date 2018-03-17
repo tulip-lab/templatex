@@ -3,6 +3,8 @@
 
 %=================================================================
 % gitlatexdiff
+%
+%  https://gitlab.com/git-latexdiff/git-latexdiff
 %=================================================================
 %  git latexdiff HEAD  HEAD~5 --main templatex.tex
 %  git latexdiff HEAD~1  --main templatex.tex
@@ -27,7 +29,7 @@
      \fi}
 % add yourself here:
 \newcommand{\gangli}[1]{\draftnote{red}{[GLi: #1]}}
-\newcommand{\eva}[1]{\draftnote{darkgreen}{[QLi: #1]}}
+\newcommand{\qwu}[1]{\draftnote{darkgreen}{[QWu: #1]}}
 % other colors include blue, red, purple, cyan, darkgreen, etc.
 \newcommand{\HRule}{\rule{\linewidth}{0.5mm}}
 %
@@ -42,8 +44,7 @@
 \usepackage{graphicx,color}
 \usepackage{algorithm}
 \usepackage{algorithmic}
-\usepackage{amsmath}
-\usepackage{amssymb}
+%\usepackage{algpseudocode}
 \usepackage{breqn}
 \usepackage{subfigure}
 \usepackage{multirow}
@@ -52,21 +53,19 @@
 \usepackage{hyperref}
 \usepackage{breakurl}
 \usepackage{cite}
-%\usepackage[dcucite]{harvard}
+\usepackage{natbib}
 \usepackage{booktabs}
 \usepackage{rotating}
 \usepackage{colortbl}
 %%\usepackage{spelling}
-%\usepackage{algpseudocode}
 %\usepackage{paralist}
-%\usepackage{epstopdf}
 \usepackage{geometry}
 %\usepackage{graphicx}
+%\usepackage{epstopdf}
 \usepackage{nag}
 \usepackage{microtype}
 \usepackage{siunitx}
 \usepackage{cleveref}
-%\usepackage{hyperref}
 %\usepackage{booktabs}
 \usepackage{nicefrac}
 \usepackage{lipsum}
@@ -85,15 +84,17 @@
 \pagestyle{fancy}
 \fancyhead{} % clear all header fields
 \fancyhead[RO,LE]{\textsl{\rightmark}}
-\fancyhead[LO,RE]{\ensuremath{\Rightarrow}\textbf{\textbf{[CONFIDENTIAL]}}\ensuremath{\Leftarrow}}
+\fancyhead[LO,RE]{\ensuremath{\Rightarrow}
+		\textbf{\textbf{[CONFIDENTIAL]}}\ensuremath{\Leftarrow}}
 \fancyhead[CO,CE]{}
 %=================================================================
 \fancyfoot{} % clear all footer fields
-\fancyfoot[CE,CO]{\thepage}
-\fancyfoot[LO,LE]{\includegraphics[height=.9\headheight]{figures/tulip-icon.png}V\gitVtagn-B\gitBranch}
-\fancyfoot[RO,RE]{\gitCommitterName \ on: \gitCommitterDate }
+\fancyfoot[CE,CO]{\textbf{\thepage}} 
+\fancyfoot[LO,LE]{\includegraphics[height=.9\headheight]{figures/tulip-icon.png}
+		\gitVtagn-\gitBranch\ (\gitCommitterDate)}
+\fancyfoot[RO,RE]{Committed by: \textsl{\gitCommitterName}}
 
-\setlength{\headheight}{12pt}
+%\setlength{\headheight}{12pt}
 \renewcommand{\headrulewidth}{0.4pt}
 \renewcommand{\footrulewidth}{0.4pt}
 %=================================================================
@@ -102,9 +103,12 @@
 % for math notations
 % ----------------------------------------------------------------
 \usepackage{amsmath}
-\vfuzz2pt % Don't report over-full v-boxes if over-edge is small
-\hfuzz2pt % Don't report over-full h-boxes if over-edge is small
+\usepackage{amssymb}
+%\vfuzz2pt % Don't report over-full v-boxes if over-edge is small
+%\hfuzz2pt % Don't report over-full h-boxes if over-edge is small
+%
 % THEOREMS -------------------------------------------------------
+%
 \newtheorem{thm}{Theorem}[section]
 \newtheorem{cor}[thm]{Corollary}
 \newtheorem{lem}[thm]{Lemma}
@@ -135,7 +139,7 @@
 \newcommand{\Bf}{{\bf B}}
 \newcommand{\Y}{{\bf Y}}
 \newcommand{\A}{{\cal A}}
-
+% ----------------------------------------------------------------
 \newcommand{\V}{{\cal V}}
 \newcommand{\M}{{\cal M}}
 \newcommand{\F}{{\cal F}}
@@ -150,38 +154,35 @@
 \newcommand{\K}{{\cal K}}
 \newcommand{\T}{{\cal T}_n}
 \renewcommand{\H}{{\cal H}}
-
+% ----------------------------------------------------------------
 \newtheorem{Remark}{Remark}
 \newtheorem{proposition}{Proposition}
 \newtheorem{theorem}{Theorem}
-%\renewcommand{\thetheorem}{\arabic{theorem}}
 \newtheorem{lemma}{Lemma}
 \newtheorem{corollary}{Corollary}
-%\renewcommand{\thelemma}{\arabic{lemma}}
-%\renewcommand{\thecorollary}{\arabic{corollary}}
 \newtheorem{example}{Example}
-%\renewcommand{\theexample}{\arabic{example}}
 \newtheorem{definition}{Definition}
-%\renewcommand{\thedefinition}{\arabic{definition}}
 \newtheorem{Algorithms}{Algorithm}
-
+% ----------------------------------------------------------------
 \newcommand{\bu}{{\mathbf 1} }
 \newcommand{\bo}{{\mathbf 0} }
 \newcommand{\N}{\mbox{{\sl l}}\!\mbox{{\sl N}}}
-
+% ----------------------------------------------------------------
 \def\uint{[0,1]}
 \def\proof{{\scshape Proof}. \ignorespaces}
 \def\endproof{{\hfill \vbox{\hrule\hbox{%
    \vrule height1.3ex\hskip1.0ex\vrule}\hrule
   }}\par}
+%
 %=================================================================
 
 \hypersetup
 {
-    pdfauthor={Gang Li},
+    pdfauthor={\gitAuthorName},
     pdfsubject={TULIP Lab},
-    pdftitle={TULIP Confidential Draft},
-    pdfkeywords={TULIP, Draft, Data Science}
+    pdftitle={},
+    pdfkeywords={TULIP Lab, Data Science},
+	bookmarks=true,  
 }
 
 
@@ -236,7 +237,11 @@ The abstract will be put here, ....
 
 \gangli{This is comment from Gang.}
 
-Test citation~\cite{liu2014ordinal}
+Test citation~\cite{BJL11J01}
+
+~\citep{BJL11J01}
+
+~\citet{BJL11J01}
 
 This is for~\cref{tbl:overall-experiments}.
 
@@ -296,7 +301,8 @@ The authors would like to thank \ldots
 
 % ----------------------------------------------------------------
 \newpage
-\bibliographystyle{plain}
+%\bibliographystyle{plain}
+\bibliographystyle{newapa}
 \bibliography{tulip}
 %=================================================================
 
