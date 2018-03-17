@@ -74,7 +74,6 @@
 %=================================================================
 
 
-
 %=================================================================
 %
 % Version control information
@@ -91,12 +90,12 @@
 %=================================================================
 \fancyfoot{} % clear all footer fields
 \fancyfoot[CE,CO]{\thepage}
-\fancyfoot[LO,LE]{\includegraphics[height=\headheight]{figures/tulip-icon.png}V\gitVtagn-B\gitBranch}
+\fancyfoot[LO,LE]{\includegraphics[height=.9\headheight]{figures/tulip-icon.png}V\gitVtagn-B\gitBranch}
 \fancyfoot[RO,RE]{\gitCommitterName \ on: \gitCommitterDate }
 
 \setlength{\headheight}{12pt}
-%\renewcommand{\headrulewidth}{0.4pt}
-%\renewcommand{\footrulewidth}{0.4pt}
+\renewcommand{\headrulewidth}{0.4pt}
+\renewcommand{\footrulewidth}{0.4pt}
 %=================================================================
 
 %=================================================================
@@ -181,8 +180,8 @@
 {
     pdfauthor={Gang Li},
     pdfsubject={TULIP Lab},
-    pdftitle={Report},
-    pdfkeywords={TULIP, Draft}
+    pdftitle={TULIP Confidential Draft},
+    pdfkeywords={TULIP, Draft, Data Science}
 }
 
 
@@ -200,11 +199,11 @@ Deakin University, 221 Burwood Highway \\
 Vic 3125, Australia}%
 \email[A.~1]{xxx@deakin.edu.au}
 
-\author{Author 2}
+\author{Gang Li}
 \address[A.~2]{School of Information Technology \\
 Deakin University, 221 Burwood Highway \\
-Vic 3125, Australia}%
-\email[A.~2]{xxx@deakin.edu.au}
+VIC 3125, Australia}%
+\email[A.~2]{gang.li@deakin.edu.au}
 
 
 \author{Author 3}
@@ -216,7 +215,7 @@ Vic 3125, Australia}%
 %\thanks{Thanks to \ldots}%
 \subjclass{Artificial Intelligence}%
 \keywords{Machine Learning, Data Mining, ...}%
-\date{\gitCommitterDate}%
+\date{\gitAuthorDate}%
 
 \begin{abstract}
 The abstract will be put here, ....
