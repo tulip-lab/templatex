@@ -19,17 +19,12 @@
 \usepackage{color}
 \definecolor{darkgreen}{rgb}{0,0.5,0}
 \definecolor{purple}{rgb}{1,0,1}
-% \draftnote{color}{comment} inserts a colored comment in the text
-\newcommand{\draftnote}[2]{\ifnum\DraftStatus=1
-	\marginpar{
-		\tiny\raggedright
-		\hbadness=10000
-        \def\baselinestretch{0.8}
-        \textcolor{#1}{\textsf{\hspace{0pt}#2}}}
-     \fi}
+\newcommand{\draftnote}[3]{\ifnum\DraftStatus=1
+	\todo[author=#2,color=#1!40]{\textsf{#3}}	
+    \fi}
 % add yourself here:
-\newcommand{\gangli}[1]{\draftnote{red}{[GLi: #1]}}
-\newcommand{\qwu}[1]{\draftnote{darkgreen}{[QWu: #1]}}
+\newcommand{\gangli}[1]{\draftnote{green}{GLi:}{#1}}
+\newcommand{\qwu}[1]{\draftnote{purple}{QWu:}{#1}}
 % other colors include blue, red, purple, cyan, darkgreen, etc.
 \newcommand{\HRule}{\rule{\linewidth}{0.5mm}}
 %
@@ -50,9 +45,8 @@
 \usepackage{multirow}
 \usepackage{psfrag}
 \usepackage{url}
-\usepackage{hyperref}
-\usepackage{breakurl}
-\usepackage{cite}
+\usepackage[colorlinks]{hyperref}
+%\usepackage{breakurl}
 \usepackage{natbib}
 \usepackage{booktabs}
 \usepackage{rotating}
@@ -69,6 +63,15 @@
 %\usepackage{booktabs}
 \usepackage{nicefrac}
 \usepackage{lipsum}
+\usepackage[english]{babel}
+\usepackage[pangram]{blindtext}
+%%% Notes
+\usepackage{marginnote}
+% \usepackage[disable]{todonotes} % notes not showed
+%\usepackage[draft]{todonotes}   % notes showed
+\usepackage[draft,colorinlistoftodos,color=blue!40]{todonotes}
+
+\makeatletter \providecommand\@dotsep{5} \def\listtodoname{List of Todos} \def\listoftodos{\@starttoc{tdo}\listtodoname} \makeatother
 %
 %=================================================================
 
@@ -94,7 +97,7 @@
 		\gitVtagn-\gitBranch\ (\gitCommitterDate)}
 \fancyfoot[RO,RE]{Committed by: \textsl{\gitCommitterName}}
 
-%\setlength{\headheight}{12pt}
+\setlength{\headheight}{12pt}
 \renewcommand{\headrulewidth}{0.4pt}
 \renewcommand{\footrulewidth}{0.4pt}
 %=================================================================
@@ -181,7 +184,7 @@
     pdfsubject={TULIP Lab},
     pdftitle={},
     pdfkeywords={TULIP Lab, Data Science},
-	bookmarks=true,  
+%	bookmarks=true,  
 }
 
 
@@ -223,15 +226,18 @@ The abstract will be put here, ....
 \end{abstract}
 
 
+
 \maketitle
 \tableofcontents
-
 
 \newpage
 
 %=================================================================
 
+
 \section{Introduction}\label{sec-intro}
+
+\todo{add something here to test content.}
 
 \HRule
 
@@ -245,7 +251,10 @@ Test citation~\cite{BJL11J01}
 
 This is for~\cref{tbl:overall-experiments}.
 
-This is for~\cref{sec-conclusions}.
+This is for~\cref{sec-conclusions}.\todo[inline]{testing testing}
+
+
+\todo{Plain todonotes.}%
 
 We have  \SI{10}{\hertz},
 \si{\kilogram\metre\per\second},
@@ -261,6 +270,8 @@ and
 
 $\nicefrac[]{1}{2}$,
 
+\missingfigure{Make a sketch of the structure of a trebuchet.}
+
 
 For~\cref{eq:test},
 as shown below:
@@ -274,9 +285,48 @@ a = b \times \sqrt{ab}
 \lipsum
 
 
+afdafkafahslfhaskfahjf   
+\todo[author=Xavier]{Testing author option.}
+adfakjfajfd  adfhafhasjfj 
+\todo[fancyline]{Testing.}
+afdjalkaj;
+\todo[noline]{A note with no line back to the text.}%
+
+
 \section{Method} \label{sec-method}
 
+% generates a paragraph of dummy lorem ipsum text
+ 
+%\blindtext 
+ 
+ 
+% generates multiple paragraphs of dummy lorem ipsum text
+ 
+%\Blindtext 
+ 
+ 
+% generates whole document with dummy lorem ipsum text
+ 
+\Blinddocument 
+
+%\Blindtext
+\blindtext
+
+\blindlist{itemize}[3]
+
+\blinditemize
+\blindenumerate
+
+\blindmathtrue
+%\blindmathfalse
+
+\blinddescription
+
+
+
 \section{Experiment and Analysis} \label{sec-experiment}
+
+\blindmathpaper
 
 \begin{table}  \centering
   \caption{Precision Comparison on Event Detection Methods}
@@ -293,7 +343,15 @@ a = b \times \sqrt{ab}
 \end{tabular}
 \end{table}
 
+
+
 \section{Conclusions} \label{sec-conclusions}
+
+\blindtext
+
+
+\lipsum[1]
+
 
 \section*{Acknowledgment}
 
@@ -305,6 +363,8 @@ The authors would like to thank \ldots
 \bibliographystyle{newapa}
 \bibliography{tulip}
 %=================================================================
+
+\listoftodos
 
 
 \end{document}
