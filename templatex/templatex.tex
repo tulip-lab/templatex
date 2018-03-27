@@ -11,22 +11,44 @@
 %  View pdf to see difference
 %
 %=================================================================
-% for marginal comments
 %
+% Todo Notes for marginal comments
+%
+\usepackage{marginnote}
+% 
 \newcount\DraftStatus  % 0 suppresses notes to selves in text
 \DraftStatus=1   % TODO: set to 0 for final version
+\ifnum\DraftStatus=1
+	\usepackage[draft,colorinlistoftodos,color=orange!30]{todonotes}
+\else
+	\usepackage[disable,colorinlistoftodos,color=blue!30]{todonotes}
+\fi 
+%\usepackage[disable]{todonotes} % notes not showed
+%\usepackage[draft]{todonotes}   % notes showed
+%
+\makeatletter \providecommand\@dotsep{5} \def\listtodoname{List of Todos} \def\listoftodos{\@starttoc{tdo}\listtodoname} \makeatother
+%
 %=================================================================
+%
 \usepackage{color}
-\definecolor{darkgreen}{rgb}{0,0.5,0}
-\definecolor{purple}{rgb}{1,0,1}
-\newcommand{\draftnote}[3]{\ifnum\DraftStatus=1
-	\todo[author=#2,color=#1!40]{\textsf{#3}}	
-    \fi}
-% add yourself here:
-\newcommand{\gangli}[1]{\draftnote{green}{GLi:}{#1}}
-\newcommand{\qwu}[1]{\draftnote{purple}{QWu:}{#1}}
-% other colors include blue, red, purple, cyan, darkgreen, etc.
-\newcommand{\HRule}{\rule{\linewidth}{0.5mm}}
+\newcommand{\draftnote}[3]{ 
+	\todo[author=#2,color=#1!30,size=\footnotesize]{\textsf{#3}}	}
+% TODO: add yourself here:
+%
+\newcommand{\gangli}[1]{\draftnote{blue}{GLi:}{#1}}
+\newcommand{\qwu}[1]{\draftnote{red}{QWu:}{#1}}
+\newcommand{\gliMarker}
+	{\todo[author=GLi,size=\tiny,inline,color=blue!40]
+	{Gang Li has worked up to here.}}
+\newcommand{\qwuMarker}
+	{\todo[author=QWu,size=\tiny,inline,color=red!40]
+	{Qiong Wu has worked up to here.}}
+%=================================================================
+% for including/hiding
+% TODO: revise here for versions
+\usepackage{comment}
+\includecomment{JournalA}  
+\excludecomment{JournalB}
 %
 %=================================================================
 
@@ -34,27 +56,26 @@
 %=================================================================
 %
 % general packages
+%  https://en.wikibooks.org/wiki/Category:Book:LaTeX
+%  https://en.wikibooks.org/wiki/LaTeX/Package_Reference
 %
 %=================================================================
-\usepackage{graphicx,color}
+\usepackage{graphicx}
 \usepackage{algorithm}
 \usepackage{algorithmic}
-%\usepackage{algpseudocode}
 \usepackage{breqn}
 \usepackage{subfigure}
 \usepackage{multirow}
 \usepackage{psfrag}
 \usepackage{url}
 \usepackage[colorlinks]{hyperref}
-%\usepackage{breakurl}
 \usepackage{natbib}
 \usepackage{booktabs}
 \usepackage{rotating}
 \usepackage{colortbl}
-%%\usepackage{spelling}
+\usepackage{spelling}
 %\usepackage{paralist}
 \usepackage{geometry}
-%\usepackage{graphicx}
 %\usepackage{epstopdf}
 \usepackage{nag}
 \usepackage{microtype}
@@ -62,16 +83,10 @@
 \usepackage{cleveref}
 %\usepackage{booktabs}
 \usepackage{nicefrac}
+% for random text
 \usepackage{lipsum}
 \usepackage[english]{babel}
 \usepackage[pangram]{blindtext}
-%%% Notes
-\usepackage{marginnote}
-% \usepackage[disable]{todonotes} % notes not showed
-%\usepackage[draft]{todonotes}   % notes showed
-\usepackage[draft,colorinlistoftodos,color=blue!40]{todonotes}
-
-\makeatletter \providecommand\@dotsep{5} \def\listtodoname{List of Todos} \def\listoftodos{\@starttoc{tdo}\listtodoname} \makeatother
 %
 %=================================================================
 
@@ -105,10 +120,8 @@
 %=================================================================
 % for math notations
 % ----------------------------------------------------------------
-\usepackage{amsmath}
-\usepackage{amssymb}
-%\vfuzz2pt % Don't report over-full v-boxes if over-edge is small
-%\hfuzz2pt % Don't report over-full h-boxes if over-edge is small
+\usepackage{mathtools}
+\usepackage{amsthm}
 %
 % THEOREMS -------------------------------------------------------
 %
@@ -209,7 +222,6 @@ Deakin University, 221 Burwood Highway \\
 VIC 3125, Australia}%
 \email[A.~2]{gang.li@deakin.edu.au}
 
-
 \author{Author 3}
 \address[A.~3]{School of Information Technology \\
 Deakin University, 221 Burwood Highway \\
@@ -225,41 +237,24 @@ Vic 3125, Australia}%
 The abstract will be put here, ....
 \end{abstract}
 
-
-
 \maketitle
 \tableofcontents
 
 \newpage
-
 %=================================================================
 
 
 \section{Introduction}\label{sec-intro}
 
-\todo{add something here to test content.}
-
-\HRule
-
+Test citation~\cite{BJL11J01}, and~\citep{BJL11J01} or~\citet{BJL11J01}.
 \gangli{This is comment from Gang.}
+\qwu{Response from QW}
+This is for~\cref{tbl:overall-experiments}, 
+\todo[fancyline]{Testing.}
+and this is for~\cref{sec-conclusions}.
+\todo[noline]{A note with no line back to the text.}%
 
-Test citation~\cite{BJL11J01}
-
-~\citep{BJL11J01}
-
-~\citet{BJL11J01}
-
-This is for~\cref{tbl:overall-experiments}.
-
-This is for~\cref{sec-conclusions}.\todo[inline]{testing testing}
-
-
-\todo{Plain todonotes.}%
-
-We have  \SI{10}{\hertz},
-\si{\kilogram\metre\per\second},
-the range: \SIrange{10}{100}{\hertz}.
-
+\begin{JournalA}
 Number:
 \num{123}.
 \numlist{10;30;50;70},
@@ -268,9 +263,19 @@ Number:
 and
 \SI{10}{\percent}
 
-$\nicefrac[]{1}{2}$,
+\missingfigure[figcolor=white]{Testing figcolor}
+
+\end{JournalA}
+
+\begin{JournalB}
+We have \SI{10}{\hertz},
+\si{\kilogram\metre\per\second},
+the range: \SIrange{10}{100}{\hertz}.
+$\nicefrac[]{1}{2}$.
 
 \missingfigure{Make a sketch of the structure of a trebuchet.}
+
+\end{JournalB}
 
 
 For~\cref{eq:test},
@@ -280,20 +285,17 @@ as shown below:
 a = b \times \sqrt{ab}
 \end{equation}
 
+\blindmathpaper
+
 \section{Preliminaries} \label{sec-preliminaries}
 
-\lipsum
+\blindtext
 
-
-afdafkafahslfhaskfahjf   
-\todo[author=Xavier]{Testing author option.}
-adfakjfajfd  adfhafhasjfj 
-\todo[fancyline]{Testing.}
-afdjalkaj;
-\todo[noline]{A note with no line back to the text.}%
+\gliMarker
 
 
 \section{Method} \label{sec-method}
+
 
 % generates a paragraph of dummy lorem ipsum text
  
@@ -307,26 +309,21 @@ afdjalkaj;
  
 % generates whole document with dummy lorem ipsum text
  
-\Blinddocument 
-
-%\Blindtext
+%\Blinddocument 
 \blindtext
 
 \blindlist{itemize}[3]
-
 \blinditemize
 \blindenumerate
 
 \blindmathtrue
 %\blindmathfalse
-
 \blinddescription
 
-
+\qwuMarker
 
 \section{Experiment and Analysis} \label{sec-experiment}
 
-\blindmathpaper
 
 \begin{table}  \centering
   \caption{Precision Comparison on Event Detection Methods}
@@ -344,16 +341,14 @@ afdjalkaj;
 \end{table}
 
 
-
 \section{Conclusions} \label{sec-conclusions}
 
 \blindtext
 
+\section*{Acknowledgment}
 
 \lipsum[1]
 
-
-\section*{Acknowledgment}
 
 The authors would like to thank \ldots
 
