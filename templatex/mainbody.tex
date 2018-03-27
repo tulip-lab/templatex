@@ -1,0 +1,109 @@
+%=================================================================
+\section{Introduction}\label{sec-intro}
+
+Test citation~\cite{BJL11J01}, and~\citep{BJL11J01} or~\citet{BJL11J01}.
+\gangli{This is comment from Gang.}
+\qwu{Response from QW}
+This is for~\cref{tbl:overall-experiments}, 
+\todo[fancyline]{Testing.}
+and this is for~\cref{sec-conclusions}.
+\todo[noline]{A note with no line back to the text.}%
+
+\begin{JournalA}
+Number:
+\num{123}.
+\numlist{10;30;50;70},
+\numrange{10}{30},
+\SIlist{10;30;45}{\metre},
+and
+\SI{10}{\percent}
+
+\missingfigure[figcolor=white]{Testing figcolor}
+
+\end{JournalA}
+
+\begin{JournalB}
+We have \SI{10}{\hertz},
+\si{\kilogram\metre\per\second},
+the range: \SIrange{10}{100}{\hertz}.
+$\nicefrac[]{1}{2}$.
+
+\missingfigure{Make a sketch of the structure of a trebuchet.}
+
+\end{JournalB}
+
+
+For~\cref{eq:test},
+as shown below:
+
+\begin{equation}\label{eq:test}
+a = b \times \sqrt{ab}
+\end{equation}
+
+\blindmathpaper
+
+\section{Preliminaries} \label{sec-preliminaries}
+
+\blindtext
+
+\gliMarker
+
+
+\section{Method} \label{sec-method}
+
+
+% generates a paragraph of dummy lorem ipsum text
+ 
+%\blindtext 
+ 
+ 
+% generates multiple paragraphs of dummy lorem ipsum text
+ 
+%\Blindtext 
+ 
+ 
+% generates whole document with dummy lorem ipsum text
+ 
+%\Blinddocument 
+\blindtext
+
+\blindlist{itemize}[3]
+\blinditemize
+\blindenumerate
+
+\blindmathtrue
+%\blindmathfalse
+\blinddescription
+
+\qwuMarker
+
+\section{Experiment and Analysis} \label{sec-experiment}
+
+
+\begin{table}  \centering
+  \caption{Precision Comparison on Event Detection Methods}
+  \label{tbl:overall-experiments}
+  \begin{tabular}{cccc}
+\toprule
+    % after \\: \hline or \cline{col1-col2} \cline{col3-col4} ...
+    & OR Event Detection & AC Event Detection & TC Event Detection \\
+\midrule
+    precision & 0.83 & 0.69 & 0.46 \\
+    recall & 0.68 & 0.48 & 0.36 \\
+    F-score & 0.747 & 0.57 & 0.4 \\
+\bottomrule
+\end{tabular}
+\end{table}
+
+
+\section{Conclusions} \label{sec-conclusions}
+
+\blindtext
+
+\section*{Acknowledgment}
+
+\lipsum[1]
+
+
+The authors would like to thank \ldots
+

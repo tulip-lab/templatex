@@ -1,0 +1,192 @@
+%=================================================================
+% gitlatexdiff
+%
+%  https://gitlab.com/git-latexdiff/git-latexdiff
+%=================================================================
+%  git latexdiff HEAD  HEAD~5 --main templatex.tex
+%  git latexdiff HEAD~1  --main templatex.tex
+%  View pdf to see difference
+%
+%=================================================================
+%
+% Todo Notes for marginal comments
+% 
+%\newcount\DraftStatus  % 0 suppresses notes to selves in text
+%\DraftStatus=1   % TODO: set to 0 for final version
+\ifnum\DraftStatus=1
+	\usepackage[draft,colorinlistoftodos,color=orange!30]{todonotes}
+\else
+	\usepackage[disable,colorinlistoftodos,color=blue!30]{todonotes}
+\fi 
+%\usepackage[disable]{todonotes} % notes not showed
+%\usepackage[draft]{todonotes}   % notes showed
+%
+\makeatletter \providecommand\@dotsep{5} \def\listtodoname{List of Todos} \def\listoftodos{\@starttoc{tdo}\listtodoname} \makeatother
+%
+%=================================================================
+%
+\usepackage{color}
+\newcommand{\draftnote}[3]{ 
+	\todo[author=#2,color=#1!30,size=\footnotesize]{\textsf{#3}}	}
+% TODO: add yourself here:
+%
+\newcommand{\gangli}[1]{\draftnote{blue}{GLi:}{#1}}
+\newcommand{\qwu}[1]{\draftnote{red}{QWu:}{#1}}
+\newcommand{\gliMarker}
+	{\todo[author=GLi,size=\tiny,inline,color=blue!40]
+	{Gang Li has worked up to here.}}
+\newcommand{\qwuMarker}
+	{\todo[author=QWu,size=\tiny,inline,color=red!40]
+	{Qiong Wu has worked up to here.}}
+%=================================================================
+
+
+%=================================================================
+%
+% general packages
+%  https://en.wikibooks.org/wiki/Category:Book:LaTeX
+%  https://en.wikibooks.org/wiki/LaTeX/Package_Reference
+%
+%=================================================================
+\usepackage{graphicx}
+\usepackage{algorithm}
+\usepackage{algorithmic}
+\usepackage{breqn}
+\usepackage{subfigure}
+\usepackage{multirow}
+\usepackage{psfrag}
+\usepackage{url}
+\usepackage[colorlinks]{hyperref}
+\usepackage{natbib}
+\usepackage{booktabs}
+\usepackage{rotating}
+\usepackage{colortbl}
+\usepackage{spelling}
+%\usepackage{paralist}
+\usepackage{geometry}
+%\usepackage{epstopdf}
+\usepackage{nag}
+\usepackage{microtype}
+\usepackage{siunitx}
+\usepackage{cleveref}
+%\usepackage{booktabs}
+\usepackage{nicefrac}
+% for random text
+\usepackage{lipsum}
+\usepackage[english]{babel}
+\usepackage[pangram]{blindtext}
+%
+%=================================================================
+
+
+%=================================================================
+%
+% Version control information
+%
+%=================================================================
+\usepackage{gitinfo2}
+%=================================================================
+\usepackage{fancyhdr}
+\pagestyle{fancy}
+\fancyhead{} % clear all header fields
+\fancyhead[RO,LE]{\textsl{\rightmark}}
+\fancyhead[LO,RE]{\ensuremath{\Rightarrow}
+		\textbf{\textbf{[CONFIDENTIAL]}}\ensuremath{\Leftarrow}}
+\fancyhead[CO,CE]{}
+%=================================================================
+\fancyfoot{} % clear all footer fields
+\fancyfoot[CE,CO]{\textbf{\thepage}} 
+\fancyfoot[LO,LE]{\includegraphics[height=.9\headheight]{figures/tulip-icon.png}
+		\gitVtagn-\gitBranch\ (\gitCommitterDate)}
+\fancyfoot[RO,RE]{Committed by: \textsl{\gitCommitterName}}
+
+\setlength{\headheight}{12pt}
+\renewcommand{\headrulewidth}{0.4pt}
+\renewcommand{\footrulewidth}{0.4pt}
+%=================================================================
+
+%=================================================================
+% for math notations
+% ----------------------------------------------------------------
+\usepackage{mathtools}
+\usepackage{amsthm}
+%
+% THEOREMS -------------------------------------------------------
+%
+\newtheorem{thm}{Theorem}[section]
+\newtheorem{cor}[thm]{Corollary}
+\newtheorem{lem}[thm]{Lemma}
+\newtheorem{prop}[thm]{Proposition}
+\theoremstyle{definition}
+\newtheorem{defn}[thm]{Definition}
+\theoremstyle{remark}
+\newtheorem{rem}[thm]{Remark}
+\numberwithin{equation}{section}
+% MATH -----------------------------------------------------------
+\newcommand{\norm}[1]{\left\Vert#1\right\Vert}
+\newcommand{\abs}[1]{\left\vert#1\right\vert}
+\newcommand{\set}[1]{\left\{#1\right\}}
+\newcommand{\Real}{\mathbb R}
+\newcommand{\eps}{\varepsilon}
+\newcommand{\To}{\longrightarrow}
+\newcommand{\BX}{\mathbf{B}(X)}
+% ----------------------------------------------------------------
+\newcommand{\I}{{\cal I}}
+\newcommand{\Id}{{\cal I} }
+\newcommand{\Dc}{{\cal D}}
+\newcommand{\J}{{\cal J}}
+\newcommand{\Dn}{{\cal D}_n}
+\newcommand{\Dd}{{\cal D}_n }
+\renewcommand{\P}{{\cal P}}
+\newcommand{\Nu}{{\cal N} }
+\newcommand{\B}{{\cal B}}
+\newcommand{\Bf}{{\bf B}}
+\newcommand{\Y}{{\bf Y}}
+\newcommand{\A}{{\cal A}}
+% ----------------------------------------------------------------
+\newcommand{\V}{{\cal V}}
+\newcommand{\M}{{\cal M}}
+\newcommand{\F}{{\cal F}}
+\newcommand{\Fd}{{\cal F}}
+\newcommand{\BF}{{\cal BF}_n}
+\newcommand{\BFd}{{\cal BF}_n}
+\newcommand{\TF}{{\cal TF}_n}
+\newcommand{\TFd}{{\cal TF}_n}
+\newcommand{\G}{{\cal G}}
+\newcommand{\X}{{\cal X}}
+\newcommand{\E}{{\cal E}}
+\newcommand{\K}{{\cal K}}
+\newcommand{\T}{{\cal T}_n}
+\renewcommand{\H}{{\cal H}}
+% ----------------------------------------------------------------
+\newtheorem{Remark}{Remark}
+\newtheorem{proposition}{Proposition}
+\newtheorem{theorem}{Theorem}
+\newtheorem{lemma}{Lemma}
+\newtheorem{corollary}{Corollary}
+\newtheorem{example}{Example}
+\newtheorem{definition}{Definition}
+\newtheorem{Algorithms}{Algorithm}
+% ----------------------------------------------------------------
+\newcommand{\bu}{{\mathbf 1} }
+\newcommand{\bo}{{\mathbf 0} }
+\newcommand{\N}{\mbox{{\sl l}}\!\mbox{{\sl N}}}
+% ----------------------------------------------------------------
+\def\uint{[0,1]}
+\def\proof{{\scshape Proof}. \ignorespaces}
+\def\endproof{{\hfill \vbox{\hrule\hbox{%
+   \vrule height1.3ex\hskip1.0ex\vrule}\hrule
+  }}\par}
+%
+%=================================================================
+\hypersetup
+{
+    pdfauthor={\gitAuthorName},
+    pdfsubject={TULIP Lab},
+    pdftitle={},
+    pdfkeywords={TULIP Lab, Data Science},
+%	bookmarks=true,  
+}
+
+
+
