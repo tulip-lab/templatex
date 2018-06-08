@@ -1,0 +1,72 @@
+\documentclass{amsart}
+\synctex=1
+
+%=================================================================
+% 
+\newcount\DraftStatus  % 0 suppresses notes to selves in text
+\DraftStatus=1   % TODO: set to 0 for final version
+%=================================================================
+\input{preamble}
+
+\usepackage{comment}
+\includecomment{JournalA}  
+\excludecomment{JournalB}
+%
+%=================================================================
+
+
+%=================================================================
+%
+\begin{document}
+%
+%=================================================================
+% Preamble which will need to be changed for submission
+%
+\title[A Short Running Title]{Title of This Paper}%
+
+\author{Author 1}
+\address[A.~1]{School of Information Technology \\
+Deakin University, 221 Burwood Highway \\
+Vic 3125, Australia}%
+\email[A.~1]{xxx@deakin.edu.au}
+
+\author{Gang Li}
+\address[A.~2]{School of Information Technology \\
+Deakin University, 221 Burwood Highway \\
+VIC 3125, Australia}%
+\email[A.~2]{gang.li@deakin.edu.au}
+
+\author{Author 3}
+\address[A.~3]{School of Information Technology \\
+Deakin University, 221 Burwood Highway \\
+Vic 3125, Australia}%
+\email[A.~3]{xxx@deakin.edu.au}
+
+%\thanks{Thanks to \ldots}%
+\subjclass{Artificial Intelligence}%
+\keywords{Machine Learning, Data Mining, ...}%
+\date{\gitAuthorDate}%
+
+\begin{abstract}
+The abstract will be put here, ....
+\end{abstract}
+
+\maketitle
+\tableofcontents
+
+\newpage
+%=================================================================
+
+\input{mainbody}
+
+% ----------------------------------------------------------------
+\newpage
+%\bibliographystyle{plain}
+\bibliographystyle{newapa}
+\bibliography{tulip}
+%=================================================================
+
+\listoftodos
+
+\end{document}
+

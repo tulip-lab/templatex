@@ -1,6 +1,3 @@
-\documentclass{amsart}
-\synctex=1
-
 %=================================================================
 % gitlatexdiff
 %
@@ -11,56 +8,62 @@
 %  View pdf to see difference
 %
 %=================================================================
-% for marginal comments
 %
-\newcount\DraftStatus  % 0 suppresses notes to selves in text
-\DraftStatus=1   % TODO: set to 0 for final version
+% Todo Notes for marginal comments
+% 
+%\newcount\DraftStatus  % 0 suppresses notes to selves in text
+%\DraftStatus=1   % TODO: set to 0 for final version
+\ifnum\DraftStatus=1
+	\usepackage[draft,colorinlistoftodos,color=orange!30]{todonotes}
+\else
+	\usepackage[disable,colorinlistoftodos,color=blue!30]{todonotes}
+\fi 
+%\usepackage[disable]{todonotes} % notes not showed
+%\usepackage[draft]{todonotes}   % notes showed
+%
+\makeatletter \providecommand\@dotsep{5} \def\listtodoname{List of Todos} \def\listoftodos{\@starttoc{tdo}\listtodoname} \makeatother
+%
 %=================================================================
-\usepackage{color}
-\definecolor{darkgreen}{rgb}{0,0.5,0}
-\definecolor{purple}{rgb}{1,0,1}
-% \draftnote{color}{comment} inserts a colored comment in the text
-\newcommand{\draftnote}[2]{\ifnum\DraftStatus=1
-	\marginpar{
-		\tiny\raggedright
-		\hbadness=10000
-        \def\baselinestretch{0.8}
-        \textcolor{#1}{\textsf{\hspace{0pt}#2}}}
-     \fi}
-% add yourself here:
-\newcommand{\gangli}[1]{\draftnote{red}{[GLi: #1]}}
-\newcommand{\qwu}[1]{\draftnote{darkgreen}{[QWu: #1]}}
-% other colors include blue, red, purple, cyan, darkgreen, etc.
-\newcommand{\HRule}{\rule{\linewidth}{0.5mm}}
 %
+\usepackage{color}
+\newcommand{\draftnote}[3]{ 
+	\todo[author=#2,color=#1!30,size=\footnotesize]{\textsf{#3}}	}
+% TODO: add yourself here:
+%
+\newcommand{\gangli}[1]{\draftnote{blue}{GLi:}{#1}}
+\newcommand{\qwu}[1]{\draftnote{red}{QWu:}{#1}}
+\newcommand{\gliMarker}
+	{\todo[author=GLi,size=\tiny,inline,color=blue!40]
+	{Gang Li has worked up to here.}}
+\newcommand{\qwuMarker}
+	{\todo[author=QWu,size=\tiny,inline,color=red!40]
+	{Qiong Wu has worked up to here.}}
 %=================================================================
 
 
 %=================================================================
 %
 % general packages
+%  https://en.wikibooks.org/wiki/Category:Book:LaTeX
+%  https://en.wikibooks.org/wiki/LaTeX/Package_Reference
 %
 %=================================================================
-\usepackage{graphicx,color}
+\usepackage{graphicx}
 \usepackage{algorithm}
 \usepackage{algorithmic}
-%\usepackage{algpseudocode}
 \usepackage{breqn}
 \usepackage{subfigure}
 \usepackage{multirow}
 \usepackage{psfrag}
 \usepackage{url}
-\usepackage{hyperref}
-\usepackage{breakurl}
-\usepackage{cite}
+\usepackage[colorlinks]{hyperref}
 \usepackage{natbib}
 \usepackage{booktabs}
 \usepackage{rotating}
 \usepackage{colortbl}
-%%\usepackage{spelling}
+%\usepackage{spelling}
 %\usepackage{paralist}
 \usepackage{geometry}
-%\usepackage{graphicx}
 %\usepackage{epstopdf}
 \usepackage{nag}
 \usepackage{microtype}
@@ -68,7 +71,10 @@
 \usepackage{cleveref}
 %\usepackage{booktabs}
 \usepackage{nicefrac}
+% for random text
 \usepackage{lipsum}
+\usepackage[english]{babel}
+\usepackage[pangram]{blindtext}
 %
 %=================================================================
 
@@ -94,7 +100,7 @@
 		\gitVtagn-\gitBranch\ (\gitCommitterDate)}
 \fancyfoot[RO,RE]{Committed by: \textsl{\gitCommitterName}}
 
-%\setlength{\headheight}{12pt}
+\setlength{\headheight}{12pt}
 \renewcommand{\headrulewidth}{0.4pt}
 \renewcommand{\footrulewidth}{0.4pt}
 %=================================================================
@@ -102,10 +108,8 @@
 %=================================================================
 % for math notations
 % ----------------------------------------------------------------
-\usepackage{amsmath}
-\usepackage{amssymb}
-%\vfuzz2pt % Don't report over-full v-boxes if over-edge is small
-%\hfuzz2pt % Don't report over-full h-boxes if over-edge is small
+\usepackage{mathtools}
+\usepackage{amsthm}
 %
 % THEOREMS -------------------------------------------------------
 %
@@ -181,131 +185,8 @@
     pdfsubject={TULIP Lab},
     pdftitle={},
     pdfkeywords={TULIP Lab, Data Science},
-	bookmarks=true,  
+%	bookmarks=true,  
 }
 
 
-%=================================================================
-%
-\begin{document}
-%
-%=================================================================
-% Preamble which will need to be changed for submission
-%
-\title[A Short Running Title]{Title of This Paper}%
-
-\author{Author 1}
-\address[A.~1]{School of Information Technology \\
-Deakin University, 221 Burwood Highway \\
-Vic 3125, Australia}%
-\email[A.~1]{xxx@deakin.edu.au}
-
-\author{Gang Li}
-\address[A.~2]{School of Information Technology \\
-Deakin University, 221 Burwood Highway \\
-VIC 3125, Australia}%
-\email[A.~2]{gang.li@deakin.edu.au}
-
-
-\author{Author 3}
-\address[A.~3]{School of Information Technology \\
-Deakin University, 221 Burwood Highway \\
-Vic 3125, Australia}%
-\email[A.~3]{xxx@deakin.edu.au}
-
-%\thanks{Thanks to \ldots}%
-\subjclass{Artificial Intelligence}%
-\keywords{Machine Learning, Data Mining, ...}%
-\date{\gitAuthorDate}%
-
-\begin{abstract}
-The abstract will be put here, ....
-\end{abstract}
-
-
-\maketitle
-\tableofcontents
-
-
-\newpage
-
-%=================================================================
-
-\section{Introduction}\label{sec-intro}
-
-\HRule
-
-\gangli{This is comment from Gang.}
-
-Test citation~\cite{BJL11J01}
-
-~\citep{BJL11J01}
-
-~\citet{BJL11J01}
-
-This is for~\cref{tbl:overall-experiments}.
-
-This is for~\cref{sec-conclusions}.
-
-We have  \SI{10}{\hertz},
-\si{\kilogram\metre\per\second},
-the range: \SIrange{10}{100}{\hertz}.
-
-Number:
-\num{123}.
-\numlist{10;30;50;70},
-\numrange{10}{30},
-\SIlist{10;30;45}{\metre},
-and
-\SI{10}{\percent}
-
-$\nicefrac[]{1}{2}$,
-
-
-For~\cref{eq:test},
-as shown below:
-
-\begin{equation}\label{eq:test}
-a = b \times \sqrt{ab}
-\end{equation}
-
-\section{Preliminaries} \label{sec-preliminaries}
-
-\lipsum
-
-
-\section{Method} \label{sec-method}
-
-\section{Experiment and Analysis} \label{sec-experiment}
-
-\begin{table}  \centering
-  \caption{Precision Comparison on Event Detection Methods}
-  \label{tbl:overall-experiments}
-  \begin{tabular}{cccc}
-\toprule
-    % after \\: \hline or \cline{col1-col2} \cline{col3-col4} ...
-    & OR Event Detection & AC Event Detection & TC Event Detection \\
-\midrule
-    precision & 0.83 & 0.69 & 0.46 \\
-    recall & 0.68 & 0.48 & 0.36 \\
-    F-score & 0.747 & 0.57 & 0.4 \\
-\bottomrule
-\end{tabular}
-\end{table}
-
-\section{Conclusions} \label{sec-conclusions}
-
-\section*{Acknowledgment}
-
-The authors would like to thank \ldots
-
-% ----------------------------------------------------------------
-\newpage
-%\bibliographystyle{plain}
-\bibliographystyle{newapa}
-\bibliography{tulip}
-%=================================================================
-
-
-\end{document}
 

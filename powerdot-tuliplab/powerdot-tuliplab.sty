@@ -1,6 +1,6 @@
 %% 
 %% ---------------------------------------------------------------
-%% Copyright (C) 2012 Gang Li
+%% Copyright (C) 2012-2018 Gang Li
 %% ---------------------------------------------------------------
 %%
 %% This work is a modification of the default powerdot style and may be
@@ -14,14 +14,10 @@
 %%
 %% This Current Maintainer of this work is Gang Li.
 %%
-%% {$HeadURL: svn://cloud.tulip.org.au/WAEERepository/presentation/powerdot-tulip/trunk/powerdot-tulip.sty $}
-%% {$LastChangedDate: 2015-12-02 18:35:25 +0800 (Wed, 02 Dec 2015) $}
-%% {$LastChangedRevision: 205 $}
-%% {$LastChangedBy: gangli $}
 %%
 
 \NeedsTeXFormat{LaTeX2e}[1995/12/01]
-\ProvidesPackage{powerdot-tulip}[2011/04/25 v1.4g default style (HA)]
+\ProvidesPackage{powerdot-tuliplab}[2011/04/25 v1.4g default style (HA)]
 \RequirePackage{pifont}
 
 \definecolor{pdcolor1}{rgb}{.17,.31,.44}
@@ -32,6 +28,16 @@
   \colorlet{pdcolor2}{pdcolor2>wheel,45}
   \colorlet{pdcolor3}{pdcolor3>wheel,45}
 }
+
+% clockrefresh=60000,  
+% clockhook=bl,
+% clockpos=,
+% clockwidth=3cm,
+% clockheight=\baselineskip,
+% clockcharsize=16pt,
+% clockalign=2,
+% clockcolor=red,
+
  
 %% TOP Left Image
 \newbox\pd@imagebox
@@ -72,7 +78,7 @@
 %%  TITLE PAGE
 \pddefinetemplate{titleslide}{%
   titlefont=\large\bfseries\centering,
-  clockcolor=pdcolor1,clockpos={.99\slidewidth,\slideheight},
+  % clockcolor=pdcolor3,clockpos={.5\slidewidth,.5\slideheight},
   rftemp=\pd@@rf,
   lfpos={.03\slidewidth,.04\slideheight},
   cfpos={.5\slidewidth,.04\slideheight},
@@ -100,7 +106,7 @@
   titlepos={.2\slidewidth,.93\slideheight},
   titlewidth=.75\slidewidth,textheight=.68\slideheight,
   titlefont=\large\bfseries\raggedright,
-  clockcolor=pdcolor1,clockpos={.99\slidewidth,\slideheight},
+  % clockcolor=pdcolor3,clockpos={.5\slidewidth,.5\slideheight},
   lfpos={.03\slidewidth,.04\slideheight},
   cfpos={.5\slidewidth,.04\slideheight},
   rfpos={.97\slidewidth,.04\slideheight},
@@ -188,4 +194,4 @@
 \endinput
 %%
 %%
-%% End of file `powerdot-tulip.sty'.
+%% End of file `powerdot-tuliplab.sty'.

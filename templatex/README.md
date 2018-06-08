@@ -2,13 +2,13 @@
 [TULIP Lab](http://www.tulip.org.au) LaTeX Template
 ==================
 
-`TempLaTeX` is the latex package used in TULIP Lab for paper drafting. You are expected to use `git` to host the repository, and use `git-flow` to manage the collaborative writing platform for academic paper authoring.
+`TempLaTeX` is the `LaTeX` package used in TULIP Lab for paper drafting. You are expected to use `git` to host the repository, and use `git-flow` to manage the collaborative writing platform for academic paper authoring.
 
 ---
 ## I. Required Packages
 ---
 
-You are expected to be familiar with LaTeX, if not, you need learn it from [WikiBook](https://en.wikibooks.org/wiki/LaTeX).
+You are expected to be familiar with `LaTeX`, if not, you need learn it from [WikiBook](https://en.wikibooks.org/wiki/LaTeX).
 
 We recommend the following packages for cross platform writing:
 
@@ -56,7 +56,6 @@ We recommend the following packages for cross platform writing:
     - change or replace `tulip.bib` with your research `bib` file.
 
 
-
 1. Check out the repository to local drive, and set up the local environment for `gitinfo2` package:
 
     - This package contains a `gitinfo` folder with three executive `bash` `shell` scripts:
@@ -100,7 +99,6 @@ You MUST follow the following rules when writing collaboratively. Otherwise, you
     ```
 
 1. If your comment has been properly addressed by co-authors, you **MUST** remove or comment out both the *original* and the *response* marginal comments.
-
 
 1. You can use the following code to indicate where you are updating up to:
 

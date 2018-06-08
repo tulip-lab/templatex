@@ -1,35 +1,30 @@
-%% 
-%% ---------------------------------------------------------------
-%% Copyright (C) 2012 Gang Li
-%% ---------------------------------------------------------------
-%%
-%% This work is the default powerdot template file in TULIP Lab and may be
-%% distributed and/or modified under the conditions of the LaTeX Project Public
-%% License, either version 1.3 of this license or (at your option) any later
-%% version. The latest version of this license is in
-%% http://www.latex-project.org/lppl.txt and version 1.3 or later is part of all
-%% distributions of LaTeX version 2003/12/01 or later.
-%%
-%% This work has the LPPL maintenance status "maintained".
-%%
-%% This Current Maintainer of this work is Gang Li.
-%%
-%% {$HeadURL: http://xp-dev.com/svn/TULIP/presentation/pdotemplatex/trunk/powerdot-templatex.tex $}
-%% {$LastChangedDate: 2012-11-02 16:19:18 +1100 (Fri, 02 Nov 2012) $}
-%% {$LastChangedRevision: 85 $}
-%% {$LastChangedBy: gangli $}
-%%
-%% 
+% 
+% ---------------------------------------------------------------
+% Copyright (C) 2012-2018 Gang Li
+% ---------------------------------------------------------------
+%
+% This work is the default powerdot-tuliplab style test file in TULIP Lab and may be
+% distributed and/or modified under the conditions of the LaTeX Project Public
+% License, either version 1.3 of this license or (at your option) any later
+% version. The latest version of this license is in
+% http://www.latex-project.org/lppl.txt and version 1.3 or later is part of all
+% distributions of LaTeX version 2003/12/01 or later.
+%
+% This work has the LPPL maintenance status "maintained".
+%
+% This Current Maintainer of this work is Gang Li.
+%
+%
 
 % Document Class
 \documentclass[
  size=12pt,
- paper=smartboard, %a4paper, smartboard, screen
- mode=present, %present, handout, print
- display=slides, % slidesnotes, notes, slides
- style=tulip,  % TULIP Lab style
+ paper=smartboard,  %a4paper, smartboard, screen
+ mode=present, 		%present, handout, print
+ display=slides, 	% slidesnotes, notes, slides
+ style=tuliplab,  	% TULIP Lab style
  pauseslide,
- fleqn,leqno,clock]{powerdot}
+ fleqn,leqno]{powerdot}
 
 \usepackage{amssymb}
 \usepackage{amsmath} 
@@ -53,6 +48,7 @@
 \usepackage{etex}
 \usepackage{breqn}
 \usepackage{multirow}
+\usepackage{gitinfo2}
 % \usepackage{pst-rel-points}
 
 \usepackage{listings}
@@ -87,8 +83,10 @@ basicstyle=\footnotesize\ttfamily}
 \newcommand\highlight[1]{\fbox{#1}}
 \newcommand\icite[1]{{\footnotesize [#1]}}
 
-\newcommand\twotonebox[2]{\fcolorbox{pdcolor2}{pdcolor2}{#1\vphantom{#2}}\fcolorbox{pdcolor2}{white}{#2\vphantom{#1}}}
-\newcommand\twotoneboxo[2]{\fcolorbox{pdcolor2}{pdcolor2}{#1}\fcolorbox{pdcolor2}{white}{#2}}
+\newcommand\twotonebox[2]{\fcolorbox{pdcolor2}{pdcolor2}
+{#1\vphantom{#2}}\fcolorbox{pdcolor2}{white}{#2\vphantom{#1}}}
+\newcommand\twotoneboxo[2]{\fcolorbox{pdcolor2}{pdcolor2}
+{#1}\fcolorbox{pdcolor2}{white}{#2}}
 \newcommand\vpspace[1]{\vphantom{\vspace{#1}}}
 \newcommand\hpspace[1]{\hphantom{\hspace{#1}}}
 \newcommand\COMMENT[1]{}
@@ -97,25 +95,27 @@ basicstyle=\footnotesize\ttfamily}
         \raisebox{-#2}[\z@][\z@]{#3}\hss}\ignorespaces} 
 
 
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-%%% title
-%%% TODO: Customize to your Own Title, Name, Address
-%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% title
+% TODO: Customize to your Own Title, Name, Address
+%
 \title{Presentation Title}
-\author{Gang Li  
+\author{
+Gang Li
 \\
 Deakin University 
 % \href{mailto:gangli@acm.org}{gangli@acm.org}
 % \and % more authors
 }
-\date{01 November 2012}
+\date{\gitCommitterDate}
 
 
 % Customize the setting of slides
 \pdsetup{
 % TODO: Customize the left footer, and right footer
-lf=\href{http://www.tulip.org.au}{\copyright \emph{TULIP Lab} (G. Li)},
-rf={Presentation Title},
+rf=\href{http://www.tulip.org.au}
+{\copyright \emph{TULIP Lab} (\textsl{\gitCommitterName}\ \gitVtagn-\gitBranch)},
+cf={Presentation Title},
 }
 
 
@@ -426,7 +426,8 @@ This will be also helpful for hotel managers in strategic planning and decision 
 \end{slide}
 
 
-% TODO: Question Page
+%%==========================================================================================
+% TODO: Contact Page
 \begin{wideslide}[toc=,bm=]{Contact Information}
 \centering
 \vspace{\stretch{1}}
@@ -439,12 +440,15 @@ rcolwidth=0.65\linewidth
 }
 {
 \vspace{\stretch{1}}
-Dr \emph{Gang Li}\\
+Associate Professor \emph{Gang Li}\\
 School of Information Technology\\
-Deakin University, VIC 3125, Australia
+Deakin University, Geelong, Australia
 \begin{description}
- \item[Lab] \url{http://www.tulip.org.au} 
-%  \item[Email] gangli@acm.org
+ \item[Email] \href{mailto:gangli@acm.org}
+ {\textsc{\footnotesize{gangli@acm.org}}}
+ 
+ \item[Lab] \href{http://www.tulip.org.au}
+ {\textsc{\footnotesize{Team for Universal Learning and Intelligent Processing}}} 
 \end{description}
 } 
 \vspace{\stretch{1}}

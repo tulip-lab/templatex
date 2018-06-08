@@ -1,24 +1,20 @@
-%% 
-%% ---------------------------------------------------------------
-%% Copyright (C) 2012 Gang Li
-%% ---------------------------------------------------------------
-%%
-%% This work is the default powerdot-tulip test file and may be
-%% distributed and/or modified under the conditions of the LaTeX Project Public
-%% License, either version 1.3 of this license or (at your option) any later
-%% version. The latest version of this license is in
-%% http://www.latex-project.org/lppl.txt and version 1.3 or later is part of all
-%% distributions of LaTeX version 2003/12/01 or later.
-%%
-%% This work has the LPPL maintenance status "maintained".
-%%
-%% This Current Maintainer of this work is Gang Li.
-%%
-%% {$HeadURL: svn://cloud.tulip.org.au/WAEERepository/presentation/powerdot-tulip/trunk/powerdot-tulip.tex $}
-%% {$LastChangedDate: 2015-12-02 18:35:25 +0800 (Wed, 02 Dec 2015) $}
-%% {$LastChangedRevision: 205 $}
-%% {$LastChangedBy: gangli $}
-%%
+% 
+% ---------------------------------------------------------------
+% Copyright (C) 2012-2018 Gang Li
+% ---------------------------------------------------------------
+%
+% This work is the default powerdot-tuliplab style test file and may be
+% distributed and/or modified under the conditions of the LaTeX Project Public
+% License, either version 1.3 of this license or (at your option) any later
+% version. The latest version of this license is in
+% http://www.latex-project.org/lppl.txt and version 1.3 or later is part of all
+% distributions of LaTeX version 2003/12/01 or later.
+%
+% This work has the LPPL maintenance status "maintained".
+%
+% This Current Maintainer of this work is Gang Li.
+%
+%
 
 \documentclass[
  size=12pt,
@@ -27,12 +23,12 @@
  display=slides, % slidesnotes, notes, slides
 % nohandoutpagebreaks,
 % pauseslide,
-style=tulip,
-% nopagebreaks,
+style=tuliplab,
+% nopagebreaks,clock
 % hlentries=true,
 % hlsections = true,
 pauseslide,
-fleqn,leqno,clock]{powerdot}
+fleqn,leqno]{powerdot}
 
 \hypersetup{pdfpagemode=FullScreen}
 % \usepackage[toc,highlight,blackslide,slidesonly,sounds,HA]{HA-prosper}
@@ -59,6 +55,7 @@ fleqn,leqno,clock]{powerdot}
 \usepackage{etex}
 \usepackage{breqn}
 \usepackage{multirow}
+\usepackage{gitinfo2}
 
 
 \usepackage{listings}
@@ -77,17 +74,27 @@ basicstyle=\footnotesize\ttfamily}
 \usepackage{fouriernc}
 \usepackage{hyperref}
 
-\title{TULIP Lab Powerdot Example}
-\author{Gang Li  
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% title
+% TODO: Customize to your Own Title, Name, Address
+%
+\title{Presentation Title}
+\author{
+Gang Li
 \\
 Deakin University 
 % \href{mailto:gangli@acm.org}{gangli@acm.org}
+% \and % more authors
 }
+\date{\gitCommitterDate}
 
+
+% Customize the setting of slides
 \pdsetup{
 % theslide=\arabic{slide}~/~\pageref*{lastslide},
 % theslide=\arabic{slide},
-rf=\href{http://www.tulip.org.au}{\copyright \emph{TULIP Lab} (G. Li)},
+rf=\href{http://www.tulip.org.au}
+{\copyright \emph{TULIP Lab} (\textsl{\gitCommitterName}\ \gitVtagn-\gitBranch)},
 cf=\hyperlink{blankslide}{Powerdot Example},
 trans=Fade,
 list={labelsep=1em,leftmargin=*,itemsep=0pt,topsep=5pt,parsep=0pt},
@@ -399,6 +406,34 @@ rfrprop=\usevalue{lfrprop}
 \begin{slide}[toc=,bm={LaTeX, i*i=-1}]{\color{red}\LaTeX, $i^2=-1$}
 My slide contents.
 \end{slide}
+
+%%==========================================================================================
+% TODO: Contact Page
+\begin{wideslide}[toc=,bm=]{Contact Information}
+\centering
+\vspace{\stretch{1}}
+\twocolumn[
+lcolwidth=0.35\linewidth,
+rcolwidth=0.65\linewidth
+]
+{
+% \centerline{\includegraphics[scale=.2]{tulip-logo.eps}}
+}
+{
+\vspace{\stretch{1}}
+Associate Professor \emph{Gang Li}\\
+School of Information Technology\\
+Deakin University, Geelong, Australia
+\begin{description}
+ \item[Email] \href{mailto:gangli@acm.org}
+ {\textsc{\footnotesize{gangli@acm.org}}}
+ 
+ \item[Lab] \href{http://www.tulip.org.au}
+ {\textsc{\footnotesize{Team for Universal Learning and Intelligent Processing}}} 
+\end{description}
+} 
+\vspace{\stretch{1}}
+\end{wideslide}
 
 
 
