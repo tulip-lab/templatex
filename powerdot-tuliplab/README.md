@@ -32,6 +32,7 @@ Files:
 4. pstricks-tulip.tex	PSTricks sample File
 
 5. logos/tulip		Folder for top left picture,
+
 you can use your favoriate file to replace logos/tulip.eps, logos/tulip-wordmark.eps
 four options provided for top left picture, 
 two banner options provided.
@@ -43,6 +44,9 @@ For installation:
 1. Copy files powerdot-tulip.tex, powerdot-tulip.sty and logos folders to 
 your home directory under ~/texmf/tex/latex/powerdot-tulip; for Mac OS X, 
 please put it under ~/Library/texmf/tex/latex/powerdot-tulip.
+
+
+`/usr/local/texlive/texmf-local/tex/latex`
 
 2. Refresh TexLive by typing the following command:
 
