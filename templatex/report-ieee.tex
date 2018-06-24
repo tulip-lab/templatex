@@ -6,17 +6,13 @@
 \newcount\DraftStatus  % 0 suppresses notes to selves in text
 \DraftStatus=1   % TODO: set to 0 for final version
 %=================================================================
-
-%=================================================================
-\usepackage{comment}
-%=================================================================
-%
-\includecomment{JournalOnly}  
-\includecomment{ConferenceOnly}  
-\includecomment{NonSpringer}
-%
-%=================================================================
 \input{preamble}
+
+\usepackage{comment}
+\includecomment{JournalA}  
+\excludecomment{JournalB}
+%
+%=================================================================
 
 
 %=================================================================
@@ -24,17 +20,20 @@
 \begin{document}
 %
 %=================================================================
+% Preamble which will need to be changed for submission
 %
 \title[A Short Running Title]{Title of This Paper}%
 
 \author{Author 1}
-\address[A.~1]{School of Computer Science,\\ 
-Xi'an Shiyou University, Shaanxi 710065, China}%
-\email[A.~1]{xxx@tulip.academy}
+\address[A.~1]{School of Information Technology \\
+Deakin University, 221 Burwood Highway \\
+Vic 3125, Australia}%
+\email[A.~1]{xxx@deakin.edu.au}
 
 \author{Gang Li}
 \address[A.~2]{School of Information Technology \\
-Deakin University, Geelong, Australia}%
+Deakin University, 221 Burwood Highway \\
+VIC 3125, Australia}%
 \email[A.~2]{gang.li@deakin.edu.au}
 
 \author{Author 3}
@@ -62,7 +61,8 @@ The abstract will be put here, ....
 
 % ----------------------------------------------------------------
 \newpage
-\bibliographystyle{plain}
+%\bibliographystyle{plain}
+\bibliographystyle{newapa}
 \bibliography{tulip}
 %=================================================================
 

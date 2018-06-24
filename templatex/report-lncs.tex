@@ -1,0 +1,75 @@
+\documentclass[runningheads]{llncs}
+\synctex=1
+
+%=================================================================
+% 
+\newcount\DraftStatus  % 0 suppresses notes to selves in text
+\DraftStatus=0   % TODO: set to 0 for final version
+%=================================================================
+
+%=================================================================
+\usepackage{comment}
+%=================================================================
+%
+\excludecomment{JournalOnly}  
+\includecomment{ConferenceOnly}  
+\excludecomment{NonSpringer}
+%
+%=================================================================
+\input{preamble}
+%
+%=================================================================
+
+
+%=================================================================
+%
+\begin{document}
+%
+%=================================================================
+% Preamble which will need to be changed for submission
+%
+\title{TULIP Lab Springer Template: Full paper title}
+%
+%\titlerunning{TULIP Lab Springer Template}
+% If the paper title is too long for the running head, you can set
+% an abbreviated paper title here
+%
+\author{XXX\inst{1}\orcidID{0000-0000-XXXX-0000}
+\and
+Gang Li\inst{1}\orcidID{0000-0003-1583-641X}\thanks{corresponding author}
+}
+%
+% First names are abbreviated in the running head.
+% If there are more than two authors, 'et al.' is used.
+\authorrunning{X. YY, G. Li et al.}
+
+\institute{
+Deakin University, Geelong, Australia
+\email{gang.li@deakin.edu.au}
+\and
+School of Computer Science, Xi'an Shiyou University, Shaanxi 710065, China
+\email{XXX@tulip.academy}}
+
+
+%
+\maketitle              % typeset the header of the contribution
+
+\begin{abstract}
+\blindtext
+\keywords{TERM 1 \and  TERM 2 \and TERM 3}
+\end{abstract}
+
+
+%=================================================================
+
+\input{mainbody}
+
+% ----------------------------------------------------------------
+\bibliographystyle{splncs04}
+\bibliography{tulip}
+%=================================================================
+
+%\listoftodos
+
+\end{document}
+
