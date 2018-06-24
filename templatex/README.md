@@ -24,7 +24,7 @@ We recommend the following packages for cross platform writing:
 
 1. Create one new repository in your `git` platform, initialized with all the files in this package.
 
-1. Open the `templatex.tex`, and update with your own information at the following places:
+1. Open the `preamble.tex`, and update with your own information at the following places:
 
     Line 32: 
 
@@ -51,8 +51,15 @@ We recommend the following packages for cross platform writing:
     }
     ```
 
+1. The following templates for conference or report are provided:
+    - `report.tex`: the complete report stem file;
+    - `report-htm.tex`: the complete report stem file for tourism and hospitality paper;
+    - `report-acm.tex`: the stem file for ACM conference proceedings;
+    - `report-ieee.tex`: the stem file for IEEE conference proceedings;
+    - `report-lncs.tex`: the stem file for Springer LNCS conference proceedings;
+
 1. Customize the file names:
-    - change `templatex.tex` into a paper file name
+    - change `report.tex` into a paper file name
     - change or replace `tulip.bib` with your research `bib` file.
 
 
