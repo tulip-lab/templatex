@@ -1,18 +1,48 @@
-\documentclass{amsart}
+\documentclass[sigconf]{acmart}
 \synctex=1
+
+
+% Copyright
+%\setcopyright{none}
+%\setcopyright{acmcopyright}
+%\setcopyright{acmlicensed}
+\setcopyright{rightsretained}
+%\setcopyright{usgov}
+%\setcopyright{usgovmixed}
+%\setcopyright{cagov}
+%\setcopyright{cagovmixed}
+
+
+% DOI
+\acmDOI{10.475/123_4}
+
+% ISBN
+\acmISBN{123-4567-24-567/08/06}
+
+%Conference
+%\acmConference[WOODSTOCK'97]{ACM Woodstock conference}{July 1997}{El
+%  Paso, Texas USA}
+%\acmYear{1997}
+\copyrightyear{2016}
+
+
 
 %=================================================================
 % 
 \newcount\DraftStatus  % 0 suppresses notes to selves in text
 \DraftStatus=1   % TODO: set to 0 for final version
 %=================================================================
-\input{preamble}
 
+%=================================================================
 \usepackage{comment}
-\includecomment{JournalA}  
-\excludecomment{JournalB}
+%=================================================================
+%
+\includecomment{JournalOnly}  
+\includecomment{ConferenceOnly}  
+\excludecomment{NonSpringer}
 %
 %=================================================================
+\input{preamble}
 
 
 %=================================================================
@@ -22,51 +52,54 @@
 %=================================================================
 % Preamble which will need to be changed for submission
 %
-\title[A Short Running Title]{Title of This Paper}%
+\title{Title of This Paper}%
+\titlenote{Produces the permission block, and
+  copyright information}
+\subtitle{What is my Subtitle?}
+\subtitlenote{The full version of the author's guide is available as
+  \texttt{acmart.pdf} document}
 
-\author{Author 1}
-\address[A.~1]{School of Information Technology \\
-Deakin University, 221 Burwood Highway \\
-Vic 3125, Australia}%
-\email[A.~1]{xxx@deakin.edu.au}
+
+\author{Ben Trovato}
+\authornote{Dr.~Trovato insisted his name be first.}
+\orcid{1234-5678-9012}
+\affiliation{%
+  \institution{Institute for Clarity in Documentation}
+  \streetaddress{P.O. Box 1212}
+  \city{Dublin}
+  \state{Ohio}
+  \postcode{43017-6221}
+}
+\email{trovato@corporation.com}
 
 \author{Gang Li}
-\address[A.~2]{School of Information Technology \\
-Deakin University, 221 Burwood Highway \\
-VIC 3125, Australia}%
-\email[A.~2]{gang.li@deakin.edu.au}
+\authornote{Corresponding Author}
+\affiliation{%
+  \institution{Deakin University, Geelong, Australia}
+  \city{Geelong}
+  \country{Australia}}
+\email{gang.li@deakin.edu.au}
 
-\author{Author 3}
-\address[A.~3]{School of Information Technology \\
-Deakin University, 221 Burwood Highway \\
-Vic 3125, Australia}%
-\email[A.~3]{xxx@deakin.edu.au}
+% The default list of authors is too long for headers.
+\renewcommand{\shortauthors}{G. Li et al.}
 
-%\thanks{Thanks to \ldots}%
-\subjclass{Artificial Intelligence}%
-\keywords{Machine Learning, Data Mining, ...}%
-\date{\gitAuthorDate}%
 
 \begin{abstract}
 The abstract will be put here, ....
 \end{abstract}
 
-\maketitle
-\tableofcontents
+\keywords{ACM proceedings, \LaTeX, text tagging}
 
-\newpage
+\maketitle
+
 %=================================================================
 
 \input{mainbody}
 
 % ----------------------------------------------------------------
-\newpage
-%\bibliographystyle{plain}
-\bibliographystyle{newapa}
+\bibliographystyle{ACM-Reference-Format}
 \bibliography{tulip}
 %=================================================================
-
-\listoftodos
 
 \end{document}
 
