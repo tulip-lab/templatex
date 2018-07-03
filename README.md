@@ -11,7 +11,7 @@ Prepared by and for
 
 ---
 
-* `powerdot-tuliplab` is `LaTeX` `powerdot` style and saample files for Presentation in TULIP Lab
+* `powerdot-tuliplab` is `LaTeX` `powerdot` style and sample files for Presentation in TULIP Lab
 * `pptx` contains the templates for `Microsoft Powerpoint`
 * `templatex` is `LaTeX` Template for Paper Writing
 * `thesistemplate` is `LaTeX` Tempalte for Thesis Writing
