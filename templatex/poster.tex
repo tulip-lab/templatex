@@ -22,9 +22,9 @@
 %%
 
 
-
 \documentclass{tikzposter} %Options for format can be included here
 
+\usepackage{todonotes}
 
 \usepackage[tikz]{bclogo}
 \usepackage{lipsum}
@@ -56,7 +56,7 @@
 \title{Group Outlying Aspects Mining}
 \author{Shaoni Wang$^1$, Gang Li$^2$}
 \institute{$^1$ Xi'an Shiyou University, China \\
-	$^2$ Deakin University, Australia  
+	$^2$ Deakin University, Australia
 }
 %\titlegraphic{logos/tulip-logo.eps}
 
@@ -137,7 +137,7 @@
     \item
     %\emph{Group Outlying Aspects Mining}
     It aims to \emph{identify a subset of aspects (or subspace)
-    which makes the query group, rather than the single object, 
+    which makes the query group, rather than the single object,
     obviously different}.
     What we are interested in the task of \emph{group outlying aspects mining}
     is to explain which aspects make the query group distinctive
@@ -207,7 +207,7 @@
   	Let $f_1$, $f_2$, $f_3$ represent three features of $G_q$.
     We count the frequency of each value for one feature.
     Then use the histogram to represent each feature.
-    Similarly, 
+    Similarly,
     we can extract other features for each group.
 
 %    \item
@@ -245,7 +245,7 @@
     we first calculate the \emph{earth mover distance} (EMD) of one feature among different groups.
     The earth mover distance reflects the minimum mean distance
     between groups on one feature.
-    So, 
+    So,
     we utilize the EMD to measure the difference between groups of each feature.
 \end{description}
 }
@@ -367,7 +367,7 @@ and each player in the team has $12$ features.
 \vspace{.2cm}
 \begin{description}
 \item
-\texttt{New Orleans Pelicans} has more players with 
+\texttt{New Orleans Pelicans} has more players with
 lower \{free throw percentage\}, \{free throws attempted\}.
 \end{description}
 }
@@ -407,6 +407,7 @@ lower \{free throw percentage\}, \{free throws attempted\}.
 % Bottomblock
 %%%%%%%%%% -------------------------------------------------------------------- %%%%%%%%%%
 \colorlet{notebgcolor}{blue!20}
+\colorlet{notefrcolor}{blue!20}
 \note[targetoffsetx=8cm, targetoffsety=-4cm, angle=30, rotate=15,
 radius=2cm, width=.26\textwidth]{
 Acknowledgement
@@ -437,8 +438,8 @@ Acknowledgement
 
 %\colorlet{noteframecolor}{blue!20}
 \colorlet{notebgcolor}{blue!20}
-
-\note[targetoffsetx=-13cm, targetoffsety=-9.9cm,rotate=0,angle=180,radius=8cm,width=.96\textwidth,innersep=.4cm]
+\colorlet{notefrcolor}{blue!20}
+\note[targetoffsetx=-13cm, targetoffsety=-12cm,rotate=0,angle=180,radius=8cm,width=.96\textwidth,innersep=.4cm]
 {
 \begin{minipage}{0.3\linewidth}
 \centering
