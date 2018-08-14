@@ -282,16 +282,7 @@
     When the dimensionality of features is high,
     we adopt a stage-wise candidate subspace construction strategy to
     alleviate the exponential explosion.
-%    by pre-filtering highly scored subspaces
-%    in each stage of candidate subspace construction.
-
-%    However,
-%    when the dimensionality of features are high,
-%    the time complexity will be dramatically increased.
-%    Here we adopt a stage-wise candidate subspace construction strategy to
-%    alleviate the exponential explosion by pre-filtering highly scored subspaces
-%    in each stage of candidate subspace construction.
-  \end{description}
+\end{description}
 }
 %%%%%%%%%% -------------------------------------------------------------------- %%%%%%%%%%
 % Second column - first block
@@ -344,9 +335,7 @@ and each player in the team has $12$ features.
     New Orleans Pelicans    & \{FT\%\}, \{FTA\}         & \{FTA, Stl\}, \{FTA, To\}          \\
     \bottomrule
 \end{tabular}
-            %This is because the outlying aspects mining method can't obtain the features
-            %  of a group and the scoring function is based on point to point metric.
-            %  Therefore, it is not suitable for group outlying aspects mining.
+           
 \begin{minipage}{0.5\linewidth}
     \centering
     \begin{tikzfigure}
@@ -389,16 +378,6 @@ lower \{free throw percentage\}, \{free throws attempted\}.
 
   \item[Strategies]
   Utilize the pruning strategies to \\ reduce time complexity.
-%    Most of existing works on outlying aspects mining pay attention to identifying
-%  the outlying aspects of individual object rather than a group.
-%  It lacks of methods that can effectively mine the outlying aspects of a particular group.
-%  To fill this research gap,
-%  this paper extends the traditional problem to the group level,
-%  and formalizes the concept of group outlying aspect mining.
-%  The \emph{Earth Move Distance} based on algorithm GOAM is proposed in
-%  to automatically identify the outlying aspects of the query group.
-%  The experiments demonstrated the effectiveness of the proposed
-%  methods in mining these patterns.
 \end{description}
 }
 %%%%%%%%%% -------------------------------------------------------------------- %%%%%%%%%%
