@@ -18,8 +18,11 @@ We recommend the following packages for cross platform writing:
 * [SmartGit](https://www.syntevo.com/smartgit/)
 * [LaTeXDiff](https://www.ctan.org/pkg/latexdiff?lang=en) and [Git-LaTeXDiff](https://gitlab.com/git-latexdiff/git-latexdiff)
 * [Bitbucket](http://bitbucket.org) or [GitHub](https://github.com/)
-* [e-TEX](https://ctan.org/pkg/etex?lang=en)
-* [Tikzposter](https://ctan.org/pkg/tikzposter?lang=en)
+* CTeX Packages
+  1. [e-TEX](https://ctan.org/pkg/etex?lang=en)
+  2. [tikz poster](https://ctan.org/pkg/tikzposter?lang=en)
+  3. [todonotes](https://ctan.org/pkg/todonotes)
+  4. [powerdot-tuliplab](https://ctan.org/pkg/powerdot-tuliplab)
 
 ---
 ## II. Setup the Repository
