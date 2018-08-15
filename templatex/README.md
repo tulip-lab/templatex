@@ -57,6 +57,9 @@ We recommend the following packages for cross platform writing:
     - `report-acm.tex`: the stem file for ACM conference proceedings;
     - `report-ieee.tex`: the stem file for IEEE conference proceedings;
     - `report-lncs.tex`: the stem file for Springer LNCS conference proceedings;
+    - `slides.tex`: the complete presentation file;
+    - `poster.tex`: the complete poster file.
+    
 
 1. Customize the file names:
     - change `report.tex` into a paper file name
