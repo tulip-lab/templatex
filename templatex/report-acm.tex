@@ -1,0 +1,105 @@
+\documentclass[sigconf]{acmart}
+\synctex=1
+
+
+% Copyright
+%\setcopyright{none}
+%\setcopyright{acmcopyright}
+%\setcopyright{acmlicensed}
+\setcopyright{rightsretained}
+%\setcopyright{usgov}
+%\setcopyright{usgovmixed}
+%\setcopyright{cagov}
+%\setcopyright{cagovmixed}
+
+
+% DOI
+\acmDOI{10.475/123_4}
+
+% ISBN
+\acmISBN{123-4567-24-567/08/06}
+
+%Conference
+%\acmConference[WOODSTOCK'97]{ACM Woodstock conference}{July 1997}{El
+%  Paso, Texas USA}
+%\acmYear{1997}
+\copyrightyear{2016}
+
+
+
+%=================================================================
+% 
+\newcount\DraftStatus  % 0 suppresses notes to selves in text
+\DraftStatus=1   % TODO: set to 0 for final version
+%=================================================================
+
+%=================================================================
+\usepackage{comment}
+%=================================================================
+%
+\includecomment{JournalOnly}  
+\includecomment{ConferenceOnly}  
+\excludecomment{NonSpringer}
+%
+%=================================================================
+\input{preamble}
+
+
+%=================================================================
+%
+\begin{document}
+%
+%=================================================================
+% Preamble which will need to be changed for submission
+%
+\title{Title of This Paper}%
+\titlenote{Produces the permission block, and
+  copyright information}
+\subtitle{What is my Subtitle?}
+\subtitlenote{The full version of the author's guide is available as
+  \texttt{acmart.pdf} document}
+
+
+\author{Ben Trovato}
+\authornote{Dr.~Trovato insisted his name be first.}
+\orcid{1234-5678-9012}
+\affiliation{%
+  \institution{Institute for Clarity in Documentation}
+  \streetaddress{P.O. Box 1212}
+  \city{Dublin}
+  \state{Ohio}
+  \postcode{43017-6221}
+}
+\email{trovato@corporation.com}
+
+\author{Gang Li}
+\authornote{Corresponding Author}
+\affiliation{%
+  \institution{Deakin University, Geelong, Australia}
+  \city{Geelong}
+  \country{Australia}}
+\email{gang.li@deakin.edu.au}
+
+% The default list of authors is too long for headers.
+\renewcommand{\shortauthors}{G. Li et al.}
+
+
+\begin{abstract}
+The abstract will be put here, ....
+\end{abstract}
+
+\keywords{ACM proceedings, \LaTeX, text tagging}
+
+\maketitle
+
+%=================================================================
+
+\input{mainbody}
+
+% ----------------------------------------------------------------
+\bibliographystyle{ACM-Reference-Format}
+\bibliography{tulip}
+%=================================================================
+
+\end{document}
+

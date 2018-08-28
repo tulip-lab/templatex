@@ -1,15 +1,20 @@
 %=================================================================
 \section{Introduction}\label{sec-intro}
 
-Test citation~\cite{BJL11J01}, and~\citep{BJL11J01} or~\citet{BJL11J01}.
-\gangli{This is comment from Gang.}
-\qwu{Response from QW}
+
+Test citation~\cite{BJL11J01}. 
+\begin{JournalOnly}
+and~\citep{BJL11J01} or~\citet{BJL11J01}.
+\end{JournalOnly}
+
+
 This is for~\cref{tbl:overall-experiments}, 
 \todo[fancyline]{Testing.}
 and this is for~\cref{sec-conclusions}.
 \todo[noline]{A note with no line back to the text.}%
+\gangli{This is comment from Gang.}
+\qwu{Response from QW}
 
-\begin{JournalA}
 Number:
 \num{123}.
 \numlist{10;30;50;70},
@@ -20,9 +25,8 @@ and
 
 \missingfigure[figcolor=white]{Testing figcolor}
 
-\end{JournalA}
 
-\begin{JournalB}
+\begin{ConferenceOnly}
 We have \SI{10}{\hertz},
 \si{\kilogram\metre\per\second},
 the range: \SIrange{10}{100}{\hertz}.
@@ -30,7 +34,7 @@ $\nicefrac[]{1}{2}$.
 
 \missingfigure{Make a sketch of the structure of a trebuchet.}
 
-\end{JournalB}
+\end{ConferenceOnly}
 
 
 For~\cref{eq:test},
@@ -46,36 +50,21 @@ a = b \times \sqrt{ab}
 
 \blindtext
 
-\gliMarker
+\gliMarker  %TODO: GLi Here
 
 
 \section{Method} \label{sec-method}
 
-
-% generates a paragraph of dummy lorem ipsum text
- 
-%\blindtext 
- 
- 
-% generates multiple paragraphs of dummy lorem ipsum text
- 
-%\Blindtext 
- 
- 
-% generates whole document with dummy lorem ipsum text
- 
-%\Blinddocument 
 \blindtext
-
 \blindlist{itemize}[3]
 \blinditemize
 \blindenumerate
 
 \blindmathtrue
-%\blindmathfalse
+\blindmathfalse
 \blinddescription
 
-\qwuMarker
+\qwuMarker %TODO: QWu Here
 
 \section{Experiment and Analysis} \label{sec-experiment}
 

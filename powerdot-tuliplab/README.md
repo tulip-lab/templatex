@@ -2,9 +2,13 @@
 `Powerdot` [TULIP Lab](http://www.tulip.org.au) Style Package 
 ==================
 
+* Licenses: [The LATEX Project Public Li­cense](https://www.ctan.org/license/lppl1.3)
+* CTAN: https://www.ctan.org/pkg/powerdot-tuliplab
+
 `powerdot-tuliplab` is the latex package used in TULIP Lab for presentation drafting. It comes with several sample `tex` files so that you can quickly start working with it. 
 
 If you are creating a presentation using this package, you are recommended to use `git` to host the repository, and use `git-flow` to manage the collaborative writing platform for academic presentation authoring.
+
 
 
 ---
@@ -37,6 +41,8 @@ You can use replace `logos/tulip.eps`, `logos/tulip-wordmark.eps` with your favo
 ## III. Package Installation
 ---
 
+Typically this package should be installed automatically with a full `LaTeX` package, or you can install directly from `ctan.org`. If this doesn't work, try the following steps.
+
 1. Copy files the whole folder `powerdot-tuliplab` with file `powerdot-tuliplab.sty` and folder `logos` folders to your home directory under `~/texmf/tex/latex/powerdot-tuliplab`; for `macOS`, please put it under `/usr/local/texlive/texmf-local/tex/latex`
 
 2. Refresh `TexLive` by typing the following command:
@@ -48,9 +54,7 @@ sudo texhash
 
 For `Mktex` on `Windows`, you can run `mktexlsr`
   
-
 3. For compiling, you should use the chain operators `LaTeX -> DVI`, and then `DVI -> PS`, finally `PS -> PDF`.
-
 
 
 ---

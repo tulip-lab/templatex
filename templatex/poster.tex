@@ -1,0 +1,442 @@
+%%
+%% This is file `tikzposter-template.tex',
+%% generated with the docstrip utility.
+%%
+%% The original source files were:
+%%
+%% tikzposter.dtx  (with options: `tikzposter-template.tex')
+%%
+%% This is a generated file.
+%%
+%% Copyright (C) 2014 by Pascal Richter, Elena Botoeva, Richard Barnard, and Dirk Surmann
+%%
+%% This file may be distributed and/or modified under the
+%% conditions of the LaTeX Project Public License, either
+%% version 2.0 of this license or (at your option) any later
+%% version. The latest version of this license is in:
+%%
+%% http://www.latex-project.org/lppl.txt
+%%
+%% and version 2.0 or later is part of all distributions of
+%% LaTeX version 2013/12/01 or later.
+%%
+
+
+\documentclass{tikzposter} %Options for format can be included here
+
+\usepackage{todonotes}
+
+\usepackage[tikz]{bclogo}
+\usepackage{lipsum}
+\usepackage{amsmath}
+
+\usepackage{booktabs}
+\usepackage{longtable}
+\usepackage[absolute]{textpos}
+\usepackage[it]{subfigure}
+\usepackage{graphicx}
+\usepackage{cmbright}
+%\usepackage[default]{cantarell}
+%\usepackage{avant}
+%\usepackage[math]{iwona}
+\usepackage[math]{kurier}
+\usepackage[T1]{fontenc}
+
+
+%% add your packages here
+\usepackage{hyperref}
+% for random text
+\usepackage{lipsum}
+\usepackage[english]{babel}
+\usepackage[pangram]{blindtext}
+
+\colorlet{backgroundcolor}{blue!10}
+
+ % Title, Author, Institute
+\title{Group Outlying Aspects Mining}
+\author{Shaoni Wang$^1$, Gang Li$^2$}
+\institute{$^1$ Xi'an Shiyou University, China \\
+	$^2$ Deakin University, Australia
+}
+%\titlegraphic{logos/tulip-logo.eps}
+
+%Choose Layout
+\usetheme{Wave}
+
+%\definebackgroundstyle{samplebackgroundstyle}{
+%\draw[inner sep=0pt, line width=0pt, color=red, fill=backgroundcolor!30!black]
+%(bottomleft) rectangle (topright);
+%}
+%
+%\colorlet{backgroundcolor}{blue!10}
+
+\begin{document}
+
+
+\colorlet{blocktitlebgcolor}{blue!23}
+
+ % Title block with title, author, logo, etc.
+\maketitle
+
+\begin{columns}
+ % FIRST column
+\column{0.5}% Width set relative to text width
+
+%%%%%%%%%% -------------------------------------------------------------------- %%%%%%%%%%
+ %\block{Main Objectives}{
+%  	      	\begin{enumerate}
+%  	      	\item Formalise research problem by extending \emph{outlying aspects mining}
+%  	      	\item Proposed \emph{GOAM} algorithm is to solve research problem
+%  	      	\item Utilise pruning strategies to reduce time complexity
+%  	      	\end{enumerate}
+%%  	      \end{minipage}
+%}
+%%%%%%%%%% -------------------------------------------------------------------- %%%%%%%%%%
+
+
+%%%%%%%%%% -------------------------------------------------------------------- %%%%%%%%%%
+\block{Introduction}{
+    Many real world applications call for one important function
+    of identifying the set of features
+    on which the interested object is most distinguished from others.
+    Usually,
+    this object is termed as the query object,
+    and the set of features are referred to as the \emph{subspaces} or \emph{aspects}.
+    Accordingly,
+    this research problem is referred to as
+    \emph{outlying aspects mining},
+    which is different from \emph{outlier detection}.
+  	
+  	\begin{description}
+  	\item[Outlying Aspects Mining] aims to identify a subspace
+    which makes the query object most outlying,
+    rather than verifying whether it is an outlier or not.
+    The task of \emph{Outlying Aspects Mining}
+    is to explain which aspects make the query object most different.
+  	
+  	\item[Outlier Detection] aims to identify all possible outliers in the dataset,
+    without explaining why or how they are different.
+    Hence,
+    the outlying aspects mining is also referred to
+    \emph{outlier interpretation}
+    or \emph{object explanation}.
+  	\end{description}
+
+  	In this paper,
+    we extend the task of \emph{outlying aspects mining} to the \emph{group} level,
+    formalize the research problem of \emph{group outlying aspects mining},
+    and propose a novel algorithm named GOAM to solve the
+    \emph{group outlying aspects mining} problem.
+}
+%%%%%%%%%% -------------------------------------------------------------------- %%%%%%%%%%
+
+
+%%%%%%%%%% -------------------------------------------------------------------- %%%%%%%%%%
+\block{Group Outlying Aspects Mining}{
+\begin{itemize}
+    \item
+    %\emph{Group Outlying Aspects Mining}
+    It aims to \emph{identify a subset of aspects (or subspace)
+    which makes the query group, rather than the single object,
+    obviously different}.
+    What we are interested in the task of \emph{group outlying aspects mining}
+    is to explain which aspects make the query group distinctive
+    different from the other groups.
+
+    \item
+    \emph{Group Outlying Aspects Mining},
+    \emph{Outlying Aspects Mining} and
+    \emph{Outlier Detection} are different with each other.
+\end{itemize}
+
+\begin{center}
+    \begin{minipage}{0.3\linewidth}
+    \centering
+    \begin{tikzfigure}
+    \missingfigure[figcolor=white]{Testing figcolor}
+    {\small{Group Outlying Aspects Mining}}
+    \end{tikzfigure}%
+    \end{minipage}
+    \hfill
+    \begin{minipage}{0.3\linewidth}
+    \centering
+    \begin{tikzfigure}
+    \missingfigure[figcolor=white]{Testing figcolor}
+    {\small{Outlying Aspects Mining}}
+    \end{tikzfigure}%
+    \end{minipage}
+    \hfill
+    \begin{minipage}{0.3\linewidth}
+    \centering
+    \begin{tikzfigure}
+    \missingfigure[figcolor=white]{Testing figcolor}
+    {\small{Outlier Detection}}
+    \end{tikzfigure}%
+    \end{minipage}
+\end{center}
+}
+%%%%%%%%%% -------------------------------------------------------------------- %%%%%%%%%%
+
+
+%%%%%%%%%% -------------------------------------------------------------------- %%%%%%%%%%
+
+%\note{Note with default behavior}
+
+%\note[targetoffsetx=12cm, targetoffsety=-1cm, angle=20, rotate=25]
+%{Note \\ offset and rotated}
+
+ % First column - second block
+
+
+%%%%%%%%%% -------------------------------------------------------------------- %%%%%%%%%%
+\block{GOAM Algorithm}{
+  	We propose the \emph{GOAM} algorithm to solve the research problem of
+    \emph{Group Outlying Aspects Mining}.
+  	The \emph{GOAM} algorithm includes three major steps.
+%    1) Group Feature Extraction,
+%    2) Outlying Degree Scoring, and
+%    3) Outlying Aspects Identification.
+  	
+\begin{tikzfigure}%[Overall architecture of \emph{GOAM} algorithm]
+%  \includegraphics[width=0.8\linewidth]{figures//framework.pdf}
+    \missingfigure[figcolor=white]{Testing figcolor}
+\end{tikzfigure}
+		
+\begin{description}
+  	\item[Group Feature Extraction]
+  	Let $f_1$, $f_2$, $f_3$ represent three features of $G_q$.
+    We count the frequency of each value for one feature.
+    Then use the histogram to represent each feature.
+    Similarly,
+    we can extract other features for each group.
+
+%    \item
+%    The histogram of $G_q$ on three features are as follows.
+\end{description}
+
+\begin{center}
+    \begin{minipage}{0.3\linewidth}
+    \centering
+    \begin{tikzfigure}
+    \missingfigure[figcolor=white]{Testing figcolor}
+    {\small{Histogram of $G_q$ on $f_1$}}
+    \end{tikzfigure}%
+    \end{minipage}
+    \hfill
+    \begin{minipage}{0.3\linewidth}
+    \centering
+    \begin{tikzfigure}
+    \missingfigure[figcolor=white]{Testing figcolor}
+    {\small{Histogram of $G_q$ on $f_2$}}
+    \end{tikzfigure}%
+    \end{minipage}
+    \hfill
+    \begin{minipage}{0.3\linewidth}
+    \centering
+    \begin{tikzfigure}
+    \missingfigure[figcolor=white]{Testing figcolor}
+    {\small{Histogram of $G_q$ on $f_3$}}
+    \end{tikzfigure}%
+    \end{minipage}
+\end{center}
+\begin{description}
+\item[Outlying Degree Scoring]
+    In this step,
+    we first calculate the \emph{earth mover distance} (EMD) of one feature among different groups.
+    The earth mover distance reflects the minimum mean distance
+    between groups on one feature.
+    So,
+    we utilize the EMD to measure the difference between groups of each feature.
+\end{description}
+}
+%%%%%%%%%% -------------------------------------------------------------------- %%%%%%%%%%
+
+
+% SECOND column
+\column{0.5}
+ %Second column with first block's top edge aligned with with previous column's top.
+
+%%%%%%%%%% -------------------------------------------------------------------- %%%%%%%%%%
+\block{GOAM Algorithm}{
+\begin{description}
+    \item
+    Second,
+    based on the \emph{earth move distance},
+    we calculate the outlying degree.
+\end{description}
+
+\begin{tikzfigure}%[Overall architecture of \emph{GOAM} algorithm]
+    \missingfigure[figcolor=white]{Testing figcolor}
+\end{tikzfigure}
+  where $G_q$ is the query group,
+  $n$ is the number of compare groups,
+  and $h_{k_s}$ is the histogram representation of $G_k$ in the subspace $s$.
+
+\begin{description}
+  	\item[Outlying Aspects Identification]
+    In this step,
+    based on the value of outlying degree
+    we will identify the group outlying aspects.
+    If a feature's outlying degree is greater than a threshold,
+    the more likely the feature is group outlying aspect.
+    When the dimensionality of features is high,
+    we adopt a stage-wise candidate subspace construction strategy to
+    alleviate the exponential explosion.
+\end{description}
+}
+%%%%%%%%%% -------------------------------------------------------------------- %%%%%%%%%%
+% Second column - first block
+
+
+%%%%%%%%%% -------------------------------------------------------------------- %%%%%%%%%%
+\block[titleleft]{Experiment}
+{
+\begin{description}
+  	\item[Synthetic Dataset] contains $10$ groups and $8$ features.
+    Each group consists of $10$ members,
+    and each member has $8$ features.
+\end{description}
+\vspace{.5cm}
+\begin{tabular}{ c | c | c | c }
+    \toprule
+    Method     &  Truth Outlying Aspects    & Identified Aspects & Accuracy      \\
+    \midrule
+    GOAM       &  $\{F_1\}$, $\{F_2F_4\}$   &  $\{F_1\}$, $\{F_2F_4\}$    & 100\%    \\
+
+     Arithmetic Mean based OAM &  $\{F_1\}$, $\{F_2F_4\}$   &  $\{F_4\}$, $\{F_2\}$    &  0\% \\
+
+     Median based OAM &  $\{F_1\}$, $\{F_2F_4\}$   &  $\{F_2\}$, $\{F_4\}$    &           0\% \\
+     \bottomrule
+\end{tabular}
+\vspace{.2cm}
+\begin{description}
+    \item
+    It can be observed that the GOAM method can identify the trivial outlying features
+    and non-trivial outlying subspaces correctly and is obvious from the table
+    that the accuracy of GOAM is the best, which is ($100\%$).
+\end{description}
+
+\begin{description}
+\item[NBA Dataset] was collected from Yahoo Sports
+website (\url{http://sports.yahoo.com.cn/nba}).
+The data include all teams from the six divisions,
+and each player in the team has $12$ features.
+\end{description}
+\vspace{.5cm}
+\begin{tabular}{ c | c | c }
+    \toprule
+    Teams                   & Trivial Outlying Aspects  & NonTrivial Outlying Aspects    \\
+    \toprule
+    Cleveland Cavaliers     & \{3FA\}                   & \{FGA, FT\%\}, \{FGA, FG\%\} \\
+    Orlando Magic           & \{Stl\}                   & None                         \\
+    Milwaukee Bucks         & \{To\}, \{FTA\}           & \{FGA, FTA\}, \{3FA, FTA\}     \\
+%    Golden State Warriors   & \{FG\%\}                  & \{FT\%, Blk\}, \{FGA, 3PT\%, FTA\}\\
+%    Utah Jazz               & \{Blk\}                   & \{3FA, 3PT\%\}                    \\
+    New Orleans Pelicans    & \{FT\%\}, \{FTA\}         & \{FTA, Stl\}, \{FTA, To\}          \\
+    \bottomrule
+\end{tabular}
+           
+\begin{minipage}{0.5\linewidth}
+    \centering
+    \begin{tikzfigure}
+    \missingfigure[figcolor=white]{Testing figcolor}
+
+    {\small{New Orleans Pelicans on FT\%}}
+    \end{tikzfigure}%
+\end{minipage}
+\hfill
+\begin{minipage}{0.5\linewidth}
+    \centering
+    \begin{tikzfigure}
+    \missingfigure[figcolor=white]{Testing figcolor}
+
+    {\small{New Orleans Pelicans on FTA}}
+    \end{tikzfigure}%
+\end{minipage}
+\vspace{.2cm}
+\begin{description}
+\item
+\texttt{New Orleans Pelicans} has more players with
+lower \{free throw percentage\}, \{free throws attempted\}.
+\end{description}
+}
+%%%%%%%%%% -------------------------------------------------------------------- %%%%%%%%%%
+
+
+% Second column - second block
+%%%%%%%%%% -------------------------------------------------------------------- %%%%%%%%%%
+\block[titlewidthscale=1, bodywidthscale=1]
+{Conclusion}
+{
+\begin{description}
+  \item[Problem Definition]
+  Formalize the problem of Group Outlying Aspects Mining by extending outlying aspects mining.
+
+  \item[GOAM algorithm]
+  Propose GOAM algorithm to solve the \emph{Group}\\
+  \emph{Outlying Aspects Mining} problem.
+
+  \item[Strategies]
+  Utilize the pruning strategies to \\ reduce time complexity.
+\end{description}
+}
+%%%%%%%%%% -------------------------------------------------------------------- %%%%%%%%%%
+
+
+% Bottomblock
+%%%%%%%%%% -------------------------------------------------------------------- %%%%%%%%%%
+\colorlet{notebgcolor}{blue!20}
+\colorlet{notefrcolor}{blue!20}
+\note[targetoffsetx=8cm, targetoffsety=-4cm, angle=30, rotate=15,
+radius=2cm, width=.26\textwidth]{
+Acknowledgement
+\begin{itemize}
+    \item
+    International Cooperation Project (Y7Z0511101)
+    of IIE,
+    Chinese Academy of Sciences
+ \end{itemize}
+}
+
+%\note[targetoffsetx=8cm, targetoffsety=-10cm,rotate=0,angle=180,radius=8cm,width=.46\textwidth,innersep=.1cm]{
+%Acknowledgement
+%}
+
+%\block[titlewidthscale=0.9, bodywidthscale=0.9]
+%{Acknowledgement}{
+%}
+%%%%%%%%%% -------------------------------------------------------------------- %%%%%%%%%%
+
+\end{columns}
+
+
+%%%%%%%%%% -------------------------------------------------------------------- %%%%%%%%%%
+%[titleleft, titleoffsetx=2em, titleoffsety=1em, bodyoffsetx=2em,%
+%roundedcorners=10, linewidth=0mm, titlewidthscale=0.7,%
+%bodywidthscale=0.9, titlecenter]
+
+%\colorlet{noteframecolor}{blue!20}
+\colorlet{notebgcolor}{blue!20}
+\colorlet{notefrcolor}{blue!20}
+\note[targetoffsetx=-13cm, targetoffsety=-12cm,rotate=0,angle=180,radius=8cm,width=.96\textwidth,innersep=.4cm]
+{
+\begin{minipage}{0.3\linewidth}
+\centering
+\includegraphics[width=24cm]{logos/tulip-wordmark.eps}
+\end{minipage}
+\begin{minipage}{0.7\linewidth}
+{ \centering
+ The $11^{th}$ International Conference on Knowledge Science,
+  Engineering and Management (KSEM 2018),
+  17-19/08/2018, Changchun, China
+}
+\end{minipage}
+}
+%%%%%%%%%% -------------------------------------------------------------------- %%%%%%%%%%
+
+
+\end{document}
+
+\endinput
+%%
+%% End of file `tikzposter-template.tex'.

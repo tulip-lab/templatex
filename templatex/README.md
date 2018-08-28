@@ -12,11 +12,16 @@ You are expected to be familiar with `LaTeX`, if not, you need learn it from [Wi
 
 We recommend the following packages for cross platform writing:
 
-* [TeXLive!](https://tug.org/texlive/)
+* [TeXLive!](https://tug.org/texlive/) 
+* [Powerdot-tuliplab](https://www.ctan.org/pkg/powerdot-tuliplab)
 * [Visual Studio Code](https://code.visualstudio.com/): with extensions such as `LaTeX Workshop`, `Markdown All in One`, etc.
 * [SmartGit](https://www.syntevo.com/smartgit/)
 * [LaTeXDiff](https://www.ctan.org/pkg/latexdiff?lang=en) and [Git-LaTeXDiff](https://gitlab.com/git-latexdiff/git-latexdiff)
 * [Bitbucket](http://bitbucket.org) or [GitHub](https://github.com/)
+* CTeX Packages
+  1. [powerdot-tuliplab](https://ctan.org/pkg/powerdot-tuliplab)
+  2. [tikz poster](https://ctan.org/pkg/tikzposter?lang=en)
+  3. [e-TEX](https://ctan.org/pkg/etex?lang=en)
 
 ---
 ## II. Setup the Repository
@@ -24,7 +29,7 @@ We recommend the following packages for cross platform writing:
 
 1. Create one new repository in your `git` platform, initialized with all the files in this package.
 
-1. Open the `templatex.tex`, and update with your own information at the following places:
+2. Open the `preamble.tex`, and update with your own information at the following places:
 
     Line 32: 
 
@@ -35,7 +40,7 @@ We recommend the following packages for cross platform writing:
     by something  such as:
 
     ```latex
-    \newcommand{\hyxia}[1]{\draftnote{blue}{[Xia: #1]}}
+    \newcommand{\yourname}[1]{\draftnote{blue}{[You: #1]}}
     % other colors include blue, red, purple, cyan, darkgreen, etc.
     ```
 
@@ -51,12 +56,22 @@ We recommend the following packages for cross platform writing:
     }
     ```
 
-1. Customize the file names:
-    - change `templatex.tex` into a paper file name
+3. The following templates for conference or report are provided:
+    - `report.tex`: the complete report stem file;
+    - `report-htm.tex`: the complete report stem file for tourism and hospitality paper;
+    - `report-acm.tex`: the stem file for ACM conference proceedings;
+    - `report-ieee.tex`: the stem file for IEEE conference proceedings;
+    - `report-lncs.tex`: the stem file for Springer LNCS conference proceedings;
+    - `slides.tex`: one sample file for slides with notes;
+    - `poster.tex`: one sample poster. 
+    
+
+4. Customize the file names:
+    - change files such as `report.tex` into a proper paper file name
     - change or replace `tulip.bib` with your research `bib` file.
 
 
-1. Check out the repository to local drive, and set up the local environment for `gitinfo2` package:
+5. Check out the repository to local drive, and set up the local environment for `gitinfo2` package:
 
     - This package contains a `gitinfo` folder with three executive `bash` `shell` scripts:
         *  `post-checkout`
@@ -72,7 +87,7 @@ We recommend the following packages for cross platform writing:
 
     - Compile the main LaTeX file, and view the PDF.
 
-1. Happy LaTeXing!
+6. Happy LaTeXing!
 
 ## III. Rules for Collaborative LaTeXing
 ---

@@ -1,12 +1,10 @@
-\documentclass{amsart}
+\documentclass[conference]{IEEEtran}
 \synctex=1
 
 %=================================================================
 % 
 \newcount\DraftStatus  % 0 suppresses notes to selves in text
 \DraftStatus=1   % TODO: set to 0 for final version
-%=================================================================
-
 %=================================================================
 \usepackage{comment}
 %=================================================================
@@ -19,50 +17,56 @@
 \input{preamble}
 
 
+\def\BibTeX{{\rm B\kern-.05em{\sc i\kern-.025em b}\kern-.08em
+    T\kern-.1667em\lower.7ex\hbox{E}\kern-.125emX}}
+
 %=================================================================
 %
 \begin{document}
 %
 %=================================================================
+% Preamble which will need to be changed for submission
 %
-\title[A Short Running Title]{Title of This Paper}%
+\title{Title of This Paper*
+\thanks{Thanks for the funding XXX-XXXXX.}
+}
 
-\author{Author 1}
-\address[A.~1]{School of Computer Science,\\ 
-Xi'an Shiyou University, Shaanxi 710065, China}%
-\email[A.~1]{xxx@tulip.academy}
+\author{\IEEEauthorblockN{X. YY}
+\IEEEauthorblockA{\textit{School of Information Technology} \\
+\textit{Deakin University, Geelong, Australia}\\
+gang.li@deakin.edu.au}
+\and
+\IEEEauthorblockN{Gang Li}
+\IEEEauthorblockA{\textit{School of Information Technology} \\
+\textit{Deakin University, Geelong, Australia}\\
+gang.li@deakin.edu.au}
+\and
+\IEEEauthorblockN{3\textsuperscript{rd} Given Name Surname}
+\IEEEauthorblockA{\textit{dept. name of organization (of Aff.)} \\
+\textit{name of organization (of Aff.)}\\
+City, Country \\
+email address}
+}
 
-\author{Gang Li}
-\address[A.~2]{School of Information Technology \\
-Deakin University, Geelong, Australia}%
-\email[A.~2]{gang.li@deakin.edu.au}
-
-\author{Author 3}
-\address[A.~3]{School of Information Technology \\
-Deakin University, 221 Burwood Highway \\
-Vic 3125, Australia}%
-\email[A.~3]{xxx@deakin.edu.au}
-
-%\thanks{Thanks to \ldots}%
-\subjclass{Artificial Intelligence}%
-\keywords{Machine Learning, Data Mining, ...}%
-\date{\gitAuthorDate}%
+\maketitle
 
 \begin{abstract}
 The abstract will be put here, ....
 \end{abstract}
 
-\maketitle
-\tableofcontents
+\begin{IEEEkeywords}
+component, formatting, style, styling, insert
+\end{IEEEkeywords}
 
-\newpage
+
 %=================================================================
 
 \input{mainbody}
 
 % ----------------------------------------------------------------
 \newpage
-\bibliographystyle{plain}
+%\bibliographystyle{plain}
+\bibliographystyle{newapa}
 \bibliography{tulip}
 %=================================================================
 
