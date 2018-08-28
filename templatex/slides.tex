@@ -24,7 +24,7 @@
  style=tuliplab,  	% TULIP Lab style
  pauseslide,
  fleqn,leqno]{powerdot}
- 
+
 
 \usepackage{amssymb}
 \usepackage{amsmath}
@@ -49,9 +49,6 @@
 \usepackage{multirow}
 \usepackage{gitinfo2}
 \usepackage{xcolor}
-
-
-
 
 \usepackage{todonotes}
 % \usepackage{pst-rel-points}
@@ -159,6 +156,7 @@ cf={Group Outlying Aspects Mining},
 
 
 \section{Problem Definition}
+
 
 %%==========================================================================================
 %%
@@ -328,18 +326,21 @@ disadvantages of \textcolor{orange}{the team}.
 \vspace{1.5cm}
 
 \twocolumn{
-%\begin{figure}[1]{r}{2cm}{6cm}
-%  \centering
-%  \includegraphics[width=0.6\textwidth]{figures//demical.eps}\\
-%  %\missingfigure{Make a sketch of the structure of a trebuchet.}
-%  \caption{Medical}\label{fig:demical}
-%\end{figure}
+\begin{figure}
+  \centering
+  \selectcolormodel{rgb}
+  \missingfigure{Testing.}
+  %\includegraphics[width=0.6\textwidth]{figures//demical.eps}\\
+  \caption{Medical}\label{fig:demical}
+\end{figure}
 }{
-%\begin{figure}
-%  \centering
-%  %\includegraphics[width=0.6\textwidth]{figures//NBA_team.eps}\\
-%  \caption{NBA-Team}\label{fig:timg}
-%\end{figure}
+\begin{figure}
+  \centering
+  \selectcolormodel{rgb}
+  \missingfigure{Testing.}
+  %\includegraphics[width=0.6\textwidth]{figures//NBA_team.eps}\\
+  \caption{NBA-Team}\label{fig:timg}
+\end{figure}
 }
 
 %%==========================================================================================
@@ -410,12 +411,10 @@ Next, I will explain it.
 \begin{slide}[toc=,bm=]{Term Definition}
 \begin{itemize}
 \item
-\smallskip
 Top-k group outlying subspaces
 
 \begin{itemize}
 \item
-\smallskip
 $\rho_s(\cdot)$ $\Rightarrow$ outlying scoring function.
 
 \item
@@ -586,13 +585,13 @@ the non-trivial outlying subspace is \{$F_3$, $F_4$\}.
 
 \section{Related Work and Challenges}
 
+
 %%==========================================================================================
 %%
 \begin{slide}{Related Work - Outlying Aspects Mining}
-% - Outlying Aspects Mining
+%Related Work - Outlying Aspects Mining
 \begin{itemize}
 \item
-\smallskip
 Existing Methods - \textcolor{orange}{Feature selection}
 
 \begin{itemize}
@@ -760,7 +759,7 @@ Focus on differences between \textcolor{orange}{groups}.
 \begin{figure}
   \centering
   \selectcolormodel{rgb}
-  \missingfigure{Testing a long text string.}  
+  \missingfigure{Testing a long text string.}
   %\includegraphics[width=0.6\textwidth]{figures//example-basketball-projection.eps}\\
   \caption{Group Outlying Aspects Target}\label{fig:GroupOutAspect-target}
 \end{figure}
@@ -778,7 +777,7 @@ Concentrates on differences between \textcolor{orange}{objects}.
 \begin{figure}
   \centering
   \selectcolormodel{rgb}
-  \missingfigure{Testing a long text string.}  
+  \missingfigure{Testing a long text string.}
 %  \includegraphics[width=0.5\textwidth]{figures//OutAspect_target.eps}\\
   \caption{Outlying Aspects Target}\label{fig:OutAspect-target}
 \end{figure}
@@ -814,15 +813,10 @@ outlying aspects mining focuses on the advantages or disadvantages of one player
 \begin{slide}{Challenges (1)}
 %Challenges (1)
 \begin{itemize}
-
 \item
 How to \textcolor{orange}{represent} the group features.
 
 \begin{itemize}
-
-%\Item
-%Arithmetic Mean Of All Elements In Each Feature Can Describe The Features Of The Group.
-
 \item
 Can be affected by outlier values.
 
@@ -856,10 +850,8 @@ and can't reflect the entire distribution of group features.L
 \begin{slide}[toc=,bm=]{Challenges (2)}
 
 \begin{itemize}
-
 \item
-How to \textcolor{orange}{evaluate} the outlying degree
-in different aspects.
+How to \textcolor{orange}{evaluate} the outlying degree in different aspects.
 
 \begin{itemize}
 \item
@@ -924,6 +916,7 @@ so that it is very easy to exceed the limit of computer resources.
 
 
 \section{GOAM Algorithm}
+
 
 %%==========================================================================================
 %%
@@ -1039,19 +1032,18 @@ according to feature $f_1$.
 Calculate Earth Mover Distance
 
 \begin{itemize}
-
-\item 
+\item
 Represent one feature among different groups
 
-\item 
+\item
 Purpose: calculate the minimum mean distance
 \end{itemize}
 
 \begin{figure}
-   \selectcolormodel{rgb} 
+   \selectcolormodel{rgb}
    \missingfigure{Make a sketch of the structure of a trebuchet.}
 %  \includegraphics[width=0.4\textwidth]{figures//example3.eps}\\
-%  \caption{EMD of one feature}\label{EMD}
+   \caption{EMD of one feature}\label{EMD}
 \end{figure}
 \end{itemize}
 
@@ -1081,7 +1073,6 @@ we utilize the EMD to measure the differences between groups.
 \begin{slide}[toc=,bm=]{Step Two - Outlying Degree Scoring}
 
 \begin{itemize}
-
 \item
 Calculate the outlying degree
 
@@ -1096,6 +1087,7 @@ $ OD(G_q) = \sum_{1}^{n}EDM(h_{q_s}, h_{k_s}) $
 \begin{itemize}
 \item
 n $\Leftrightarrow$ the number of contrast groups.
+
 \item
 $h_{k_s}$  $\Leftrightarrow$ the histogram representation of $G_k$ in the subspace s.
 
@@ -1155,19 +1147,18 @@ it is more likely to be a group outlying aspect.
 \begin{slide}[toc=,bm=]{Pseudo code}
 
 \begin{itemize}
-
 \item
 Pseudo code of GOAM algorithm
 
 \end{itemize}
 
-%\begin{figure}
-  %\centering
-  % Requires \usepackage{graphicx}
+\begin{figure}
+  \centering
+  \selectcolormodel{rgb}
+  \missingfigure[figwidth=16cm]{Testing a long text string}
   %\includegraphics[width=0.75\textwidth]{figures//GOAM.eps}\\
-  %\missingfigure[figwidth=6cm]{Testing a long text string}
-  %\caption{OS Identification}\label{OS-Identification}
-%\end{figure}
+  %\caption{GOAM Algorithm}\label{OS-Identification}
+\end{figure}
 
 %%==========================================================================================
 \begin{note}
@@ -1305,14 +1296,11 @@ and non-trivial subspace \{$F_3, F_4$\}.
 %%
 \begin{slide}[toc=,bm=]{Strengths of GOAM Algorithm}
 \begin{itemize}
-
 \item
 \textcolor{orange}{Reduction of Complexity}
 
 \begin{itemize}
-
 \item
-%Reduce the Complexity through a complete
 Bottom-up search strategy.
 
 \item
@@ -1325,12 +1313,9 @@ Reduce the size of candidate subspaces.
 
 \begin{itemize}
 \item
-%The time complexity of naive method is $O(2^d)$.
 Before: $O(2^d)$  \\
 Now:    $O(d*n^{2})$
 
-%\item
-%In GOAM, the time complexity is only $O(d*n^{2})$.
 \end{itemize}
 \end{itemize}
 
@@ -1357,6 +1342,7 @@ current time complexity if only O($d*n^2$).
 
 
 \section{Evaluation Results}
+
 
 %%==========================================================================================
 %%
@@ -1502,11 +1488,12 @@ Data Collection
 Source\\
 \qquad
 \emph{Yahoo Sports} website (\url{http://sports.yahoo.com.cn/nba})
+
 \item
 Data
+
 \begin{itemize}
- \item %a web crawler was deployed to Extract data for all NBA teams until March $30$, $2018$;
-       Extract NBA teams' data until March 30, 2018;
+ \item Extract NBA teams' data until March 30, 2018;
  \item 6 divisions;
  \item 12 features (eg: \emph{Point Scored}).
 \end{itemize}
@@ -1576,10 +1563,8 @@ we can see that the feature values are continuous.
 %%
 \begin{slide}[toc=,bm=]{NBA Dataset}
 \begin{itemize}
-\item
-Data Preprocess
+\item Data Preprocess
 \end{itemize}
-%continuous value, \textcolor{orange}{discretize} them.
 
 \begin{table}
 \setlength{\abovecaptionskip}{0pt}
@@ -1669,22 +1654,16 @@ Trivial Outlying Aspects and Non-Trivial Outlying Aspects of each team.
 \begin{itemize}
 \item
 \smallskip
-%Extended the task of outlying aspects mining
-%to the \textcolor{orange}{group level}
-%and formalize the research problem;
 Formalize the problem of \emph{Group Outlying Aspects Mining} by
 extending outlying aspects mining;
 
 \item
 \smallskip
-%A novel algorithm named GOAM is proposed to solve
-%the \textcolor{orange}{group} outlying aspects mining problem;
 Propose a novel method \textcolor{orange}{GOAM algorithm} to solve the
 \emph{Group Outlying Aspects Mining} problem;
 
 \item
 \smallskip
-%Using the pruning strategies to reduce the time complexity;
 Utilize the pruning strategies to reduce time complexity.
 
 \end{itemize}
