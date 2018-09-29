@@ -13,7 +13,6 @@ You are expected to be familiar with `LaTeX`, if not, you need learn it from [Wi
 We recommend the following packages for cross platform writing:
 
 * [TeXLive!](https://tug.org/texlive/) 
-* [Powerdot-tuliplab](https://www.ctan.org/pkg/powerdot-tuliplab)
 * [Visual Studio Code](https://code.visualstudio.com/): with extensions such as `LaTeX Workshop`, `Markdown All in One`, etc.
 * [SmartGit](https://www.syntevo.com/smartgit/)
 * [LaTeXDiff](https://www.ctan.org/pkg/latexdiff?lang=en) and [Git-LaTeXDiff](https://gitlab.com/git-latexdiff/git-latexdiff)

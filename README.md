@@ -7,11 +7,11 @@ Prepared by and for
 **TULIP Lab Members** |
 2006-2018 [TULIP Lab](http://www.tulip.org.au), Australia
 
-2018 maintainers: [Qiong Wu](https://github.com/qwutulip), [Xin Han](https://github.com/xhan97), [Shaoni Wang](https://github.com/xiaonizixyz)
+2018 maintainers: [Shaoni Wang](https://github.com/ShaoniWang), [Qiong Wu](https://github.com/qwutulip), [Xin Han](https://github.com/xhan97)
 
 ---
 
 * `powerdot-tuliplab` is `LaTeX` `powerdot` style and sample files for Presentation in TULIP Lab
 * `pptx` contains the templates for `Microsoft Powerpoint`
 * `templatex` is `LaTeX` Template for Paper Writing
-* `thesistemplate` is `LaTeX` Tempalte for Thesis Writing
+* `thesistemplate` is `LaTeX` Template for Thesis Writing
