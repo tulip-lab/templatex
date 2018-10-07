@@ -52,6 +52,8 @@
 
 \usepackage{todonotes}
 % \usepackage{pst-rel-points}
+\usepackage{animate}
+\usepackage{fontawesome}
 
 \usepackage{listings}
 \lstset{frameround=fttt,
@@ -1689,6 +1691,19 @@ Thank you and any question?
 
 
 %%==========================================================================================
+%
+\begin{slide}[toc=,bm=]{Questions?}
+\begin{center}
+\begin{figure}
+    \animategraphics[autoplay, loop, height=0.4\textheight]{5}{figures//gif//question//q_}{1}{30}
+\end{figure}
+\end{center}
+\end{slide}
+%%
+%%==========================================================================================
+
+
+%%==========================================================================================
 % TODO: Contact Page
 \begin{wideslide}[toc=,bm=]{Contact Information}
 \centering
@@ -1705,10 +1720,10 @@ rcolwidth=0.65\linewidth
 Miss \emph{Shaoni Wang}\\
 Xi'an Shiyou University, Xi'an, China
 \begin{description}
- \item[Email] \href{mailto:snwangxyz@gmail.com}
+ \item[\textcolor{orange}{\faEnvelope}] \href{mailto:snwangxyz@gmail.com}
  {\textsc{\footnotesize{snwangxyz@gmail.com}}}
 
- \item[Lab] \href{http://www.tulip.org.au}
+ \item[\textcolor{orange}{\faHome}] \href{http://www.tulip.org.au}
  {\textsc{\footnotesize{Team for Universal Learning and Intelligent Processing}}}
 \end{description}
 }
