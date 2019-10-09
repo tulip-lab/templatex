@@ -13,7 +13,6 @@ You are expected to be familiar with `LaTeX`, if not, you need learn it from [Wi
 We recommend the following packages for cross platform writing:
 
 * [TeXLive!](https://tug.org/texlive/) 
-* [Powerdot-tuliplab](https://www.ctan.org/pkg/powerdot-tuliplab)
 * [Visual Studio Code](https://code.visualstudio.com/): with extensions such as `LaTeX Workshop`, `Markdown All in One`, etc.
 * [SmartGit](https://www.syntevo.com/smartgit/)
 * [LaTeXDiff](https://www.ctan.org/pkg/latexdiff?lang=en) and [Git-LaTeXDiff](https://gitlab.com/git-latexdiff/git-latexdiff)
@@ -44,6 +43,13 @@ We recommend the following packages for cross platform writing:
     % other colors include blue, red, purple, cyan, darkgreen, etc.
     ```
 
+    Do the same change for the block like:
+    ```latex
+    \newcommand{\qwuMarker}
+	{\todo[author=QWu,size=\tiny,inline,color=red!40]
+	{Qiong Wu has worked up to here.}}
+    ```
+
     Fill the proper information for the following block:
     ```latex
     \hypersetup
@@ -63,12 +69,12 @@ We recommend the following packages for cross platform writing:
     - `report-ieee.tex`: the stem file for IEEE conference proceedings;
     - `report-lncs.tex`: the stem file for Springer LNCS conference proceedings;
     - `slides.tex`: one sample file for slides with notes;
-    - `poster.tex`: one sample poster. 
+    - `poster.tex`: one sample file for poster. 
     
 
 4. Customize the file names:
-    - change files such as `report.tex` into a proper paper file name
-    - change or replace `tulip.bib` with your research `bib` file.
+    - no need to change file names such as `report.tex` etc.
+    - add or replace `yourbib.bib` with your research `bib` file.
 
 
 5. Check out the repository to local drive, and set up the local environment for `gitinfo2` package:
@@ -83,7 +89,6 @@ We recommend the following packages for cross platform writing:
 
     - Test Run: check out or pull your repository, and it should generate/update the file `./git/gitHeadInfo.gin` in your local repository.
         - For example: check `~/MyFancyPaper/.git/gitHeadInfo.gin`.
-
 
     - Compile the main LaTeX file, and view the PDF.
 
@@ -115,10 +120,10 @@ You MUST follow the following rules when writing collaboratively. Otherwise, you
 
 1. If your comment has been properly addressed by co-authors, you **MUST** remove or comment out both the *original* and the *response* marginal comments.
 
-1. You can use the following code to indicate where you are updating up to:
+1. You can use something similar to the following code to indicate where you are updating up to:
 
     ```latex
-    \HRule %TODO: YourName up to here!
+    \gliMarker %TODO: GLi up to here!
     ```
 
 ### III. B. Repository
