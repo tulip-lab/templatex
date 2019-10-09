@@ -21,7 +21,11 @@
 %\usepackage[disable]{todonotes} % notes not showed
 %\usepackage[draft]{todonotes}   % notes showed
 %
-\makeatletter \providecommand\@dotsep{5} \def\listtodoname{List of Todos} \def\listoftodos{\@starttoc{tdo}\listtodoname} \makeatother
+\makeatletter
+ \providecommand\@dotsep{5}
+ \def\listtodoname{List of Todos}
+ \def\listoftodos{\@starttoc{tdo}\listtodoname}
+ \makeatother
 %
 %=================================================================
 %
@@ -51,12 +55,14 @@
 \usepackage{algorithm}
 \usepackage{algorithmic}
 \usepackage{breqn}
-\usepackage{subfigure}
+\usepackage{subcaption}
 \usepackage{multirow}
 \usepackage{psfrag}
 \usepackage{url}
 \usepackage{hyperref}
 %\usepackage[colorlinks]{hyperref}
+%\usepackage{cite}
+\usepackage{cleveref}
 \usepackage{booktabs}
 \usepackage{rotating}
 \usepackage{colortbl}
@@ -71,10 +77,20 @@
 \usepackage{lipsum}
 \usepackage[english]{babel}
 \usepackage[pangram]{blindtext}
+% for tikz figures
+\usepackage{tikz}
+\usetikzlibrary{fit,positioning,arrows.meta,shapes,arrows}
+%\tikzset{neuron/.style={circle,thick,fill=black!25,minimum size=17pt,inner sep=0pt},
+%	input neuron/.style={neuron, draw,thick, fill=gray!30},
+%	hidden neuron/.style={neuron,fill=white,draw},
+%	hoz/.style={rotate=-90}}
 %
 %=================================================================
 
 
+
+\begin{TulipStyle}
+\usepackage[numbers]{natbib}
 %=================================================================
 %
 % Version control information
@@ -82,8 +98,6 @@
 %=================================================================
 \usepackage{gitinfo2}
 %=================================================================
-\begin{NonSpringer}
-\usepackage{natbib}
 \usepackage{fancyhdr}
 \pagestyle{fancy}
 \fancyhead{} % clear all header fields
@@ -102,6 +116,7 @@
 \renewcommand{\headrulewidth}{0.4pt}
 \renewcommand{\footrulewidth}{0.4pt}
 %=================================================================
+
 
 %=================================================================
 % for math notations
@@ -150,7 +165,7 @@
 \newcommand{\BFd}{{\cal BF}_n}
 \newcommand{\TF}{{\cal TF}_n}
 \newcommand{\TFd}{{\cal TF}_n}
-\newcommand{\G}{{\cal G}}
+%\newcommand{\G}{{\cal G}}
 \newcommand{\X}{{\cal X}}
 \newcommand{\E}{{\cal E}}
 \newcommand{\K}{{\cal K}}
@@ -177,11 +192,6 @@
   }}\par}
 %
 %=================================================================
-\end{NonSpringer}
-
-\usepackage{cleveref}
-
-
 
 \hypersetup
 {
@@ -192,5 +202,5 @@
 %	bookmarks=true,  
 }
 
-
+\end{TulipStyle}
 
