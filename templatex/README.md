@@ -26,9 +26,10 @@ We recommend the following packages for cross platform writing:
 ## II. Setup the Repository
 ---
 
-1. Create one new repository in your `git` platform, initialized with all the files in this package.
+1. Create one new repository in your `git` platform. You may create a set of folders including 
+`Code` with your source code, `Data` with your experiment data, `Report` with all the files in this package. 
 
-2. Open the `preamble.tex`, and update with your own information at the following places:
+1. Open the `preamble.tex`, and update with your own information at the following places:
 
     Line 32: 
 
@@ -72,7 +73,7 @@ We recommend the following packages for cross platform writing:
     - `poster.tex`: one sample file for poster. 
     
 
-4. Customize the file names:
+4. Customize the bib file names:
     - no need to change file names such as `report.tex` etc.
     - add or replace `yourbib.bib` with your research `bib` file.
 
