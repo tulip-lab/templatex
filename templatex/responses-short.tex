@@ -1,0 +1,132 @@
+\documentclass{ar2rc}
+
+%=================================================================
+% 
+\newcount\DraftStatus  % 0 suppresses notes to selves in text
+\DraftStatus=1   % TODO: set to 0 for final version
+%=================================================================
+
+%=================================================================
+\usepackage{comment}
+%=================================================================
+%
+\includecomment{JournalOnly}  
+\includecomment{ConferenceOnly}  
+\excludecomment{TulipStyle}
+%
+%=================================================================
+\include{preamble}
+\usepackage{multirow, makecell,tabularx}
+\usepackage{tikz}
+\usepackage{bbding}
+\usepackage{pifont}
+\usepackage{wasysym}
+\usepackage{textcomp}
+
+
+
+\title{Title of the submission}
+\author{author1, author 2, author 3}
+\journal{IEEE Transactions on XYZ}
+\paperid{TXYZ-2021-09876XYZ}
+
+
+\begin{document}
+
+\maketitle
+
+\section*{AE's Comments}
+We have received three reviews, attached, of your paper entitled 
+``XXXXX,'' 
+which you submitted for consideration for the IEEE XXX.
+
+These reviews, all by recognized experts in the field, have obviously been prepared with care.
+
+The reviewers agree that the topic of the paper is interesting. There are however several concerns, including the fact that:
+
+\RC
+\lipsum[1]
+
+\AR
+\blindtext
+
+
+
+\section{Reviewer \#1}
+
+
+\RC
+\blindtext
+
+\AR 
+Thanks for your concern.
+In this revision, 
+we have xxx
+
+
+
+
+\RC 
+\blindtext
+
+\AR 
+%Thank you for acknowledging the aim of the paper. 
+Special thanks for your valuable comments.
+After reading the reviewer's comments, 
+we realized that the motivation of the paper was not yet clearly elaborated, 
+which may cause confusions.
+
+\blindmathpaper
+
+
+
+\gliMarker %TODO: GLi Here
+
+\section{Reviewer \#2}
+
+\RC 
+\lipsum[1]
+
+
+\AR
+Thank you for this helpful comment. In this revision,
+we have addressed it in the second paragraph of the introduction, and copy-and-pasted below.
+
+
+\begin{quote}
+{
+
+\lipsum[1]
+}
+
+\end{quote}
+
+
+
+\RC
+Some recent references are missing especially with XXX ecosystem.
+
+%
+%A25: 
+\AR
+Thanks for the comment.
+We have put more references in X, 
+including recent references on XXX ecosystem:
+
+%Or you can use BIBunit package
+
+%[28] F. M. Awaysheh, M. Alazab, M. Gupta, T. F. Pena, and J. C. Cabaleiro, “Next-generation big data federation access control: A reference model,” Future Generation Computer Systems, 2020.
+
+%\bibliography{tuliplab,yourbib}
+%% TODO: you should change this yourbib into a proper bib file name
+%\bibliographystyle{plainnat}
+
+%\begin{bibunit}[plain]
+%	\nocite{BJL11J01,BL12J01}
+%    \putbib[tuliplab]
+%\end{bibunit}
+
+
+\end{document}
+
+
