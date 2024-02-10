@@ -23,7 +23,7 @@ $out_dir = "./temp/out";
 # 4: lualatex, as specified by the $lualatex variable (best)
 # 5: xelatex, as specified by the $xelatex variable (second best)
 $pdf_mode = 4; # set to 4 for slides tulipowerdot
-$postscript_mode = $dvi_mode = 0; # set to 1 for slides tulipowerdot
+$postscript_mode = $dvi_mode = 1; # set to 1 for slides tulipowerdot
 
 # If nonzero, the banner message is printed across each page 
 # when converting the dvi file to postscript.
