@@ -5,7 +5,9 @@
 
 Prepared by and for 
 **TULIP Lab Members** |
-2006-2019 [TULIP Lab](http://www.tulip.org.au), Australia
+2006-2024 [TULIP Lab](http://www.tulip.org.au), Australia
+
+2024 maintainers: [Baobao Song](https://github.com/baobaosong)
 
 2019 maintainers: [Xin Han](https://github.com/xhan97), [Ziwei Hou](https://github.com/ZiweiHou)
 
