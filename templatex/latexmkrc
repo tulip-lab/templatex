@@ -139,7 +139,7 @@ push @generated_exts, 'loe', 'lol', 'lor', 'run.xml', 'glg', 'glstex', 'synctex.
 # $clean_ext = "%R-*.glstex %R_contourtmp*.*";
 # Also remove pdfsync files on clean
 $clean_ext = 'out %R.log %R.fls %R.blg pdfsync synctex.gz nav out snm bm log, %R.log %R.fls %R.aux';
-push @clean_ext, 'bm', 'aux', 'bm', 'synctex.gz', 'out',  'blg', 'idx', 'ilg', 'ind', 'lof', 'lot', 'toc', 'fls';
+push @clean_ext, 'bm', 'aux', 'bm', 'synctex.gz', 'out',  'blg', 'idx', 'ilg', 'ind', 'lof', 'lot', 'toc', 'fls', 'cut', 'tdo';
 
 
 
