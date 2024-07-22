@@ -15,7 +15,8 @@
 \excludecomment{TulipStyle}
 %
 %=================================================================
-\include{preamble}
+\input{preamble}
+\usepackage[numbers]{natbib}
 \usepackage{multirow, makecell,tabularx}
 \usepackage{tikz}
 \usepackage{bbding}
@@ -60,7 +61,7 @@ The reviewers agree that the topic of the paper is interesting. There are howeve
 
 \AR 
 Thanks for your concern.
-In this revision, 
+In this revision~\citep{BJL11J01}, 
 we have xxx
 
 
@@ -117,9 +118,9 @@ including recent references on XXX ecosystem:
 
 %[28] F. M. Awaysheh, M. Alazab, M. Gupta, T. F. Pena, and J. C. Cabaleiro, “Next-generation big data federation access control: A reference model,” Future Generation Computer Systems, 2020.
 
-%\bibliography{tuliplab,yourbib}
-%% TODO: you should change this yourbib into a proper bib file name
-%\bibliographystyle{plainnat}
+\bibliography{tuliplab,yourbib}
+% TODO: you should change this yourbib into a proper bib file name
+\bibliographystyle{plainnat}
 
 %\begin{bibunit}[plain]
 %	\nocite{BJL11J01,BL12J01}
