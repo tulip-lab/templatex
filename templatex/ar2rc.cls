@@ -1,4 +1,4 @@
-% An article class for author response to reviewer comment.
+% An article class for author response to reviewer point.
 % Copyright (C) 2017 Martin Schroen
 % Modifications Copyright (C) 2020 Kaishuo Zhang
 % Modifications Copyright (C) 2021 Gang Li
@@ -18,7 +18,7 @@
 % along with this program.  If not, see <http://www.gnu.org/licenses/>.
 
 \NeedsTeXFormat{LaTeX2e}
-\ProvidesClass{ar2rc}[2020/08/04 Author response to reviewer comment class]
+\ProvidesClass{ar2rc}[2020/08/04 Author response to reviewer point class]
 \LoadClass{article}
 
 \RequirePackage[includeheadfoot,top=20mm, bottom=20mm, footskip=2.5cm]{geometry}
@@ -33,7 +33,7 @@
 
 % Misc
 \RequirePackage{graphicx}
-\RequirePackage{hyperref} 
+\RequirePackage{hyperref}
 \RequirePackage{soul} % Highlight using \hl{}
 
 % Table
@@ -47,6 +47,7 @@
 \titleformat{\section}{\normalfont\large}{\makebox[0pt][r]{\bf \thesection.\hspace{4mm}}}{0em}{\bfseries}
 \titleformat{\subsection}{\normalfont}{\makebox[0pt][r]{\bf \thesubsection.\hspace{4mm}}}{0em}{\bfseries}
 \titlespacing{\subsection}{0em}{1em}{-0.3em} % left before after
+\renewcommand\thesubsection{\alph{subsection})}
 
 % Paragraph styles
 \setlength{\parskip}{0.6\baselineskip}%
@@ -62,20 +63,53 @@ innerleftmargin=0.6em,innerrightmargin=0.6em]{quote}
 \let\endoldtabular=\endtabular
 \renewenvironment{tabular}[1]{\begin{adjustbox}{center}\begin{oldtabular}{#1}}{\end{oldtabular}\end{adjustbox}}
 
-% Shortcuts
-%% Let textbf be both, bold and italic
-%\DeclareTextFontCommand{\textbf}{\bfseries\em}
+% Define that the count of reviewer and review comment
+\newcounter{reviewer}
+\setcounter{reviewer}{0}
+\newcounter{point}[reviewer]
+\setcounter{point}{0}
 
-%% Add RC and AR to the left of a paragraph
-%\def\RC{\makebox[0pt][r]{\bf RC:\hspace{4mm}}}
-%\def\AR{\makebox[0pt][r]{AR:\hspace{4mm}}}
+% This refines the format of how the reviewer/point reference will appear.
+\renewcommand{\thepoint}{RC\,\thereviewer.\arabic{point}}
 
-%% Define that \RC and \AR should start and format the whole paragraph 
-\RequirePackage{suffix}
-\long\def\RC#1\par{\makebox[0pt][r]{\bf RC:\hspace{4mm}}\textbf{\textit{#1}}\par} %\RC
-\WithSuffix\long\def\RC*#1\par{\textbf{\textit{#1}}\par} %\RC*
-\long\def\AR#1\par{\makebox[0pt][r]{AR:\hspace{10pt}}#1\par} %\AR
-\WithSuffix\long\def\AR*#1\par{#1\par} %\AR*
+% command declarations for reviewer points and our responses
+\newcommand{\reviewersection}{\stepcounter{reviewer} 
+				\bigskip \bigskip \hrule
+                \subsubsection*{\bfseries To Reviewer \thereviewer} 
+                \addcontentsline{toc}{subsubsection}{To Reviewer \thereviewer} 
+                \bigskip \hrule \bigskip}
+
+%% Define that \begin{RC} and \begin{AR} should start and format the whole paragraph 
+\RequirePackage[breakable,skins]{tcolorbox}
+\RequirePackage{xcolor}
+\tcbset{
+	mybox1/.style={
+		colback=black!5!white,
+		colframe=black,
+		colbacktitle=black,
+		coltitle=white,
+		fonttitle=\bfseries,
+		boxsep=5pt,
+		left=5mm,
+		right=5mm,
+		top=5mm,
+		bottom=5mm,
+		arc=3mm,
+		auto outer arc,
+		boxrule=2pt, 
+		fontupper=\bfseries\itshape
+	}
+}
+\newenvironment{RC}
+    {\refstepcounter{point}%
+    \begin{tcolorbox}[mybox1,
+		title = Reviewer's Comment -- \thepoint]
+    \textbf{\thepoint} --- \color{black}%
+    }
+    {\end{tcolorbox}}
+\newenvironment{AR}
+	{\noindent\textbf{AR: }\ignorespaces}
+	{\par\vspace{2em}}
 
 %%%
 %DIF PREAMBLE EXTENSION ADDED BY LATEXDIFF
