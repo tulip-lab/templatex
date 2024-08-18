@@ -1,4 +1,4 @@
-% An article class for author response to reviewer point.
+% An article class for author response to reviewer comment.
 % Copyright (C) 2017 Martin Schroen
 % Modifications Copyright (C) 2020 Kaishuo Zhang
 % Modifications Copyright (C) 2021 Gang Li
@@ -18,7 +18,7 @@
 % along with this program.  If not, see <http://www.gnu.org/licenses/>.
 
 \NeedsTeXFormat{LaTeX2e}
-\ProvidesClass{ar2rc}[2020/08/04 Author response to reviewer point class]
+\ProvidesClass{ar2rc}[2020/08/04 Author response to reviewer comment class]
 \LoadClass{article}
 
 \RequirePackage[includeheadfoot,top=20mm, bottom=20mm, footskip=2.5cm]{geometry}
