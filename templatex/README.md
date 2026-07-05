@@ -1,5 +1,5 @@
 
-[TULIP Lab](http://www.tulip.org.au) LaTeX Template
+[TULIP Lab](http://www.tulip.academy) LaTeX Template
 ==================
 
 `TempLaTeX` is the `LaTeX` package used in TULIP Lab for paper drafting. You are expected to use `git` to host the repository, and use `git-flow` to manage the collaborative writing platform for academic paper authoring.

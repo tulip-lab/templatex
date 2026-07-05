@@ -1,11 +1,15 @@
-# [TULIP Lab](http://www.tulip.org.au) `LaTeX` Templates
+<p align="center">
+  <img src="templatex/graphics/logos/tulip-wordmark.png" alt="TULIP Lab" width="900">
+</p>
+
+# [TULIP Lab](http://www.tulip.academy) `LaTeX` Templates
 
 ---
 - Styles, Templates for Academic Writing
 
 Prepared by and for 
 **TULIP Lab Members** |
-2006-2024 [TULIP Lab](http://www.tulip.org.au), Australia
+2006-2024 [TULIP Lab](http://www.tulip.academy), Australia
 
 2024 maintainers: [Baobao Song](https://github.com/baobaosong)
 
