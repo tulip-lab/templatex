@@ -59,7 +59,7 @@ $pdf_previewer = 'open';
 # $pdf_previewer = 'open -a Skim';
 
 $latex = "latex -synctex=1 -interaction=nonstopmode -file-line-error  %O %S"; 
-$pdflatex = "dflatex -synctex=1 -interaction=nonstopmode -file-line-error  %O %S";
+$pdflatex = "pdflatex -synctex=1 -interaction=nonstopmode -file-line-error  %O %S";
 $xelatex = "xelatex -file-line-error -halt-on-error -interaction=nonstopmode  -synctex=1 %O %S";  
 $xdvipdfmx = "xdvipdfmx -E -o %D %O %S";
 
