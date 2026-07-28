@@ -54,7 +54,9 @@
 \usepackage{graphicx}
 \graphicspath{{./figures/}{./graphics/}{./graphics/logos/}}
 
-\usepackage{inconsolata} %for tt font
+\makeatletter
+\@ifpackageloaded{zi4}{}{\usepackage{inconsolata}}
+\makeatother
 \usepackage{algorithm}
 \usepackage{algorithmic}
 \usepackage{breqn}
@@ -88,7 +90,6 @@
 \usepackage{threeparttable}
 % \usepackage{bibunits} 
 % for random text
-\usepackage{cite}
 \usepackage{lipsum}
 \usepackage[english]{babel}
 \usepackage[pangram]{blindtext}
@@ -111,7 +112,9 @@
 % Version control information
 %
 %=================================================================
-\usepackage{gitinfo2}
+\IfFileExists{gitHeadLocal.gin}
+  {\usepackage[local]{gitinfo2}}
+  {\usepackage{gitinfo2}}
 %=================================================================
 \usepackage{fancyhdr}
 \pagestyle{fancy}
@@ -219,4 +222,3 @@
 }
 
 \end{TulipStyle}
-

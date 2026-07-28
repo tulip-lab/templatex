@@ -1,0 +1,25 @@
+% Generic title and footer configuration for report-slides.tex.
+
+\title{\textsc{\Large{\presentationTitle}}}
+\author{%
+  \presentationAuthor\\[0.25cm]
+  \presentationAffiliation}
+\date{\gitCommitterDate}
+
+\pdsetup{
+  cf={\textsc{TULIP Lab: \presentationTitle}},
+  rf=\href{\presentationWebsite}{%
+    \gitVtagn-\gitAbbrevHash\ (\gitAuthorDate)},
+  list={
+    labelsep=1em,
+    leftmargin=*,
+    itemsep=0pt,
+    topsep=5pt,
+    parsep=0pt}}
+
+\hypersetup{
+  pdftitle={\presentationTitle},
+  pdfauthor={\presentationAuthor},
+  pdfsubject={TULIP Lab presentation template},
+  pdfpagemode={FullScreen},
+  pdfborder={0 0 0}}
