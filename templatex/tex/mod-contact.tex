@@ -1,0 +1,39 @@
+% Generic questions and contact slides. Keep personal images out of this file.
+
+\begin{slide}[toc=,bm=]{Questions?}
+  \begin{center}
+    \animategraphics[
+      autoplay,
+      loop,
+      height=0.36\textheight
+    ]{5}{./graphics/gif/question/q_}{1}{30}
+  \end{center}
+\end{slide}
+
+\begin{wideslide}[toc=,bm=]{Contact Information}
+  \centering
+  \vspace{\stretch{1}}
+
+  \twocolumn[
+    lcolwidth=0.32\linewidth,
+    rcolwidth=0.62\linewidth
+  ]{
+    \includegraphics[
+      width=0.24\textwidth
+    ]{./graphics/logos/tulip-logo.eps}
+  }{
+    {\Large\textbf{\presentationAuthor}}\\[0.3cm]
+    \presentationAffiliation
+
+    \begin{description}
+      \item[\textcolor{orange}{\faEnvelope}]
+        \href{mailto:\presentationEmail}{\presentationEmail}
+      \item[\textcolor{orange}{\faGithub}]
+        \href{\presentationRepository}{TULIP Lab open resources}
+      \item[\textcolor{orange}{\faHome}]
+        \href{\presentationWebsite}{\presentationWebsite}
+    \end{description}
+  }
+
+  \vspace{\stretch{1}}
+\end{wideslide}

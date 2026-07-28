@@ -1,0 +1,68 @@
+% Replace this sample content with presentation-specific sections and slides.
+
+\section{Introduction}
+
+\begin{slide}{Motivation}
+  \twotonebox{\faLightbulbO}{\parbox{0.88\textwidth}{%
+    State the problem, explain why it matters, and summarize the main
+    contribution. A focused introduction gives the audience a clear reason
+    to follow the rest of the presentation~\cite{ZLMLY20J04}.}}
+
+  \onslide*{2-}{
+    \begin{itemize}
+      \item<2-> Describe the practical or theoretical gap.
+      \item<3-> State the research question.
+      \item<4-> Preview the proposed approach and evidence.
+    \end{itemize}}
+\end{slide}
+
+\begin{note}
+  Add speaker notes that support the slide without repeating it verbatim.
+\end{note}
+
+\section{Method}
+
+\begin{slide}{Method Overview}
+  \begin{algorithm}[H]
+    \SetKwInOut{Input}{Input}
+    \SetKwInOut{Output}{Output}
+    \Input{Dataset $D$ and model parameters $\theta$}
+    \Output{Estimated parameters $\theta^\star$}
+    Initialize $\theta_0$\;
+    \For{$t \leftarrow 1$ \KwTo $T$}{
+      Compute the update $\Delta_t$\;
+      Set $\theta_t \leftarrow \theta_{t-1} - \eta_t\Delta_t$\;
+    }
+    \Return{$\theta^\star \leftarrow \theta_T$}\;
+    \caption{Example optimization workflow}
+  \end{algorithm}
+\end{slide}
+
+\section{Results}
+
+\begin{slide}{Results Summary}
+  \begin{center}
+    \begin{tabular}{lrr}
+      \toprule
+      Method & Accuracy & Runtime (s) \\
+      \midrule
+      Baseline & 0.78 & 12.4 \\
+      Proposed & 0.86 & 9.8 \\
+      \bottomrule
+    \end{tabular}
+  \end{center}
+
+  \bigskip
+  Replace placeholder values with results that directly support the stated
+  research question.
+\end{slide}
+
+\section{Conclusion}
+
+\begin{slide}{Takeaways}
+  \begin{itemize}
+    \item Restate the problem and the main contribution.
+    \item Connect the evidence to the central claim.
+    \item Identify limitations and the next concrete step.
+  \end{itemize}
+\end{slide}

@@ -3,5 +3,13 @@
 The abstract will be put here, ....
 \end{abstract}
 
-\keywords{Machine Learning, Data Mining, ...}%
+\makeatletter
+\@ifclassloaded{IEEEtran}{%
+  \begin{IEEEkeywords}
+  Machine Learning, Data Mining, ...
+  \end{IEEEkeywords}
+}{%
+  \keywords{Machine Learning, Data Mining, ...}%
+}
+\makeatother
 
