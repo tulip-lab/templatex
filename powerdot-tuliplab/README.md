@@ -1,5 +1,5 @@
 
-`Powerdot` [TULIP Lab](http://www.tulip.org.au) Style Package 
+`Powerdot` [TULIP Lab](http://www.tulip.academy) Style Package 
 ==================
 
 * Licenses: [The LATEX Project Public Li­cense](https://www.ctan.org/license/lppl1.3)

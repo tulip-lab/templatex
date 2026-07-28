@@ -1,153 +1,107 @@
+<p align="center">
+  <img src="graphics/logos/tulip-wordmark.png" alt="TULIP Lab" width="900">
+</p>
 
-[TULIP Lab](http://www.tulip.org.au) LaTeX Template
-==================
+# TULIP Lab LaTeX Paper Template
 
-`TempLaTeX` is the `LaTeX` package used in TULIP Lab for paper drafting. You are expected to use `git` to host the repository, and use `git-flow` to manage the collaborative writing platform for academic paper authoring.
+This directory contains the reusable paper, response, poster, and Powerdot
+presentation templates maintained by TULIP Lab.
 
----
-## I. Required Packages
----
+## Template Entry Points
 
-You are expected to be familiar with `LaTeX`, if not, you need learn it from [WikiBook](https://en.wikibooks.org/wiki/LaTeX).
+- `report.tex`: default paper or technical report.
+- `report-acm.tex`: ACM proceedings.
+- `report-htm.tex`: tourism and hospitality manuscript.
+- `report-ieee.tex`: IEEE proceedings.
+- `report-lncs.tex`: Springer LNCS proceedings.
+- `responses.tex`: reviewer response letter.
+- `report-poster.tex`: poster.
+- `report-slides.tex`: modular Powerdot presentation.
 
-We recommend the following packages for cross platform writing:
+The paper entry points share `preamble.tex` and the section files under `tex/`.
+The slide entry point composes:
 
-* [TeXLive!](https://tug.org/texlive/) 
-* [Visual Studio Code](https://code.visualstudio.com/): with extensions such as `LaTeX Workshop`, `Markdown All in One`, etc.
-* [SmartGit](https://www.syntevo.com/smartgit/)
-* [LaTeXDiff](https://www.ctan.org/pkg/latexdiff?lang=en) and [Git-LaTeXDiff](https://gitlab.com/git-latexdiff/git-latexdiff)
-* [Bitbucket](http://bitbucket.org) or [GitHub](https://github.com/)
-* CTeX Packages
-  1. [powerdot-tuliplab](https://ctan.org/pkg/powerdot-tuliplab)
-  2. [tikz poster](https://ctan.org/pkg/tikzposter?lang=en)
-  3. [e-TEX](https://ctan.org/pkg/etex?lang=en)
+- `tex/mod-preamble.tex`
+- `tex/mod-title.tex`
+- `tex/mod-slides.tex`
+- `tex/mod-contact.tex`
 
----
-## II. Setup the Repository
----
+Keep personal metadata in the entry point. Do not place personal photographs,
+contact details, or project-specific content in shared modules.
 
-1. Create one new repository in your `git` platform. You may create a set of folders including 
-`Code` with your source code, `Data` with your experiment data, `Report` with all the files in this package. 
+## Requirements
 
-1. Open the `preamble.tex`, and update with your own information at the following places:
+- TeX Live with `latexmk`, pdfLaTeX, BibTeX, dvips, and ps2pdf.
+- The `powerdot-tuliplab` package for slides.
+- Git for revision metadata and collaborative authoring.
 
-    Line 32: 
+Recommended editors include Visual Studio Code with LaTeX Workshop, TeXstudio,
+and Overleaf. Powerdot/PSTricks slides require the local DVI/PostScript build
+pipeline and may need additional configuration on hosted editors.
 
-    ```latex
-    \newcommand{\qwu}[1]{\draftnote{darkgreen}{[QWu: #1]}}
-    % other colors include blue, red, purple, cyan, darkgreen, etc.
-    ```
-    by something  such as:
+## Build Commands
 
-    ```latex
-    \newcommand{\yourname}[1]{\draftnote{blue}{[You: #1]}}
-    % other colors include blue, red, purple, cyan, darkgreen, etc.
-    ```
+Run these commands from this directory:
 
-    Do the same change for the block like:
-    ```latex
-    \newcommand{\qwuMarker}
-	{\todo[author=QWu,size=\tiny,inline,color=red!40]
-	{Qiong Wu has worked up to here.}}
-    ```
+```bash
+latexmk -g -pdf report.tex
+latexmk -g -pdf report-ieee.tex
+latexmk -g -pdf responses.tex
+latexmk -g -pdf report-poster.tex
+latexmk -g -pdfps report-slides.tex
+```
 
-    Fill the proper information for the following block:
-    ```latex
-    \hypersetup
-    {
-        pdfauthor={\gitAuthorName},
-        pdfsubject={TULIP Lab},
-        pdftitle={},
-        pdfkeywords={TULIP Lab, Data Science},
-        bookmarks=true,  
-    }
-    ```
+Paper-family targets use pdfLaTeX. Powerdot slides use the explicit
+LaTeX-to-DVI-to-PostScript-to-PDF pipeline.
 
-3. The following templates for conference or report are provided:
-    - `report.tex`: the complete report stem file;
-    - `report-htm.tex`: the complete report stem file for tourism and hospitality paper;
-    - `report-acm.tex`: the stem file for ACM conference proceedings;
-    - `report-ieee.tex`: the stem file for IEEE conference proceedings;
-    - `report-lncs.tex`: the stem file for Springer LNCS conference proceedings;
-    - `responses.tex`: the rebuttal file;
-    - `report-slides.tex`: one sample file for slides with notes;
-    - `report-poster.tex`: one sample file for poster. 
-    
+Generated output is written under `temp/` according to `latexmkrc`.
 
-4. Customize the bib file names:
-    - no need to change file names such as `report.tex` etc.
-    - add or replace `yourbib.bib` with your research `bib` file.
+## Start A Project
 
+1. Create a private repository for the paper or project.
+2. Copy this template into the project report directory.
+3. Replace sample author, title, abstract, section, and bibliography content.
+4. Put project references in `yourbib.bib`.
+5. Keep shared TULIP Lab references in `tuliplab.bib`.
+6. Build every entry point used by the project before committing.
 
-5. Check out the repository to local drive, and set up the local environment for `gitinfo2` package:
+Avoid formatting-only changes. Start each sentence on a new line where
+practical, keep automatic wrapping disabled, and review LaTeX diffs before
+committing.
 
-    - This package contains a `gitinfo` folder with three executive `bash` `shell` scripts:
-        *  `post-checkout`
-        *  `post-commit`
-        *  `post-merge`
+## GitInfo Setup
 
-    -  Copy or move these three files into your repository's `.git/hooks` folder. 
-        -  For example, if the root of your local repositories is `~/MyFancyPaper`, then you can copy/move above three files to `~/MyFancyPaper/.git/hooks/`.
+From the repository root, inspect the hook installation:
 
-    - Test Run: check out or pull your repository, and it should generate/update the file `./git/gitHeadInfo.gin` in your local repository.
-        - For example: check `~/MyFancyPaper/.git/gitHeadInfo.gin`.
+```bash
+./scripts/install-gitinfo-hooks.sh
+```
 
-    - Compile the main LaTeX file, and view the PDF.
+Install or update managed hooks explicitly:
 
-6. Happy LaTeXing!
+```bash
+./scripts/install-gitinfo-hooks.sh --apply
+```
 
-## III. Rules for Collaborative LaTeXing
----
+The installer never replaces unmanaged hooks. The generated
+`templatex/gitHeadLocal.gin` file is ignored and works in both ordinary clones
+and linked Git worktrees.
 
-You MUST follow the following rules when writing collaboratively. Otherwise, your co-author will find it impossible to work together.
+## Collaboration Workflow
 
-### III.A. LaTeX Source Code
+- `main` contains reviewed stable releases.
+- `develop` is the integration branch.
+- `feature/*` branches contain normal changes.
+- `release/*` branches prepare coordinated releases.
+- `hotfix/*` branches contain urgent fixes from `main`.
 
-1. Avoid **ineffective** modifications.
+Before merging:
 
-1. Do not change line breaks without good reason.
+1. Pull the latest integration branch.
+2. Review the source diff and generated PDF.
+3. Build all affected entry points.
+4. Resolve comments and remove completed draft notes.
+5. Use a descriptive commit and pull request.
 
-1. Turn off automatic line wrapping of your LaTeX editor.
-
-1. Start each new sentence in a new line.
-
-1. Split long sentences into several lines so that each line has at most `80` characters.
-
-1. For all the marginal comments by other co-authors, you MUST responed to them using a responsive marginal comment, such as
-
-    ```latex
-    \gangli{What is wrong here?}
-    \qwu{This is my response ...}
-    ```
-
-1. If your comment has been properly addressed by co-authors, you **MUST** remove or comment out both the *original* and the *response* marginal comments.
-
-1. You can use something similar to the following code to indicate where you are updating up to:
-
-    ```latex
-    \gliMarker %TODO: GLi up to here!
-    ```
-
-### III. B. Repository
-
-1. Put only those files that are directly modified by the user under version control.
-
-1. Verify that your code can be compiled flawlessly before - committing your modifications to the repository.
-
-1. Use `git-latexdiff` or `latediff` (or `git` compare tools) to critically review your modifications before committing them to the repository.
-
-1. Add a meaningful and descriptive comment when committing your modifications to the repository.
-
-1. Use the `git` client for copying, moving, or renaming files and folders that are under revision control.
-
-1. Use `git-flow` scheme to create `feature`, `branch`, `release` and `version` of your paper. Be really careful when you are touching `develop` or `master` branch.
-
-
-
-
-
-
-
-
-
-
+Do not commit generated PDFs, auxiliary files, private review material, or
+credentials.

@@ -1,0 +1,96 @@
+% Shared packages and helper commands for report-slides.tex.
+
+\usepackage[utf8]{inputenc}
+\usepackage{amsmath}
+\usepackage{amssymb}
+\usepackage{amsthm}
+\usepackage{mathtools}
+\usepackage{graphicx}
+\usepackage{rotating}
+\usepackage{calc}
+\usepackage[absolute]{textpos}
+\usepackage{psfrag}
+\usepackage{overpic}
+\usepackage{fouriernc}
+\usepackage{pstricks}
+\usepackage{pst-3d}
+\usepackage{pst-grad}
+\usepackage{pstricks-add}
+\usepackage{pst-text}
+\usepackage{pst-node}
+\usepackage{pst-tree}
+\usepackage{booktabs}
+\usepackage{multirow}
+\usepackage{multicol}
+\usepackage{natbib}
+\usepackage{bibentry}
+\IfFileExists{gitHeadLocal.gin}
+  {\usepackage[local]{gitinfo2}}
+  {\usepackage{gitinfo2}}
+\usepackage{siunitx}
+\usepackage{nicefrac}
+\usepackage{animate}
+\usepackage{breakurl}
+\usepackage{fontawesome}
+\usepackage{xcolor}
+\usepackage{tikz}
+\usetikzlibrary{
+  arrows,
+  arrows.meta,
+  automata,
+  calc,
+  chains,
+  decorations.markings,
+  mindmap,
+  patterns,
+  petri,
+  positioning,
+  shadows,
+  shapes.geometric,
+  shapes.misc,
+  spy,
+  trees}
+\usepackage{smartdiagram}
+\usepackage{pgfplots}
+\pgfplotsset{compat=1.18}
+\usepackage[linesnumbered,lined,ruled]{algorithm2e}
+\usepackage{listings}
+\usepackage{todonotes}
+% \usepackage[normalem]{ulem}
+
+\lstset{
+  frame=single,
+  stringstyle=\ttfamily,
+  backgroundcolor=\color{yellow!20},
+  basicstyle=\footnotesize\ttfamily}
+
+\definecolor{LightGray}{rgb}{0.9,0.9,0.9}
+\newlength{\pixel}
+\setlength{\pixel}{0.000714285714\slidewidth}
+\setlength{\TPHorizModule}{\slidewidth}
+\setlength{\TPVertModule}{\slideheight}
+
+\newcommand{\highlight}[1]{\fbox{#1}}
+\newcommand{\icite}[1]{{\footnotesize [#1]}}
+\newcommand{\twotonebox}[2]{%
+  \fcolorbox{pdcolor2}{pdcolor2}{#1\vphantom{#2}}%
+  \fcolorbox{pdcolor2}{white}{#2\vphantom{#1}}}
+\newcommand{\twotoneboxo}[2]{%
+  \fcolorbox{pdcolor2}{pdcolor2}{#1}%
+  \fcolorbox{pdcolor2}{white}{#2}}
+\newcommand{\vpspace}[1]{\vphantom{\vspace{#1}}}
+\newcommand{\hpspace}[1]{\hphantom{\hspace{#1}}}
+\newcommand{\COMMENT}[1]{}
+\newcommand{\mx}[1]{\ensuremath{#1}}
+\newcommand{\placepos}[3]{%
+  \hbox to\z@{\kern#1\raisebox{-#2}[\z@][\z@]{#3}\hss}\ignorespaces}
+
+\tikzstyle{flipbox} = [
+  draw=blue!10,
+  fill=green!20,
+  very thick,
+  rectangle,
+  rounded corners,
+  inner sep=10pt,
+  inner ysep=20pt]
+\tikzstyle{fancytitle} = [fill=red,text=white]
