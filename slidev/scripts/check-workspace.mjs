@@ -30,7 +30,7 @@ assert(root.private === true, 'The workspace root must remain private')
 for (const [path, name] of publicPackages) {
   const manifest = await readManifest(path)
   assert(manifest.name === name, `${path} has an unexpected package name`)
-  assert(manifest.version === '0.1.0-beta.1', `${name} must use the shared beta release version`)
+  assert(manifest.version === '0.1.0', `${name} must use the shared stable release version`)
   assert(manifest.license === 'MIT', `${name} must use the MIT licence`)
   assert(manifest.private !== true, `${name} must remain eligible for future publication`)
 }

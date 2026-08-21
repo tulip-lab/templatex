@@ -2,7 +2,7 @@
 
 Optional live audience synchronization for TULIP Slidev presentations.
 
-This package is under active migration and has not been published. It mounts the synchronization bridge through its own Slidev global layer, independently of the visual Theme.
+Install the exact stable release with `pnpm add slidev-addon-tulip-live@0.1.0`. It mounts the synchronization bridge through its own Slidev global layer, independently of the visual Theme.
 
 Enable it in deck headmatter:
 
