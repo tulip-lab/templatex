@@ -45,7 +45,7 @@ ${extraMarkdown}`
 
 const sharedDependencies = {
   '@slidev/cli': '52.19.0',
-  'slidev-theme-tulip-lab': '0.1.0-beta.1',
+  'slidev-theme-tulip-lab': '0.1.0',
   'vue': '3.5.41',
 }
 
@@ -100,7 +100,7 @@ test('reports geometry, structure, metadata, dependency, and image issues togeth
     canvasWidth: 1920,
     dependencies: {
       '@slidev/cli': '^52.19.0',
-      'slidev-theme-tulip-lab': '0.1.0-beta.1',
+      'slidev-theme-tulip-lab': '0.1.0',
     },
     extraMarkdown: `
 ![](./missing-alt.png)

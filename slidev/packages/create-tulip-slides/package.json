@@ -1,9 +1,18 @@
 {
   "name": "create-tulip-slides",
-  "version": "0.1.0-beta.1",
+  "version": "0.1.0",
   "description": "Create TULIP Slidev Course and Talk projects.",
   "type": "module",
   "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/tulip-lab/templatex.git",
+    "directory": "slidev/packages/create-tulip-slides"
+  },
+  "bugs": {
+    "url": "https://github.com/tulip-lab/templatex/issues"
+  },
+  "homepage": "https://github.com/tulip-lab/templatex/tree/main/slidev/packages/create-tulip-slides",
   "bin": {
     "create-tulip-slides": "./bin/create-tulip-slides.mjs"
   },

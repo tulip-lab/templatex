@@ -2,7 +2,7 @@
 
 TULIP Lab's shared 16:10 Slidev Theme for courses and talks. It provides the branded Cover, navigation shell, table of contents, section pages, references, contact page, QR code, and reusable content layouts.
 
-This package is under active migration and has not been published.
+Install the exact stable release with `pnpm add slidev-theme-tulip-lab@0.1.0`.
 
 Workspace projects can use it with:
 
