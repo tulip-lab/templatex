@@ -1,0 +1,140 @@
+import assert from 'node:assert/strict'
+import { mkdir, mkdtemp, readFile, writeFile } from 'node:fs/promises'
+import { tmpdir } from 'node:os'
+import { join } from 'node:path'
+import test from 'node:test'
+import { checkDeck } from '../src/check-deck.mjs'
+
+async function fixture({
+  addons = '',
+  aspectRatio = '16/10',
+  canvasWidth = 1280,
+  dependencies = {},
+  extraHeadmatter = '',
+  extraMarkdown = '',
+  layouts = ['toc', 'contact'],
+  subtitle = 'A test presentation',
+} = {}) {
+  const root = await mkdtemp(join(tmpdir(), 'tulip-slidev-check-'))
+  const slides = `---
+theme: slidev-theme-tulip-lab
+title: Example
+subtitle: ${JSON.stringify(subtitle)}
+layout: cover
+course: TULIP Lab
+author: Example Author
+affiliation: Example Institution
+aspectRatio: ${aspectRatio}
+canvasWidth: ${canvasWidth}
+${addons}${extraHeadmatter}---
+
+# Example
+
+${layouts.map(layout => `---
+layout: ${layout}
+---
+
+# ${layout}
+`).join('\n')}
+${extraMarkdown}`
+
+  await writeFile(join(root, 'slides.md'), slides)
+  await writeFile(join(root, 'package.json'), `${JSON.stringify({ dependencies }, null, 2)}\n`)
+  return root
+}
+
+const sharedDependencies = {
+  '@slidev/cli': '52.19.0',
+  'slidev-theme-tulip-lab': '0.1.0-beta.1',
+  'vue': '3.5.41',
+}
+
+test('accepts a Talk with exact package versions', async () => {
+  const root = await fixture({ dependencies: sharedDependencies })
+  const result = await checkDeck(root, { profile: 'talk' })
+
+  assert.deepEqual(result.errors, [])
+})
+
+test('accepts a Course with workspace packages and the live addon', async () => {
+  const root = await fixture({
+    addons: `addons:
+  - slidev-addon-tulip-live
+`,
+    dependencies: {
+      ...sharedDependencies,
+      'slidev-addon-tulip-live': 'workspace:*',
+      'slidev-theme-tulip-lab': 'workspace:*',
+    },
+  })
+  const result = await checkDeck(root, { profile: 'course' })
+
+  assert.deepEqual(result.errors, [])
+})
+
+test('finds required layouts in imported slide sources', async () => {
+  const root = await fixture({ dependencies: sharedDependencies, layouts: ['toc'] })
+  const slidesPath = join(root, 'slides.md')
+  const parts = join(root, 'parts')
+  await mkdir(parts)
+  await writeFile(slidesPath, `${await readFile(slidesPath, 'utf8')}
+---
+src: ./parts/close.md
+---
+`)
+  await writeFile(join(parts, 'close.md'), `---
+layout: contact
+---
+
+# Contact
+`)
+
+  const result = await checkDeck(root, { profile: 'talk' })
+
+  assert.deepEqual(result.errors, [])
+})
+
+test('reports geometry, structure, metadata, dependency, and image issues together', async () => {
+  const root = await fixture({
+    aspectRatio: '16/9',
+    canvasWidth: 1920,
+    dependencies: {
+      '@slidev/cli': '^52.19.0',
+      'slidev-theme-tulip-lab': '0.1.0-beta.1',
+    },
+    extraMarkdown: `
+![](./missing-alt.png)
+<img src="another.png">
+`,
+    layouts: [],
+    subtitle: '',
+  })
+  const result = await checkDeck(root, { profile: 'talk' })
+  const output = result.errors.join('\n')
+
+  assert.match(output, /aspectRatio must be "16\/10"/)
+  assert.match(output, /canvasWidth must be 1280/)
+  assert.match(output, /required headmatter field "subtitle" is missing/)
+  assert.match(output, /required layout "toc" is missing/)
+  assert.match(output, /required layout "contact" is missing/)
+  assert.match(output, /"@slidev\/cli" must use an exact version/)
+  assert.match(output, /required dependency "vue" is missing/)
+  assert.match(output, /Markdown image needs non-empty alt text/)
+  assert.match(output, /HTML image needs non-empty alt text/)
+})
+
+test('reports malformed YAML headmatter', async () => {
+  const root = await fixture({
+    dependencies: sharedDependencies,
+    extraHeadmatter: 'invalid: [yaml\n',
+  })
+  const result = await checkDeck(root, { profile: 'talk' })
+
+  assert.match(result.errors.join('\n'), /invalid YAML frontmatter/)
+})
+
+test('requires a supported profile', async () => {
+  const root = await fixture({ dependencies: sharedDependencies })
+
+  await assert.rejects(() => checkDeck(root, { profile: 'workshop' }), /profile must be/)
+})

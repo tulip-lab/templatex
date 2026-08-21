@@ -1,0 +1,534 @@
+/*
+ * TULIP Lab slide theme tokens.
+ * Palette ported from powerdot-tuliplab.sty (TULIP Lab powerdot style).
+ */
+:root {
+  --pd1: #2b4f70;
+  --pd2: #bfd9eb;
+  --pd3: #e6f2fa;
+  --tulip-nav: #5d8392;
+  --tulip-nav-dark: #426b7b;
+  --tulip-purple: #705b9e;
+  --tulip-purple-dark: #66539a;
+  --tulip-warm: #8b7452;
+  --tulip-ink: #1d2b3a;
+  --tulip-shell-top: #e8e6fa;
+  --tulip-shell-bottom: #c6bfeb;
+  --tulip-shell-ink: #3e2f7c;
+  --tulip-sans: 'Avenir Next', 'Segoe UI', 'Helvetica Neue', Arial, sans-serif;
+  --tulip-serif: Georgia, 'Times New Roman', serif;
+  --tulip-reference-serif: 'Century Schoolbook', 'Century Schoolbook L', 'TeX Gyre Schola', Georgia, 'Times New Roman', serif;
+  --tulip-radius: 0.55rem;
+  --tulip-shell-x: 5.5%;
+  --tulip-shell-top-height: 8.8%;
+  --tulip-shell-bottom-height: 7.4%;
+  --tulip-content-top: 12%;
+  --tulip-content-bottom: 10.5%;
+  --tulip-title-context-row-height: 1.25rem;
+  --tulip-title-context-size: 0.62rem;
+  --tulip-title-context-gap: 0.25rem;
+  --tulip-title-size: 2.2rem;
+  --tulip-title-line-box: 2.53rem;
+  --tulip-title-purpose-gap: 0.35rem;
+  --tulip-title-purpose-size: 0.68rem;
+  --tulip-title-purpose-line-box: 0.82rem;
+  --tulip-title-body-gap: 0.85rem;
+  --tulip-title-region-height: 5.2rem;
+  --tulip-accent: var(--tulip-purple);
+  --tulip-accent-soft: rgba(112, 91, 158, 0.10);
+  --tulip-table-header: var(--tulip-purple-dark);
+}
+
+html,
+body,
+#app {
+  height: 100%;
+}
+
+.slidev-layout {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  overflow: hidden;
+  color: var(--tulip-ink);
+  background: #fff;
+  font-family: var(--tulip-reference-serif);
+  line-height: 1.5;
+}
+
+.slidev-layout:not(.tulip-cover)::before {
+  position: absolute;
+  inset: 0 0 auto;
+  height: var(--tulip-shell-top-height);
+  border-bottom: 1px solid color-mix(in srgb, var(--tulip-shell-ink) 12%, transparent);
+  background: var(--tulip-shell-top);
+  content: '';
+  pointer-events: none;
+}
+
+.slidev-layout:not(.tulip-cover)::after {
+  position: absolute;
+  inset: auto 0 0;
+  height: var(--tulip-shell-bottom-height);
+  background: var(--tulip-shell-bottom);
+  content: '';
+  pointer-events: none;
+}
+
+.tulip-layout-content {
+  position: absolute;
+  inset: var(--tulip-content-top) var(--tulip-shell-x) var(--tulip-content-bottom);
+  z-index: 1;
+  overflow: hidden;
+}
+
+.tulip-layout-content--wide {
+  right: 3.5%;
+  left: 3.5%;
+}
+
+.tulip-layout-content--references {
+  font-size: 0.9rem;
+}
+
+.tulip-layout-content--centered {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+}
+
+.slidev-layout h1 {
+  color: var(--pd1);
+  font-family: var(--tulip-reference-serif);
+  font-size: var(--tulip-title-size);
+  font-weight: 700;
+  letter-spacing: 0;
+  line-height: 1.15;
+}
+
+.slidev-layout h2 {
+  color: var(--pd1);
+  font-size: 1.5rem;
+}
+
+.slidev-layout a {
+  color: var(--pd1);
+}
+
+.slidev-layout.tulip-accent-blue {
+  --tulip-accent: #527f91;
+  --tulip-accent-soft: #eef5f8;
+  --tulip-table-header: #456f80;
+}
+
+.slidev-layout.tulip-accent-warm {
+  --tulip-accent: #8b7452;
+  --tulip-accent-soft: #f4f1e9;
+  --tulip-table-header: #756143;
+}
+
+.slidev-layout.tulip-accent-green {
+  --tulip-accent: #3a8c77;
+  --tulip-accent-soft: #eef6f1;
+  --tulip-table-header: #327563;
+}
+
+.slidev-layout.tulip-accent-purple {
+  --tulip-accent: #705b9e;
+  --tulip-accent-soft: #f2eff8;
+  --tulip-table-header: #66539a;
+}
+
+.slidev-layout.tulip-accent-red {
+  --tulip-accent: #a9554e;
+  --tulip-accent-soft: #f8f1ed;
+  --tulip-table-header: #91473f;
+}
+
+.slidev-layout ul:not([class]) {
+  margin-block: 0.45em;
+  padding-left: 1.25em;
+  list-style-type: disc;
+}
+
+.slidev-layout ul:not([class]) ul:not([class]) {
+  list-style-type: "-";
+}
+
+.slidev-layout ul:not([class]) ul:not([class]) ul:not([class]) {
+  list-style-type: circle;
+}
+
+.slidev-layout ol:not([class]) {
+  margin-block: 0.45em;
+  padding-left: 1.25em;
+  list-style-type: decimal;
+}
+
+.slidev-layout ul:not([class]) > li + li,
+.slidev-layout ol:not([class]) > li + li {
+  margin-top: 0.3em;
+}
+
+.slidev-layout ul li::marker {
+  color: var(--tulip-accent, var(--pd1));
+  font-weight: 700;
+}
+
+.slidev-layout table {
+  width: 100%;
+  border: 1px solid color-mix(in srgb, var(--tulip-accent) 30%, white);
+  border-collapse: separate;
+  border-spacing: 0;
+  border-radius: var(--tulip-radius);
+  overflow: hidden;
+  font-size: 1.02rem;
+  line-height: 1.3;
+}
+
+.slidev-layout th,
+.slidev-layout td {
+  padding: 0.74rem 0.88rem;
+  text-align: left;
+}
+
+.slidev-layout th {
+  background: var(--tulip-table-header);
+  color: #fff;
+  font-family: var(--tulip-sans);
+  font-size: 0.76rem;
+  font-weight: 800;
+  text-transform: uppercase;
+}
+
+.slidev-layout td {
+  border-top: 1px solid color-mix(in srgb, var(--tulip-accent) 18%, white);
+  vertical-align: top;
+}
+
+.slidev-layout tbody tr:nth-child(even) td {
+  background: var(--tulip-accent-soft);
+}
+
+/* Reusable teaching-purpose label and content cards. */
+.tulip-purpose {
+  margin-bottom: 0.35rem;
+  color: rgba(60, 60, 60, 0.58);
+  font-family: var(--tulip-sans);
+  font-size: var(--tulip-title-purpose-size);
+  font-weight: 700;
+  text-transform: uppercase;
+}
+
+.tulip-blurb {
+  color: var(--tulip-accent);
+}
+
+.tulip-titled-layout {
+  display: grid;
+  grid-template-rows: var(--tulip-title-region-height) minmax(0, 1fr);
+  gap: var(--tulip-title-body-gap);
+}
+
+.tulip-title-region {
+  display: grid;
+  grid-template-rows:
+    calc(var(--tulip-title-context-row-height) + var(--tulip-title-context-gap))
+    calc(var(--tulip-title-line-box) + var(--tulip-title-purpose-gap))
+    var(--tulip-title-purpose-line-box);
+  min-width: 0;
+}
+
+.tulip-title-region > .tulip-context-row {
+  display: flex;
+  grid-row: 1;
+  align-items: flex-start;
+  height: var(--tulip-title-context-row-height);
+}
+
+.tulip-title-region > h1 {
+  grid-row: 2;
+  align-self: start;
+  min-width: 0;
+  margin: 0;
+  font-size: var(--tulip-title-size);
+  line-height: 1.15;
+  white-space: nowrap;
+}
+
+.tulip-title-region > .tulip-purpose {
+  grid-row: 3;
+  align-self: start;
+  margin: 0;
+  font-size: var(--tulip-title-purpose-size);
+  line-height: 1.2;
+  white-space: nowrap;
+}
+
+.tulip-slide-body {
+  min-width: 0;
+  min-height: 0;
+  overflow: hidden;
+}
+
+.tulip-slide-body--centered {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.tulip-context-label,
+.tulip-context-sequence {
+  color: rgba(60, 60, 60, 0.62);
+  font-family: var(--tulip-sans);
+  font-size: var(--tulip-title-context-size);
+  font-weight: 800;
+  letter-spacing: 0;
+  line-height: 1;
+  text-transform: uppercase;
+}
+
+.tulip-context-label {
+  display: inline-flex;
+  align-items: center;
+  padding: 0.18rem 0.55rem;
+  border: 1px solid color-mix(in srgb, var(--tulip-accent) 34%, white);
+  border-radius: 999px;
+  background: var(--tulip-accent-soft);
+  color: var(--tulip-accent);
+  white-space: nowrap;
+}
+
+.tulip-context-sequence {
+  display: flex;
+  align-items: center;
+  gap: 0.45rem;
+}
+
+.tulip-context-sequence span {
+  padding: 0.18rem 0.5rem;
+  border-radius: 999px;
+}
+
+.tulip-context-sequence i {
+  font-style: normal;
+  opacity: 0.55;
+}
+
+.tulip-context-label--case {
+  border-color: rgba(194, 146, 46, 0.3);
+  background: rgba(246, 201, 83, 0.18);
+  color: #7a5a1b;
+}
+
+.tulip-context-label--exercise {
+  border-color: rgba(58, 140, 119, 0.3);
+  background: rgba(58, 140, 119, 0.12);
+  color: #2f6f60;
+}
+
+.tulip-context-label--gate {
+  border-color: rgba(112, 91, 158, 0.3);
+  background: rgba(112, 91, 158, 0.14);
+  color: #553f83;
+}
+
+.tulip-context-label--demo {
+  border-color: color-mix(in srgb, var(--tulip-purple) 42%, white);
+  background: color-mix(in srgb, var(--tulip-shell-bottom) 42%, white);
+  color: var(--tulip-purple-dark);
+}
+
+.tulip-context-label--status {
+  border-color: color-mix(in srgb, var(--tulip-purple) 34%, white);
+  background: color-mix(in srgb, var(--tulip-shell-top) 72%, white);
+  color: var(--tulip-purple-dark);
+}
+
+.tulip-case-panel {
+  min-width: 0;
+  border: 1px solid rgba(142, 170, 184, 0.34);
+  border-radius: var(--tulip-radius);
+  background: #17232d;
+  color: #f5f8fa;
+  padding: 0.9rem 1.1rem;
+  box-shadow: 0 0.18rem 0.45rem rgba(25, 39, 49, 0.16);
+  font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace;
+}
+
+.tulip-case-panel--prose {
+  font-family: var(--tulip-reference-serif);
+}
+
+.tulip-case-panel pre,
+.tulip-case-panel p {
+  margin: 0;
+}
+
+.tulip-case-panel pre {
+  overflow: visible;
+  background: transparent;
+  color: inherit;
+  font: inherit;
+  line-height: 1.5;
+  white-space: pre-wrap;
+}
+
+.tulip-case-kicker {
+  display: block;
+  margin-bottom: 0.4rem;
+  color: #a9c6d6;
+  font-family: var(--tulip-sans);
+  font-size: 0.68rem;
+  font-weight: 800;
+  text-transform: uppercase;
+}
+
+.tulip-case-tone--muted {
+  color: #94a3b8;
+}
+
+.tulip-case-tone--decision {
+  color: #c4b5fd;
+}
+
+.tulip-case-tone--tool {
+  color: #7dd3fc;
+}
+
+.tulip-case-tone--observation {
+  color: #86efac;
+}
+
+.tulip-case-tone--gate {
+  color: #fbbf24;
+}
+
+.tulip-case-tone--final {
+  color: #f9a8d4;
+}
+
+.tulip-case-tone--warning {
+  color: #fca5a5;
+}
+
+.tulip-card {
+  min-height: 0;
+  border: 1px solid rgba(93, 131, 146, 0.22);
+  border-radius: var(--tulip-radius);
+  padding: 0.85rem 1.05rem;
+  box-shadow: 0 0.12rem 0.35rem rgba(39, 55, 68, 0.07);
+}
+
+.tulip-card--blue {
+  border-color: rgba(93, 131, 146, 0.34);
+  background: rgba(93, 131, 146, 0.18);
+}
+
+.tulip-card--warm {
+  border-color: rgba(139, 116, 82, 0.34);
+  background: rgba(139, 116, 82, 0.16);
+}
+
+.tulip-card--green {
+  border-color: rgba(58, 140, 119, 0.34);
+  background: rgba(58, 140, 119, 0.16);
+}
+
+.tulip-card--purple {
+  border-color: rgba(112, 91, 158, 0.34);
+  background: rgba(112, 91, 158, 0.17);
+}
+
+.tulip-card--red {
+  border-color: rgba(169, 75, 70, 0.34);
+  background: rgba(169, 75, 70, 0.15);
+}
+
+/* Shared two-column layout: paired body panels below the common title zone. */
+.slidev-layout.two-cols-header .col-left,
+.slidev-layout.two-cols-header .col-right {
+  display: flex;
+  flex-direction: column;
+  min-height: 0;
+  border: 1px solid color-mix(in srgb, var(--tulip-shell-bottom) 72%, white);
+  border-radius: var(--tulip-radius);
+  background: color-mix(in srgb, var(--tulip-shell-bottom) 28%, white);
+  padding: 0.85rem 1.1rem;
+}
+
+/* Opt-in content contract for paired teaching panels. */
+.slidev-layout.two-cols-header .tulip-panel-copy {
+  font-size: 0.82rem;
+  line-height: 1.4;
+}
+
+.slidev-layout.two-cols-header .tulip-panel-title {
+  margin: 0.05rem 0 0.8rem;
+  color: var(--pd1);
+  font-size: 1rem;
+  font-weight: 800;
+  line-height: 1.2;
+  text-align: center;
+}
+
+.slidev-layout.two-cols-header .tulip-panel-subtitle {
+  margin: 0.85rem 0 0.3rem;
+  color: var(--pd1);
+  font-size: 0.88rem;
+  line-height: 1.2;
+}
+
+.slidev-layout.two-cols-header .tulip-panel-copy li {
+  font-size: inherit;
+  line-height: inherit;
+}
+
+.tulip-takeaway {
+  border-left: 4px solid var(--tulip-purple);
+  border-radius: 0 var(--tulip-radius) var(--tulip-radius) 0;
+  background: color-mix(in srgb, var(--tulip-shell-bottom) 34%, white);
+  padding: 0.65rem 1rem;
+  color: var(--pd1);
+  box-shadow: 0 0.12rem 0.35rem rgba(39, 55, 68, 0.06);
+}
+
+.tulip-slide-body:has(> .tulip-takeaway--bottom) {
+  position: relative;
+  padding-bottom: 4rem;
+}
+
+.tulip-slide-body > .tulip-takeaway--bottom {
+  position: absolute;
+  right: 8rem;
+  bottom: 0.15rem;
+  left: 8rem;
+}
+
+.slidev-layout.two-cols-header .tulip-two-cols-header-grid:has(.tulip-purpose--summary) {
+  grid-template-rows: calc(var(--tulip-title-region-height) + 0.7rem) minmax(0, 1fr) auto;
+}
+
+.tulip-title-region:has(> .tulip-purpose--summary) {
+  grid-template-rows:
+    calc(var(--tulip-title-context-row-height) + var(--tulip-title-context-gap))
+    calc(var(--tulip-title-line-box) + var(--tulip-title-purpose-gap))
+    calc(var(--tulip-title-purpose-line-box) + 0.7rem);
+}
+
+.tulip-title-region > .tulip-purpose--summary {
+  max-width: 60rem;
+  overflow: visible;
+  font-size: 0.64rem;
+  line-height: 1.25;
+  text-transform: none;
+  text-overflow: clip;
+  white-space: normal;
+}
+
+.slidev-layout.two-cols-header .col-left li,
+.slidev-layout.two-cols-header .col-right li {
+  line-height: 1.4;
+}
