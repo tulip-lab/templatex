@@ -1,0 +1,9 @@
+packages:
+  - packages/*
+  - templates/*
+  - examples/*
+
+linkWorkspacePackages: true
+preferWorkspacePackages: true
+saveExact: true
+sharedWorkspaceLockfile: true

@@ -1,0 +1,50 @@
+{
+  "name": "slidev-theme-tulip-lab",
+  "version": "0.1.0-beta.1",
+  "description": "TULIP Lab theme for 16:10 Slidev courses and talks.",
+  "type": "module",
+  "license": "MIT",
+  "files": [
+    "assets",
+    "components",
+    "composables",
+    "layouts",
+    "styles",
+    "utils",
+    "global-bottom.vue",
+    "global-top.vue",
+    "LICENSE",
+    "README.md"
+  ],
+  "scripts": {
+    "test": "tsx --test tests/*.test.ts"
+  },
+  "publishConfig": {
+    "access": "public"
+  },
+  "dependencies": {
+    "qrcode.vue": "3.10.0"
+  },
+  "devDependencies": {
+    "tsx": "4.23.12"
+  },
+  "engines": {
+    "node": ">=20",
+    "slidev": ">=52.0.0"
+  },
+  "slidev": {
+    "colorSchema": "light",
+    "defaults": {
+      "aspectRatio": "16/10",
+      "canvasWidth": 1280,
+      "transition": "fade-out",
+      "layout": "default"
+    }
+  },
+  "keywords": [
+    "slidev",
+    "slidev-theme",
+    "theme",
+    "tulip-lab"
+  ]
+}

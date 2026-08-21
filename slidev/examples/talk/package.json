@@ -1,0 +1,17 @@
+{
+  "name": "@tulip-lab/slidev-example-talk",
+  "version": "0.0.0",
+  "private": true,
+  "description": "Example TULIP Slidev Talk deck.",
+  "type": "module",
+  "license": "CC-BY-4.0",
+  "scripts": {
+    "build": "slidev build --base /examples/talk/ --out ../../dist/examples/talk",
+    "dev": "slidev --open"
+  },
+  "dependencies": {
+    "@slidev/cli": "52.19.0",
+    "slidev-theme-tulip-lab": "workspace:*",
+    "vue": "3.5.41"
+  }
+}

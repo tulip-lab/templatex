@@ -1,0 +1,33 @@
+{
+  "name": "slidev-addon-tulip-live",
+  "version": "0.1.0-beta.1",
+  "description": "Optional live audience synchronization for TULIP Slidev presentations.",
+  "type": "module",
+  "license": "MIT",
+  "files": [
+    "components",
+    "global-top.vue",
+    "LICENSE",
+    "README.md"
+  ],
+  "scripts": {
+    "test": "tsx --test tests/*.test.ts"
+  },
+  "publishConfig": {
+    "access": "public"
+  },
+  "devDependencies": {
+    "tsx": "4.23.12"
+  },
+  "engines": {
+    "node": ">=20",
+    "slidev": ">=52.0.0"
+  },
+  "slidev": {},
+  "keywords": [
+    "slidev",
+    "slidev-addon",
+    "presentation",
+    "tulip-lab"
+  ]
+}

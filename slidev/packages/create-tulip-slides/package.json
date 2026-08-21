@@ -1,0 +1,33 @@
+{
+  "name": "create-tulip-slides",
+  "version": "0.1.0-beta.1",
+  "description": "Create TULIP Slidev Course and Talk projects.",
+  "type": "module",
+  "license": "MIT",
+  "bin": {
+    "create-tulip-slides": "./bin/create-tulip-slides.mjs"
+  },
+  "files": [
+    "bin",
+    "src",
+    "templates",
+    "LICENSE",
+    "LICENSE-CONTENT",
+    "README.md"
+  ],
+  "scripts": {
+    "test": "node --test tests/*.test.mjs"
+  },
+  "publishConfig": {
+    "access": "public"
+  },
+  "engines": {
+    "node": ">=20"
+  },
+  "keywords": [
+    "slidev",
+    "scaffold",
+    "presentation",
+    "tulip-lab"
+  ]
+}
