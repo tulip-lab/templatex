@@ -29,7 +29,7 @@ const columns = computed(() => {
             <span v-if="section.block" class="tulip-toc-number">{{ section.block }}</span>
             <span class="tulip-toc-label">{{ section.label }}</span>
           </button>
-          <div v-if="section.sessions.length" class="tulip-toc-sessions">
+          <div v-if="section.tocExpand && section.sessions.length" class="tulip-toc-sessions">
             <button
               v-for="session in section.sessions"
               :key="session.code"
@@ -37,8 +37,8 @@ const columns = computed(() => {
               type="button"
               @click="$nav.go(session.page)"
             >
-              <strong>{{ session.code }}</strong>
-              <span>{{ session.title }}</span>
+              <strong :class="{ 'tulip-toc-session-label': session.title === session.code }">{{ session.code }}</strong>
+              <span v-if="session.title !== session.code">{{ session.title }}</span>
             </button>
           </div>
         </div>
@@ -135,5 +135,9 @@ const columns = computed(() => {
 
 .tulip-toc-session strong {
   color: var(--tulip-purple-dark);
+}
+
+.tulip-toc-session-label {
+  grid-column: 1 / -1;
 }
 </style>

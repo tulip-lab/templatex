@@ -40,3 +40,13 @@ test('ships fallback media and keeps deck content configurable', () => {
   assert.match(academy, /\['slide', 'presenter'\]/)
   assert.match(questions, /config\.value\.questionsImage/)
 })
+
+test('documents the canonical shared-page section and session structure', () => {
+  const readme = readFileSync(new URL('../README.md', import.meta.url), 'utf8')
+
+  assert.match(readme, /section: TULIP Lab\ntocExpand: false\nsession: Gang Li/)
+  assert.match(readme, /session: Deakin/)
+  assert.match(readme, /session: TULIP Lab/)
+  assert.match(readme, /section: Closing\ntocExpand: false\nsession: Questions\nnavigation: false/)
+  assert.match(readme, /session: Contact/)
+})

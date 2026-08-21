@@ -67,7 +67,7 @@ export function buildDeckSections(routes: NavigationRoute[]): DeckSection[] {
         page: route.no,
         showInToc: frontmatter.toc !== false,
         showInNavigation: frontmatter.toc !== false && frontmatter.navigation !== false,
-        tocExpand: frontmatter.tocExpand === true,
+        tocExpand: frontmatter.tocExpand !== false,
         sessions: [],
       }
       sections.push(currentSection)
@@ -97,6 +97,12 @@ export function navigableDeckSections(sections: DeckSection[]): DeckSection[] {
 
 export function formatSectionLabel(section: DeckSection): string {
   return section.block ? `${section.block} ${section.label}` : section.label
+}
+
+export function formatSessionLabel(session: DeckSession): string {
+  return session.title === session.code
+    ? session.code
+    : `${session.code} · ${session.title}`
 }
 
 export function findActiveItem(sections: DeckSection[], page: number): ActiveDeckItem | undefined {

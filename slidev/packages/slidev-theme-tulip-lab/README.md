@@ -19,6 +19,14 @@ canvasWidth: 1280
 
 See the workspace examples for complete Course and Talk decks. Live audience synchronization is provided separately by `slidev-addon-tulip-lab-live`; standard TULIP Lab content pages are provided by `slidev-addon-tulip-lab-pages`.
 
+`section` creates a table-of-contents and bottom-navigation item. `session` and
+`sessionTitle` create a child entry in the table of contents and compact top
+navigation without adding another bottom-navigation item. A session remains
+active until the next `session` or `section` declaration.
+
+Set `tocExpand: false` on a section to keep its sessions in the compact top
+navigation while showing only the parent section in the table of contents.
+
 The audience QR code uses the active Slidev base path during local development.
 A deployment may set `VITE_TULIP_AUDIENCE_URL` to a relative or absolute Live
 audience URL when Static and Live variants use different base paths.

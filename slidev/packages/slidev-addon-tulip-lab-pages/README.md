@@ -34,10 +34,14 @@ Add the standard pages explicitly where they belong in the deck:
 ```yaml
 ---
 layout: tulip-speaker
+section: TULIP Lab
+tocExpand: false
+session: Gang Li
 ---
 
 ---
 layout: tulip-deakin
+session: Deakin
 ---
 
 ---
@@ -46,26 +50,35 @@ layout: tulip-deakin-rankings
 
 ---
 layout: tulip-academy
+session: TULIP Lab
 clicks: 4
 ---
 
 ---
 layout: tulip-questions
 section: Closing
-toc: false
-navigationLabel: Questions
+tocExpand: false
+session: Questions
+navigation: false
 ---
 
 ---
 layout: tulip-contact
 title: Contact
-navigationLabel: Contact
+session: Contact
 ---
 ```
 
-The two closing pages share one hidden `Closing` section. `toc: false` keeps
-them out of the table of contents and footer navigation, while
-`navigationLabel` supplies the page-specific top label.
+The profile pages share one visible `TULIP Lab` section with three sessions:
+`Gang Li`, `Deakin`, and `TULIP Lab`. `tocExpand: false` shows only the parent
+section in the table of contents while retaining all three sessions in the top
+navigation. The rankings page remains inside the `Deakin` session because it
+does not start another session.
+
+The two closing pages share one visible `Closing` section with `Questions` and
+`Contact` sessions. `tocExpand: false` keeps those sessions out of the table of
+contents, while `navigation: false` keeps the section out of footer navigation.
+Both pages retain session-aware top navigation.
 
 Layouts are explicit rather than injected automatically, so each deck retains
 control of its narrative order. Shared media is bundled from the addon; the

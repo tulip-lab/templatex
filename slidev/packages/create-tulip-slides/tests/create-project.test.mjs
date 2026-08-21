@@ -14,6 +14,14 @@ async function manifest(target) {
   return JSON.parse(await readFile(join(target, 'package.json'), 'utf8'))
 }
 
+function assertSharedPageSessions(slides) {
+  assert.match(slides, /layout: tulip-speaker\nsection: TULIP Lab\ntocExpand: false\nsession: Gang Li/)
+  assert.match(slides, /layout: tulip-deakin\nsession: Deakin/)
+  assert.match(slides, /layout: tulip-deakin-rankings[\s\S]*layout: tulip-academy\nsession: TULIP Lab/)
+  assert.match(slides, /layout: tulip-questions\nsection: Closing\ntocExpand: false\nsession: Questions\nnavigation: false/)
+  assert.match(slides, /layout: tulip-contact\ntitle: Contact\nsession: Contact/)
+}
+
 test('creates a Course with exact versions and the standard addons', async () => {
   const target = await temporaryTarget('Example Course')
   const result = await createProject('course', target)
@@ -29,6 +37,7 @@ test('creates a Course with exact versions and the standard addons', async () =>
   assert.equal(packageJson.dependencies['tulip-slidev-check'], PACKAGE_VERSIONS['tulip-slidev-check'])
   assert.match(slides, /slidev-addon-tulip-lab-live/)
   assert.match(slides, /slidev-addon-tulip-lab-pages/)
+  assertSharedPageSessions(slides)
   assert.match(await readFile(join(target, 'TEMPLATE-LICENSE.md'), 'utf8'), /CC BY 4\.0/)
 })
 
@@ -44,6 +53,7 @@ test('creates a Talk without live synchronization by default', async () => {
   assert.equal(packageJson.dependencies['slidev-addon-tulip-lab-pages'], PACKAGE_VERSIONS['slidev-addon-tulip-lab-pages'])
   assert.doesNotMatch(slides, /slidev-addon-tulip-lab-live/)
   assert.match(slides, /slidev-addon-tulip-lab-pages/)
+  assertSharedPageSessions(slides)
 })
 
 test('refuses to overwrite a non-empty target', async () => {

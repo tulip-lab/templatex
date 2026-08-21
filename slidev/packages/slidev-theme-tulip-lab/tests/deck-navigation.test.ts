@@ -5,6 +5,7 @@ import {
   buildDeckSections,
   findActiveItem,
   formatSectionLabel,
+  formatSessionLabel,
   getProgressPercentage,
   getShellVisibility,
   navigableDeckSections,
@@ -52,6 +53,11 @@ test('formats numbered section labels and finds the active item', () => {
   assert.equal(findActiveItem(sections, 6)?.session, undefined)
 })
 
+test('formats descriptive sessions once and coded sessions with their title', () => {
+  assert.equal(formatSessionLabel({ code: 'Gang Li', title: 'Gang Li', page: 3 }), 'Gang Li')
+  assert.equal(formatSessionLabel({ code: '1A', title: 'Question', page: 4 }), '1A · Question')
+})
+
 test('ignores empty labels and sessions before the first section', () => {
   const sections = buildDeckSections([
     { no: 1, frontmatter: { session: '0A', sessionTitle: 'Ignored' } },
@@ -62,6 +68,20 @@ test('ignores empty labels and sessions before the first section', () => {
 
   assert.deepEqual(sections.map(section => section.label), ['Overview'])
   assert.deepEqual(sections[0].sessions, [])
+})
+
+test('shows section sessions in the TOC by default and supports section-level collapse', () => {
+  const sections = buildDeckSections([
+    { no: 1, frontmatter: { section: 'TULIP Lab', tocExpand: false } },
+    { no: 2, frontmatter: { session: 'Gang Li' } },
+    { no: 3, frontmatter: { section: 'Overview' } },
+    { no: 4, frontmatter: { session: '1A', sessionTitle: 'Purpose' } },
+  ])
+
+  assert.equal(sections[0].tocExpand, false)
+  assert.equal(sections[1].tocExpand, true)
+  assert.deepEqual(sections[0].sessions.map(session => session.code), ['Gang Li'])
+  assert.deepEqual(sections[1].sessions.map(session => session.code), ['1A'])
 })
 
 test('splits sections into ordered balanced TOC columns', () => {

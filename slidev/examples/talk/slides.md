@@ -33,10 +33,14 @@ navigation: toc
 
 ---
 layout: tulip-speaker
+section: TULIP Lab
+tocExpand: false
+session: Gang Li
 ---
 
 ---
 layout: tulip-deakin
+session: Deakin
 ---
 
 ---
@@ -45,6 +49,7 @@ layout: tulip-deakin-rankings
 
 ---
 layout: tulip-academy
+session: TULIP Lab
 clicks: 4
 ---
 
@@ -93,12 +98,13 @@ navigation: false
 ---
 layout: tulip-questions
 section: Closing
-toc: false
-navigationLabel: Questions
+tocExpand: false
+session: Questions
+navigation: false
 ---
 
 ---
 layout: tulip-contact
 title: Contact
-navigationLabel: Contact
+session: Contact
 ---

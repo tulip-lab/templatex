@@ -1,7 +1,7 @@
 <script setup lang="ts">
 import { computed } from 'vue'
 import { useDeckNavigation } from './composables/useDeckNavigation'
-import { getShellVisibility } from './utils/deckNavigation'
+import { formatSessionLabel, getShellVisibility } from './utils/deckNavigation'
 import logo from './assets/tulip-logo.png'
 
 const {
@@ -32,7 +32,7 @@ const locationLabel = computed(() => {
   if (!section)
     return ''
   if (currentSession.value)
-    return `${currentSession.value.code} · ${currentSession.value.title}`
+    return formatSessionLabel(currentSession.value)
   if (section.block)
     return `${section.block} · ${section.label}`
   return section.label
@@ -65,8 +65,8 @@ const showSessionNodes = computed(() => (
           class="tulip-session-node"
           :class="{ active: currentSessionIndex === index }"
           type="button"
-          :title="`${session.code} · ${session.title}`"
-          :aria-label="`Go to ${session.code} · ${session.title}`"
+          :title="formatSessionLabel(session)"
+          :aria-label="`Go to ${formatSessionLabel(session)}`"
           :aria-current="currentSessionIndex === index ? 'step' : undefined"
           @click="$nav.go(session.page)"
         />
