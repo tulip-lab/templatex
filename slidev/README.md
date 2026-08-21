@@ -13,6 +13,17 @@ This workspace develops the reusable Slidev system for TULIP Lab courses and tal
 
 The four public packages share the stable version `0.1.0`.
 
+## Ownership
+
+- `templatex/slidev/` is the canonical source for the Theme, live addon,
+  checker, creator, source templates, and public examples.
+- Course and Talk repositories own their private deck content and pin exact
+  published package versions with independent lockfiles.
+- `slides-deploy` owns the approved presentation catalog, production URLs,
+  access control, live-session runtime, and Cloudflare deployment.
+- Shared package changes are released here first, then adopted explicitly by
+  each consumer before a new complete presentation snapshot is deployed.
+
 ## Development
 
 Run workspace commands from this directory:
