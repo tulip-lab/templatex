@@ -8,6 +8,8 @@ export interface DeckSection {
   label: string
   block?: string
   page: number
+  showInToc: boolean
+  showInNavigation: boolean
   tocExpand: boolean
   sessions: DeckSession[]
 }
@@ -15,6 +17,8 @@ export interface DeckSection {
 export interface NavigationFrontmatter {
   section?: unknown
   block?: unknown
+  toc?: unknown
+  navigation?: unknown
   tocExpand?: unknown
   session?: unknown
   sessionTitle?: unknown
@@ -61,6 +65,8 @@ export function buildDeckSections(routes: NavigationRoute[]): DeckSection[] {
         label: sectionLabel,
         block: asLabel(frontmatter.block),
         page: route.no,
+        showInToc: frontmatter.toc !== false,
+        showInNavigation: frontmatter.toc !== false && frontmatter.navigation !== false,
         tocExpand: frontmatter.tocExpand === true,
         sessions: [],
       }
@@ -79,6 +85,14 @@ export function buildDeckSections(routes: NavigationRoute[]): DeckSection[] {
   }
 
   return sections
+}
+
+export function visibleDeckSections(sections: DeckSection[]): DeckSection[] {
+  return sections.filter(section => section.showInToc)
+}
+
+export function navigableDeckSections(sections: DeckSection[]): DeckSection[] {
+  return sections.filter(section => section.showInNavigation)
 }
 
 export function formatSectionLabel(section: DeckSection): string {

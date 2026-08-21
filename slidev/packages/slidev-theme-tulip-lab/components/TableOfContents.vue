@@ -1,12 +1,12 @@
 <script setup lang="ts">
 import { computed } from 'vue'
 import { useDeckNavigation } from '../composables/useDeckNavigation'
-import { splitSectionsForToc } from '../utils/deckNavigation'
+import { splitSectionsForToc, visibleDeckSections } from '../utils/deckNavigation'
 
 const { sections } = useDeckNavigation()
 
 const columns = computed(() => {
-  const [left, right] = splitSectionsForToc(sections.value)
+  const [left, right] = splitSectionsForToc(visibleDeckSections(sections.value))
   return [
     { id: 'left', sections: left },
     { id: 'right', sections: right },

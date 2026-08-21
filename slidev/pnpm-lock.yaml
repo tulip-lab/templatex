@@ -13,9 +13,12 @@ importers:
       '@slidev/cli':
         specifier: 52.19.0
         version: 52.19.0(@nuxt/kit@3.21.11)(@oxc-project/types@0.146.0)(@types/markdown-it@14.2.0)(@types/node@22.20.1)(@vitejs/devtools-kit@0.4.12(@modelcontextprotocol/server@2.0.0)(cac@7.0.0)(srvx@0.12.7)(vite@8.2.2(@types/node@22.20.1)(esbuild@0.28.2)(jiti@2.7.0)(tsx@4.23.12)(yaml@2.9.0)))(@vue/compiler-sfc@3.5.41)(cac@7.0.0)(esbuild@0.28.2)(hono@4.13.3)(lightningcss@1.33.0)(markdown-it@14.3.0)(oxc-parser@0.131.0)(postcss@8.5.26)(rolldown@1.2.5)(srvx@0.12.7)(tsx@4.23.12)
-      slidev-addon-tulip-live:
+      slidev-addon-tulip-lab-live:
         specifier: workspace:*
-        version: link:../../packages/slidev-addon-tulip-live
+        version: link:../../packages/slidev-addon-tulip-lab-live
+      slidev-addon-tulip-lab-pages:
+        specifier: workspace:*
+        version: link:../../packages/slidev-addon-tulip-lab-pages
       slidev-theme-tulip-lab:
         specifier: workspace:*
         version: link:../../packages/slidev-theme-tulip-lab
@@ -40,6 +43,9 @@ importers:
       '@slidev/cli':
         specifier: 52.19.0
         version: 52.19.0(@nuxt/kit@3.21.11)(@oxc-project/types@0.146.0)(@types/markdown-it@14.2.0)(@types/node@22.20.1)(@vitejs/devtools-kit@0.4.12(@modelcontextprotocol/server@2.0.0)(cac@7.0.0)(srvx@0.12.7)(vite@8.2.2(@types/node@22.20.1)(esbuild@0.28.2)(jiti@2.7.0)(tsx@4.23.12)(yaml@2.9.0)))(@vue/compiler-sfc@3.5.41)(cac@7.0.0)(esbuild@0.28.2)(hono@4.13.3)(lightningcss@1.33.0)(markdown-it@14.3.0)(oxc-parser@0.131.0)(postcss@8.5.26)(rolldown@1.2.5)(srvx@0.12.7)(tsx@4.23.12)
+      slidev-addon-tulip-lab-pages:
+        specifier: workspace:*
+        version: link:../../packages/slidev-addon-tulip-lab-pages
       slidev-theme-tulip-lab:
         specifier: workspace:*
         version: link:../../packages/slidev-theme-tulip-lab
@@ -49,7 +55,13 @@ importers:
 
   packages/create-tulip-slides: {}
 
-  packages/slidev-addon-tulip-live:
+  packages/slidev-addon-tulip-lab-live:
+    devDependencies:
+      tsx:
+        specifier: 4.23.12
+        version: 4.23.12
+
+  packages/slidev-addon-tulip-lab-pages:
     devDependencies:
       tsx:
         specifier: 4.23.12
@@ -76,9 +88,12 @@ importers:
       '@slidev/cli':
         specifier: 52.19.0
         version: 52.19.0(@nuxt/kit@3.21.11)(@oxc-project/types@0.146.0)(@types/markdown-it@14.2.0)(@types/node@22.20.1)(@vitejs/devtools-kit@0.4.12(@modelcontextprotocol/server@2.0.0)(cac@7.0.0)(srvx@0.12.7)(vite@8.2.2(@types/node@22.20.1)(esbuild@0.28.2)(jiti@2.7.0)(tsx@4.23.12)(yaml@2.9.0)))(@vue/compiler-sfc@3.5.41)(cac@7.0.0)(esbuild@0.28.2)(hono@4.13.3)(lightningcss@1.33.0)(markdown-it@14.3.0)(oxc-parser@0.131.0)(postcss@8.5.26)(rolldown@1.2.5)(srvx@0.12.7)(tsx@4.23.12)
-      slidev-addon-tulip-live:
+      slidev-addon-tulip-lab-live:
         specifier: workspace:*
-        version: link:../../packages/slidev-addon-tulip-live
+        version: link:../../packages/slidev-addon-tulip-lab-live
+      slidev-addon-tulip-lab-pages:
+        specifier: workspace:*
+        version: link:../../packages/slidev-addon-tulip-lab-pages
       slidev-theme-tulip-lab:
         specifier: workspace:*
         version: link:../../packages/slidev-theme-tulip-lab
@@ -94,6 +109,9 @@ importers:
       '@slidev/cli':
         specifier: 52.19.0
         version: 52.19.0(@nuxt/kit@3.21.11)(@oxc-project/types@0.146.0)(@types/markdown-it@14.2.0)(@types/node@22.20.1)(@vitejs/devtools-kit@0.4.12(@modelcontextprotocol/server@2.0.0)(cac@7.0.0)(srvx@0.12.7)(vite@8.2.2(@types/node@22.20.1)(esbuild@0.28.2)(jiti@2.7.0)(tsx@4.23.12)(yaml@2.9.0)))(@vue/compiler-sfc@3.5.41)(cac@7.0.0)(esbuild@0.28.2)(hono@4.13.3)(lightningcss@1.33.0)(markdown-it@14.3.0)(oxc-parser@0.131.0)(postcss@8.5.26)(rolldown@1.2.5)(srvx@0.12.7)(tsx@4.23.12)
+      slidev-addon-tulip-lab-pages:
+        specifier: workspace:*
+        version: link:../../packages/slidev-addon-tulip-lab-pages
       slidev-theme-tulip-lab:
         specifier: workspace:*
         version: link:../../packages/slidev-theme-tulip-lab

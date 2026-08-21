@@ -1,21 +1,22 @@
 {
-  "name": "slidev-addon-tulip-live",
-  "version": "0.1.0",
-  "description": "Optional live audience synchronization for TULIP Slidev presentations.",
+  "name": "slidev-addon-tulip-lab-pages",
+  "version": "0.2.0",
+  "description": "Reusable TULIP Lab speaker, academy, questions, and contact pages for Slidev.",
   "type": "module",
   "license": "MIT",
   "repository": {
     "type": "git",
     "url": "git+https://github.com/tulip-lab/templatex.git",
-    "directory": "slidev/packages/slidev-addon-tulip-live"
+    "directory": "slidev/packages/slidev-addon-tulip-lab-pages"
   },
   "bugs": {
     "url": "https://github.com/tulip-lab/templatex/issues"
   },
-  "homepage": "https://github.com/tulip-lab/templatex/tree/main/slidev/packages/slidev-addon-tulip-live",
+  "homepage": "https://github.com/tulip-lab/templatex/tree/main/slidev/packages/slidev-addon-tulip-lab-pages",
   "files": [
-    "components",
-    "global-top.vue",
+    "layouts",
+    "assets",
+    "utils",
     "LICENSE",
     "README.md"
   ],

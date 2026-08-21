@@ -7,7 +7,9 @@ import {
   formatSectionLabel,
   getProgressPercentage,
   getShellVisibility,
+  navigableDeckSections,
   splitSectionsForToc,
+  visibleDeckSections,
 } from '../utils/deckNavigation.ts'
 
 const routes = [
@@ -70,6 +72,27 @@ test('splits sections into ordered balanced TOC columns', () => {
   assert.ok(left.length > 0)
   assert.ok(right.length > 0)
   assert.deepEqual(splitSectionsForToc([sections[0]]), [[sections[0]], []])
+})
+
+test('keeps hidden sections available for location while excluding them from navigation', () => {
+  const sections = buildDeckSections([
+    { no: 1, frontmatter: { section: 'Main' } },
+    { no: 2, frontmatter: { section: 'Closing', toc: false } },
+  ])
+
+  assert.equal(findActiveItem(sections, 2)?.section.label, 'Closing')
+  assert.deepEqual(visibleDeckSections(sections).map(section => section.label), ['Main'])
+  assert.deepEqual(navigableDeckSections(sections).map(section => section.label), ['Main'])
+})
+
+test('can keep a section in the table of contents while hiding it from bottom navigation', () => {
+  const sections = buildDeckSections([
+    { no: 1, frontmatter: { section: 'Main' } },
+    { no: 2, frontmatter: { section: 'References', navigation: false } },
+  ])
+
+  assert.deepEqual(visibleDeckSections(sections).map(section => section.label), ['Main', 'References'])
+  assert.deepEqual(navigableDeckSections(sections).map(section => section.label), ['Main'])
 })
 
 test('applies the shell visibility contract', () => {

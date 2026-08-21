@@ -45,7 +45,19 @@ test('resolves shared public images against the active deck base path', () => {
 })
 
 test('links the portrait to the contact layout without depending on its title', () => {
-  assert.match(coverLayout, /frontmatter\?\.layout === 'contact'/)
+  assert.match(coverLayout, /layout === 'contact' \|\| layout === 'tulip-contact'/)
   assert.match(coverLayout, /aria-label="Go to contact slide"/)
   assert.doesNotMatch(coverLayout, /Stay Connected/)
+})
+
+test('links the cover title to the table of contents', () => {
+  assert.match(coverLayout, /frontmatter\?\.layout === 'toc' \|\| frontmatter\?\.navigation === 'toc'/)
+  assert.match(coverLayout, /aria-label="Open table of contents"/)
+  assert.match(coverLayout, /@click="nav\.go\(tocPage\)"/)
+})
+
+test('uses the packaged Gang Li portrait unless a deck overrides it', () => {
+  assert.match(coverLayout, /import gangLiPhoto/)
+  assert.match(coverLayout, /cover\.value\.author\.includes\('Gang Li'\)/)
+  assert.match(coverLayout, /if \(configured\)/)
 })

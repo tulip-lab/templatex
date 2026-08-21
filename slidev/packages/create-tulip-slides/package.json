@@ -1,6 +1,6 @@
 {
   "name": "create-tulip-slides",
-  "version": "0.1.0",
+  "version": "0.2.0",
   "description": "Create TULIP Slidev Course and Talk projects.",
   "type": "module",
   "license": "MIT",

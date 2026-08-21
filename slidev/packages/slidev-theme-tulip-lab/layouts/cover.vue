@@ -1,6 +1,7 @@
 <script setup lang="ts">
 import { useNav, useSlideContext } from '@slidev/client'
 import { computed } from 'vue'
+import gangLiPhoto from '../assets/gangli-author.png'
 import logo from '../assets/tulip-logo.png'
 import { normaliseCoverConfig, resolvePublicAssetPath } from '../utils/coverConfig'
 
@@ -9,13 +10,29 @@ const nav = useNav()
 const cover = computed(() => normaliseCoverConfig(
   $slidev.configs as Record<string, unknown>,
 ))
-const authorPhoto = computed(() => resolvePublicAssetPath(
-  cover.value.authorPhoto,
-  import.meta.env.BASE_URL,
-))
+const authorPhoto = computed(() => {
+  const configured = resolvePublicAssetPath(
+    cover.value.authorPhoto,
+    import.meta.env.BASE_URL,
+  )
+  if (configured)
+    return configured
+
+  return cover.value.author.includes('Gang Li') ? gangLiPhoto : undefined
+})
 const contactPage = computed(() => (
-  nav.slides.value.find(slide => slide.meta.slide?.frontmatter?.layout === 'contact')?.no
+  nav.slides.value.find((slide) => {
+    const layout = slide.meta.slide?.frontmatter?.layout
+    return layout === 'contact' || layout === 'tulip-contact'
+  })?.no
   ?? nav.total.value
+))
+const tocPage = computed(() => (
+  nav.slides.value.find((slide) => {
+    const frontmatter = slide.meta.slide?.frontmatter
+    return frontmatter?.layout === 'toc' || frontmatter?.navigation === 'toc'
+  })?.no
+  ?? 2
 ))
 </script>
 
@@ -26,7 +43,17 @@ const contactPage = computed(() => (
     <main class="tulip-cover-main">
       <div class="tulip-cover-heading">
         <p class="tulip-cover-course">{{ cover.course }}</p>
-        <h1>{{ cover.title }}</h1>
+        <h1>
+          <button
+            type="button"
+            class="tulip-cover-title-link"
+            aria-label="Open table of contents"
+            title="Open table of contents"
+            @click="nav.go(tocPage)"
+          >
+            {{ cover.title }}
+          </button>
+        </h1>
         <p v-if="cover.subtitle" class="tulip-cover-subtitle">{{ cover.subtitle }}</p>
       </div>
 
@@ -119,11 +146,33 @@ const contactPage = computed(() => (
   line-height: 1.06;
 }
 
+.tulip-cover-title-link {
+  border: 0;
+  padding: 0;
+  background: transparent;
+  color: inherit;
+  font: inherit;
+  letter-spacing: 0;
+  line-height: inherit;
+  cursor: pointer;
+}
+
+.tulip-cover-title-link:hover {
+  text-decoration: underline;
+  text-decoration-thickness: 0.06em;
+  text-underline-offset: 0.12em;
+}
+
+.tulip-cover-title-link:focus-visible {
+  outline: 2px solid var(--tulip-cover-deep);
+  outline-offset: 0.18rem;
+}
+
 .tulip-cover-subtitle {
   margin: 0.48rem auto 0;
   color: color-mix(in srgb, var(--tulip-cover-deep) 76%, white);
   font-family: var(--tulip-serif);
-  font-size: 0.88rem;
+  font-size: 1.18rem;
   line-height: 1.35;
 }
 
@@ -131,7 +180,7 @@ const contactPage = computed(() => (
   position: absolute;
   bottom: 8.4%;
   left: 5.2%;
-  width: 20%;
+  width: 18%;
   max-height: 44%;
   object-fit: contain;
 }
@@ -151,8 +200,8 @@ const contactPage = computed(() => (
 .tulip-cover-photo-frame {
   position: relative;
   display: block;
-  width: 7.2rem;
-  height: 7.2rem;
+  width: 6.4rem;
+  height: 6.4rem;
   overflow: hidden;
   border-radius: 50%;
   background: #fff;

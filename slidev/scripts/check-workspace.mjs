@@ -2,7 +2,8 @@ import { readFile } from 'node:fs/promises'
 
 const publicPackages = new Map([
   ['packages/create-tulip-slides', 'create-tulip-slides'],
-  ['packages/slidev-addon-tulip-live', 'slidev-addon-tulip-live'],
+  ['packages/slidev-addon-tulip-lab-live', 'slidev-addon-tulip-lab-live'],
+  ['packages/slidev-addon-tulip-lab-pages', 'slidev-addon-tulip-lab-pages'],
   ['packages/slidev-theme-tulip-lab', 'slidev-theme-tulip-lab'],
   ['packages/tulip-slidev-check', 'tulip-slidev-check'],
 ])
@@ -30,7 +31,7 @@ assert(root.private === true, 'The workspace root must remain private')
 for (const [path, name] of publicPackages) {
   const manifest = await readManifest(path)
   assert(manifest.name === name, `${path} has an unexpected package name`)
-  assert(manifest.version === '0.1.0', `${name} must use the shared stable release version`)
+  assert(manifest.version === '0.2.0', `${name} must use the shared stable release version`)
   assert(manifest.license === 'MIT', `${name} must use the MIT licence`)
   assert(manifest.private !== true, `${name} must remain eligible for future publication`)
 }

@@ -3,9 +3,10 @@ import { basename, join, resolve } from 'node:path'
 
 export const PACKAGE_VERSIONS = Object.freeze({
   '@slidev/cli': '52.19.0',
-  'slidev-addon-tulip-live': '0.1.0',
-  'slidev-theme-tulip-lab': '0.1.0',
-  'tulip-slidev-check': '0.1.0',
+  'slidev-addon-tulip-lab-live': '0.2.0',
+  'slidev-addon-tulip-lab-pages': '0.2.0',
+  'slidev-theme-tulip-lab': '0.2.0',
+  'tulip-slidev-check': '0.2.0',
   'vue': '3.5.41',
 })
 
@@ -39,13 +40,14 @@ async function targetState(target) {
 function manifest(profile, target) {
   const dependencies = {
     '@slidev/cli': PACKAGE_VERSIONS['@slidev/cli'],
+    'slidev-addon-tulip-lab-pages': PACKAGE_VERSIONS['slidev-addon-tulip-lab-pages'],
     'slidev-theme-tulip-lab': PACKAGE_VERSIONS['slidev-theme-tulip-lab'],
     'tulip-slidev-check': PACKAGE_VERSIONS['tulip-slidev-check'],
     'vue': PACKAGE_VERSIONS.vue,
   }
 
   if (profile === 'course')
-    dependencies['slidev-addon-tulip-live'] = PACKAGE_VERSIONS['slidev-addon-tulip-live']
+    dependencies['slidev-addon-tulip-lab-live'] = PACKAGE_VERSIONS['slidev-addon-tulip-lab-live']
 
   return {
     name: packageName(target),

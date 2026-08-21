@@ -14,7 +14,7 @@ async function manifest(target) {
   return JSON.parse(await readFile(join(target, 'package.json'), 'utf8'))
 }
 
-test('creates a Course with exact versions and the live addon', async () => {
+test('creates a Course with exact versions and the standard addons', async () => {
   const target = await temporaryTarget('Example Course')
   const result = await createProject('course', target)
   const packageJson = await manifest(target)
@@ -23,10 +23,12 @@ test('creates a Course with exact versions and the live addon', async () => {
   assert.equal(result.target, target)
   assert.equal(packageJson.name, 'example-course')
   assert.equal(packageJson.scripts.check, 'tulip-slidev-check --profile course .')
-  assert.equal(packageJson.dependencies['slidev-addon-tulip-live'], PACKAGE_VERSIONS['slidev-addon-tulip-live'])
+  assert.equal(packageJson.dependencies['slidev-addon-tulip-lab-live'], PACKAGE_VERSIONS['slidev-addon-tulip-lab-live'])
+  assert.equal(packageJson.dependencies['slidev-addon-tulip-lab-pages'], PACKAGE_VERSIONS['slidev-addon-tulip-lab-pages'])
   assert.equal(packageJson.dependencies['slidev-theme-tulip-lab'], PACKAGE_VERSIONS['slidev-theme-tulip-lab'])
   assert.equal(packageJson.dependencies['tulip-slidev-check'], PACKAGE_VERSIONS['tulip-slidev-check'])
-  assert.match(slides, /slidev-addon-tulip-live/)
+  assert.match(slides, /slidev-addon-tulip-lab-live/)
+  assert.match(slides, /slidev-addon-tulip-lab-pages/)
   assert.match(await readFile(join(target, 'TEMPLATE-LICENSE.md'), 'utf8'), /CC BY 4\.0/)
 })
 
@@ -38,8 +40,10 @@ test('creates a Talk without live synchronization by default', async () => {
   const slides = await readFile(join(target, 'slides.md'), 'utf8')
 
   assert.equal(packageJson.scripts.check, 'tulip-slidev-check --profile talk .')
-  assert.equal(packageJson.dependencies['slidev-addon-tulip-live'], undefined)
-  assert.doesNotMatch(slides, /slidev-addon-tulip-live/)
+  assert.equal(packageJson.dependencies['slidev-addon-tulip-lab-live'], undefined)
+  assert.equal(packageJson.dependencies['slidev-addon-tulip-lab-pages'], PACKAGE_VERSIONS['slidev-addon-tulip-lab-pages'])
+  assert.doesNotMatch(slides, /slidev-addon-tulip-lab-live/)
+  assert.match(slides, /slidev-addon-tulip-lab-pages/)
 })
 
 test('refuses to overwrite a non-empty target', async () => {

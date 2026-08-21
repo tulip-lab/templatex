@@ -12,7 +12,7 @@ async function fixture({
   dependencies = {},
   extraHeadmatter = '',
   extraMarkdown = '',
-  layouts = ['toc', 'contact'],
+  layouts = ['toc', 'tulip-questions', 'tulip-contact'],
   subtitle = 'A test presentation',
 } = {}) {
   const root = await mkdtemp(join(tmpdir(), 'tulip-slidev-check-'))
@@ -45,12 +45,18 @@ ${extraMarkdown}`
 
 const sharedDependencies = {
   '@slidev/cli': '52.19.0',
-  'slidev-theme-tulip-lab': '0.1.0',
+  'slidev-addon-tulip-lab-pages': '0.2.0',
+  'slidev-theme-tulip-lab': '0.2.0',
   'vue': '3.5.41',
 }
 
 test('accepts a Talk with exact package versions', async () => {
-  const root = await fixture({ dependencies: sharedDependencies })
+  const root = await fixture({
+    addons: `addons:
+  - slidev-addon-tulip-lab-pages
+`,
+    dependencies: sharedDependencies,
+  })
   const result = await checkDeck(root, { profile: 'talk' })
 
   assert.deepEqual(result.errors, [])
@@ -59,11 +65,13 @@ test('accepts a Talk with exact package versions', async () => {
 test('accepts a Course with workspace packages and the live addon', async () => {
   const root = await fixture({
     addons: `addons:
-  - slidev-addon-tulip-live
+  - slidev-addon-tulip-lab-live
+  - slidev-addon-tulip-lab-pages
 `,
     dependencies: {
       ...sharedDependencies,
-      'slidev-addon-tulip-live': 'workspace:*',
+      'slidev-addon-tulip-lab-live': 'workspace:*',
+      'slidev-addon-tulip-lab-pages': 'workspace:*',
       'slidev-theme-tulip-lab': 'workspace:*',
     },
   })
@@ -73,7 +81,13 @@ test('accepts a Course with workspace packages and the live addon', async () => 
 })
 
 test('finds required layouts in imported slide sources', async () => {
-  const root = await fixture({ dependencies: sharedDependencies, layouts: ['toc'] })
+  const root = await fixture({
+    addons: `addons:
+  - slidev-addon-tulip-lab-pages
+`,
+    dependencies: sharedDependencies,
+    layouts: ['toc'],
+  })
   const slidesPath = join(root, 'slides.md')
   const parts = join(root, 'parts')
   await mkdir(parts)
@@ -83,10 +97,12 @@ src: ./parts/close.md
 ---
 `)
   await writeFile(join(parts, 'close.md'), `---
-layout: contact
+layout: tulip-questions
 ---
 
-# Contact
+---
+layout: tulip-contact
+---
 `)
 
   const result = await checkDeck(root, { profile: 'talk' })
@@ -100,7 +116,7 @@ test('reports geometry, structure, metadata, dependency, and image issues togeth
     canvasWidth: 1920,
     dependencies: {
       '@slidev/cli': '^52.19.0',
-      'slidev-theme-tulip-lab': '0.1.0',
+      'slidev-theme-tulip-lab': '0.2.0',
     },
     extraMarkdown: `
 ![](./missing-alt.png)
@@ -116,7 +132,8 @@ test('reports geometry, structure, metadata, dependency, and image issues togeth
   assert.match(output, /canvasWidth must be 1280/)
   assert.match(output, /required headmatter field "subtitle" is missing/)
   assert.match(output, /required layout "toc" is missing/)
-  assert.match(output, /required layout "contact" is missing/)
+  assert.match(output, /required layout "tulip-questions" is missing/)
+  assert.match(output, /required layout "tulip-contact" is missing/)
   assert.match(output, /"@slidev\/cli" must use an exact version/)
   assert.match(output, /required dependency "vue" is missing/)
   assert.match(output, /Markdown image needs non-empty alt text/)
@@ -125,6 +142,9 @@ test('reports geometry, structure, metadata, dependency, and image issues togeth
 
 test('reports malformed YAML headmatter', async () => {
   const root = await fixture({
+    addons: `addons:
+  - slidev-addon-tulip-lab-pages
+`,
     dependencies: sharedDependencies,
     extraHeadmatter: 'invalid: [yaml\n',
   })
@@ -134,7 +154,12 @@ test('reports malformed YAML headmatter', async () => {
 })
 
 test('requires a supported profile', async () => {
-  const root = await fixture({ dependencies: sharedDependencies })
+  const root = await fixture({
+    addons: `addons:
+  - slidev-addon-tulip-lab-pages
+`,
+    dependencies: sharedDependencies,
+  })
 
   await assert.rejects(() => checkDeck(root, { profile: 'workshop' }), /profile must be/)
 })

@@ -11,6 +11,7 @@
   },
   "dependencies": {
     "@slidev/cli": "52.19.0",
+    "slidev-addon-tulip-lab-pages": "workspace:*",
     "slidev-theme-tulip-lab": "workspace:*",
     "vue": "3.5.41"
   }

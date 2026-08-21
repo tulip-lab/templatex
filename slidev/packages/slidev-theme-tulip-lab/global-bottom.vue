@@ -3,12 +3,18 @@ import { computed } from 'vue'
 import { useDeckNavigation } from './composables/useDeckNavigation'
 import wordmark from './assets/tulip-wordmark.png'
 import {
-  formatSectionLabel,
   getProgressPercentage,
   getShellVisibility,
+  navigableDeckSections,
 } from './utils/deckNavigation'
 
-const { nav, sections, currentSectionIndex, currentSection } = useDeckNavigation()
+const { nav, sections, currentSection } = useDeckNavigation()
+const visibleSections = computed(() => navigableDeckSections(sections.value))
+const activeSectionPage = computed(() => currentSection.value?.page)
+const canGoBack = computed(() => {
+  nav.currentPage.value
+  return Boolean(nav.router.options.history.state.back)
+})
 
 const navigationMode = computed(() => {
   const value = nav.currentSlideRoute.value.meta.slide?.frontmatter?.navigation
@@ -20,6 +26,11 @@ const visibility = computed(() => getShellVisibility(
   Boolean(currentSection.value),
 ))
 const progressWidth = computed(() => `${getProgressPercentage(nav.currentPage.value, nav.total.value)}%`)
+
+function returnToPreviousLocation() {
+  if (canGoBack.value)
+    nav.router.back()
+}
 </script>
 
 <template>
@@ -38,17 +49,28 @@ const progressWidth = computed(() => `${getProgressPercentage(nav.currentPage.va
         alt="TULIP Lab"
       >
     </a>
+    <button
+      class="tulip-history-back"
+      type="button"
+      title="Return to previous location"
+      aria-label="Return to previous location"
+      :disabled="!canGoBack"
+      @click="returnToPreviousLocation"
+    >
+      <carbon-undo aria-hidden="true" />
+    </button>
     <nav class="tulip-section-links" aria-label="Deck sections">
       <button
-        v-for="(section, index) in sections"
+        v-for="section in visibleSections"
         :key="`${section.page}-${section.label}`"
         class="tulip-section-link"
-        :class="{ active: currentSectionIndex === index }"
+        :class="{ active: activeSectionPage === section.page }"
         type="button"
-        :aria-current="currentSectionIndex === index ? 'page' : undefined"
+        :title="section.label"
+        :aria-current="activeSectionPage === section.page ? 'page' : undefined"
         @click="$nav.go(section.page)"
       >
-        {{ formatSectionLabel(section) }}
+        {{ section.label }}
       </button>
     </nav>
     <span class="tulip-page-position">{{ nav.currentPage }} / {{ nav.total }}</span>
@@ -101,9 +123,45 @@ const progressWidth = computed(() => `${getProgressPercentage(nav.currentPage.va
   object-fit: contain;
 }
 
+.tulip-history-back {
+  display: grid;
+  width: 1.75rem;
+  height: 1.75rem;
+  flex: 0 0 1.75rem;
+  place-items: center;
+  border: 1px solid color-mix(in srgb, var(--tulip-shell-ink) 18%, transparent);
+  border-radius: 50%;
+  padding: 0;
+  background: transparent;
+  color: color-mix(in srgb, var(--tulip-shell-ink) 62%, transparent);
+  cursor: pointer;
+}
+
+.tulip-history-back svg {
+  width: 1.05rem;
+  height: 1.05rem;
+}
+
+.tulip-history-back:hover:not(:disabled),
+.tulip-history-back:focus-visible {
+  border-color: color-mix(in srgb, var(--tulip-shell-ink) 42%, transparent);
+  background: color-mix(in srgb, white 24%, transparent);
+  color: var(--tulip-shell-ink);
+}
+
+.tulip-history-back:focus-visible {
+  outline: 2px solid var(--tulip-shell-ink);
+  outline-offset: 2px;
+}
+
+.tulip-history-back:disabled {
+  cursor: default;
+  opacity: 0.32;
+}
+
 .tulip-section-links {
   display: flex;
-  gap: 0.5rem;
+  gap: 0.38rem;
   margin-left: auto;
   min-width: 0;
   overflow: hidden;
@@ -112,7 +170,8 @@ const progressWidth = computed(() => `${getProgressPercentage(nav.currentPage.va
 .tulip-section-link {
   overflow: hidden;
   border: 0;
-  padding: 0;
+  border-radius: 0.16rem;
+  padding: 0.28rem 0 0.25rem;
   background: transparent;
   color: inherit;
   font: inherit;
@@ -129,8 +188,11 @@ const progressWidth = computed(() => `${getProgressPercentage(nav.currentPage.va
 
 .tulip-section-link.active {
   color: var(--tulip-shell-ink);
-  font-weight: 700;
+  font-weight: 800;
   opacity: 1;
+  text-decoration: underline;
+  text-decoration-thickness: 0.13rem;
+  text-underline-offset: 0.18rem;
 }
 
 .tulip-page-position {

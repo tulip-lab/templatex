@@ -5,13 +5,14 @@ This workspace develops the reusable Slidev system for TULIP Lab courses and tal
 ## Workspace
 
 - `packages/slidev-theme-tulip-lab`: shared 16:10 presentation theme
-- `packages/slidev-addon-tulip-live`: optional live audience synchronization
+- `packages/slidev-addon-tulip-lab-live`: optional live audience synchronization
+- `packages/slidev-addon-tulip-lab-pages`: shared speaker, academy, questions, and contact pages
 - `packages/tulip-slidev-check`: shared deck structure checks
 - `packages/create-tulip-slides`: Course and Talk project creator
 - `templates/`: private source templates used by the project creator
 - `examples/`: private Course, Talk, and layout examples
 
-The four public packages share the stable version `0.1.0`.
+The five public packages share the next release version `0.2.0`.
 
 ## Ownership
 
@@ -35,9 +36,9 @@ pnpm check
 
 ## Version Policy
 
-- Theme, addon, checker, and creator move together during the initial release train.
+- Theme, addons, checker, and creator move together during the initial release train.
 - Consumer projects pin exact package versions and keep independent lockfiles.
-- Stable `0.1.0` requires successful AgenticAI Course migration, the first real Talk, and `slides-deploy` integration.
+- Stable `0.1.0` established the initial package baseline. Release `0.2.0` standardises addon names and shared presentation pages.
 - Publishing, tagging, and deployment require an explicit release approval.
 
 ## Licensing

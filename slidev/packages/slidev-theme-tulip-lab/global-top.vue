@@ -15,12 +15,19 @@ const navigationMode = computed(() => {
   const value = nav.currentSlideRoute.value.meta.slide?.frontmatter?.navigation
   return typeof value === 'string' ? value : undefined
 })
+const navigationLabel = computed(() => {
+  const value = nav.currentSlideRoute.value.meta.slide?.frontmatter?.navigationLabel
+  return typeof value === 'string' && value.trim() ? value.trim() : undefined
+})
 const visibility = computed(() => getShellVisibility(
   nav.currentLayout.value,
   navigationMode.value,
-  Boolean(currentSection.value),
+  Boolean(currentSection.value || navigationLabel.value),
 ))
 const locationLabel = computed(() => {
+  if (navigationLabel.value)
+    return navigationLabel.value
+
   const section = currentSection.value
   if (!section)
     return ''

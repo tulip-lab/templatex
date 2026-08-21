@@ -2,7 +2,7 @@ import { readFile, readdir } from 'node:fs/promises'
 import { basename, dirname, join, relative, resolve } from 'node:path'
 import { parseDocument } from 'yaml'
 
-const REQUIRED_LAYOUTS = ['toc', 'contact']
+const REQUIRED_LAYOUTS = ['toc', 'tulip-questions', 'tulip-contact']
 const REQUIRED_METADATA = ['title', 'subtitle', 'course', 'author', 'affiliation']
 const REQUIRED_DEPENDENCIES = ['@slidev/cli', 'slidev-theme-tulip-lab', 'vue']
 const SKIPPED_DIRECTORIES = new Set(['.git', '.slidev', 'dist', 'node_modules', 'output'])
@@ -198,8 +198,13 @@ export async function checkDeck(directory, { profile } = {}) {
 
         if (profile === 'course') {
           const addons = Array.isArray(headmatter.addons) ? headmatter.addons : []
-          if (!addons.includes('slidev-addon-tulip-live'))
-            errors.push('slides.md: Course profile must include the "slidev-addon-tulip-live" addon')
+          if (!addons.includes('slidev-addon-tulip-lab-live'))
+            errors.push('slides.md: Course profile must include the "slidev-addon-tulip-lab-live" addon')
+        }
+
+        const addons = Array.isArray(headmatter.addons) ? headmatter.addons : []
+        if (!addons.includes('slidev-addon-tulip-lab-pages')) {
+          errors.push('slides.md: the "slidev-addon-tulip-lab-pages" addon is required')
         }
       }
 
@@ -219,8 +224,8 @@ export async function checkDeck(directory, { profile } = {}) {
       ...(isRecord(packageJson.dependencies) ? packageJson.dependencies : {}),
     }
     const required = profile === 'course'
-      ? [...REQUIRED_DEPENDENCIES, 'slidev-addon-tulip-live']
-      : REQUIRED_DEPENDENCIES
+      ? [...REQUIRED_DEPENDENCIES, 'slidev-addon-tulip-lab-live', 'slidev-addon-tulip-lab-pages']
+      : [...REQUIRED_DEPENDENCIES, 'slidev-addon-tulip-lab-pages']
 
     for (const name of required) {
       const specifier = dependencies[name]

@@ -93,6 +93,7 @@ sessionTitle: Two Columns
 layout: references
 section: References
 block: 2
+navigation: false
 ---
 
 # References

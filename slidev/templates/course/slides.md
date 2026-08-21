@@ -4,10 +4,23 @@ title: Course Module Title
 subtitle: A concise description of this module
 layout: cover
 addons:
-  - slidev-addon-tulip-live
+  - slidev-addon-tulip-lab-live
+  - slidev-addon-tulip-lab-pages
 course: Course Name
-author: Author Name
-affiliation: Institution
+author: Professor Gang Li
+affiliation: Deakin University, Australia
+speakerProfileUrl: https://www.tulip.academy/members/gangli/
+speakerHighlights:
+  - University Thesis Examination Committee
+  - Researcher Development Director, Deakin Cyber
+  - IEEE technical leadership in data mining, analytics, and enterprise systems
+  - Editorial service across tourism, technology, and cyber security venues
+contactOrganisation: School of Information Technology
+contactAffiliation: Deakin University, Australia
+email: director@tulip.academy
+website: https://www.tulip.academy
+github: https://github.com/tulip-lab
+scholar: https://scholar.google.com/citations?user=dqwjm-0AAAAJ&hl=en
 aspectRatio: 16/10
 canvasWidth: 1280
 ---
@@ -18,6 +31,23 @@ navigation: toc
 ---
 
 <TableOfContents />
+
+---
+layout: tulip-speaker
+---
+
+---
+layout: tulip-deakin
+---
+
+---
+layout: tulip-deakin-rankings
+---
+
+---
+layout: tulip-academy
+clicks: 4
+---
 
 ---
 layout: section
@@ -51,6 +81,7 @@ sessionTitle: Core Idea
 layout: references
 section: References
 block: 2
+navigation: false
 ---
 
 # References
@@ -58,12 +89,14 @@ block: 2
 1. Author. (Year). *Reference title*. Publisher.
 
 ---
-layout: contact
-section: Contact
-block: 3
+layout: tulip-questions
+section: Closing
+toc: false
+navigationLabel: Questions
 ---
 
-# Contact
-
-Author Name<br>
-[TULIP Lab](https://www.tulip.academy/)
+---
+layout: tulip-contact
+title: Contact
+navigationLabel: Contact
+---

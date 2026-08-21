@@ -19,11 +19,16 @@ test('ships the required layouts and brand assets', () => {
 
   assert.ok(existsSync(new URL('../assets/tulip-logo.png', import.meta.url)))
   assert.ok(existsSync(new URL('../assets/tulip-wordmark.png', import.meta.url)))
+  assert.ok(existsSync(new URL('../assets/gangli-author.png', import.meta.url)))
 })
 
 test('keeps navigation and TULIP Home in the theme but live sync in the addon', () => {
   assert.match(topShell, /useDeckNavigation/)
   assert.match(bottomShell, /https:\/\/www\.tulip\.academy\//)
+  assert.match(bottomShell, /\{\{ section\.label \}\}/)
+  assert.doesNotMatch(bottomShell, /formatSectionLabel/)
+  assert.match(bottomShell, /nav\.router\.back\(\)/)
+  assert.match(bottomShell, /carbon-undo/)
   assert.doesNotMatch(topShell, /SlideSyncBridge/)
   assert.match(qrCode, /import QrcodeVue from 'qrcode\.vue'/)
 })
