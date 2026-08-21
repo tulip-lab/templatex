@@ -1,0 +1,19 @@
+{
+  "name": "@tulip-lab/slidev-workspace",
+  "version": "0.0.0",
+  "private": true,
+  "description": "Development workspace for TULIP Lab Slidev packages, templates, and examples.",
+  "license": "MIT",
+  "packageManager": "pnpm@10.15.0",
+  "engines": {
+    "node": ">=20",
+    "pnpm": ">=10"
+  },
+  "scripts": {
+    "build:examples": "pnpm --filter './examples/**' --workspace-concurrency=1 run build",
+    "build:templates": "pnpm --filter './templates/**' --workspace-concurrency=1 run build",
+    "check": "pnpm check:workspace && pnpm test && pnpm build:examples && pnpm build:templates",
+    "check:workspace": "node scripts/check-workspace.mjs",
+    "test": "pnpm --filter './packages/**' --workspace-concurrency=1 --if-present run test"
+  }
+}

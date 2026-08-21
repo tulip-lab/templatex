@@ -1,0 +1,43 @@
+{
+  "name": "tulip-slidev-check",
+  "version": "0.1.0",
+  "description": "Structure and metadata checks for TULIP Slidev presentations.",
+  "type": "module",
+  "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/tulip-lab/templatex.git",
+    "directory": "slidev/packages/tulip-slidev-check"
+  },
+  "bugs": {
+    "url": "https://github.com/tulip-lab/templatex/issues"
+  },
+  "homepage": "https://github.com/tulip-lab/templatex/tree/main/slidev/packages/tulip-slidev-check",
+  "bin": {
+    "tulip-slidev-check": "./bin/tulip-slidev-check.mjs"
+  },
+  "files": [
+    "bin",
+    "src",
+    "LICENSE",
+    "README.md"
+  ],
+  "scripts": {
+    "test": "node --test tests/*.test.mjs"
+  },
+  "publishConfig": {
+    "access": "public"
+  },
+  "dependencies": {
+    "yaml": "2.9.0"
+  },
+  "engines": {
+    "node": ">=20"
+  },
+  "keywords": [
+    "slidev",
+    "validation",
+    "presentation",
+    "tulip-lab"
+  ]
+}

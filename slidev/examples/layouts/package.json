@@ -1,0 +1,17 @@
+{
+  "name": "@tulip-lab/slidev-example-layouts",
+  "version": "0.0.0",
+  "private": true,
+  "description": "Layout gallery for the TULIP Slidev Theme.",
+  "type": "module",
+  "license": "CC-BY-4.0",
+  "scripts": {
+    "build": "slidev build --base /examples/layouts/ --out ../../dist/examples/layouts",
+    "dev": "slidev --open"
+  },
+  "dependencies": {
+    "@slidev/cli": "52.19.0",
+    "slidev-theme-tulip-lab": "workspace:*",
+    "vue": "3.5.41"
+  }
+}
