@@ -12,3 +12,7 @@ addons:
 ```
 
 Synchronization remains disabled unless `VITE_SLIDE_SYNC_ENABLED=true` is set by the deployment environment.
+
+When enabled, the Live Presenter is authoritative for slide navigation, click reveals, and Slidev drawings. Drawings are synchronized while the presenter is drawing, committed at the end of each stroke, retained per slide for late viewers, and cleared when the live session ends. Audience views remain read-only.
+
+Use **Presenter Fullscreen** in Live Presenter to switch to a clean, full-screen controller that can still navigate and draw. The ordinary Play view remains an audience view and cannot control a live session.
