@@ -14,7 +14,7 @@ test('defines the shared 16:10 Slidev contract', () => {
 })
 
 test('ships the required layouts and brand assets', () => {
-  for (const name of ['cover', 'toc', 'section', 'default', 'wideslide', 'two-cols-header', 'references', 'contact'])
+  for (const name of ['cover', 'toc', 'section', 'default', 'wideslide', 'two-cols-header', 'references', 'contact', 'tulip-acknowledgements'])
     assert.ok(existsSync(new URL(`../layouts/${name}.vue`, import.meta.url)), `missing ${name} layout`)
 
   assert.ok(existsSync(new URL('../assets/tulip-logo.png', import.meta.url)))
