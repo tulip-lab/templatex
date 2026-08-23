@@ -1,7 +1,7 @@
 {
   "name": "slidev-addon-tulip-lab-pages",
-  "version": "0.2.0",
-  "description": "Reusable TULIP Lab speaker, academy, questions, and contact pages for Slidev.",
+  "version": "0.2.1",
+  "description": "Reusable TULIP Lab speaker, academy, collaboration, questions, and contact pages for Slidev.",
   "type": "module",
   "license": "MIT",
   "repository": {
