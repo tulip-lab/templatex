@@ -3,9 +3,9 @@ import { readFile } from 'node:fs/promises'
 const publicPackages = new Map([
   ['packages/create-tulip-slides', { name: 'create-tulip-slides', version: '0.2.0' }],
   ['packages/slidev-addon-tulip-lab-live', { name: 'slidev-addon-tulip-lab-live', version: '0.2.0' }],
-  ['packages/slidev-addon-tulip-lab-pages', { name: 'slidev-addon-tulip-lab-pages', version: '0.2.1' }],
+  ['packages/slidev-addon-tulip-lab-pages', { name: 'slidev-addon-tulip-lab-pages', version: '0.2.2' }],
   ['packages/slidev-theme-tulip-lab', { name: 'slidev-theme-tulip-lab', version: '0.2.2' }],
-  ['packages/tulip-slidev-check', { name: 'tulip-slidev-check', version: '0.2.0' }],
+  ['packages/tulip-slidev-check', { name: 'tulip-slidev-check', version: '0.2.1' }],
 ])
 
 const privateProjects = new Map([

@@ -16,7 +16,7 @@ const layouts = [
 
 test('publishes the canonical TULIP Lab pages addon', () => {
   assert.equal(packageJson.name, 'slidev-addon-tulip-lab-pages')
-  assert.equal(packageJson.version, '0.2.1')
+  assert.equal(packageJson.version, '0.2.2')
 
   for (const name of layouts)
     assert.ok(existsSync(new URL(`../layouts/${name}.vue`, import.meta.url)), `missing ${name} layout`)

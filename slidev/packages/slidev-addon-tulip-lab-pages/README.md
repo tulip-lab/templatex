@@ -8,7 +8,7 @@ media.
 After the release is published, install its exact version:
 
 ```sh
-pnpm add slidev-addon-tulip-lab-pages@0.2.0
+pnpm add slidev-addon-tulip-lab-pages@0.2.2
 ```
 
 Enable the addon and provide speaker/contact metadata in deck headmatter:
