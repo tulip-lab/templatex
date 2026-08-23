@@ -14,10 +14,12 @@ async function manifest(target) {
   return JSON.parse(await readFile(join(target, 'package.json'), 'utf8'))
 }
 
-function assertSharedPageSessions(slides) {
+function assertSharedPageSessions(slides, { acknowledgements = false } = {}) {
   assert.match(slides, /layout: tulip-speaker\nsection: TULIP Lab\ntocExpand: false\nsession: Gang Li/)
   assert.match(slides, /layout: tulip-deakin\nsession: Deakin/)
   assert.match(slides, /layout: tulip-deakin-rankings[\s\S]*layout: tulip-academy\nsession: TULIP Lab/)
+  if (acknowledgements)
+    assert.match(slides, /layout: tulip-lab-acknowledgements\nnavigation: false\npeople: \[\]\n---[\s\S]*?layout: toc/)
   assert.match(slides, /layout: tulip-questions\nsection: Closing\ntocExpand: false\nsession: Questions\nnavigation: false/)
   assert.match(slides, /layout: tulip-contact\ntitle: Contact\nsession: Contact/)
 }
@@ -53,7 +55,7 @@ test('creates a Talk without live synchronization by default', async () => {
   assert.equal(packageJson.dependencies['slidev-addon-tulip-lab-pages'], PACKAGE_VERSIONS['slidev-addon-tulip-lab-pages'])
   assert.doesNotMatch(slides, /slidev-addon-tulip-lab-live/)
   assert.match(slides, /slidev-addon-tulip-lab-pages/)
-  assertSharedPageSessions(slides)
+  assertSharedPageSessions(slides, { acknowledgements: true })
 })
 
 test('refuses to overwrite a non-empty target', async () => {

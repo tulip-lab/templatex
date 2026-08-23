@@ -12,7 +12,7 @@ async function fixture({
   dependencies = {},
   extraHeadmatter = '',
   extraMarkdown = '',
-  layouts = ['toc', 'tulip-questions', 'tulip-contact'],
+  layouts = ['tulip-lab-acknowledgements', 'toc', 'tulip-questions', 'tulip-contact'],
   subtitle = 'A test presentation',
 } = {}) {
   const root = await mkdtemp(join(tmpdir(), 'tulip-slidev-check-'))
@@ -74,6 +74,7 @@ test('accepts a Course with workspace packages and the live addon', async () => 
       'slidev-addon-tulip-lab-pages': 'workspace:*',
       'slidev-theme-tulip-lab': 'workspace:*',
     },
+    layouts: ['toc', 'tulip-questions', 'tulip-contact'],
   })
   const result = await checkDeck(root, { profile: 'course' })
 
@@ -86,7 +87,7 @@ test('finds required layouts in imported slide sources', async () => {
   - slidev-addon-tulip-lab-pages
 `,
     dependencies: sharedDependencies,
-    layouts: ['toc'],
+    layouts: ['tulip-lab-acknowledgements', 'toc'],
   })
   const slidesPath = join(root, 'slides.md')
   const parts = join(root, 'parts')
@@ -97,6 +98,10 @@ src: ./parts/close.md
 ---
 `)
   await writeFile(join(parts, 'close.md'), `---
+layout: tulip-lab-acknowledgements
+---
+
+---
 layout: tulip-questions
 ---
 
@@ -132,6 +137,7 @@ test('reports geometry, structure, metadata, dependency, and image issues togeth
   assert.match(output, /canvasWidth must be 1280/)
   assert.match(output, /required headmatter field "subtitle" is missing/)
   assert.match(output, /required layout "toc" is missing/)
+  assert.match(output, /required layout "tulip-lab-acknowledgements" is missing/)
   assert.match(output, /required layout "tulip-questions" is missing/)
   assert.match(output, /required layout "tulip-contact" is missing/)
   assert.match(output, /"@slidev\/cli" must use an exact version/)
@@ -151,6 +157,20 @@ test('reports malformed YAML headmatter', async () => {
   const result = await checkDeck(root, { profile: 'talk' })
 
   assert.match(result.errors.join('\n'), /invalid YAML frontmatter/)
+})
+
+test('requires acknowledgements between the Talk cover and table of contents', async () => {
+  const root = await fixture({
+    addons: `addons:
+  - slidev-addon-tulip-lab-pages
+`,
+    dependencies: sharedDependencies,
+    layouts: ['toc', 'tulip-lab-acknowledgements', 'tulip-questions', 'tulip-contact'],
+  })
+  const result = await checkDeck(root, { profile: 'talk' })
+
+  assert.match(result.errors.join('\n'), /must place "tulip-lab-acknowledgements" immediately after the cover/)
+  assert.match(result.errors.join('\n'), /must place "toc" immediately after "tulip-lab-acknowledgements"/)
 })
 
 test('requires a supported profile', async () => {
