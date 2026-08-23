@@ -3,6 +3,7 @@ import { basename, dirname, join, relative, resolve } from 'node:path'
 import { parseDocument } from 'yaml'
 
 const REQUIRED_LAYOUTS = ['toc', 'tulip-questions', 'tulip-contact']
+const TALK_REQUIRED_LAYOUTS = ['tulip-lab-acknowledgements']
 const REQUIRED_METADATA = ['title', 'subtitle', 'course', 'author', 'affiliation']
 const REQUIRED_DEPENDENCIES = ['@slidev/cli', 'slidev-theme-tulip-lab', 'vue']
 const SKIPPED_DIRECTORIES = new Set(['.git', '.slidev', 'dist', 'node_modules', 'output'])
@@ -210,7 +211,25 @@ export async function checkDeck(directory, { profile } = {}) {
 
       const layouts = await collectDeckSources(slidesPath, root, errors, deckSources, { skipFirst: true })
 
-      for (const layout of REQUIRED_LAYOUTS) {
+      if (profile === 'talk') {
+        const acknowledgement = blocks[1]
+          ? parseFrontmatter(blocks[1].raw, slidesPath, root, errors)
+          : null
+        const toc = blocks[2]
+          ? parseFrontmatter(blocks[2].raw, slidesPath, root, errors)
+          : null
+
+        if (acknowledgement?.layout !== 'tulip-lab-acknowledgements')
+          errors.push('slides.md: Talk must place "tulip-lab-acknowledgements" immediately after the cover')
+        if (toc?.layout !== 'toc')
+          errors.push('slides.md: Talk must place "toc" immediately after "tulip-lab-acknowledgements"')
+      }
+
+      const requiredLayouts = profile === 'talk'
+        ? [...REQUIRED_LAYOUTS, ...TALK_REQUIRED_LAYOUTS]
+        : REQUIRED_LAYOUTS
+
+      for (const layout of requiredLayouts) {
         if (!layouts.has(layout))
           errors.push(`slides.md: required layout "${layout}" is missing`)
       }

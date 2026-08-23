@@ -4,8 +4,8 @@ import { basename, join, resolve } from 'node:path'
 export const PACKAGE_VERSIONS = Object.freeze({
   '@slidev/cli': '52.19.0',
   'slidev-addon-tulip-lab-live': '0.2.0',
-  'slidev-addon-tulip-lab-pages': '0.2.0',
-  'slidev-theme-tulip-lab': '0.2.0',
+  'slidev-addon-tulip-lab-pages': '0.2.1',
+  'slidev-theme-tulip-lab': '0.2.2',
   'tulip-slidev-check': '0.2.0',
   'vue': '3.5.41',
 })

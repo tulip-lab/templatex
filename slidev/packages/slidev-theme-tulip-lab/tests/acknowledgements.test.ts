@@ -4,8 +4,8 @@ import test from 'node:test'
 import { normaliseAcknowledgementPeople } from '../utils/acknowledgements'
 
 test('ships the theme-owned acknowledgement layout', () => {
-  const layoutUrl = new URL('../layouts/tulip-acknowledgements.vue', import.meta.url)
-  assert.ok(existsSync(layoutUrl), 'missing tulip-acknowledgements layout')
+  const layoutUrl = new URL('../layouts/tulip-lab-acknowledgements.vue', import.meta.url)
+  assert.ok(existsSync(layoutUrl), 'missing tulip-lab-acknowledgements layout')
 
   const layout = readFileSync(layoutUrl, 'utf8')
   assert.match(layout, /props\.people/)

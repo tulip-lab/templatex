@@ -25,7 +25,7 @@ confirmed name, affiliation, and photo for each person:
 
 ```yaml
 ---
-layout: tulip-acknowledgements
+layout: tulip-lab-acknowledgements
 navigation: false
 people:
   - name: Dr Example Collaborator

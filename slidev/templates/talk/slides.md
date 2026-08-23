@@ -25,6 +25,12 @@ canvasWidth: 1280
 ---
 
 ---
+layout: tulip-lab-acknowledgements
+navigation: false
+people: []
+---
+
+---
 layout: toc
 navigation: toc
 ---

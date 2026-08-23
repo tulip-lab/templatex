@@ -1,11 +1,11 @@
 import { readFile } from 'node:fs/promises'
 
 const publicPackages = new Map([
-  ['packages/create-tulip-slides', 'create-tulip-slides'],
-  ['packages/slidev-addon-tulip-lab-live', 'slidev-addon-tulip-lab-live'],
-  ['packages/slidev-addon-tulip-lab-pages', 'slidev-addon-tulip-lab-pages'],
-  ['packages/slidev-theme-tulip-lab', 'slidev-theme-tulip-lab'],
-  ['packages/tulip-slidev-check', 'tulip-slidev-check'],
+  ['packages/create-tulip-slides', { name: 'create-tulip-slides', version: '0.2.0' }],
+  ['packages/slidev-addon-tulip-lab-live', { name: 'slidev-addon-tulip-lab-live', version: '0.2.0' }],
+  ['packages/slidev-addon-tulip-lab-pages', { name: 'slidev-addon-tulip-lab-pages', version: '0.2.1' }],
+  ['packages/slidev-theme-tulip-lab', { name: 'slidev-theme-tulip-lab', version: '0.2.2' }],
+  ['packages/tulip-slidev-check', { name: 'tulip-slidev-check', version: '0.2.0' }],
 ])
 
 const privateProjects = new Map([
@@ -28,10 +28,10 @@ function assert(condition, message) {
 const root = await readManifest('.')
 assert(root.private === true, 'The workspace root must remain private')
 
-for (const [path, name] of publicPackages) {
+for (const [path, { name, version }] of publicPackages) {
   const manifest = await readManifest(path)
   assert(manifest.name === name, `${path} has an unexpected package name`)
-  assert(manifest.version === '0.2.0', `${name} must use the shared stable release version`)
+  assert(manifest.version === version, `${name} must use its declared stable release version`)
   assert(manifest.license === 'MIT', `${name} must use the MIT licence`)
   assert(manifest.private !== true, `${name} must remain eligible for future publication`)
 }
