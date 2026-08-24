@@ -79,7 +79,7 @@ const logo = computed(() => {
   border-right: 1px solid rgba(90, 92, 148, 0.25);
   padding: 1rem;
 }
-.card-logo-wrap img { width: 9.8rem; max-height: 14rem; object-fit: contain; }
+.card-logo-wrap img { width: 8.6rem; max-height: 12.5rem; object-fit: contain; }
 .card-details { display: flex; width: 72%; padding: 1.5rem 2.5rem; flex-direction: column; justify-content: center; }
 .card-name { margin: 0; color: var(--pd1); font-size: 1.5rem; font-weight: 700; }
 .card-org { margin: 0.35rem 0 0; font-size: 1.03rem; line-height: 1.4; opacity: 0.88; }

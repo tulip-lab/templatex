@@ -5,7 +5,7 @@ subtitle: A concise statement of the contribution
 layout: cover
 addons:
   - slidev-addon-tulip-lab-pages
-course: TULIP Lab Talks
+course: TULIP Lab Research Series
 author: Professor Gang Li
 affiliation: Deakin University, Australia
 speakerProfileUrl: https://www.tulip.academy/members/gangli/

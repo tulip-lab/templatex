@@ -11,14 +11,14 @@ test('normalises configured presentation metadata', () => {
   assert.deepEqual(normaliseCoverConfig({
     title: 'Walking and Working with AI',
     subtitle: 'A research talk',
-    course: 'TULIP Lab Talks',
+    course: 'TULIP Lab Research Series',
     author: 'Researcher Name',
     affiliation: 'University Name',
     authorPhoto: '/speaker.png',
   }), {
     title: 'Walking and Working with AI',
     subtitle: 'A research talk',
-    course: 'TULIP Lab Talks',
+    course: 'TULIP Lab Research Series',
     author: 'Researcher Name',
     affiliation: 'University Name',
     authorPhoto: '/speaker.png',

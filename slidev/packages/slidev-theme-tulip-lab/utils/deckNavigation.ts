@@ -2,6 +2,7 @@ export interface DeckSession {
   code: string
   title: string
   page: number
+  optionalStory: boolean
 }
 
 export interface DeckSection {
@@ -22,7 +23,11 @@ export interface NavigationFrontmatter {
   tocExpand?: unknown
   session?: unknown
   sessionTitle?: unknown
+  optionalStory?: unknown
 }
+
+export const OPTIONAL_STORY_INTENT_KEY = 'tulip:optional-story-intent'
+export const OPTIONAL_STORY_QUERY_KEY = 'optional-story'
 
 export interface NavigationRoute {
   no: number
@@ -81,6 +86,7 @@ export function buildDeckSections(routes: NavigationRoute[]): DeckSection[] {
       code: sessionCode,
       title: asLabel(frontmatter.sessionTitle) ?? sessionCode,
       page: route.no,
+      optionalStory: frontmatter.optionalStory === true,
     })
   }
 

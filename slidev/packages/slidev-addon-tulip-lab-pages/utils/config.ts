@@ -18,6 +18,17 @@ export interface ResearchArea {
   description: string
 }
 
+export interface SpeakerServiceItem {
+  role: string
+  organisation: string
+  term: string
+}
+
+export interface SpeakerServiceSection {
+  title: string
+  items: SpeakerServiceItem[]
+}
+
 export interface CollaborationPhoto {
   src: string
   alt: string
@@ -59,6 +70,27 @@ export function asResearchAreaList(value: unknown): ResearchArea[] {
     const title = asText(record?.title)
     const description = asText(record?.description)
     return title && description ? [{ title, description }] : []
+  })
+}
+
+export function asSpeakerServiceSections(value: unknown): SpeakerServiceSection[] {
+  if (!Array.isArray(value))
+    return []
+
+  return value.flatMap((section) => {
+    const sectionRecord = asRecord(section)
+    const title = asText(sectionRecord?.title)
+    const items = Array.isArray(sectionRecord?.items)
+      ? sectionRecord.items.flatMap((item) => {
+          const itemRecord = asRecord(item)
+          const role = asText(itemRecord?.role)
+          const organisation = asText(itemRecord?.organisation)
+          const term = asText(itemRecord?.term)
+          return role && organisation ? [{ role, organisation, term }] : []
+        })
+      : []
+
+    return title && items.length ? [{ title, items }] : []
   })
 }
 

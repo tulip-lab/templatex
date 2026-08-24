@@ -34,5 +34,10 @@ const questionsImage = computed(() => {
   justify-content: center;
 }
 .questions-wrap h1 { margin: 0 0 1rem; }
-.questions-wrap img { width: auto; height: 66%; object-fit: contain; }
+.questions-wrap img {
+  width: auto;
+  height: 40%;
+  max-height: 15.5rem;
+  object-fit: contain;
+}
 </style>

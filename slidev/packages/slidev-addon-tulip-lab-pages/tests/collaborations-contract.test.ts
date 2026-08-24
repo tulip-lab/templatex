@@ -10,6 +10,8 @@ test('ships the interactive collaboration layout', () => {
   const layout = readFileSync(layoutUrl, 'utf8')
   assert.match(layout, /props\.regions/)
   assert.match(layout, /\$clicks\.value/)
+  assert.match(layout, /props\.includeResearch/)
+  assert.match(layout, /stateCount/)
   assert.match(layout, /resolvePublicAssetPath\(src/)
 })
 

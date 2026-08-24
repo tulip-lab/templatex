@@ -1,7 +1,13 @@
 <script setup lang="ts">
 import { computed } from 'vue'
 import { useDeckNavigation } from './composables/useDeckNavigation'
-import { formatSessionLabel, getShellVisibility } from './utils/deckNavigation'
+import {
+  formatSessionLabel,
+  getShellVisibility,
+  OPTIONAL_STORY_INTENT_KEY,
+  OPTIONAL_STORY_QUERY_KEY,
+  type DeckSession,
+} from './utils/deckNavigation'
 import logo from './assets/tulip-logo.png'
 
 const {
@@ -41,6 +47,24 @@ const showSessionNodes = computed(() => (
   visibility.value.showLocation
   && (currentSection.value?.sessions.length ?? 0) > 1
 ))
+
+function goToSession(session: DeckSession) {
+  if (!session.optionalStory) {
+    void nav.go(session.page)
+    return
+  }
+
+  localStorage.setItem(OPTIONAL_STORY_INTENT_KEY, Date.now().toString())
+  const path = nav.router.currentRoute.value.path.replace(/\/\d+$/, `/${session.page}`)
+  void nav.router.push({
+    path,
+    query: {
+      ...nav.router.currentRoute.value.query,
+      clicks: undefined,
+      [OPTIONAL_STORY_QUERY_KEY]: 'true',
+    },
+  })
+}
 </script>
 
 <template>
@@ -61,14 +85,14 @@ const showSessionNodes = computed(() => (
       <nav v-if="showSessionNodes" class="tulip-session-nodes" aria-label="Sessions in this section">
         <button
           v-for="(session, index) in currentSection?.sessions"
-          :key="session.code"
+          :key="`${session.code}-${session.page}`"
           class="tulip-session-node"
-          :class="{ active: currentSessionIndex === index }"
+          :class="{ active: currentSessionIndex === index, optional: session.optionalStory }"
           type="button"
-          :title="formatSessionLabel(session)"
-          :aria-label="`Go to ${formatSessionLabel(session)}`"
+          :title="session.optionalStory ? `Optional story · ${formatSessionLabel(session)} · click to play` : formatSessionLabel(session)"
+          :aria-label="session.optionalStory ? `Play optional story: ${formatSessionLabel(session)}` : `Go to ${formatSessionLabel(session)}`"
           :aria-current="currentSessionIndex === index ? 'step' : undefined"
-          @click="$nav.go(session.page)"
+          @click="goToSession(session)"
         />
         <span class="tulip-session-position">
           {{ currentSessionIndex >= 0
@@ -153,6 +177,16 @@ const showSessionNodes = computed(() => (
 .tulip-session-node.active {
   background: var(--tulip-shell-ink);
   transform: scale(1.18);
+}
+
+.tulip-session-node.optional {
+  border: 1.5px solid var(--tulip-shell-ink);
+  background: transparent;
+}
+
+.tulip-session-node.optional:hover,
+.tulip-session-node.optional.active {
+  background: var(--tulip-shell-ink);
 }
 
 .tulip-session-position {

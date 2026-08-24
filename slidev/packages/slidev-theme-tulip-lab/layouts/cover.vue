@@ -180,7 +180,7 @@ const tocPage = computed(() => (
   position: absolute;
   bottom: 8.4%;
   left: 5.2%;
-  width: 18%;
+  width: 15.5%;
   max-height: 44%;
   object-fit: contain;
 }

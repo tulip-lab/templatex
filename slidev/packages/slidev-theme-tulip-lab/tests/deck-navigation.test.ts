@@ -54,8 +54,19 @@ test('formats numbered section labels and finds the active item', () => {
 })
 
 test('formats descriptive sessions once and coded sessions with their title', () => {
-  assert.equal(formatSessionLabel({ code: 'Gang Li', title: 'Gang Li', page: 3 }), 'Gang Li')
-  assert.equal(formatSessionLabel({ code: '1A', title: 'Question', page: 4 }), '1A · Question')
+  assert.equal(formatSessionLabel({ code: 'Gang Li', title: 'Gang Li', page: 3, optionalStory: false }), 'Gang Li')
+  assert.equal(formatSessionLabel({ code: '1A', title: 'Question', page: 4, optionalStory: false }), '1A · Question')
+})
+
+test('marks optional-story sessions for explicit navigation', () => {
+  const sections = buildDeckSections([
+    { no: 1, frontmatter: { section: 'AI Era' } },
+    { no: 2, frontmatter: { session: '1A', sessionTitle: 'Evidence' } },
+    { no: 3, frontmatter: { session: '1B', sessionTitle: 'Optional Story', optionalStory: true } },
+  ])
+
+  assert.equal(sections[0].sessions[0].optionalStory, false)
+  assert.equal(sections[0].sessions[1].optionalStory, true)
 })
 
 test('ignores empty labels and sessions before the first section', () => {

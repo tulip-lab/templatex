@@ -2,20 +2,28 @@
 import { useSlideContext } from '@slidev/client'
 import { computed } from 'vue'
 import defaultLogo from '../assets/tulip-logo.png'
-import { asCollaborationRegions, asText, asTextList, resolvePublicAssetPath } from '../utils/config'
+import { asCollaborationRegions, asResearchAreaList, asText, asTextList, resolvePublicAssetPath } from '../utils/config'
 
 interface Props {
   title?: string
+  heading?: string
   tagline?: string
   intro?: string
   topics?: unknown
   regions?: unknown
   labLogo?: string
+  includeResearch?: boolean
+  researchTitle?: string
+  researchIntro?: string
+  researchAreas?: unknown
 }
 
 const props = defineProps<Props>()
-const { $clicks } = useSlideContext()
-const title = computed(() => asText(props.title, 'Global Collaborations'))
+const { $clicks, $renderContext, $slidev } = useSlideContext()
+const config = computed(() => $slidev.configs as Record<string, unknown>)
+const exportRoute = computed(() => typeof window !== 'undefined' && /\/export(?:\/|$)/.test(window.location.pathname))
+const interactive = computed(() => !exportRoute.value && ['slide', 'presenter'].includes($renderContext.value))
+const title = computed(() => asText(props.heading, asText(props.title, 'Global Collaborations')))
 const tagline = computed(() => asText(props.tagline, 'TULIP Lab research network'))
 const intro = computed(() => asText(props.intro, 'Long-term academic partnerships connect shared methods, people, and real-world research challenges.'))
 const topics = computed(() => {
@@ -25,8 +33,32 @@ const topics = computed(() => {
     : ['Artificial Intelligence', 'Business Intelligence', 'Privacy & Security', 'Applied Analytics']
 })
 const regions = computed(() => asCollaborationRegions(props.regions))
-const activeIndex = computed(() => Math.min(Math.max($clicks.value, 0), Math.max(regions.value.length - 1, 0)))
-const activeRegion = computed(() => regions.value[activeIndex.value])
+const includeResearch = computed(() => props.includeResearch === true)
+const researchTitle = computed(() => asText(props.researchTitle, 'Research Framework'))
+const researchIntro = computed(() => asText(props.researchIntro, 'Four connected capabilities move from intelligent methods to responsible, real-world impact.'))
+const researchAreas = computed(() => {
+  const configured = asResearchAreaList(props.researchAreas)
+  const globalConfigured = asResearchAreaList(config.value.academyResearchAreas)
+  if (configured.length)
+    return configured
+  if (globalConfigured.length)
+    return globalConfigured
+  return [
+    { title: 'Artificial Intelligence', description: 'Develop learning and reasoning methods for complex intelligent tasks.' },
+    { title: 'Business Intelligence', description: 'Turn organisational data into evidence for forecasting and decisions.' },
+    { title: 'Privacy & Security', description: 'Strengthen cyber security while preserving privacy throughout analysis.' },
+    { title: 'Applied Analytics', description: 'Translate AI and data science into practical research and industry outcomes.' },
+  ]
+})
+const stateCount = computed(() => regions.value.length + (includeResearch.value ? 1 : 0))
+const activeIndex = computed(() => Math.min(Math.max($clicks.value, 0), Math.max(stateCount.value - 1, 0)))
+const isResearchState = computed(() => includeResearch.value && activeIndex.value === 0)
+const activeRegionIndex = computed(() => activeIndex.value - (includeResearch.value ? 1 : 0))
+const activeRegion = computed(() => regions.value[activeRegionIndex.value])
+const stateTabs = computed(() => [
+  ...(includeResearch.value ? [{ name: 'Framework', label: researchTitle.value }] : []),
+  ...regions.value.map(region => ({ name: region.name, label: region.name })),
+])
 const labLogo = computed(() => {
   const configured = asText(props.labLogo)
   return configured
@@ -50,23 +82,52 @@ const resolvePhoto = (src: string) => resolvePublicAssetPath(src, import.meta.en
         </div>
       </section>
 
-      <section v-if="activeRegion" class="region-stage" aria-live="polite">
-        <nav
-          class="region-tabs"
-          aria-label="Collaboration regions"
-          :style="{ gridTemplateColumns: `repeat(${regions.length}, minmax(0, 1fr))` }"
-        >
-          <span
-            v-for="(region, index) in regions"
-            :key="region.name"
-            :class="{ 'region-tab--active': index === activeIndex }"
-          >
-            {{ region.name }}
-          </span>
-        </nav>
-
+      <section class="network-stage" aria-live="polite">
         <Transition name="region-shift" mode="out-in">
-          <div :key="activeRegion.name" class="region-content">
+          <div v-if="!interactive && includeResearch" key="print" class="print-network-summary">
+            <section>
+              <header class="framework-header">
+                <p>Research</p>
+                <h2>{{ researchTitle }}</h2>
+              </header>
+              <div class="print-research-list">
+                <article v-for="area in researchAreas" :key="area.title">
+                  <strong>{{ area.title }}</strong>
+                  <p>{{ area.description }}</p>
+                </article>
+              </div>
+            </section>
+            <section class="print-region-summary">
+              <header class="framework-header">
+                <p>Network</p>
+                <h2>Global Collaborations</h2>
+              </header>
+              <article v-for="region in regions" :key="region.name">
+                <div><strong>{{ region.name }}</strong><span>{{ region.label }}</span></div>
+                <p>{{ region.institutions.join(' · ') }}</p>
+              </article>
+            </section>
+          </div>
+
+          <div v-else-if="isResearchState" key="framework" class="framework-content">
+            <header class="framework-header">
+              <p>Research</p>
+              <h2>{{ researchTitle }}</h2>
+              <span>{{ researchIntro }}</span>
+            </header>
+
+            <div class="framework-areas">
+              <article v-for="(area, index) in researchAreas" :key="area.title">
+                <span>0{{ index + 1 }}</span>
+                <strong>{{ area.title }}</strong>
+                <p>{{ area.description }}</p>
+              </article>
+            </div>
+
+            <p class="framework-note"><strong>One lab, connected capabilities:</strong> methods, evidence, safeguards, and applications develop together.</p>
+          </div>
+
+          <div v-else-if="activeRegion" :key="activeRegion.name" class="region-content">
             <header class="region-header">
               <div>
                 <p v-if="activeRegion.label" class="region-label">{{ activeRegion.label }}</p>
@@ -105,6 +166,20 @@ const resolvePhoto = (src: string) => resolvePublicAssetPath(src, import.meta.en
             </ul>
           </div>
         </Transition>
+
+        <nav
+          class="state-tabs"
+          aria-label="TULIP Lab research and collaboration states"
+          :style="{ gridTemplateColumns: `repeat(${stateTabs.length}, minmax(0, 1fr))` }"
+        >
+          <span
+            v-for="(state, index) in stateTabs"
+            :key="state.name"
+            :class="{ 'state-tab--active': interactive ? index === activeIndex : true }"
+          >
+            {{ state.label }}
+          </span>
+        </nav>
       </section>
     </main>
   </div>
@@ -138,7 +213,8 @@ const resolvePhoto = (src: string) => resolvePublicAssetPath(src, import.meta.en
 }
 
 .eyebrow,
-.region-label {
+.region-label,
+.framework-header > p {
   margin: 0;
   color: #527f91;
   font-family: var(--tulip-sans);
@@ -176,42 +252,107 @@ h1 {
   font-weight: 700;
 }
 
-.region-stage {
+.network-stage {
   display: grid;
   min-width: 0;
   min-height: 0;
-  grid-template-rows: 2.15rem minmax(0, 1fr);
+  grid-template-rows: minmax(0, 1fr) 2.15rem;
 }
 
-.region-tabs {
+.state-tabs {
   display: grid;
-  align-items: end;
-  border-bottom: 1px solid rgba(90, 92, 148, 0.24);
+  align-items: start;
+  border-top: 1px solid rgba(90, 92, 148, 0.24);
 }
 
-.region-tabs span {
+.state-tabs span {
   min-width: 0;
-  border-bottom: 3px solid transparent;
-  padding: 0 0.5rem 0.48rem;
+  border-top: 3px solid transparent;
+  margin-top: -1px;
+  padding: 0.48rem 0.38rem 0;
   color: rgba(29, 43, 58, 0.48);
   font-family: var(--tulip-sans);
-  font-size: 0.66rem;
+  font-size: 0.56rem;
   font-weight: 800;
+  line-height: 1.16;
   text-align: center;
   text-transform: uppercase;
 }
 
-.region-tabs .region-tab--active {
-  border-bottom-color: var(--tulip-purple);
+.state-tabs .state-tab--active {
+  border-top-color: var(--tulip-purple);
   color: var(--pd1);
 }
 
+.framework-content,
 .region-content {
   display: grid;
   min-height: 0;
   grid-template-rows: auto minmax(0, 1fr) auto;
   gap: 0.75rem;
-  padding-top: 0.95rem;
+  padding: 0.2rem 0 0.78rem;
+}
+
+.framework-header h2,
+.region-header h2 {
+  margin: 0.1rem 0 0;
+  color: var(--pd1);
+  font-size: 1.48rem;
+  line-height: 1.05;
+}
+
+.framework-header > span {
+  display: block;
+  margin-top: 0.4rem;
+  color: rgba(29, 43, 58, 0.62);
+  font-size: 0.7rem;
+  line-height: 1.35;
+}
+
+.framework-areas {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 0.8rem 1.15rem;
+  align-content: center;
+}
+
+.framework-areas article {
+  position: relative;
+  min-height: 7.35rem;
+  border-top: 3px solid var(--tulip-purple);
+  padding: 0.82rem 0.15rem 0;
+}
+
+.framework-areas article > span {
+  position: absolute;
+  top: 0.78rem;
+  right: 0.15rem;
+  color: rgba(112, 91, 158, 0.34);
+  font-family: var(--tulip-sans);
+  font-size: 0.62rem;
+  font-weight: 850;
+}
+
+.framework-areas strong {
+  color: var(--pd1);
+  font-size: 0.92rem;
+}
+
+.framework-areas p {
+  margin: 0.42rem 0 0;
+  color: rgba(29, 43, 58, 0.75);
+  font-size: 0.7rem;
+  line-height: 1.4;
+}
+
+.framework-note {
+  border-left: 3px solid var(--tulip-purple);
+  margin: 0;
+  padding: 0.5rem 0.7rem;
+  background: color-mix(in srgb, var(--tulip-shell-bottom) 24%, white);
+  color: rgba(29, 43, 58, 0.8);
+  font-size: 0.66rem;
+  line-height: 1.3;
 }
 
 .region-header {
@@ -221,14 +362,7 @@ h1 {
   gap: 1rem;
 }
 
-.region-header h2 {
-  margin: 0.1rem 0 0;
-  color: var(--pd1);
-  font-size: 1.48rem;
-  line-height: 1.05;
-}
-
-.region-header strong {
+.region-header > strong {
   color: rgba(29, 43, 58, 0.55);
   font-family: var(--tulip-sans);
   font-size: 0.62rem;
@@ -311,8 +445,8 @@ h1 {
   min-width: 0;
   padding-left: 0.78rem;
   color: rgba(29, 43, 58, 0.82);
-  font-size: 0.66rem;
-  line-height: 1.3;
+  font-size: 0.64rem;
+  line-height: 1.25;
 }
 
 .institution-list li::before {
@@ -324,6 +458,64 @@ h1 {
   border-radius: 50%;
   background: var(--tulip-purple);
   content: '';
+}
+
+.print-network-summary {
+  display: grid;
+  min-height: 0;
+  grid-template-columns: 0.82fr 1.18fr;
+  gap: 1.2rem;
+  padding: 0.2rem 0 0.8rem;
+  align-items: center;
+}
+
+.print-region-summary {
+  border-left: 1px solid rgba(90, 92, 148, 0.22);
+  padding-left: 1.2rem;
+}
+
+.print-research-list,
+.print-region-summary {
+  display: grid;
+  gap: 0.55rem;
+}
+
+.print-research-list {
+  margin-top: 0.85rem;
+}
+
+.print-research-list article,
+.print-region-summary > article {
+  border-top: 2px solid rgba(112, 91, 158, 0.5);
+  padding-top: 0.42rem;
+}
+
+.print-research-list strong,
+.print-region-summary strong {
+  color: var(--pd1);
+  font-size: 0.66rem;
+}
+
+.print-research-list p,
+.print-region-summary p {
+  margin: 0.2rem 0 0;
+  color: rgba(29, 43, 58, 0.7);
+  font-size: 0.56rem;
+  line-height: 1.3;
+}
+
+.print-region-summary > article > div {
+  display: flex;
+  justify-content: space-between;
+  gap: 0.5rem;
+}
+
+.print-region-summary span {
+  color: #527f91;
+  font-family: var(--tulip-sans);
+  font-size: 0.48rem;
+  font-weight: 800;
+  text-transform: uppercase;
 }
 
 .region-shift-enter-active,

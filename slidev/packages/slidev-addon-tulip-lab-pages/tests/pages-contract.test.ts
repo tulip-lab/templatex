@@ -1,7 +1,7 @@
 import assert from 'node:assert/strict'
 import { existsSync, readFileSync } from 'node:fs'
 import test from 'node:test'
-import { asCollaborationRegions } from '../utils/config'
+import { asCollaborationRegions, asSpeakerServiceSections } from '../utils/config'
 
 const packageJson = JSON.parse(readFileSync(new URL('../package.json', import.meta.url), 'utf8'))
 const layouts = [
@@ -38,6 +38,10 @@ test('ships fallback media and keeps deck content configurable', () => {
   assert.match(contact, /config\.value\.contactLogo/)
   assert.match(speaker, /config\.value\.speakerPhoto/)
   assert.match(speaker, /config\.value\.speakerHighlights/)
+  assert.match(speaker, /IEEE Technical Leadership/)
+  assert.match(speaker, /Vice Chair/)
+  assert.match(speaker, /2025–2026 · previously 2017–2019/)
+  assert.match(speaker, /Associate Editor.*Cybersecurity · Springer/)
   assert.match(academy, /config\.value\.academyLinks/)
   assert.match(academy, /config\.value\.academyResearchAreas/)
   assert.match(academy, /\$clicks >= index \+ 1/)
@@ -46,8 +50,27 @@ test('ships fallback media and keeps deck content configurable', () => {
   assert.match(rankings, /rankings\/gras\/2025\/AS0210/)
   assert.match(collaborations, /props\.regions/)
   assert.match(collaborations, /\$clicks\.value/)
+  assert.match(collaborations, /props\.includeResearch/)
+  assert.match(collaborations, /Research Framework/)
+  assert.match(collaborations, /\['slide', 'presenter'\]/)
+  assert.match(collaborations, /\\\/export/)
   assert.match(collaborations, /resolvePublicAssetPath\(src/)
   assert.match(questions, /config\.value\.questionsImage/)
+})
+
+test('normalizes structured speaker service sections', () => {
+  assert.deepEqual(asSpeakerServiceSections([
+    {
+      title: 'IEEE Technical Leadership',
+      items: [
+        { role: 'Vice Chair', organisation: 'IEEE CIS DMTC', term: '2025–2026' },
+        { role: '', organisation: 'Ignored' },
+      ],
+    },
+  ]), [{
+    title: 'IEEE Technical Leadership',
+    items: [{ role: 'Vice Chair', organisation: 'IEEE CIS DMTC', term: '2025–2026' }],
+  }])
 })
 
 test('documents the canonical shared-page section and session structure', () => {
