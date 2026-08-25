@@ -81,6 +81,21 @@ test('accepts a Course with workspace packages and the live addon', async () => 
   assert.deepEqual(result.errors, [])
 })
 
+test('requires the Theme and pages addon to use the same published release', async () => {
+  const root = await fixture({
+    addons: `addons:
+  - slidev-addon-tulip-lab-pages
+`,
+    dependencies: {
+      ...sharedDependencies,
+      'slidev-addon-tulip-lab-pages': '0.3.0',
+    },
+  })
+  const result = await checkDeck(root, { profile: 'talk' })
+
+  assert.match(result.errors.join('\n'), /must use the same release version/)
+})
+
 test('finds required layouts in imported slide sources', async () => {
   const root = await fixture({
     addons: `addons:

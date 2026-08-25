@@ -25,6 +25,6 @@ import logo from '../assets/tulip-logo.png'
   margin-inline: auto;
   font-family: var(--tulip-serif);
   font-size: 3rem;
-  letter-spacing: -0.02em;
+  letter-spacing: 0;
 }
 </style>

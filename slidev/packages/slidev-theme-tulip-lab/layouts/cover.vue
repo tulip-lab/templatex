@@ -47,7 +47,6 @@ const tocPage = computed(() => (
           <button
             type="button"
             class="tulip-cover-title-link"
-            aria-label="Open table of contents"
             title="Open table of contents"
             @click="nav.go(tocPage)"
           >

@@ -52,7 +52,8 @@ test('links the portrait to the contact layout without depending on its title', 
 
 test('links the cover title to the table of contents', () => {
   assert.match(coverLayout, /frontmatter\?\.layout === 'toc' \|\| frontmatter\?\.navigation === 'toc'/)
-  assert.match(coverLayout, /aria-label="Open table of contents"/)
+  assert.match(coverLayout, /title="Open table of contents"/)
+  assert.doesNotMatch(coverLayout, /aria-label="Open table of contents"/)
   assert.match(coverLayout, /@click="nav\.go\(tocPage\)"/)
 })
 

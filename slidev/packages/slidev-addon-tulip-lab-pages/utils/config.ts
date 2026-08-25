@@ -8,6 +8,11 @@ export function asTextList(value: unknown): string[] {
     : []
 }
 
+export function resolveContactQrTarget(config: Record<string, unknown>): string {
+  const website = asText(config.website, 'https://www.tulip.academy')
+  return asText(config.contactQrUrl, asText(config.speakerProfileUrl, website))
+}
+
 export interface LinkItem {
   label: string
   url: string

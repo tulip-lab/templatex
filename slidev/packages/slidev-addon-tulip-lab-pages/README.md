@@ -5,11 +5,15 @@ speaker profile, Deakin University context, TULIP Lab introduction, research
 collaborations, questions, and contact layouts together with their shared
 media.
 
-After the release is published, install its exact version:
+Install the pages addon together with the matching stable Theme release:
 
 ```sh
-pnpm add slidev-addon-tulip-lab-pages@0.2.2
+pnpm add slidev-theme-tulip-lab@0.2.2 slidev-addon-tulip-lab-pages@0.2.2
 ```
+
+The addon and Theme share one visual contract and should stay on the same
+release line. Workspace development uses the local packages together; release
+packages declare the matching Theme as a peer dependency.
 
 Enable the addon and provide speaker/contact metadata in deck headmatter:
 
@@ -24,6 +28,7 @@ speakerHighlights:
 email: director@tulip.academy
 website: https://www.tulip.academy
 websiteLabel: tulip.academy
+contactQrUrl: https://www.tulip.academy/members/gangli/
 github: https://github.com/tulip-lab
 githubLabel: tulip-lab
 scholar: https://scholar.google.com/citations?user=dqwjm-0AAAAJ&hl=en
@@ -51,6 +56,7 @@ layout: tulip-collaborations
 session: TULIP Lab
 clicks: 4
 includeResearch: true
+homeCta: Explore TULIP Lab
 heading: TULIP Lab
 tagline: Research framework & global network
 topics:
@@ -96,10 +102,10 @@ Both pages retain session-aware top navigation.
 
 Layouts are explicit rather than injected automatically, so each deck retains
 control of its narrative order. Stable Gang Li, Deakin, and TULIP Lab content
-is maintained in the addon, while each deck owns its ordering and any
-audience-specific overrides. Shared media is bundled from the addon; the TULIP
-Lab theme supplies Professor Gang Li's default cover portrait. A deck can
-override changing content and media without publishing a new addon version:
+and brand media are maintained in the addon, while each deck owns its ordering
+and any audience-specific overrides. Shared media is bundled from the addon;
+the TULIP Lab theme supplies Professor Gang Li's default cover portrait. A deck
+can override changing content and media without publishing a new addon version:
 
 ```yaml
 # Files beginning with / are resolved from this deck's public/ directory.
@@ -109,6 +115,7 @@ questionsImage: /questions.gif
 academyLogo: /academy-logo.png
 contactLogo: /contact-logo.png
 contactQrCode: /homepage-qr.svg
+contactQrUrl: https://www.tulip.academy/members/gangli/
 contactQrAlt: QR code for personal homepage
 contactTitle: Stay Connected
 
@@ -131,6 +138,13 @@ configured regions. Set `clicks` to the number of regions. Without the research
 state, set `clicks` to one less than the number of regions. Keep each region to
 at most six photos. Set an individual photo to `fit: contain` when a portrait
 or poster must remain fully visible instead of filling its grid cell.
+
+The TULIP Lab page generates its homepage QR from the deck's `website` value.
+`homeQr` can optionally provide a reviewed deck-local image; if that image fails
+to load, the generated QR returns automatically. The Contact page follows the
+same pattern: `contactQrCode` is an optional static override and
+`contactQrUrl` selects the target. When `contactQrUrl` is absent, the target
+falls back to `speakerProfileUrl`, then `website`.
 
 The earlier `tulip-academy` and `tulip-deakin-rankings` layouts remain available
 for decks that intentionally need separate pages, but the combined switch

@@ -1,6 +1,7 @@
 <script setup lang="ts">
 import { useSlideContext } from '@slidev/client'
-import { computed } from 'vue'
+import QrcodeVue from 'qrcode.vue'
+import { computed, ref } from 'vue'
 import defaultLogo from '../assets/tulip-logo.png'
 import { asCollaborationRegions, asResearchAreaList, asText, asTextList, resolvePublicAssetPath } from '../utils/config'
 
@@ -16,6 +17,8 @@ interface Props {
   researchTitle?: string
   researchIntro?: string
   researchAreas?: unknown
+  homeQr?: string
+  homeCta?: string
 }
 
 const props = defineProps<Props>()
@@ -65,6 +68,16 @@ const labLogo = computed(() => {
     ? resolvePublicAssetPath(configured, import.meta.env.BASE_URL)
     : defaultLogo
 })
+const homeUrl = computed(() => asText(config.value.website, 'https://www.tulip.academy'))
+const homeLabel = computed(() => asText(config.value.websiteLabel, 'tulip.academy'))
+const homeCta = computed(() => asText(props.homeCta, 'Explore TULIP Lab'))
+const homeQr = computed(() => {
+  const configured = asText(props.homeQr)
+  return configured
+    ? resolvePublicAssetPath(configured, import.meta.env.BASE_URL)
+    : ''
+})
+const homeQrFailed = ref(false)
 const resolvePhoto = (src: string) => resolvePublicAssetPath(src, import.meta.env.BASE_URL)
 </script>
 
@@ -182,6 +195,38 @@ const resolvePhoto = (src: string) => resolvePublicAssetPath(src, import.meta.en
         </nav>
       </section>
     </main>
+
+    <a
+      class="tulip-home-card"
+      :href="homeUrl"
+      target="_blank"
+      rel="noopener noreferrer"
+      :aria-label="`${homeCta} at ${homeLabel}`"
+    >
+      <img
+        v-if="homeQr && !homeQrFailed"
+        class="tulip-home-qr"
+        :src="homeQr"
+        alt="QR code for the TULIP Lab homepage"
+        @error="homeQrFailed = true"
+      >
+      <QrcodeVue
+        v-else
+        class="tulip-home-qr"
+        :value="homeUrl"
+        :size="94"
+        :margin="1"
+        level="M"
+        render-as="svg"
+        foreground="#1d2b3a"
+        aria-label="QR code for the TULIP Lab homepage"
+      />
+      <span>
+        <small>OUR RESEARCH COMMUNITY</small>
+        <strong>{{ homeCta }}</strong>
+        <em>{{ homeLabel }}</em>
+      </span>
+    </a>
   </div>
 </template>
 
@@ -202,6 +247,61 @@ const resolvePhoto = (src: string) => resolvePublicAssetPath(src, import.meta.en
   padding: 0.4rem 2.2rem 0.4rem 0;
   flex-direction: column;
   justify-content: center;
+}
+
+.tulip-home-card {
+  position: absolute;
+  bottom: calc(9.5% + 1rem);
+  left: 5.5%;
+  z-index: 3;
+  display: grid;
+  width: 21rem;
+  grid-template-columns: 4.7rem minmax(0, 1fr);
+  gap: 0.72rem;
+  align-items: center;
+  box-sizing: border-box;
+  border: 1px solid var(--tulip-block-rule);
+  border-left: 4px solid var(--tulip-purple);
+  border-radius: 0 var(--tulip-radius) var(--tulip-radius) 0;
+  background: var(--tulip-block-surface-soft);
+  padding: 0.5rem 0.7rem 0.5rem 0.55rem;
+  color: var(--pd1);
+  font-family: var(--tulip-serif);
+  box-shadow: var(--tulip-shadow);
+  text-decoration: none;
+}
+
+.tulip-home-qr {
+  display: block;
+  width: 4.7rem;
+  height: 4.7rem;
+  border-radius: 0.22rem;
+  background: white;
+}
+
+.tulip-home-card span {
+  display: flex;
+  min-width: 0;
+  flex-direction: column;
+  gap: 0.14rem;
+}
+
+.tulip-home-card small,
+.tulip-home-card em {
+  color: var(--tulip-text-muted);
+  font-family: var(--tulip-sans);
+  font-size: var(--tulip-caption-size);
+  font-style: normal;
+  line-height: 1.2;
+}
+
+.tulip-home-card small {
+  font-weight: 800;
+}
+
+.tulip-home-card strong {
+  font-size: var(--tulip-body-size);
+  line-height: 1.2;
 }
 
 .lab-logo {

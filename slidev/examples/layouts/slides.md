@@ -1,10 +1,20 @@
 ---
 theme: slidev-theme-tulip-lab
+addons:
+  - slidev-addon-tulip-lab-pages
 title: TULIP Slidev Layout Gallery
 subtitle: Shared layouts for courses and talks
 layout: cover
 course: TULIP Lab
-author: TULIP Lab
+author: Professor Gang Li
+affiliation: Deakin University, Australia
+contactOrganisation: School of Information Technology
+email: director@tulip.academy
+website: https://www.tulip.academy
+websiteLabel: tulip.academy
+speakerProfileUrl: https://www.tulip.academy/members/gangli/
+contactQrUrl: https://www.tulip.academy/members/gangli/
+contactQrCode: /missing-contact-qr.svg
 aspectRatio: 16/10
 canvasWidth: 1280
 ---
@@ -204,6 +214,69 @@ sessionTitle: Evidence
 </div>
 
 <div class="tulip-takeaway tulip-takeaway--bottom"><strong>Takeaway:</strong> A meaningful visual exposes what enters, what changes it, and what becomes visible.</div>
+
+---
+layout: tulip-speaker
+section: Shared Pages
+tocExpand: false
+session: Gang Li
+---
+
+---
+layout: tulip-deakin
+session: Deakin
+clicks: 1
+---
+
+---
+layout: tulip-collaborations
+session: TULIP Lab
+clicks: 1
+includeResearch: true
+homeQr: /missing-home-qr.svg
+homeCta: Explore TULIP Lab
+heading: TULIP Lab
+tagline: Research framework & global network
+topics:
+  - Artificial Intelligence
+  - Business Intelligence
+  - Privacy & Security
+  - Applied Analytics
+regions:
+  - name: Asia-Pacific
+    label: Research Network
+    institutions:
+      - Deakin University
+      - TULIP Lab
+      - University of Technology Sydney
+      - Indian Institute of Management
+    photos:
+      - src: /fixtures/deakin-mark.png
+        alt: Deakin University mark
+        fit: contain
+      - src: /fixtures/tulip-logo.png
+        alt: TULIP Lab mark
+        fit: contain
+---
+
+---
+layout: tulip-contact
+session: Contact
+---
+
+---
+layout: tulip-lab-acknowledgements
+session: Acknowledgements
+people: []
+---
+
+---
+layout: tulip-questions
+section: Closing
+tocExpand: false
+session: Questions
+navigation: false
+---
 
 ---
 layout: references

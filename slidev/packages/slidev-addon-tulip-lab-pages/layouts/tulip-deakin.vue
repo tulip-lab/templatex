@@ -1,6 +1,7 @@
 <script setup lang="ts">
 import { useSlideContext } from '@slidev/client'
 import { computed } from 'vue'
+import deakinMark from '../assets/deakin-mark.png'
 
 const { $clicks, $renderContext } = useSlideContext()
 const exportRoute = computed(() => typeof window !== 'undefined' && /\/export(?:\/|$)/.test(window.location.pathname))
@@ -36,6 +37,7 @@ const subjectStrengths = [
   <div class="slidev-layout tulip-standard-page">
     <main class="deakin-shell">
       <aside class="deakin-rail">
+        <img class="deakin-mark" :src="deakinMark" alt="Deakin University">
         <p class="eyebrow">Deakin University</p>
         <h1>Context and evidence</h1>
         <p class="rail-intro">A research environment shaped by global reach, disciplinary depth, and student experience.</p>
@@ -176,6 +178,14 @@ const subjectStrengths = [
   padding: 0.4rem 2rem 0.4rem 0;
   flex-direction: column;
   justify-content: center;
+}
+
+.deakin-mark {
+  display: block;
+  width: 5.4rem;
+  height: 5.4rem;
+  margin-bottom: 0.72rem;
+  object-fit: contain;
 }
 
 .eyebrow,

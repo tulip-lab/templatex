@@ -8,11 +8,27 @@ type VisualAudit = {
 }
 
 const visualCases = [
+  { name: 'theme-cover', path: '/1', slide: 1, heading: 'TULIP Slidev Layout Gallery' },
+  { name: 'theme-toc', path: '/2', slide: 2, heading: 'Table of Contents' },
+  { name: 'theme-section', path: '/3', slide: 3, heading: 'Core Layouts' },
+  { name: 'theme-default', path: '/4', slide: 4, heading: 'Default Layout' },
+  { name: 'theme-wideslide', path: '/5', slide: 5, heading: 'Wideslide Layout' },
+  { name: 'theme-two-columns', path: '/6', slide: 6, heading: 'Two Columns' },
   { name: 'balanced-surfaces', path: '/7', slide: 7, heading: 'Visual Contract: Balanced Evidence Above a Stable Takeaway Without Leaving Unexplained Empty Space' },
   { name: 'switch-question', path: '/8?clicks=0', slide: 8, heading: 'Stable Staged Switch' },
   { name: 'switch-evidence', path: '/8?clicks=1', slide: 8, heading: 'Stable Staged Switch' },
   { name: 'switch-outcome', path: '/8?clicks=2', slide: 8, heading: 'Stable Staged Switch' },
   { name: 'semantic-evidence', path: '/9', slide: 9, heading: 'Evidence: Show What the Process Changes' },
+  { name: 'shared-speaker', path: '/10', slide: 10, heading: 'Professor Gang Li' },
+  { name: 'shared-deakin-context', path: '/11?clicks=0', slide: 11, heading: 'Context and evidence' },
+  { name: 'shared-deakin-evidence', path: '/11?clicks=1', slide: 11, heading: 'Context and evidence' },
+  { name: 'shared-collaborations', path: '/12', slide: 12, heading: 'TULIP Lab' },
+  { name: 'shared-collaboration-region', path: '/12?clicks=1', slide: 12, heading: 'TULIP Lab' },
+  { name: 'shared-contact', path: '/13', slide: 13, heading: 'Stay Connected' },
+  { name: 'theme-acknowledgements', path: '/14', slide: 14, heading: 'Acknowledgements' },
+  { name: 'shared-questions', path: '/15', slide: 15, heading: 'Questions?', snapshot: false },
+  { name: 'theme-references', path: '/16', slide: 16, heading: 'References' },
+  { name: 'theme-contact', path: '/17', slide: 17, heading: 'Contact' },
 ]
 
 async function preparePage(page: Page, path: string, heading: string) {
@@ -47,8 +63,22 @@ async function auditThemeSlide(page: Page, slideNumber: number): Promise<VisualA
     const overflowSelectors = [
       '.tulip-title-region',
       '.tulip-slide-body',
+      '.tulip-layout-content',
+      '.tulip-cover-main',
       '.tulip-balanced-content',
       '.tulip-switch-stage',
+      '.collaborations-grid',
+      '.network-stage',
+      '.contact-wrap',
+      '.business-card',
+      '.standard-content',
+      '.speaker-grid',
+      '.deakin-shell',
+      '.deakin-stage',
+      '.acknowledgements-wrap',
+      '.questions-wrap',
+      '.framework-content',
+      '.region-content',
     ]
     const overflow = overflowSelectors
       .flatMap(selector => [...slide.querySelectorAll<HTMLElement>(selector)])
@@ -63,7 +93,7 @@ async function auditThemeSlide(page: Page, slideNumber: number): Promise<VisualA
     const captionFloor = Number.parseFloat(getComputedStyle(probe).fontSize)
     probe.remove()
 
-    const textRegions = [...slide.querySelectorAll<HTMLElement>('.tulip-title-region, .tulip-slide-body')]
+    const textRegions = [...slide.querySelectorAll<HTMLElement>('.tulip-title-region, .tulip-slide-body, .tulip-layout-content, .tulip-cover-main, .collaborations-grid, .contact-wrap, .standard-content, .deakin-shell, .acknowledgements-wrap, .questions-wrap')]
     const textElements = [...new Set(textRegions.flatMap(region => [region, ...region.querySelectorAll<HTMLElement>('*')]))]
       .filter(element => isVisible(element))
       .filter(element => element.getAttribute('aria-hidden') !== 'true')
@@ -80,6 +110,13 @@ async function auditThemeSlide(page: Page, slideNumber: number): Promise<VisualA
       '.tulip-takeaway',
       '.col-left',
       '.col-right',
+      '.tulip-home-card',
+      '.business-card',
+      '.discipline-note',
+      '.evidence-reading',
+      '.framework-note',
+      '.tulip-toc-number',
+      '.tulip-toc-session',
     ]
     const whiteOnWhite = surfaceSelectors
       .flatMap(selector => [...slide.querySelectorAll<HTMLElement>(selector)])
@@ -98,6 +135,32 @@ async function auditThemeSlide(page: Page, slideNumber: number): Promise<VisualA
   })
 }
 
+test('shared QR pages recover from missing static images and retain their targets', async ({ page }) => {
+  await preparePage(page, '/12', 'TULIP Lab')
+  const homeCard = page.locator('.slidev-page-12 .tulip-home-card')
+  await expect(homeCard).toHaveAttribute('href', 'https://www.tulip.academy')
+  await expect(homeCard.locator('svg.tulip-home-qr')).toBeVisible()
+  await expect(homeCard).toHaveCSS('width', '336px')
+
+  await preparePage(page, '/13', 'Stay Connected')
+  const contactQr = page.locator('.slidev-page-13 .card-qr-link')
+  await expect(contactQr).toHaveAttribute('href', 'https://www.tulip.academy/members/gangli/')
+  await expect(contactQr.locator('svg.card-qr')).toBeVisible()
+  await expect(contactQr.locator('svg.card-qr')).toHaveCSS('width', '64px')
+  await expect(contactQr.locator('svg.card-qr')).toHaveCSS('height', '64px')
+})
+
+test('shared packaged identity media loads successfully', async ({ page }) => {
+  await preparePage(page, '/10', 'Professor Gang Li')
+  await expect(page.locator('.slidev-page-10 .speaker-photo')).toHaveJSProperty('complete', true)
+  expect(await page.locator('.slidev-page-10 .speaker-photo').evaluate((image: HTMLImageElement) => image.naturalWidth)).toBeGreaterThan(0)
+
+  await preparePage(page, '/11', 'Context and evidence')
+  const deakinMark = page.getByRole('img', { name: 'Deakin University' })
+  await expect(deakinMark).toHaveJSProperty('complete', true)
+  expect(await deakinMark.evaluate((image: HTMLImageElement) => image.naturalWidth)).toBeGreaterThan(0)
+})
+
 for (const visualCase of visualCases) {
   test(`${visualCase.name} matches the reviewed theme contract`, async ({ page }) => {
     await preparePage(page, visualCase.path, visualCase.heading)
@@ -110,7 +173,8 @@ for (const visualCase of visualCases) {
       expect(audit.takeawayGap, 'balanced content must not leave an unexplained takeaway gap').toBeGreaterThanOrEqual(-1)
       expect(audit.takeawayGap, 'balanced content must not leave an unexplained takeaway gap').toBeLessThanOrEqual(32)
     }
-    await expect(page).toHaveScreenshot(`${visualCase.name}.png`)
+    if (process.platform === 'darwin' && visualCase.snapshot !== false)
+      await expect(page).toHaveScreenshot(`${visualCase.name}.png`)
   })
 }
 
@@ -136,6 +200,41 @@ test('switch outer frame and stage remain stable across click states', async ({ 
     for (const region of ['switchFrame', 'stage'] as const) {
       for (const property of ['x', 'y', 'width', 'height'] as const)
         expect(current[region][property]).toBeCloseTo(geometry[0][region][property], 1)
+    }
+  }
+})
+
+test('shared Deakin and collaboration stages remain stable across click states', async ({ page }) => {
+  const groups = [
+    {
+      states: ['/11?clicks=0', '/11?clicks=1'],
+      heading: 'Context and evidence',
+      slide: 11,
+      selectors: ['.deakin-shell', '.deakin-stage'],
+    },
+    {
+      states: ['/12?clicks=0', '/12?clicks=1'],
+      heading: 'TULIP Lab',
+      slide: 12,
+      selectors: ['.collaborations-grid', '.network-stage'],
+    },
+  ]
+
+  for (const group of groups) {
+    const geometry: Array<Record<string, { x: number; y: number; width: number; height: number }>> = []
+    for (const path of group.states) {
+      await preparePage(page, path, group.heading)
+      geometry.push(await page.locator(`.slidev-page-${group.slide} > .slidev-layout`).evaluate((slide, selectors) => Object.fromEntries(
+        selectors.map((selector) => {
+          const rect = slide.querySelector<HTMLElement>(selector)!.getBoundingClientRect()
+          return [selector, { x: rect.x, y: rect.y, width: rect.width, height: rect.height }]
+        }),
+      ), group.selectors))
+    }
+
+    for (const selector of group.selectors) {
+      for (const property of ['x', 'y', 'width', 'height'] as const)
+        expect(geometry[1][selector][property]).toBeCloseTo(geometry[0][selector][property], 1)
     }
   }
 })

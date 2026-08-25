@@ -1,8 +1,9 @@
 <script setup lang="ts">
 import { useSlideContext } from '@slidev/client'
-import { computed } from 'vue'
+import QrcodeVue from 'qrcode.vue'
+import { computed, ref } from 'vue'
 import defaultLogo from '../assets/tulip-logo.png'
-import { asText, resolvePublicAssetPath } from '../utils/config'
+import { asText, resolveContactQrTarget, resolvePublicAssetPath } from '../utils/config'
 
 const { $slidev } = useSlideContext()
 const config = computed(() => $slidev.configs as Record<string, unknown>)
@@ -29,7 +30,9 @@ const qrCode = computed(() => {
     ? resolvePublicAssetPath(configured, import.meta.env.BASE_URL)
     : ''
 })
+const qrTarget = computed(() => resolveContactQrTarget(config.value))
 const qrAlt = computed(() => asText(config.value.contactQrAlt, 'QR code for personal homepage'))
+const qrCodeFailed = ref(false)
 </script>
 
 <template>
@@ -52,7 +55,32 @@ const qrAlt = computed(() => asText(config.value.contactQrAlt, 'QR code for pers
               <p>Website: <a :href="website">{{ websiteLabel }}</a></p>
             </div>
           </div>
-          <img v-if="qrCode" class="card-qr" :src="qrCode" :alt="qrAlt">
+          <a
+            class="card-qr-link"
+            :href="qrTarget"
+            target="_blank"
+            rel="noopener noreferrer"
+            :aria-label="qrAlt"
+          >
+            <img
+              v-if="qrCode && !qrCodeFailed"
+              class="card-qr"
+              :src="qrCode"
+              :alt="qrAlt"
+              @error="qrCodeFailed = true"
+            >
+            <QrcodeVue
+              v-else
+              class="card-qr"
+              :value="qrTarget"
+              :size="96"
+              :margin="1"
+              level="M"
+              render-as="svg"
+              foreground="#1d2b3a"
+              :aria-label="qrAlt"
+            />
+          </a>
         </div>
       </div>
     </main>
@@ -104,5 +132,6 @@ const qrAlt = computed(() => asText(config.value.contactQrAlt, 'QR code for pers
 .card-divider { border-top: 1px solid var(--tulip-block-rule); margin: 1rem 0; }
 .card-grid { display: grid; grid-template-columns: 1.25fr 0.85fr; gap: 0.8rem 1.25rem; }
 .card-grid p { margin: 0; font-size: var(--tulip-body-size); }
-.card-qr { width: 4rem; height: 4rem; align-self: end; object-fit: contain; }
+.card-qr-link { display: block; align-self: end; line-height: 0; }
+.card-qr { display: block; width: 4rem; height: 4rem; object-fit: contain; }
 </style>

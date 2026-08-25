@@ -39,13 +39,19 @@ pnpm check
 ## Visual regression
 
 The layout gallery contains the canonical fixtures for shared surface,
-balanced-body, long-title, and staged-switch behaviour. Install Chromium once,
-then compare the fixtures with their reviewed 1280 x 800 baselines:
+balanced-body, long-title, staged-switch, and shared identity-page behaviour.
+Install Chromium once, then compare the fixtures with their reviewed
+1280 x 800 baselines:
 
 ```sh
 pnpm exec playwright install chromium
 pnpm check:visual
 ```
+
+Reviewed pixel baselines are maintained on macOS, where the presentation fonts
+are authored and approved. CI runs the same browser audit for overflow, type
+floors, white-on-white surfaces, takeaway spacing, and switch stability on
+Linux, while leaving pixel comparison to the reviewed macOS baselines.
 
 When an intentional theme change has been reviewed in the browser, update the
 baselines explicitly with `pnpm update:visual`. Do not update snapshots merely
@@ -59,6 +65,23 @@ the visual suite on another operating system.
 Every new shared visual primitive should have all three forms of evidence: a
 documented entry in the Theme visual contract, a structural contract test, and
 a layout-gallery screenshot fixture.
+
+## Consumer validation
+
+Validate an existing Course or Talk against the unpublished workspace packages
+without changing that consumer's manifest, lockfile, or installed dependencies:
+
+```sh
+pnpm check:consumer -- --profile course /absolute/path/to/deck
+pnpm check:consumer -- --profile talk /absolute/path/to/deck
+```
+
+The command copies the deck to a temporary directory, packs each declared local
+Theme, addon, and checker into the same tarball form used for publication, then
+installs those archives and runs the shared checker and a production build.
+This catches package allowlist and bundled-asset omissions without changing the
+consumer. The temporary copy is removed after the checks finish. Use `--keep`
+only when the isolated copy is needed for debugging.
 
 ## Version Policy
 

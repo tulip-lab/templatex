@@ -6,6 +6,7 @@ const packageJson = JSON.parse(readFileSync(new URL('../package.json', import.me
 const readme = readFileSync(new URL('../README.md', import.meta.url), 'utf8')
 const contract = readFileSync(new URL('../docs/visual-contract.md', import.meta.url), 'utf8')
 const themeCss = readFileSync(new URL('../styles/theme.css', import.meta.url), 'utf8')
+const sectionLayout = readFileSync(new URL('../layouts/section.vue', import.meta.url), 'utf8')
 const gallery = readFileSync(new URL('../../../examples/layouts/slides.md', import.meta.url), 'utf8')
 const contractProse = contract.replace(/\s+/g, ' ')
 
@@ -88,6 +89,7 @@ test('keeps the flat surface and semantic state mappings stable', () => {
   assert.match(themeCss, /--tulip-state-idle:\s*var\(--tulip-block-surface\)/)
   assert.match(themeCss, /--tulip-state-active:\s*var\(--tulip-block-surface-soft\)/)
   assert.match(themeCss, /--tulip-state-output:\s*var\(--tulip-block-surface-strong\)/)
+  assert.doesNotMatch(sectionLayout, /letter-spacing:\s*-/)
 })
 
 test('keeps balanced content and staged switches intrinsic and stable', () => {

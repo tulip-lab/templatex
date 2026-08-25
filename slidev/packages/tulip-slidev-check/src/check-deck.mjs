@@ -7,6 +7,7 @@ const TALK_REQUIRED_LAYOUTS = ['tulip-lab-acknowledgements']
 const REQUIRED_METADATA = ['title', 'subtitle', 'course', 'author', 'affiliation']
 const REQUIRED_DEPENDENCIES = ['@slidev/cli', 'slidev-theme-tulip-lab', 'vue']
 const SKIPPED_DIRECTORIES = new Set(['.git', '.slidev', 'dist', 'node_modules', 'output'])
+const EXACT_VERSION = /^\d+\.\d+\.\d+(?:-[0-9A-Za-z.-]+)?$/
 
 function displayPath(root, path) {
   return relative(root, path) || basename(path)
@@ -50,7 +51,7 @@ function frontmatterBlocks(source) {
 
 function isLocalOrExactVersion(specifier) {
   return /^(?:workspace:|file:|link:)/.test(specifier)
-    || /^\d+\.\d+\.\d+(?:-[0-9A-Za-z.-]+)?$/.test(specifier)
+    || EXACT_VERSION.test(specifier)
 }
 
 async function markdownFiles(directory) {
@@ -254,6 +255,12 @@ export async function checkDeck(directory, { profile } = {}) {
       }
       if (!isLocalOrExactVersion(specifier))
         errors.push(`package.json: dependency "${name}" must use an exact version or a local workspace/file specifier`)
+    }
+
+    const themeVersion = dependencies['slidev-theme-tulip-lab']
+    const pagesVersion = dependencies['slidev-addon-tulip-lab-pages']
+    if (EXACT_VERSION.test(themeVersion) && EXACT_VERSION.test(pagesVersion) && themeVersion !== pagesVersion) {
+      errors.push('package.json: "slidev-theme-tulip-lab" and "slidev-addon-tulip-lab-pages" must use the same release version')
     }
   }
 

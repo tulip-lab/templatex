@@ -19,6 +19,7 @@ Use `--profile course` for Course decks. The checker validates:
 - title, subtitle, series/course, author, and affiliation metadata;
 - required package declarations with exact or local development versions;
 - non-empty alt text for Markdown and HTML images;
-- the standard pages addon for all decks and the live addon for the Course profile.
+- the standard pages addon for all decks and the live addon for the Course profile;
+- matching exact release versions for the Theme and standard pages addon.
 
 The command exits with status 1 and reports all detected issues when validation fails.
