@@ -1,6 +1,8 @@
 import { expect, test, type Page } from '@playwright/test'
 import { auditSlide } from '../../scripts/visual-audit.mjs'
 
+const slideReadyTimeoutMs = 15_000
+
 const visualCases = [
   { name: 'theme-cover', path: '/1', slide: 1, heading: 'TULIP Slidev Layout Gallery' },
   { name: 'theme-toc', path: '/2', slide: 2, heading: 'Table of Contents' },
@@ -27,7 +29,8 @@ const visualCases = [
 
 async function preparePage(page: Page, path: string, heading: string) {
   await page.goto(path)
-  await expect(page.getByRole('heading', { level: 1, name: heading })).toBeVisible()
+  // The first requested Slidev route is compiled lazily on a cold CI server.
+  await expect(page.getByRole('heading', { level: 1, name: heading })).toBeVisible({ timeout: slideReadyTimeoutMs })
   await page.evaluate(async () => await document.fonts.ready)
   await page.addStyleTag({
     content: `
