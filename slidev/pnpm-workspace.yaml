@@ -7,3 +7,6 @@ linkWorkspacePackages: true
 preferWorkspacePackages: true
 saveExact: true
 sharedWorkspaceLockfile: true
+
+overrides:
+  dompurify: 3.4.14
