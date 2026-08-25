@@ -24,6 +24,7 @@
     "global-bottom.vue",
     "global-top.vue",
     "LICENSE",
+    "THIRD_PARTY_NOTICES.md",
     "README.md"
   ],
   "scripts": {
@@ -33,6 +34,8 @@
     "access": "public"
   },
   "dependencies": {
+    "@fontsource/source-sans-3": "5.3.0",
+    "@fontsource/source-serif-4": "5.3.0",
     "qrcode.vue": "3.10.0"
   },
   "devDependencies": {

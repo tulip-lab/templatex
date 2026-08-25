@@ -10,6 +10,8 @@ Deck-specific selectors and one-off compositions are not part of this contract.
 - Red, amber, and green are reserved for risk, warning, validation, or outcome.
 - Headings and prose use the reference serif. Labels, metadata, and compact
   interface text use the sans face.
+- The Theme packages Source Serif 4 and Source Sans 3 so authoring and
+  projection do not depend on fonts installed on one workstation.
 - Shared content uses flat surfaces and visible rules, not decorative shadows
   or gradients.
 - Layout primitives provide stable dimensions; decks own their subject-specific
@@ -75,9 +77,27 @@ depth. Do not add deck-local aliases for these tokens.
 - `.tulip-purpose` provides compact reading guidance below a title.
 - `.tulip-takeaway` provides the concluding assertion.
 - `.tulip-long-title` allows a two-line title without shrinking the slide body.
+- `.tulip-card--risk`, `.tulip-card--warning`, and `.tulip-card--outcome`
+  express genuine semantic states. The colour-named red, warm, and green
+  variants remain compatibility aliases.
+- `.tulip-evidence-panel` is a light prose evidence surface.
+- `.tulip-case-panel` is a dark monospace surface reserved for code, traces,
+  logs, and raw machine output. The legacy `.tulip-case-panel--prose` modifier
+  remains a compatibility alias for the light evidence panel.
 
 Colour-named card variants remain available for genuine semantics and backward
 compatibility. They should not be used merely to make peer cards look different.
+
+## Typography classes
+
+- `.tulip-body` is ordinary projected prose at `--tulip-body-size`.
+- `.tulip-supporting` is subordinate prose at `--tulip-small-size`.
+- `.tulip-caption` is source, figure, or media context at the caption floor.
+- `.tulip-label` is compact sans-serif interface or category text at
+  `--tulip-label-size`.
+
+These classes make text meaning explicit and provide stable audit boundaries.
+Do not use arbitrary inline or utility font sizes to fit excess copy.
 
 ## Balanced body
 
@@ -92,6 +112,14 @@ The balanced body contract is opt-in:
 The contract owns the vertical allocation between evidence and takeaway. It
 does not prescribe the evidence grid columns or the content inside each card.
 Section, Questions, and Contact pages may remain intentionally centred.
+
+## References layout
+
+The `references` layout keeps its existing single-column flow by default. Set
+`balanced: true` to centre a short list vertically within the content region.
+Set `columns: 2` for a longer list that benefits from two balanced reading
+columns. The list preserves source order and prevents an individual reference
+from splitting between columns.
 
 ## Staged switch
 
@@ -141,6 +169,25 @@ can detect missing visible labels, and visual audits can detect small text,
 overflow, unstable geometry, white surfaces on a white canvas, and excessive
 takeaway gaps. They cannot prove that a diagram communicates the intended
 meaning, so every new visual still requires full-size human review.
+
+## Automated audit
+
+Run `pnpm check:deck-visual -- /absolute/path/to/deck` from the Theme workspace.
+The audit traverses every slide and click state and writes screenshots, an HTML
+contact sheet, and a JSON report.
+
+- Errors cover overflow, text below the caption floor, white-on-white content
+  surfaces, dark prose panels, failed images or QR targets, excessive takeaway
+  gaps, and switch geometry drift. Any error produces a non-zero exit code.
+- Warnings cover low content coverage and off-contract gradients, shadows, or
+  surface colours. They require review but do not fail the command.
+- Human-review prompts identify visual evidence whose semantics, provenance,
+  reading order, or crop quality cannot be established from the DOM.
+
+Section, Questions, Contact, and Cover layouts are exempt from low-coverage
+warnings. Another intentionally sparse slide may opt out with
+`visualAudit: sparse`; this does not suppress overflow, legibility, media, or
+surface errors.
 
 ## Compatibility boundary
 

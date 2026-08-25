@@ -15,8 +15,8 @@
   --tulip-shell-top: #e8e6fa;
   --tulip-shell-bottom: #c6bfeb;
   --tulip-shell-ink: #3e2f7c;
-  --tulip-sans: 'Avenir Next', 'Segoe UI', 'Helvetica Neue', Arial, sans-serif;
-  --tulip-reference-serif: 'Century Schoolbook', 'Century Schoolbook L', 'TeX Gyre Schola', Georgia, 'Times New Roman', serif;
+  --tulip-sans: 'Source Sans 3', 'Avenir Next', 'Segoe UI', 'Helvetica Neue', Arial, sans-serif;
+  --tulip-reference-serif: 'Source Serif 4', 'Century Schoolbook', 'Century Schoolbook L', 'TeX Gyre Schola', Georgia, 'Times New Roman', serif;
   --tulip-serif: var(--tulip-reference-serif);
   --tulip-body-size: 0.88rem;
   --tulip-small-size: 0.76rem;
@@ -110,6 +110,29 @@ body,
 
 .tulip-layout-content--references {
   font-size: 0.9rem;
+}
+
+.tulip-references--balanced .tulip-layout-content--references {
+  display: flex;
+  flex-direction: column;
+}
+
+.slidev-layout.tulip-references--balanced .tulip-layout-content--references > :where(ol, ul) {
+  margin-block: auto;
+}
+
+.tulip-references--two-columns .tulip-layout-content--references > :where(ol, ul) {
+  display: block;
+  width: 100%;
+  column-count: 2;
+  column-fill: balance;
+  column-gap: 2.25rem;
+  column-rule: 1px solid var(--tulip-block-rule);
+}
+
+.tulip-references--two-columns .tulip-layout-content--references > :where(ol, ul) > li {
+  break-inside: avoid;
+  padding-right: 0.75rem;
 }
 
 .tulip-layout-content--centered {
@@ -247,6 +270,33 @@ body,
   color: var(--tulip-accent);
 }
 
+.tulip-body {
+  font-family: var(--tulip-reference-serif);
+  font-size: var(--tulip-body-size);
+  line-height: 1.5;
+}
+
+.tulip-supporting {
+  font-family: var(--tulip-reference-serif);
+  font-size: var(--tulip-small-size);
+  line-height: 1.45;
+}
+
+.tulip-caption {
+  font-family: var(--tulip-reference-serif);
+  font-size: var(--tulip-caption-size);
+  line-height: 1.35;
+}
+
+.tulip-label {
+  font-family: var(--tulip-sans);
+  font-size: var(--tulip-label-size);
+  font-weight: 800;
+  letter-spacing: 0;
+  line-height: 1.2;
+  text-transform: uppercase;
+}
+
 .tulip-titled-layout {
   display: grid;
   grid-template-rows: var(--tulip-title-region-height) minmax(0, 1fr);
@@ -255,6 +305,7 @@ body,
 
 .tulip-title-region {
   display: grid;
+  grid-template-columns: minmax(0, 1fr);
   grid-template-rows:
     calc(var(--tulip-title-context-row-height) + var(--tulip-title-context-gap))
     calc(var(--tulip-title-line-box) + var(--tulip-title-purpose-gap))
@@ -292,6 +343,8 @@ body,
 }
 
 .slidev-layout.tulip-long-title .tulip-title-region > h1 {
+  box-sizing: border-box;
+  width: 100%;
   max-width: 100%;
   font-size: var(--tulip-title-size-long);
   line-height: 1.08;
@@ -399,7 +452,14 @@ body,
   font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace;
 }
 
+.tulip-evidence-panel,
 .tulip-case-panel--prose {
+  min-width: 0;
+  border: 1px solid var(--tulip-block-rule);
+  border-radius: var(--tulip-radius);
+  background: var(--tulip-block-surface-soft);
+  padding: 0.9rem 1.1rem;
+  color: var(--tulip-ink);
   font-family: var(--tulip-reference-serif);
 }
 
@@ -481,12 +541,14 @@ body,
   background: rgba(93, 131, 146, 0.18);
 }
 
-.tulip-card--warm {
+.tulip-card--warm,
+.tulip-card--warning {
   border-color: rgba(139, 116, 82, 0.34);
   background: rgba(139, 116, 82, 0.16);
 }
 
-.tulip-card--green {
+.tulip-card--green,
+.tulip-card--outcome {
   border-color: rgba(58, 140, 119, 0.34);
   background: rgba(58, 140, 119, 0.16);
 }
@@ -496,7 +558,8 @@ body,
   background: rgba(112, 91, 158, 0.17);
 }
 
-.tulip-card--red {
+.tulip-card--red,
+.tulip-card--risk {
   border-color: rgba(169, 75, 70, 0.34);
   background: rgba(169, 75, 70, 0.15);
 }

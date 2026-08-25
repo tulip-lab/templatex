@@ -54,8 +54,18 @@ typography and surface tokens, card variants, balanced body contract, staged
 switch contract, semantic colour rules, [semantic visual](docs/visual-contract.md#semantic-visuals)
 requirements, and the [section/session/title hierarchy](docs/visual-contract.md#section-session-and-title-hierarchy).
 
+The Theme bundles OFL-licensed Source Serif 4 and Source Sans 3 at pinned
+versions. Consumers therefore get the reviewed typography without depending on
+fonts installed on the presenting machine. See `THIRD_PARTY_NOTICES.md`.
+
 Use the shared tokens and classes for reusable structure. Keep domain-specific
 grids, figures, and dense-state adjustments in the deck that owns them.
+
+Use `.tulip-body`, `.tulip-supporting`, `.tulip-caption`, and `.tulip-label`
+for explicit type roles. Use `.tulip-card--risk`, `.tulip-card--warning`, and
+`.tulip-card--outcome` only for their stated semantics. Prose evidence belongs
+on `.tulip-evidence-panel`; reserve the dark `.tulip-case-panel` for code,
+traces, logs, and raw output.
 
 ### Balanced content
 
@@ -99,6 +109,12 @@ Use `section` for the stable navigation category, `sessionTitle` for a concise
 recurring label such as `AI Moment`, and the H1 for the slide's assertion or
 question. Keep generic section and work numbering out of H1s and takeaways.
 
+### References
+
+The `references` layout accepts `balanced: true` for a short vertically balanced
+list and `columns: 2` for a longer two-column list. Both are opt-in, so existing
+reference slides retain their original flow.
+
 ### Visual regression
 
 From the workspace root, run `pnpm check:visual` to compare the layout gallery
@@ -107,3 +123,13 @@ inspecting an intentional visual change. The audit checks projection font
 floors, overflow, white-on-white content surfaces, balanced takeaway spacing,
 and switch geometry. It cannot judge whether a visual's meaning is clear, so
 baseline review remains a required human step.
+
+Audit a complete real deck, including every click state, with:
+
+```sh
+pnpm check:deck-visual -- /absolute/path/to/deck
+```
+
+The command writes a JSON report, per-state screenshots, and an HTML contact
+sheet under `output/deck-visual/`. Errors fail the command; warnings and
+human-review prompts remain visible in the report for deliberate inspection.

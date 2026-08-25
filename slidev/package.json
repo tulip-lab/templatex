@@ -14,8 +14,10 @@
     "build:templates": "pnpm --filter './templates/**' --workspace-concurrency=1 run build",
     "check": "pnpm check:workspace && pnpm test && pnpm build:examples && pnpm build:templates",
     "check:consumer": "node scripts/validate-consumer.mjs",
+    "check:deck-visual": "node scripts/check-deck-visual.mjs",
     "check:visual": "playwright test",
     "check:workspace": "node scripts/check-workspace.mjs",
+    "link:consumer": "node scripts/link-local-consumer.mjs",
     "test": "node --test scripts/*.test.mjs && pnpm --filter './packages/**' --workspace-concurrency=1 --if-present run test",
     "update:visual": "playwright test --update-snapshots"
   },

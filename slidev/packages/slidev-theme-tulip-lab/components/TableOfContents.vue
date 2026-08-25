@@ -49,17 +49,22 @@ const columns = computed(() => {
 
 <style scoped>
 .tulip-toc-shell {
+  display: flex;
+  height: 100%;
+  min-height: 0;
+  flex-direction: column;
   padding-top: 0.2rem;
 }
 
 .tulip-toc-title {
-  margin-bottom: 1rem;
+  margin-bottom: 0.5rem;
 }
 
 .tulip-toc-columns {
   display: grid;
   grid-template-columns: repeat(2, minmax(0, 1fr));
   gap: 1.8rem;
+  min-height: 0;
 }
 
 .tulip-toc-column {
@@ -67,7 +72,7 @@ const columns = computed(() => {
 }
 
 .tulip-toc-group {
-  margin-bottom: 0.34rem;
+  margin-bottom: 0.16rem;
 }
 
 .tulip-toc-section {
@@ -77,7 +82,7 @@ const columns = computed(() => {
   gap: 0.62rem;
   border: 0;
   border-radius: var(--tulip-radius);
-  padding: 0.45rem 0.62rem;
+  padding: 0.36rem 0.62rem;
   background: transparent;
   color: inherit;
   font: inherit;
@@ -111,7 +116,7 @@ const columns = computed(() => {
   display: grid;
   grid-template-columns: repeat(2, minmax(0, 1fr));
   gap: 0.26rem 0.48rem;
-  margin: 0.18rem 0 0.5rem 2.22rem;
+  margin: 0.14rem 0 0.38rem 2.22rem;
 }
 
 .tulip-toc-session {

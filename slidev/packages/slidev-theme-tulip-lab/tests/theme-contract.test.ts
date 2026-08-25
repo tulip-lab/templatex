@@ -20,6 +20,7 @@ test('ships the required layouts and brand assets', () => {
   assert.ok(existsSync(new URL('../assets/tulip-logo.png', import.meta.url)))
   assert.ok(existsSync(new URL('../assets/tulip-wordmark.png', import.meta.url)))
   assert.ok(existsSync(new URL('../assets/gangli-author.png', import.meta.url)))
+  assert.ok(existsSync(new URL('../THIRD_PARTY_NOTICES.md', import.meta.url)))
 })
 
 test('keeps navigation and TULIP Home in the theme but live sync in the addon', () => {

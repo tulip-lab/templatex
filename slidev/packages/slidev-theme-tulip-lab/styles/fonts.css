@@ -1,0 +1,47 @@
+@font-face {
+  font-family: 'Source Sans 3';
+  font-style: normal;
+  font-display: swap;
+  font-weight: 600;
+  src: url('@fontsource/source-sans-3/files/source-sans-3-latin-600-normal.woff2?inline') format('woff2');
+}
+
+@font-face {
+  font-family: 'Source Sans 3';
+  font-style: normal;
+  font-display: swap;
+  font-weight: 700;
+  src: url('@fontsource/source-sans-3/files/source-sans-3-latin-700-normal.woff2?inline') format('woff2');
+}
+
+@font-face {
+  font-family: 'Source Sans 3';
+  font-style: normal;
+  font-display: swap;
+  font-weight: 800;
+  src: url('@fontsource/source-sans-3/files/source-sans-3-latin-800-normal.woff2?inline') format('woff2');
+}
+
+@font-face {
+  font-family: 'Source Serif 4';
+  font-style: normal;
+  font-display: swap;
+  font-weight: 400;
+  src: url('@fontsource/source-serif-4/files/source-serif-4-latin-400-normal.woff2?inline') format('woff2');
+}
+
+@font-face {
+  font-family: 'Source Serif 4';
+  font-style: normal;
+  font-display: swap;
+  font-weight: 600;
+  src: url('@fontsource/source-serif-4/files/source-serif-4-latin-600-normal.woff2?inline') format('woff2');
+}
+
+@font-face {
+  font-family: 'Source Serif 4';
+  font-style: normal;
+  font-display: swap;
+  font-weight: 700;
+  src: url('@fontsource/source-serif-4/files/source-serif-4-latin-700-normal.woff2?inline') format('woff2');
+}

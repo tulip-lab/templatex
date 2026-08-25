@@ -83,6 +83,12 @@ importers:
 
   packages/slidev-theme-tulip-lab:
     dependencies:
+      '@fontsource/source-sans-3':
+        specifier: 5.3.0
+        version: 5.3.0
+      '@fontsource/source-serif-4':
+        specifier: 5.3.0
+        version: 5.3.0
       qrcode.vue:
         specifier: 3.10.0
         version: 3.10.0(vue@3.5.41(typescript@6.0.3))
@@ -495,6 +501,12 @@ packages:
 
   '@floating-ui/utils@0.2.12':
     resolution: {integrity: sha512-HpCo8tmWzLVad5s2d19EhAz5zqrrQ6s69qd6moPMQvkOuSwDT1YgRfWSVuc4ennqrgv3OHppiOGMQ7oC13yIww==}
+
+  '@fontsource/source-sans-3@5.3.0':
+    resolution: {integrity: sha512-VrWixSgF93kOVSEkwjs9ImnAbxrBew4PgcnaJYEitG9TyJSwxjFUNJIgzB1XFP/acyAWcTDg7+sWe7JI8LTB9w==}
+
+  '@fontsource/source-serif-4@5.3.0':
+    resolution: {integrity: sha512-yQz8xmIgMzks8zQbpuca3UYtjxK798XCyQAGdDXmzBgvV7sdoK6d0YvE9F9kiYxORCEMRBgGZDZsSYcXj5KvwA==}
 
   '@hono/node-server@1.19.17':
     resolution: {integrity: sha512-dSneS5qhiauZWGDCeK4o695Xd9nUNjviSZCMQrj10eetr8Uln1ucn6bbphOM6UynAMMtNIzZNSpL9vnASJwrPQ==}
@@ -3547,6 +3559,10 @@ snapshots:
       '@floating-ui/core': 1.8.0
 
   '@floating-ui/utils@0.2.12': {}
+
+  '@fontsource/source-sans-3@5.3.0': {}
+
+  '@fontsource/source-serif-4@5.3.0': {}
 
   '@hono/node-server@1.19.17(hono@4.13.3)':
     dependencies:

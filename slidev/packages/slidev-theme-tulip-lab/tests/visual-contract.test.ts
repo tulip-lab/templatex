@@ -7,6 +7,7 @@ const readme = readFileSync(new URL('../README.md', import.meta.url), 'utf8')
 const contract = readFileSync(new URL('../docs/visual-contract.md', import.meta.url), 'utf8')
 const themeCss = readFileSync(new URL('../styles/theme.css', import.meta.url), 'utf8')
 const sectionLayout = readFileSync(new URL('../layouts/section.vue', import.meta.url), 'utf8')
+const referencesLayout = readFileSync(new URL('../layouts/references.vue', import.meta.url), 'utf8')
 const gallery = readFileSync(new URL('../../../examples/layouts/slides.md', import.meta.url), 'utf8')
 const contractProse = contract.replace(/\s+/g, ' ')
 
@@ -37,11 +38,20 @@ const publicTokens = [
 ]
 
 const publicClasses = [
+  'tulip-body',
+  'tulip-supporting',
+  'tulip-caption',
+  'tulip-label',
   'tulip-purpose',
   'tulip-card',
   'tulip-card--subtle',
   'tulip-card--soft',
   'tulip-card--strong',
+  'tulip-card--risk',
+  'tulip-card--warning',
+  'tulip-card--outcome',
+  'tulip-evidence-panel',
+  'tulip-case-panel',
   'tulip-takeaway',
   'tulip-takeaway--bottom',
   'tulip-long-title',
@@ -89,7 +99,22 @@ test('keeps the flat surface and semantic state mappings stable', () => {
   assert.match(themeCss, /--tulip-state-idle:\s*var\(--tulip-block-surface\)/)
   assert.match(themeCss, /--tulip-state-active:\s*var\(--tulip-block-surface-soft\)/)
   assert.match(themeCss, /--tulip-state-output:\s*var\(--tulip-block-surface-strong\)/)
+  assert.match(themeCss, /\.tulip-card--red,[\s\S]*\.tulip-card--risk/)
+  assert.match(themeCss, /\.tulip-card--warm,[\s\S]*\.tulip-card--warning/)
+  assert.match(themeCss, /\.tulip-card--green,[\s\S]*\.tulip-card--outcome/)
+  assert.match(themeCss, /\.tulip-evidence-panel,[\s\S]*\.tulip-case-panel--prose/)
   assert.doesNotMatch(sectionLayout, /letter-spacing:\s*-/)
+})
+
+test('ships deterministic fonts and opt-in reference balancing', () => {
+  assert.equal(packageJson.dependencies['@fontsource/source-serif-4'], '5.3.0')
+  assert.equal(packageJson.dependencies['@fontsource/source-sans-3'], '5.3.0')
+  assert.ok(packageJson.files.includes('THIRD_PARTY_NOTICES.md'))
+  assert.match(themeCss, /--tulip-reference-serif:\s*'Source Serif 4'/)
+  assert.match(themeCss, /--tulip-sans:\s*'Source Sans 3'/)
+  assert.match(referencesLayout, /tulip-references--balanced/)
+  assert.match(referencesLayout, /tulip-references--two-columns/)
+  assert.match(gallery, /balanced: true[\s\S]*columns: 2/)
 })
 
 test('keeps balanced content and staged switches intrinsic and stable', () => {
@@ -118,7 +143,13 @@ test('documents projection checks and the limits of automated review', () => {
   assert.match(contractProse, /white surfaces on a white canvas/)
   assert.match(contractProse, /They cannot prove that a diagram communicates the intended meaning/)
   assert.match(readme, /pnpm check:visual/)
+  assert.match(readme, /pnpm check:deck-visual/)
   assert.match(readme, /pnpm update:visual/)
+})
+
+test('gallery exercises semantic aliases, typography roles, and light evidence', () => {
+  for (const className of ['tulip-card--risk', 'tulip-card--warning', 'tulip-card--outcome', 'tulip-body', 'tulip-supporting', 'tulip-caption', 'tulip-label', 'tulip-evidence-panel'])
+    assert.match(gallery, new RegExp(`class="[^"]*${className}`))
 })
 
 test('ships a visibly labelled semantic evidence fixture without promoting a diagram API', () => {

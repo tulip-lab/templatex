@@ -49,7 +49,8 @@ pnpm check:visual
 ```
 
 Reviewed pixel baselines are maintained on macOS, where the presentation fonts
-are authored and approved. CI runs the same browser audit for overflow, type
+are authored and approved. The Theme bundles its pinned OFL-licensed serif and
+sans faces, removing dependence on local system fonts. CI runs the same browser audit for overflow, type
 floors, white-on-white surfaces, takeaway spacing, and switch stability on
 Linux, while leaving pixel comparison to the reviewed macOS baselines.
 
@@ -58,13 +59,52 @@ baselines explicitly with `pnpm update:visual`. Do not update snapshots merely
 to make a failing comparison pass. Test artifacts are written under `output/`
 and remain untracked; approved baseline images live beside the visual test.
 
-Screenshot baselines are platform-specific because the presentation font stack
-uses native system faces. Review and add a baseline explicitly before enabling
-the visual suite on another operating system.
+Browser rasterisation can still vary by platform. Review and add a baseline
+explicitly before enabling pixel comparison on another operating system.
 
 Every new shared visual primitive should have all three forms of evidence: a
 documented entry in the Theme visual contract, a structural contract test, and
 a layout-gallery screenshot fixture.
+
+Audit every page and click state of a real consumer deck with:
+
+```sh
+pnpm check:deck-visual -- /absolute/path/to/deck
+```
+
+The command starts the deck on a free local port, writes screenshots, an HTML
+contact sheet, and a machine-readable report under `output/deck-visual/`, and
+fails only for error-level findings. Warnings and human-review prompts remain in
+the report. Use `visualAudit: sparse` only for an intentionally sparse slide;
+Section, Questions, Contact, and Cover layouts are exempt automatically.
+
+## Live local consumer preview
+
+Link both unpublished visual packages into an installed Course or Talk without
+changing that consumer's manifest, lockfile, or workspace configuration:
+
+```sh
+pnpm link:consumer -- /absolute/path/to/deck
+pnpm link:consumer -- --check /absolute/path/to/deck
+pnpm link:consumer -- --restore /absolute/path/to/deck
+```
+
+The command replaces only the consumer's installed Theme and pages-addon
+symlinks. It records their previous targets under the consumer's ignored
+`node_modules/` state so `--restore` can put them back exactly. It refuses to
+replace regular files or directories and verifies the resolved source paths,
+coordinated package versions, and required shared media.
+
+After linking, restart the consumer's Slidev process with forced Vite dependency
+optimization, then run its production build:
+
+```sh
+pnpm exec slidev --force
+pnpm build
+```
+
+This command is for live local visual work. Use the isolated tarball validator
+below for release-like evidence.
 
 ## Consumer validation
 

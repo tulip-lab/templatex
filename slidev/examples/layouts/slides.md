@@ -69,10 +69,10 @@ sessionTitle: Wideslide
 ::default::
 
 <div class="grid grid-cols-4 gap-4">
-  <div class="tulip-card tulip-card--blue">Question</div>
-  <div class="tulip-card tulip-card--green">Method</div>
-  <div class="tulip-card tulip-card--warm">Evidence</div>
-  <div class="tulip-card tulip-card--purple">Insight</div>
+  <div class="tulip-card"><span class="tulip-label">Question</span><p class="tulip-body">Ordinary structure</p></div>
+  <div class="tulip-card tulip-card--risk"><span class="tulip-label">Risk</span><p class="tulip-supporting">A material failure state</p></div>
+  <div class="tulip-card tulip-card--warning"><span class="tulip-label">Warning</span><p class="tulip-supporting">A decision needs attention</p></div>
+  <div class="tulip-card tulip-card--outcome"><span class="tulip-label">Outcome</span><p class="tulip-caption">A validated result</p></div>
 </div>
 
 ---
@@ -182,7 +182,7 @@ sessionTitle: Evidence
 ::default::
 
 <div class="tulip-balanced-content grid grid-cols-[1fr_auto_1fr_auto_1.25fr] gap-4 items-stretch">
-  <article class="tulip-card tulip-fill-card" data-semantic-role="source">
+  <article class="tulip-evidence-panel tulip-fill-card" data-semantic-role="source">
     <div class="tulip-purpose">SOURCE</div>
     <h2>Candidate literature</h2>
     <p>The documented search retains a visible trail:</p>
@@ -283,11 +283,20 @@ layout: references
 section: References
 block: 3
 navigation: false
+balanced: true
+columns: 2
 ---
 
 # References
 
 1. TULIP Lab. (2026). *TULIP Slidev layout gallery*.
+2. Adobe. (2021). *Source Serif 4*.
+3. Adobe. (2021). *Source Sans 3*.
+4. Slidev. (2026). *Presentation slides for developers*.
+5. TULIP Lab. (2026). *Visual contract for shared presentations*.
+6. W3C. (2023). *Web Content Accessibility Guidelines 2.2*.
+7. Microsoft. (2024). *Playwright documentation*.
+8. Vue.js. (2025). *Vue 3 documentation*.
 
 ---
 layout: contact
