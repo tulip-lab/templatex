@@ -1,6 +1,6 @@
 import { cp, mkdir, mkdtemp, readFile, rm, writeFile } from 'node:fs/promises'
 import { tmpdir } from 'node:os'
-import { basename, join, relative, resolve, sep } from 'node:path'
+import { basename, dirname, isAbsolute, join, relative, resolve, sep } from 'node:path'
 import { spawn } from 'node:child_process'
 import { fileURLToPath, pathToFileURL } from 'node:url'
 
@@ -18,6 +18,7 @@ export function parseArguments(argv) {
   let profile = ''
   let keep = false
   let consumer = ''
+  const includeArguments = []
 
   for (let index = 0; index < argv.length; index += 1) {
     const argument = argv[index]
@@ -30,6 +31,13 @@ export function parseArguments(argv) {
     }
     else if (argument === '--keep') {
       keep = true
+    }
+    else if (argument === '--include') {
+      const includePath = argv[index + 1]
+      if (!includePath || includePath.startsWith('--'))
+        throw new Error('--include requires a path')
+      includeArguments.push(includePath)
+      index += 1
     }
     else if (!consumer) {
       consumer = argument
@@ -44,7 +52,13 @@ export function parseArguments(argv) {
   if (!consumer)
     throw new Error('Provide the consumer deck directory')
 
-  return { consumer: resolve(consumer), keep, profile }
+  const resolvedConsumer = resolve(consumer)
+  return {
+    consumer: resolvedConsumer,
+    includes: includeArguments.map(includePath => resolve(resolvedConsumer, includePath)),
+    keep,
+    profile,
+  }
 }
 
 export function declaredLocalPackages(manifest) {
@@ -130,13 +144,34 @@ async function copyConsumer(source, destination) {
   })
 }
 
-export async function validateConsumer({ consumer, keep, profile }) {
+async function copyIncludes(consumer, temporaryDeck, includes) {
+  const sourceParent = dirname(consumer)
+  const destinationParent = dirname(temporaryDeck)
+
+  for (const source of includes) {
+    const pathFromParent = relative(sourceParent, source)
+    if (!pathFromParent || isAbsolute(pathFromParent) || pathFromParent.split(sep).includes('..'))
+      throw new Error(`Included path must be outside the deck but within ${sourceParent}: ${source}`)
+
+    await cp(source, join(destinationParent, pathFromParent), {
+      dereference: true,
+      recursive: true,
+      filter(path) {
+        const pathFromRoot = relative(source, path)
+        return !pathFromRoot.split(sep).some(segment => ignoredDirectories.has(segment))
+      },
+    })
+  }
+}
+
+export async function validateConsumer({ consumer, includes = [], keep, profile }) {
   const sourceManifest = JSON.parse(await readFile(join(consumer, 'package.json'), 'utf8'))
   const temporaryRoot = await mkdtemp(join(tmpdir(), 'tulip-slidev-consumer-'))
   const temporaryDeck = join(temporaryRoot, basename(consumer))
 
   try {
     await copyConsumer(consumer, temporaryDeck)
+    await copyIncludes(consumer, temporaryDeck, includes)
     const packageNames = declaredLocalPackages(sourceManifest)
     const archives = await packLocalPackages(packageNames, join(temporaryRoot, 'packages'))
     const localManifest = usePackedPackages(sourceManifest, archives)

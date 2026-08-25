@@ -1,6 +1,6 @@
 {
   "name": "slidev-addon-tulip-lab-pages",
-  "version": "0.2.2",
+  "version": "0.3.0",
   "description": "Reusable TULIP Lab speaker, Deakin, academy, collaboration, questions, and contact pages for Slidev.",
   "type": "module",
   "license": "MIT",
@@ -27,7 +27,7 @@
     "qrcode.vue": "3.10.0"
   },
   "peerDependencies": {
-    "slidev-theme-tulip-lab": ">=0.2.2 <0.4.0"
+    "slidev-theme-tulip-lab": ">=0.3.0 <0.4.0"
   },
   "publishConfig": {
     "access": "public"

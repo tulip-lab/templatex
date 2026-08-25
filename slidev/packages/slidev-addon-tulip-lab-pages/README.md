@@ -8,7 +8,7 @@ media.
 Install the pages addon together with the matching stable Theme release:
 
 ```sh
-pnpm add slidev-theme-tulip-lab@0.2.2 slidev-addon-tulip-lab-pages@0.2.2
+pnpm add slidev-theme-tulip-lab@0.3.0 slidev-addon-tulip-lab-pages@0.3.0
 ```
 
 The addon and Theme share one visual contract and should stay on the same

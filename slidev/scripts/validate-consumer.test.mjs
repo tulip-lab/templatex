@@ -1,13 +1,24 @@
 import assert from 'node:assert/strict'
+import { resolve } from 'node:path'
 import test from 'node:test'
 import { declaredLocalPackages, parseArguments, usePackedPackages } from './validate-consumer.mjs'
 
-test('requires an explicit profile and resolves the consumer path', () => {
-  const parsed = parseArguments(['--', '--profile', 'talk', './examples/talk', '--keep'])
+test('requires an explicit profile and resolves consumer and include paths', () => {
+  const parsed = parseArguments([
+    '--',
+    '--profile',
+    'talk',
+    './examples/talk',
+    '--include',
+    '../shared/example.vue',
+    '--keep',
+  ])
   assert.equal(parsed.profile, 'talk')
   assert.equal(parsed.keep, true)
   assert.match(parsed.consumer, /examples\/talk$/)
+  assert.deepEqual(parsed.includes, [resolve(parsed.consumer, '../shared/example.vue')])
   assert.throws(() => parseArguments(['./examples/talk']), /--profile/)
+  assert.throws(() => parseArguments(['--profile', 'talk', './examples/talk', '--include']), /requires a path/)
 })
 
 test('finds TULIP packages declared across dependency groups', () => {

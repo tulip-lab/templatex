@@ -74,7 +74,7 @@ importers:
         specifier: 3.10.0
         version: 3.10.0(vue@3.5.41(typescript@6.0.3))
       slidev-theme-tulip-lab:
-        specifier: '>=0.2.2 <0.4.0'
+        specifier: '>=0.3.0 <0.4.0'
         version: link:../slidev-theme-tulip-lab
     devDependencies:
       tsx:

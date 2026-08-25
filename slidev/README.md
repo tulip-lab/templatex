@@ -116,6 +116,15 @@ pnpm check:consumer -- --profile course /absolute/path/to/deck
 pnpm check:consumer -- --profile talk /absolute/path/to/deck
 ```
 
+When a deck intentionally imports a file from a sibling directory, mirror the
+deployment checkout by adding the path relative to the deck. Repeat
+`--include` when more than one external path is required:
+
+```sh
+pnpm check:consumer -- --profile course /absolute/path/to/deck \
+  --include ../another-deck/components/SharedComponent.vue
+```
+
 The command copies the deck to a temporary directory, packs each declared local
 Theme, addon, and checker into the same tarball form used for publication, then
 installs those archives and runs the shared checker and a production build.
@@ -130,6 +139,7 @@ only when the isolated copy is needed for debugging.
   on its existing exact version.
 - Consumer projects pin exact package versions and keep independent lockfiles.
 - Stable `0.1.0` established the initial package baseline. Release `0.2.0` standardises addon names and shared presentation pages.
+- Release `0.3.0` coordinates the Theme and pages visual contract and strengthens shared deck validation. The unchanged live addon remains at `0.2.0`.
 - Publishing, tagging, and deployment require an explicit release approval.
 
 ## Licensing
