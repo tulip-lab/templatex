@@ -68,7 +68,7 @@ onMounted(() => {
 
 .tulip-audience-qr-label {
   margin-top: 0.35rem;
-  font-size: 0.62rem;
+  font-size: var(--tulip-caption-size);
   font-weight: 700;
   line-height: 1.2;
 }

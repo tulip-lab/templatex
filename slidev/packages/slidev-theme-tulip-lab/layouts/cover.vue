@@ -205,7 +205,7 @@ const tocPage = computed(() => (
   overflow: hidden;
   border-radius: 50%;
   background: #fff;
-  box-shadow: 0 0 0 1px rgba(62, 47, 124, 0.08), 0 0.32rem 1rem rgba(62, 47, 124, 0.08);
+  box-shadow: var(--tulip-shadow-raised);
 }
 
 .tulip-cover-photo-link {

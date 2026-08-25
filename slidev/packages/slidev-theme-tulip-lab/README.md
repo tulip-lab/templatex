@@ -2,7 +2,7 @@
 
 TULIP Lab's shared 16:10 Slidev Theme for courses and talks. It provides the branded Cover, acknowledgements, navigation shell, table of contents, section pages, references, contact page, QR code, and reusable content layouts.
 
-Install the exact stable release with `pnpm add slidev-theme-tulip-lab@0.2.1`.
+Install the exact stable release with `pnpm add slidev-theme-tulip-lab@0.2.2`.
 
 Workspace projects can use it with:
 
@@ -45,3 +45,65 @@ navigation while showing only the parent section in the table of contents.
 The audience QR code uses the active Slidev base path during local development.
 A deployment may set `VITE_TULIP_AUDIENCE_URL` to a relative or absolute Live
 audience URL when Static and Live variants use different base paths.
+
+## Visual contract
+
+The public visual API is documented in
+[docs/visual-contract.md](docs/visual-contract.md). It defines the supported
+typography and surface tokens, card variants, balanced body contract, staged
+switch contract, semantic colour rules, [semantic visual](docs/visual-contract.md#semantic-visuals)
+requirements, and the [section/session/title hierarchy](docs/visual-contract.md#section-session-and-title-hierarchy).
+
+Use the shared tokens and classes for reusable structure. Keep domain-specific
+grids, figures, and dense-state adjustments in the deck that owns them.
+
+### Balanced content
+
+When evidence should fill the reading area above a bottom takeaway, add
+`class: tulip-balanced` to the slide and keep the content and takeaway as
+siblings:
+
+```html
+<div class="tulip-balanced-content tulip-fill-grid">
+  <article class="tulip-card tulip-fill-card">Evidence</article>
+</div>
+<div class="tulip-takeaway tulip-takeaway--bottom">Takeaway</div>
+```
+
+### Staged switch
+
+Use the switch classes together so the rail and stage retain stable dimensions:
+
+```html
+<div class="tulip-balanced-content tulip-switch">
+  <aside class="tulip-switch-rail">
+    <div class="tulip-switch-step is-active">Current state</div>
+    <div class="tulip-switch-step is-output">Result state</div>
+  </aside>
+  <div class="tulip-switch-stage">Current evidence</div>
+</div>
+```
+
+Add `tulip-long-title` to the slide frontmatter when its title needs two
+balanced lines. Use `is-output` only for a genuine result, not to distinguish
+ordinary peer categories.
+
+### Semantic visuals and titles
+
+Make explanatory visuals visibly label their source, transformation, and
+outcome. Accessibility labels supplement those visible labels; they do not
+replace them. Build deck-specific diagrams from the existing surfaces until a
+second deck establishes a reusable semantic pattern.
+
+Use `section` for the stable navigation category, `sessionTitle` for a concise
+recurring label such as `AI Moment`, and the H1 for the slide's assertion or
+question. Keep generic section and work numbering out of H1s and takeaways.
+
+### Visual regression
+
+From the workspace root, run `pnpm check:visual` to compare the layout gallery
+with its reviewed 1280x800 baselines. Use `pnpm update:visual` only after
+inspecting an intentional visual change. The audit checks projection font
+floors, overflow, white-on-white content surfaces, balanced takeaway spacing,
+and switch geometry. It cannot judge whether a visual's meaning is clear, so
+baseline review remains a required human step.

@@ -36,6 +36,8 @@ test('ships fallback media and keeps deck content configurable', () => {
   assert.match(contact, /config\.value\.website/)
   assert.match(contact, /config\.value\.websiteLabel/)
   assert.match(contact, /config\.value\.contactLogo/)
+  assert.match(contact, /config\.value\.contactQrCode/)
+  assert.match(contact, /class="card-qr"/)
   assert.match(speaker, /config\.value\.speakerPhoto/)
   assert.match(speaker, /config\.value\.speakerHighlights/)
   assert.match(speaker, /IEEE Technical Leadership/)

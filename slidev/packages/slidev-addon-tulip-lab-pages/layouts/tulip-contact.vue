@@ -23,6 +23,13 @@ const logo = computed(() => {
     ? resolvePublicAssetPath(configured, import.meta.env.BASE_URL)
     : defaultLogo
 })
+const qrCode = computed(() => {
+  const configured = asText(config.value.contactQrCode)
+  return configured
+    ? resolvePublicAssetPath(configured, import.meta.env.BASE_URL)
+    : ''
+})
+const qrAlt = computed(() => asText(config.value.contactQrAlt, 'QR code for personal homepage'))
 </script>
 
 <template>
@@ -34,15 +41,18 @@ const logo = computed(() => {
           <img :src="logo" alt="TULIP Lab logo">
         </div>
         <div class="card-details">
-          <p class="card-name">{{ author }}</p>
-          <p class="card-org">{{ organisation }}<br>{{ affiliation }}</p>
-          <div class="card-divider" />
-          <div class="card-grid">
-            <p>Email: <a :href="`mailto:${email}`">{{ email }}</a></p>
-            <p>GitHub: <a :href="github">{{ githubLabel }}</a></p>
-            <p>Scholar: <a :href="scholar">{{ scholarLabel }}</a></p>
-            <p>Website: <a :href="website">{{ websiteLabel }}</a></p>
+          <div class="card-copy">
+            <p class="card-name">{{ author }}</p>
+            <p class="card-org">{{ organisation }}<br>{{ affiliation }}</p>
+            <div class="card-divider" />
+            <div class="card-grid">
+              <p>Email: <a :href="`mailto:${email}`">{{ email }}</a></p>
+              <p>GitHub: <a :href="github">{{ githubLabel }}</a></p>
+              <p>Scholar: <a :href="scholar">{{ scholarLabel }}</a></p>
+              <p>Website: <a :href="website">{{ websiteLabel }}</a></p>
+            </div>
           </div>
+          <img v-if="qrCode" class="card-qr" :src="qrCode" :alt="qrAlt">
         </div>
       </div>
     </main>
@@ -66,24 +76,33 @@ const logo = computed(() => {
   min-height: 0;
   aspect-ratio: 52 / 19;
   overflow: hidden;
-  border: 2px solid #5a5c94;
+  border: 1px solid var(--tulip-block-rule-strong);
   border-radius: 0.7rem;
-  background: #fff;
-  box-shadow: 0 0.5rem 1.5rem rgba(45, 52, 121, 0.16);
+  background: var(--tulip-block-surface);
+  box-shadow: var(--tulip-shadow-raised);
 }
 .card-logo-wrap {
   display: flex;
   width: 28%;
   align-items: center;
   justify-content: center;
-  border-right: 1px solid rgba(90, 92, 148, 0.25);
+  border-right: 1px solid var(--tulip-block-rule);
   padding: 1rem;
 }
-.card-logo-wrap img { width: 8.6rem; max-height: 12.5rem; object-fit: contain; }
-.card-details { display: flex; width: 72%; padding: 1.5rem 2.5rem; flex-direction: column; justify-content: center; }
+.card-logo-wrap img { width: 7rem; max-height: 11rem; object-fit: contain; }
+.card-details {
+  display: grid;
+  width: 72%;
+  padding: 1.5rem 2.25rem;
+  grid-template-columns: minmax(0, 1fr) auto;
+  gap: 1.5rem;
+  align-items: center;
+}
+.card-copy { min-width: 0; }
 .card-name { margin: 0; color: var(--pd1); font-size: 1.5rem; font-weight: 700; }
-.card-org { margin: 0.35rem 0 0; font-size: 1.03rem; line-height: 1.4; opacity: 0.88; }
-.card-divider { border-top: 1px solid rgba(90, 92, 148, 0.35); margin: 1rem 0; }
-.card-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 0.8rem 1.6rem; }
-.card-grid p { margin: 0; font-size: 0.92rem; }
+.card-org { margin: 0.35rem 0 0; font-size: var(--tulip-body-size); line-height: 1.4; opacity: 0.88; }
+.card-divider { border-top: 1px solid var(--tulip-block-rule); margin: 1rem 0; }
+.card-grid { display: grid; grid-template-columns: 1.25fr 0.85fr; gap: 0.8rem 1.25rem; }
+.card-grid p { margin: 0; font-size: var(--tulip-body-size); }
+.card-qr { width: 4rem; height: 4rem; align-self: end; object-fit: contain; }
 </style>

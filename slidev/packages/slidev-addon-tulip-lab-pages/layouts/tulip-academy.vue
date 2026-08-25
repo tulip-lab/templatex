@@ -97,16 +97,16 @@ header p {
 .academy-identity {
   display: flex;
   min-height: 21rem;
-  border-right: 1px solid rgba(90, 92, 148, 0.28);
+  border-right: 1px solid var(--tulip-block-rule);
   padding: 0.5rem 2.5rem 0.5rem 0;
   flex-direction: column;
   justify-content: center;
 }
 .panel-label {
   margin: 0 0 0.9rem;
-  color: #527f91;
+  color: var(--tulip-purple-dark);
   font-family: var(--tulip-sans);
-  font-size: 0.68rem;
+  font-size: var(--tulip-label-size);
   font-weight: 800;
   text-transform: uppercase;
 }
@@ -117,13 +117,13 @@ header p {
   display: flex;
   align-items: center;
   justify-content: space-between;
-  border-top: 1px solid rgba(90, 92, 148, 0.22);
+  border-top: 1px solid var(--tulip-block-rule);
   padding: 0.55rem 0;
   font-size: 0.82rem;
   text-decoration: none;
 }
-.academy-links a:last-child { border-bottom: 1px solid rgba(90, 92, 148, 0.22); }
-.academy-links strong { color: var(--tulip-purple-dark); font-family: var(--tulip-sans); font-size: 0.62rem; text-transform: uppercase; }
+.academy-links a:last-child { border-bottom: 1px solid var(--tulip-block-rule); }
+.academy-links strong { color: var(--tulip-purple-dark); font-family: var(--tulip-sans); font-size: var(--tulip-caption-size); text-transform: uppercase; }
 .research-panel { min-width: 0; }
 .research-list { display: grid; grid-template-columns: 1fr 1fr; gap: 0 1.3rem; }
 .research-list article {

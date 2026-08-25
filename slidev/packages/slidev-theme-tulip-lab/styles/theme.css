@@ -16,8 +16,14 @@
   --tulip-shell-bottom: #c6bfeb;
   --tulip-shell-ink: #3e2f7c;
   --tulip-sans: 'Avenir Next', 'Segoe UI', 'Helvetica Neue', Arial, sans-serif;
-  --tulip-serif: Georgia, 'Times New Roman', serif;
   --tulip-reference-serif: 'Century Schoolbook', 'Century Schoolbook L', 'TeX Gyre Schola', Georgia, 'Times New Roman', serif;
+  --tulip-serif: var(--tulip-reference-serif);
+  --tulip-body-size: 0.88rem;
+  --tulip-small-size: 0.76rem;
+  --tulip-label-size: 0.68rem;
+  --tulip-caption-size: 0.64rem;
+  --tulip-card-title-size: 1rem;
+  --tulip-title-size-long: 1.9rem;
   --tulip-radius: 0.55rem;
   --tulip-shell-x: 5.5%;
   --tulip-shell-top-height: 8.8%;
@@ -25,7 +31,7 @@
   --tulip-content-top: 12%;
   --tulip-content-bottom: 10.5%;
   --tulip-title-context-row-height: 1.25rem;
-  --tulip-title-context-size: 0.62rem;
+  --tulip-title-context-size: var(--tulip-label-size);
   --tulip-title-context-gap: 0.25rem;
   --tulip-title-size: 2.2rem;
   --tulip-title-line-box: 2.53rem;
@@ -37,6 +43,20 @@
   --tulip-accent: var(--tulip-purple);
   --tulip-accent-soft: rgba(112, 91, 158, 0.10);
   --tulip-table-header: var(--tulip-purple-dark);
+  --tulip-canvas: #fff;
+  --tulip-block-surface-inset: color-mix(in srgb, var(--tulip-purple) 3%, white);
+  --tulip-block-surface-subtle: color-mix(in srgb, var(--tulip-purple) 4%, white);
+  --tulip-block-surface: color-mix(in srgb, var(--tulip-purple) 7%, white);
+  --tulip-block-surface-soft: color-mix(in srgb, var(--tulip-purple) 11%, white);
+  --tulip-block-surface-strong: color-mix(in srgb, var(--tulip-shell-bottom) 42%, white);
+  --tulip-block-rule: color-mix(in srgb, var(--tulip-purple) 24%, white);
+  --tulip-block-rule-strong: var(--tulip-purple);
+  --tulip-text-muted: color-mix(in srgb, var(--tulip-ink) 68%, white);
+  --tulip-state-idle: var(--tulip-block-surface);
+  --tulip-state-active: var(--tulip-block-surface-soft);
+  --tulip-state-output: var(--tulip-block-surface-strong);
+  --tulip-shadow: none;
+  --tulip-shadow-raised: none;
 }
 
 html,
@@ -51,8 +71,9 @@ body,
   height: 100%;
   overflow: hidden;
   color: var(--tulip-ink);
-  background: #fff;
+  background: var(--tulip-canvas);
   font-family: var(--tulip-reference-serif);
+  font-size: var(--tulip-body-size);
   line-height: 1.5;
 }
 
@@ -215,7 +236,7 @@ body,
 /* Reusable teaching-purpose label and content cards. */
 .tulip-purpose {
   margin-bottom: 0.35rem;
-  color: rgba(60, 60, 60, 0.58);
+  color: var(--tulip-text-muted);
   font-family: var(--tulip-sans);
   font-size: var(--tulip-title-purpose-size);
   font-weight: 700;
@@ -256,6 +277,26 @@ body,
   font-size: var(--tulip-title-size);
   line-height: 1.15;
   white-space: nowrap;
+}
+
+/* Opt-in support for titles that need a second line without shrinking the body. */
+.slidev-layout.tulip-long-title .tulip-titled-layout {
+  grid-template-rows: calc(var(--tulip-title-region-height) + 1.75rem) minmax(0, 1fr);
+}
+
+.slidev-layout.tulip-long-title .tulip-title-region {
+  grid-template-rows:
+    calc(var(--tulip-title-context-row-height) + var(--tulip-title-context-gap))
+    calc(var(--tulip-title-line-box) + 1.75rem)
+    var(--tulip-title-purpose-line-box);
+}
+
+.slidev-layout.tulip-long-title .tulip-title-region > h1 {
+  max-width: 100%;
+  font-size: var(--tulip-title-size-long);
+  line-height: 1.08;
+  text-wrap: balance;
+  white-space: normal;
 }
 
 .tulip-title-region > .tulip-purpose {
@@ -349,12 +390,12 @@ body,
 
 .tulip-case-panel {
   min-width: 0;
-  border: 1px solid rgba(142, 170, 184, 0.34);
+  border: 1px solid var(--tulip-block-rule);
   border-radius: var(--tulip-radius);
   background: #17232d;
   color: #f5f8fa;
   padding: 0.9rem 1.1rem;
-  box-shadow: 0 0.18rem 0.45rem rgba(25, 39, 49, 0.16);
+  box-shadow: var(--tulip-shadow-raised);
   font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace;
 }
 
@@ -416,10 +457,23 @@ body,
 
 .tulip-card {
   min-height: 0;
-  border: 1px solid rgba(93, 131, 146, 0.22);
+  border: 1px solid var(--tulip-block-rule);
   border-radius: var(--tulip-radius);
+  background: var(--tulip-block-surface);
   padding: 0.85rem 1.05rem;
-  box-shadow: 0 0.12rem 0.35rem rgba(39, 55, 68, 0.07);
+  box-shadow: var(--tulip-shadow);
+}
+
+.tulip-card--subtle {
+  background: var(--tulip-block-surface-subtle);
+}
+
+.tulip-card--soft {
+  background: var(--tulip-block-surface-soft);
+}
+
+.tulip-card--strong {
+  background: var(--tulip-block-surface-strong);
 }
 
 .tulip-card--blue {
@@ -453,22 +507,22 @@ body,
   display: flex;
   flex-direction: column;
   min-height: 0;
-  border: 1px solid color-mix(in srgb, var(--tulip-shell-bottom) 72%, white);
+  border: 1px solid var(--tulip-block-rule);
   border-radius: var(--tulip-radius);
-  background: color-mix(in srgb, var(--tulip-shell-bottom) 28%, white);
+  background: var(--tulip-block-surface-soft);
   padding: 0.85rem 1.1rem;
 }
 
 /* Opt-in content contract for paired teaching panels. */
 .slidev-layout.two-cols-header .tulip-panel-copy {
-  font-size: 0.82rem;
+  font-size: var(--tulip-small-size);
   line-height: 1.4;
 }
 
 .slidev-layout.two-cols-header .tulip-panel-title {
   margin: 0.05rem 0 0.8rem;
   color: var(--pd1);
-  font-size: 1rem;
+  font-size: var(--tulip-card-title-size);
   font-weight: 800;
   line-height: 1.2;
   text-align: center;
@@ -489,10 +543,10 @@ body,
 .tulip-takeaway {
   border-left: 4px solid var(--tulip-purple);
   border-radius: 0 var(--tulip-radius) var(--tulip-radius) 0;
-  background: color-mix(in srgb, var(--tulip-shell-bottom) 34%, white);
+  background: var(--tulip-block-surface-soft);
   padding: 0.65rem 1rem;
   color: var(--pd1);
-  box-shadow: 0 0.12rem 0.35rem rgba(39, 55, 68, 0.06);
+  box-shadow: var(--tulip-shadow);
 }
 
 .tulip-slide-body:has(> .tulip-takeaway--bottom) {
@@ -505,6 +559,97 @@ body,
   right: 8rem;
   bottom: 0.15rem;
   left: 8rem;
+}
+
+/*
+ * Opt-in balanced content contract. Wrap the main evidence area in
+ * .tulip-balanced-content and add `class: tulip-balanced` to let it consume
+ * the space between the title and a bottom takeaway without a fixed height.
+ */
+.slidev-layout.tulip-balanced .tulip-slide-body:has(> .tulip-balanced-content):has(> .tulip-takeaway--bottom) {
+  display: grid;
+  grid-template-rows: minmax(0, 1fr) auto;
+  gap: 0.75rem;
+  padding-bottom: 0;
+}
+
+.slidev-layout.tulip-balanced .tulip-balanced-content {
+  min-width: 0;
+  min-height: 0;
+  height: 100%;
+}
+
+.slidev-layout.tulip-balanced .tulip-balanced-content.tulip-switch {
+  margin: 0;
+}
+
+.slidev-layout.tulip-balanced .tulip-slide-body > .tulip-takeaway--bottom {
+  position: static;
+  margin: 0.15rem 8rem 0;
+}
+
+.tulip-fill-grid {
+  display: grid;
+  height: 100%;
+  min-height: 0;
+  align-items: stretch;
+}
+
+.tulip-fill-card {
+  display: flex;
+  min-height: 0;
+  flex-direction: column;
+  justify-content: center;
+}
+
+/* Stable staged-content frame shared by research and teaching switches. */
+.tulip-switch {
+  display: grid;
+  grid-template-columns: minmax(7.5rem, 0.24fr) minmax(0, 1fr);
+  gap: 0.9rem;
+  height: 100%;
+  min-height: 0;
+}
+
+.tulip-switch-rail {
+  display: grid;
+  min-height: 0;
+  grid-auto-rows: minmax(0, 1fr);
+  gap: 0.5rem;
+  align-content: stretch;
+}
+
+.tulip-switch-step {
+  display: flex;
+  min-height: 0;
+  flex-direction: column;
+  justify-content: center;
+  border: 1px solid var(--tulip-block-rule);
+  border-left: 1px solid var(--tulip-block-rule);
+  border-radius: var(--tulip-radius);
+  background: var(--tulip-state-idle);
+  padding: 0.6rem 0.7rem;
+  color: var(--tulip-text-muted);
+}
+
+.tulip-switch-step.is-active {
+  border-color: var(--tulip-block-rule-strong);
+  border-left: 4px solid var(--tulip-block-rule-strong);
+  background: var(--tulip-state-active);
+  color: var(--tulip-ink);
+}
+
+.tulip-switch-step.is-output {
+  background: var(--tulip-state-output);
+}
+
+.tulip-switch-stage {
+  min-width: 0;
+  min-height: 0;
+  overflow: hidden;
+  border: 1px solid var(--tulip-block-rule);
+  border-radius: calc(var(--tulip-radius) + 0.12rem);
+  background: var(--tulip-block-surface-inset);
 }
 
 .slidev-layout.two-cols-header .tulip-two-cols-header-grid:has(.tulip-purpose--summary) {

@@ -96,7 +96,7 @@ function returnToPreviousLocation() {
   background: var(--tulip-shell-bottom);
   color: color-mix(in srgb, var(--tulip-shell-ink) 86%, transparent);
   font-family: var(--tulip-reference-serif);
-  font-size: 0.62rem;
+  font-size: var(--tulip-caption-size);
   line-height: 1;
 }
 

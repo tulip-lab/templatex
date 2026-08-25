@@ -96,7 +96,7 @@ header p {
   margin: 0.18rem 0 0;
   color: rgba(60, 60, 60, 0.62);
   font-family: var(--tulip-sans);
-  font-size: 0.72rem;
+  font-size: var(--tulip-label-size);
   font-weight: 700;
   text-transform: uppercase;
 }
@@ -120,11 +120,11 @@ header p {
 .portrait-frame {
   width: min(10.5rem, 100%);
   overflow: hidden;
-  border: 1px solid rgba(43, 79, 112, 0.2);
+  border: 1px solid var(--tulip-block-rule);
   border-radius: 0.45rem;
   aspect-ratio: 4 / 5;
-  background: #f3f5f7;
-  box-shadow: 0 0.35rem 1rem rgba(29, 43, 58, 0.12);
+  background: var(--tulip-block-surface-subtle);
+  box-shadow: var(--tulip-shadow-raised);
 }
 
 .portrait-frame img {
@@ -147,14 +147,14 @@ header p {
   max-width: 16rem;
   color: rgba(29, 43, 58, 0.72);
   font-family: var(--tulip-sans);
-  font-size: 0.7rem;
+  font-size: var(--tulip-label-size);
   line-height: 1.3;
 }
 
 .people-grid--many { gap: 0.8rem; }
 .people-grid--many .portrait-frame { width: min(8rem, 100%); }
 .people-grid--many .person-name { font-size: 0.9rem; }
-.people-grid--many .person-affiliation { font-size: 0.62rem; }
+.people-grid--many .person-affiliation { font-size: var(--tulip-caption-size); }
 
 .people-grid--dense { gap: 0.8rem 1.2rem; }
 .people-grid--dense .person {
@@ -183,9 +183,9 @@ header p {
 .lab-credit span { display: flex; flex-direction: column; }
 .lab-credit strong { color: var(--pd1); font-size: 0.88rem; }
 .lab-credit small {
-  color: #527f91;
+  color: var(--tulip-purple-dark);
   font-family: var(--tulip-sans);
-  font-size: 0.66rem;
+  font-size: var(--tulip-label-size);
 }
 
 .acknowledgements-wrap--team-only {

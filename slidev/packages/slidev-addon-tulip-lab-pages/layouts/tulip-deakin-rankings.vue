@@ -64,9 +64,9 @@ table { font-size: 0.88rem; }
   border-top: 3px solid var(--tulip-purple);
   padding: 0.65rem 0.75rem 0;
 }
-.benchmark-strengths .computing-strength { border-top-color: #527f91; }
-.benchmark-strengths span { color: #527f91; font-family: var(--tulip-sans); font-size: 0.58rem; font-weight: 800; }
+.benchmark-strengths .computing-strength { border-top-color: var(--tulip-purple-dark); }
+.benchmark-strengths span { color: var(--tulip-purple-dark); font-family: var(--tulip-sans); font-size: var(--tulip-caption-size); font-weight: 800; }
 .benchmark-strengths strong { display: block; margin-top: 0.22rem; color: var(--pd1); font-size: 0.88rem; }
 .benchmark-strengths p { margin: 0.2rem 0 0; font-size: 0.7rem; line-height: 1.3; }
-.sources { margin-top: 0.75rem; font-size: 0.68rem; opacity: 0.72; }
+.sources { margin-top: 0.75rem; font-size: var(--tulip-label-size); opacity: 0.72; }
 </style>

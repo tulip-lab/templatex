@@ -12,7 +12,9 @@ This workspace develops the reusable Slidev system for TULIP Lab courses and tal
 - `templates/`: private source templates used by the project creator
 - `examples/`: private Course, Talk, and layout examples
 
-The five public packages share the next release version `0.2.0`.
+The public packages currently remain on their reviewed `0.2.x` versions. Their
+exact versions live in the package manifests and are checked by the workspace
+validator.
 
 ## Ownership
 
@@ -34,9 +36,35 @@ pnpm install
 pnpm check
 ```
 
+## Visual regression
+
+The layout gallery contains the canonical fixtures for shared surface,
+balanced-body, long-title, and staged-switch behaviour. Install Chromium once,
+then compare the fixtures with their reviewed 1280 x 800 baselines:
+
+```sh
+pnpm exec playwright install chromium
+pnpm check:visual
+```
+
+When an intentional theme change has been reviewed in the browser, update the
+baselines explicitly with `pnpm update:visual`. Do not update snapshots merely
+to make a failing comparison pass. Test artifacts are written under `output/`
+and remain untracked; approved baseline images live beside the visual test.
+
+Screenshot baselines are platform-specific because the presentation font stack
+uses native system faces. Review and add a baseline explicitly before enabling
+the visual suite on another operating system.
+
+Every new shared visual primitive should have all three forms of evidence: a
+documented entry in the Theme visual contract, a structural contract test, and
+a layout-gallery screenshot fixture.
+
 ## Version Policy
 
-- Theme, addons, checker, and creator move together during the initial release train.
+- Coordinate version changes when a shared contract requires updates across
+  the Theme, addons, checker, or creator; otherwise keep each reviewed package
+  on its existing exact version.
 - Consumer projects pin exact package versions and keep independent lockfiles.
 - Stable `0.1.0` established the initial package baseline. Release `0.2.0` standardises addon names and shared presentation pages.
 - Publishing, tagging, and deployment require an explicit release approval.

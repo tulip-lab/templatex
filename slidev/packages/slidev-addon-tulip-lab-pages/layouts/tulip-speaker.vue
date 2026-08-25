@@ -166,9 +166,9 @@ const editorialItems = computed(() => sections.value.find(section => section.tit
 .speaker-eyebrow {
   grid-column: 1 / -1;
   margin: 0 0 0.22rem;
-  color: #527f91;
+  color: var(--tulip-purple-dark);
   font-family: var(--tulip-sans);
-  font-size: 0.65rem;
+  font-size: var(--tulip-label-size);
   font-weight: 800;
   text-transform: uppercase;
 }
@@ -212,7 +212,7 @@ const editorialItems = computed(() => sections.value.find(section => section.tit
 
 .leadership-summary,
 .editorial-summary {
-  border-top: 1px solid rgba(90, 92, 148, 0.28);
+  border-top: 1px solid var(--tulip-block-rule);
   padding-top: 0.68rem;
 }
 
@@ -223,14 +223,14 @@ const editorialItems = computed(() => sections.value.find(section => section.tit
   align-items: center;
   border-left: 4px solid var(--tulip-purple);
   padding: 0.7rem 0.78rem 0.74rem;
-  background: rgba(112, 91, 158, 0.09);
+  background: var(--tulip-block-surface-soft);
 }
 
 .current-label {
   margin: 0 0 0.12rem;
-  color: #527f91;
+  color: var(--tulip-purple-dark);
   font-family: var(--tulip-sans);
-  font-size: 0.57rem;
+  font-size: var(--tulip-caption-size);
   font-weight: 850;
   letter-spacing: 0.04em;
   text-transform: uppercase;
@@ -238,7 +238,7 @@ const editorialItems = computed(() => sections.value.find(section => section.tit
 
 .current-role h3 {
   margin: 0;
-  color: #527f91;
+  color: var(--tulip-purple-dark);
   font-family: var(--tulip-sans);
   font-size: 0.76rem;
   font-weight: 850;
@@ -258,7 +258,7 @@ const editorialItems = computed(() => sections.value.find(section => section.tit
   margin: 0;
   color: rgba(29, 43, 58, 0.48);
   font-family: var(--tulip-sans);
-  font-size: 0.51rem;
+  font-size: var(--tulip-caption-size);
   font-weight: 700;
   line-height: 1.28;
   text-align: right;
@@ -267,7 +267,7 @@ const editorialItems = computed(() => sections.value.find(section => section.tit
 
 .previous-term strong {
   color: var(--tulip-purple-dark);
-  font-size: 0.59rem;
+  font-size: var(--tulip-caption-size);
 }
 
 .leadership-secondary {
@@ -279,7 +279,7 @@ const editorialItems = computed(() => sections.value.find(section => section.tit
 
 .leadership-item {
   min-width: 0;
-  border-top: 1px solid rgba(90, 92, 148, 0.18);
+  border-top: 1px solid var(--tulip-block-rule);
   padding-top: 0.52rem;
 }
 
@@ -291,9 +291,9 @@ const editorialItems = computed(() => sections.value.find(section => section.tit
 }
 
 .leadership-meta strong {
-  color: #527f91;
+  color: var(--tulip-purple-dark);
   font-family: var(--tulip-sans);
-  font-size: 0.63rem;
+  font-size: var(--tulip-label-size);
   font-weight: 850;
   text-transform: uppercase;
 }
@@ -301,7 +301,7 @@ const editorialItems = computed(() => sections.value.find(section => section.tit
 .leadership-meta span {
   color: rgba(29, 43, 58, 0.48);
   font-family: var(--tulip-sans);
-  font-size: 0.54rem;
+  font-size: var(--tulip-caption-size);
   font-weight: 700;
   white-space: nowrap;
 }
@@ -309,7 +309,7 @@ const editorialItems = computed(() => sections.value.find(section => section.tit
 .leadership-item > p {
   margin: 0.18rem 0 0;
   color: rgba(29, 43, 58, 0.84);
-  font-size: 0.68rem;
+  font-size: var(--tulip-small-size);
   line-height: 1.27;
 }
 
@@ -325,15 +325,15 @@ const editorialItems = computed(() => sections.value.find(section => section.tit
 }
 
 .editorial-column + .editorial-column {
-  border-left: 1px solid rgba(90, 92, 148, 0.22);
+  border-left: 1px solid var(--tulip-block-rule);
   padding-left: 1.15rem;
 }
 
 .column-label {
   margin: 0 0 0.36rem;
-  color: #527f91;
+  color: var(--tulip-purple-dark);
   font-family: var(--tulip-sans);
-  font-size: 0.59rem;
+  font-size: var(--tulip-label-size);
   font-weight: 850;
   letter-spacing: 0.04em;
   text-transform: uppercase;
@@ -346,13 +346,13 @@ const editorialItems = computed(() => sections.value.find(section => section.tit
 .editorial-item {
   display: grid;
   gap: 0.06rem;
-  border-top: 1px solid rgba(90, 92, 148, 0.15);
+  border-top: 1px solid var(--tulip-block-rule);
   padding: 0.38rem 0 0.35rem;
 }
 
 .editorial-item strong {
   color: rgba(29, 43, 58, 0.9);
-  font-size: 0.68rem;
+  font-size: var(--tulip-small-size);
   font-weight: 700;
   line-height: 1.22;
 }
@@ -360,7 +360,7 @@ const editorialItems = computed(() => sections.value.find(section => section.tit
 .editorial-item span {
   color: rgba(29, 43, 58, 0.5);
   font-family: var(--tulip-sans);
-  font-size: 0.53rem;
+  font-size: var(--tulip-caption-size);
   font-weight: 750;
   line-height: 1.2;
   text-transform: uppercase;
@@ -377,7 +377,7 @@ const editorialItems = computed(() => sections.value.find(section => section.tit
   display: grid;
   grid-template-columns: 8.3rem minmax(0, 1fr);
   gap: 1rem;
-  border-top: 1px solid rgba(90, 92, 148, 0.28);
+  border-top: 1px solid var(--tulip-block-rule);
   padding-top: 0.78rem;
 }
 
@@ -403,9 +403,9 @@ const editorialItems = computed(() => sections.value.find(section => section.tit
 }
 
 .service-item strong {
-  color: #527f91;
+  color: var(--tulip-purple-dark);
   font-family: var(--tulip-sans);
-  font-size: 0.64rem;
+  font-size: var(--tulip-label-size);
   font-weight: 850;
   line-height: 1.25;
   text-transform: uppercase;
@@ -421,7 +421,7 @@ const editorialItems = computed(() => sections.value.find(section => section.tit
 .service-item span {
   color: rgba(29, 43, 58, 0.52);
   font-family: var(--tulip-sans);
-  font-size: 0.56rem;
+  font-size: var(--tulip-caption-size);
   font-weight: 700;
   line-height: 1.25;
   text-align: right;
@@ -439,8 +439,8 @@ const editorialItems = computed(() => sections.value.find(section => section.tit
   display: block;
   overflow: hidden;
   border-radius: 0.55rem;
-  background: #eef1f3;
-  box-shadow: 0 0.65rem 1.6rem rgba(45, 52, 121, 0.15);
+  background: var(--tulip-block-surface-subtle);
+  box-shadow: var(--tulip-shadow-raised);
 }
 
 .speaker-photo {
@@ -478,7 +478,7 @@ const editorialItems = computed(() => sections.value.find(section => section.tit
 .portrait-caption span {
   color: rgba(29, 43, 58, 0.56);
   font-family: var(--tulip-sans);
-  font-size: 0.58rem;
+  font-size: var(--tulip-caption-size);
   font-weight: 750;
   text-transform: uppercase;
 }

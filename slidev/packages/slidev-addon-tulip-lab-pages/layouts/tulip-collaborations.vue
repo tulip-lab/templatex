@@ -198,7 +198,7 @@ const resolvePhoto = (src: string) => resolvePublicAssetPath(src, import.meta.en
 .collaboration-context {
   display: flex;
   min-width: 0;
-  border-right: 1px solid rgba(90, 92, 148, 0.28);
+  border-right: 1px solid var(--tulip-block-rule);
   padding: 0.4rem 2.2rem 0.4rem 0;
   flex-direction: column;
   justify-content: center;
@@ -216,9 +216,9 @@ const resolvePhoto = (src: string) => resolvePublicAssetPath(src, import.meta.en
 .region-label,
 .framework-header > p {
   margin: 0;
-  color: #527f91;
+  color: var(--tulip-purple-dark);
   font-family: var(--tulip-sans);
-  font-size: 0.66rem;
+  font-size: var(--tulip-label-size);
   font-weight: 800;
   text-transform: uppercase;
 }
@@ -240,15 +240,15 @@ h1 {
   display: grid;
   grid-template-columns: 1fr 1fr;
   gap: 0;
-  border-top: 1px solid rgba(90, 92, 148, 0.22);
+  border-top: 1px solid var(--tulip-block-rule);
 }
 
 .topic-list span {
-  border-bottom: 1px solid rgba(90, 92, 148, 0.22);
+  border-bottom: 1px solid var(--tulip-block-rule);
   padding: 0.48rem 0.15rem 0.48rem 0;
   color: var(--pd1);
   font-family: var(--tulip-sans);
-  font-size: 0.67rem;
+  font-size: var(--tulip-label-size);
   font-weight: 700;
 }
 
@@ -262,7 +262,7 @@ h1 {
 .state-tabs {
   display: grid;
   align-items: start;
-  border-top: 1px solid rgba(90, 92, 148, 0.24);
+  border-top: 1px solid var(--tulip-block-rule);
 }
 
 .state-tabs span {
@@ -272,7 +272,7 @@ h1 {
   padding: 0.48rem 0.38rem 0;
   color: rgba(29, 43, 58, 0.48);
   font-family: var(--tulip-sans);
-  font-size: 0.56rem;
+  font-size: var(--tulip-caption-size);
   font-weight: 800;
   line-height: 1.16;
   text-align: center;
@@ -329,7 +329,7 @@ h1 {
   right: 0.15rem;
   color: rgba(112, 91, 158, 0.34);
   font-family: var(--tulip-sans);
-  font-size: 0.62rem;
+  font-size: var(--tulip-caption-size);
   font-weight: 850;
 }
 
@@ -349,9 +349,9 @@ h1 {
   border-left: 3px solid var(--tulip-purple);
   margin: 0;
   padding: 0.5rem 0.7rem;
-  background: color-mix(in srgb, var(--tulip-shell-bottom) 24%, white);
+  background: var(--tulip-block-surface-soft);
   color: rgba(29, 43, 58, 0.8);
-  font-size: 0.66rem;
+  font-size: var(--tulip-label-size);
   line-height: 1.3;
 }
 
@@ -365,7 +365,7 @@ h1 {
 .region-header > strong {
   color: rgba(29, 43, 58, 0.55);
   font-family: var(--tulip-sans);
-  font-size: 0.62rem;
+  font-size: var(--tulip-caption-size);
   text-transform: uppercase;
 }
 
@@ -383,7 +383,7 @@ h1 {
   overflow: hidden;
   margin: 0;
   border-radius: 0.35rem;
-  background: #eef1f3;
+  background: var(--tulip-block-surface-subtle);
 }
 
 .photo-grid img {
@@ -445,7 +445,7 @@ h1 {
   min-width: 0;
   padding-left: 0.78rem;
   color: rgba(29, 43, 58, 0.82);
-  font-size: 0.64rem;
+  font-size: var(--tulip-caption-size);
   line-height: 1.25;
 }
 
@@ -470,7 +470,7 @@ h1 {
 }
 
 .print-region-summary {
-  border-left: 1px solid rgba(90, 92, 148, 0.22);
+  border-left: 1px solid var(--tulip-block-rule);
   padding-left: 1.2rem;
 }
 
@@ -486,21 +486,21 @@ h1 {
 
 .print-research-list article,
 .print-region-summary > article {
-  border-top: 2px solid rgba(112, 91, 158, 0.5);
+  border-top: 2px solid var(--tulip-block-rule-strong);
   padding-top: 0.42rem;
 }
 
 .print-research-list strong,
 .print-region-summary strong {
   color: var(--pd1);
-  font-size: 0.66rem;
+  font-size: var(--tulip-label-size);
 }
 
 .print-research-list p,
 .print-region-summary p {
   margin: 0.2rem 0 0;
   color: rgba(29, 43, 58, 0.7);
-  font-size: 0.56rem;
+  font-size: var(--tulip-caption-size);
   line-height: 1.3;
 }
 
@@ -511,9 +511,9 @@ h1 {
 }
 
 .print-region-summary span {
-  color: #527f91;
+  color: var(--tulip-purple-dark);
   font-family: var(--tulip-sans);
-  font-size: 0.48rem;
+  font-size: var(--tulip-caption-size);
   font-weight: 800;
   text-transform: uppercase;
 }

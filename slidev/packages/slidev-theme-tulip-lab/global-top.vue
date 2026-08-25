@@ -143,7 +143,7 @@ function goToSession(session: DeckSession) {
   background: color-mix(in srgb, var(--tulip-shell-ink) 10%, transparent);
   color: var(--tulip-shell-ink);
   font: inherit;
-  font-size: 0.66rem;
+  font-size: var(--tulip-caption-size);
   font-weight: 700;
   line-height: 1;
   text-overflow: ellipsis;
@@ -192,7 +192,7 @@ function goToSession(session: DeckSession) {
 .tulip-session-position {
   margin-left: 0.2rem;
   color: color-mix(in srgb, var(--tulip-shell-ink) 62%, transparent);
-  font-size: 0.58rem;
+  font-size: var(--tulip-caption-size);
   white-space: nowrap;
 }
 

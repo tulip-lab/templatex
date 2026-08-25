@@ -16,6 +16,7 @@
   "files": [
     "assets",
     "components",
+    "docs",
     "composables",
     "layouts",
     "styles",

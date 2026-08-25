@@ -108,6 +108,8 @@ speakerPhoto: /speaker-photo.jpg
 questionsImage: /questions.gif
 academyLogo: /academy-logo.png
 contactLogo: /contact-logo.png
+contactQrCode: /homepage-qr.svg
+contactQrAlt: QR code for personal homepage
 contactTitle: Stay Connected
 
 academyTitle: TULIP Lab

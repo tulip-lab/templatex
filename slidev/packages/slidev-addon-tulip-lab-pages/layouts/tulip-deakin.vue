@@ -172,7 +172,7 @@ const subjectStrengths = [
 .deakin-rail {
   display: flex;
   min-width: 0;
-  border-right: 1px solid rgba(90, 92, 148, 0.28);
+  border-right: 1px solid var(--tulip-block-rule);
   padding: 0.4rem 2rem 0.4rem 0;
   flex-direction: column;
   justify-content: center;
@@ -181,9 +181,9 @@ const subjectStrengths = [
 .eyebrow,
 .stage-header > p {
   margin: 0;
-  color: #527f91;
+  color: var(--tulip-purple-dark);
   font-family: var(--tulip-sans);
-  font-size: 0.65rem;
+  font-size: var(--tulip-label-size);
   font-weight: 850;
   text-transform: uppercase;
 }
@@ -203,21 +203,21 @@ const subjectStrengths = [
 
 .state-list {
   display: grid;
-  border-top: 1px solid rgba(90, 92, 148, 0.22);
+  border-top: 1px solid var(--tulip-block-rule);
 }
 
 .state-item {
   display: grid;
   grid-template-columns: 2rem minmax(0, 1fr);
   align-items: center;
-  border-bottom: 1px solid rgba(90, 92, 148, 0.22);
+  border-bottom: 1px solid var(--tulip-block-rule);
   padding: 0.62rem 0;
   color: rgba(29, 43, 58, 0.44);
 }
 
 .state-item span {
   font-family: var(--tulip-sans);
-  font-size: 0.56rem;
+  font-size: var(--tulip-caption-size);
   font-weight: 800;
 }
 
@@ -281,7 +281,7 @@ const subjectStrengths = [
 .context-list {
   display: grid;
   margin-top: 1.05rem;
-  border-top: 1px solid rgba(90, 92, 148, 0.25);
+  border-top: 1px solid var(--tulip-block-rule);
 }
 
 .context-list article {
@@ -289,7 +289,7 @@ const subjectStrengths = [
   grid-template-columns: 12rem minmax(0, 1fr);
   gap: 1.1rem;
   align-items: center;
-  border-bottom: 1px solid rgba(90, 92, 148, 0.2);
+  border-bottom: 1px solid var(--tulip-block-rule);
   padding: 0.6rem 0;
 }
 
@@ -302,9 +302,9 @@ const subjectStrengths = [
 
 .context-list span,
 .discipline-note > span {
-  color: #527f91;
+  color: var(--tulip-purple-dark);
   font-family: var(--tulip-sans);
-  font-size: 0.57rem;
+  font-size: var(--tulip-label-size);
   font-weight: 800;
   text-transform: uppercase;
 }
@@ -318,7 +318,7 @@ const subjectStrengths = [
 .context-list p {
   margin: 0;
   color: rgba(29, 43, 58, 0.78);
-  font-size: 0.67rem;
+  font-size: var(--tulip-small-size);
   line-height: 1.35;
 }
 
@@ -329,19 +329,19 @@ const subjectStrengths = [
   margin-top: 0.8rem;
   border-left: 3px solid var(--tulip-purple);
   padding: 0.56rem 0.75rem;
-  background: color-mix(in srgb, var(--tulip-shell-bottom) 24%, white);
+  background: var(--tulip-block-surface-soft);
 }
 
 .discipline-note p {
   margin: 0;
-  font-size: 0.68rem;
+  font-size: var(--tulip-small-size);
   line-height: 1.3;
 }
 
 .evidence-panel table {
   width: 100%;
   margin-top: 0.85rem;
-  font-size: 0.62rem;
+  font-size: var(--tulip-caption-size);
 }
 
 .evidence-panel th,
@@ -368,9 +368,9 @@ const subjectStrengths = [
 }
 
 .subject-strengths span {
-  color: #527f91;
+  color: var(--tulip-purple-dark);
   font-family: var(--tulip-sans);
-  font-size: 0.48rem;
+  font-size: var(--tulip-caption-size);
   font-weight: 850;
   text-transform: uppercase;
 }
@@ -384,7 +384,7 @@ const subjectStrengths = [
 
 .subject-strengths p {
   margin: 0.17rem 0 0;
-  font-size: 0.58rem;
+  font-size: var(--tulip-caption-size);
   line-height: 1.25;
 }
 
@@ -395,18 +395,18 @@ const subjectStrengths = [
   margin-top: 0.78rem;
   border-left: 3px solid var(--tulip-purple);
   padding: 0.5rem 0.7rem;
-  background: color-mix(in srgb, var(--tulip-shell-bottom) 24%, white);
+  background: var(--tulip-block-surface-soft);
 }
 
 .evidence-reading strong {
   color: var(--pd1);
-  font-size: 0.66rem;
+  font-size: var(--tulip-label-size);
 }
 
 .evidence-reading p {
   margin: 0;
   color: rgba(29, 43, 58, 0.74);
-  font-size: 0.61rem;
+  font-size: var(--tulip-caption-size);
   line-height: 1.3;
 }
 
@@ -414,7 +414,7 @@ const subjectStrengths = [
   align-self: end;
   margin: 0.55rem 0 0;
   color: rgba(29, 43, 58, 0.56);
-  font-size: 0.5rem;
+  font-size: var(--tulip-caption-size);
   line-height: 1.25;
 }
 
@@ -427,7 +427,7 @@ const subjectStrengths = [
 }
 
 .print-summary section + section {
-  border-left: 1px solid rgba(90, 92, 148, 0.22);
+  border-left: 1px solid var(--tulip-block-rule);
   padding-left: 1.35rem;
 }
 
@@ -443,20 +443,20 @@ const subjectStrengths = [
   display: flex;
   justify-content: space-between;
   gap: 0.7rem;
-  border-bottom: 1px solid rgba(90, 92, 148, 0.2);
+  border-bottom: 1px solid var(--tulip-block-rule);
   padding-bottom: 0.45rem;
 }
 
 .print-context-list span,
 .print-strength-list span {
   color: rgba(29, 43, 58, 0.7);
-  font-size: 0.62rem;
+  font-size: var(--tulip-caption-size);
 }
 
 .print-context-list strong,
 .print-strength-list strong {
   color: var(--tulip-purple-dark);
-  font-size: 0.68rem;
+  font-size: var(--tulip-label-size);
   white-space: nowrap;
 }
 

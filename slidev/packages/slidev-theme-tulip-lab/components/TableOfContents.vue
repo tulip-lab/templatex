@@ -86,7 +86,7 @@ const columns = computed(() => {
 }
 
 .tulip-toc-section:hover {
-  background: color-mix(in srgb, var(--tulip-nav) 11%, transparent);
+  background: var(--tulip-block-surface-soft);
 }
 
 .tulip-toc-number {
@@ -96,9 +96,9 @@ const columns = computed(() => {
   height: 1.6rem;
   flex: 0 0 1.6rem;
   border-radius: 50%;
-  background: color-mix(in srgb, var(--tulip-nav) 14%, transparent);
-  color: var(--tulip-nav-dark);
-  font-size: 0.66rem;
+  background: var(--tulip-block-surface-soft);
+  color: var(--tulip-purple-dark);
+  font-size: var(--tulip-label-size);
   font-weight: 700;
 }
 
@@ -121,16 +121,16 @@ const columns = computed(() => {
   border: 0;
   border-radius: 0.35rem;
   padding: 0.3rem 0.42rem;
-  background: color-mix(in srgb, var(--tulip-purple) 7%, transparent);
+  background: var(--tulip-block-surface-subtle);
   color: inherit;
   font: inherit;
-  font-size: 0.64rem;
+  font-size: var(--tulip-label-size);
   text-align: left;
   cursor: pointer;
 }
 
 .tulip-toc-session:hover {
-  background: color-mix(in srgb, var(--tulip-purple) 14%, transparent);
+  background: var(--tulip-block-surface-soft);
 }
 
 .tulip-toc-session strong {

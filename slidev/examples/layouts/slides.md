@@ -90,9 +90,125 @@ sessionTitle: Two Columns
 - Evidence and implications
 
 ---
+layout: wideslide
+class: tulip-balanced tulip-long-title
+section: Visual Contract
+block: 2
+session: Surfaces
+---
+
+::header::
+
+# Visual Contract: Balanced Evidence Above a Stable Takeaway Without Leaving Unexplained Empty Space
+
+<div class="tulip-purpose">Use one surface family to create hierarchy without decorative colour</div>
+
+::default::
+
+<div class="tulip-balanced-content tulip-fill-grid grid grid-cols-4 gap-4">
+  <article class="tulip-card tulip-card--subtle tulip-fill-card"><strong>Inset</strong><br><small>Quiet supporting context</small></article>
+  <article class="tulip-card tulip-fill-card"><strong>Standard</strong><br><small>Ordinary evidence</small></article>
+  <article class="tulip-card tulip-card--soft tulip-fill-card"><strong>Soft</strong><br><small>Current emphasis</small></article>
+  <article class="tulip-card tulip-card--strong tulip-fill-card"><strong>Strong</strong><br><small>Concluding output</small></article>
+</div>
+
+<div class="tulip-takeaway tulip-takeaway--bottom"><strong>Takeaway:</strong> Evidence expands to meet the conclusion without leaving an unexplained gap.</div>
+
+---
+layout: wideslide
+class: tulip-balanced
+session: Switch
+clicks: 2
+---
+
+::header::
+
+# Stable Staged Switch
+
+<div class="tulip-purpose">Keep the rail, evidence frame, and semantic state colours stable across every click</div>
+
+::default::
+
+<div class="tulip-balanced-content tulip-switch">
+  <aside class="tulip-switch-rail" aria-label="Visual contract stages">
+    <div class="tulip-switch-step" :class="{ 'is-active': $clicks === 0 }"><span>01</span><strong>Question</strong><small>Frame the decision</small></div>
+    <div class="tulip-switch-step" :class="{ 'is-active': $clicks === 1 }"><span>02</span><strong>Evidence</strong><small>Interpret the signal</small></div>
+    <div class="tulip-switch-step is-output" :class="{ 'is-active': $clicks >= 2 }"><span>03</span><strong>Outcome</strong><small>State the result</small></div>
+  </aside>
+  <div class="tulip-switch-stage">
+    <section v-if="$clicks === 0" class="h-full flex flex-col justify-center gap-4 p-10">
+      <div class="tulip-purpose">QUESTION</div>
+      <h2>What must remain stable while the evidence changes?</h2>
+      <p>The outer frame, reading order, and control geometry should not move between states.</p>
+    </section>
+    <section v-else-if="$clicks === 1" class="h-full flex flex-col justify-center gap-4 p-10">
+      <div class="tulip-purpose">EVIDENCE</div>
+      <h2>Each state carries enough context to stand alone.</h2>
+      <p>Labels, interpretation, and supporting detail stay inside one consistent evidence frame.</p>
+    </section>
+    <section v-else class="h-full flex flex-col justify-center gap-4 p-10">
+      <div class="tulip-purpose">OUTCOME</div>
+      <h2>The result is semantic, not merely another decorative colour.</h2>
+      <p>The stronger surface is reserved for the actual output of the sequence.</p>
+    </section>
+  </div>
+</div>
+
+<div class="tulip-takeaway tulip-takeaway--bottom"><strong>Takeaway:</strong> Interaction changes meaning while the composition remains predictable.</div>
+
+---
+layout: wideslide
+class: tulip-balanced
+session: Evidence
+sessionTitle: Evidence
+---
+
+::header::
+
+# Evidence: Show What the Process Changes
+
+<div class="tulip-purpose">Visible labels make the source, selection logic, and consequences inspectable</div>
+
+::default::
+
+<div class="tulip-balanced-content grid grid-cols-[1fr_auto_1fr_auto_1.25fr] gap-4 items-stretch">
+  <article class="tulip-card tulip-fill-card" data-semantic-role="source">
+    <div class="tulip-purpose">SOURCE</div>
+    <h2>Candidate literature</h2>
+    <p>The documented search retains a visible trail:</p>
+    <ul>
+      <li>database records and query</li>
+      <li>deduplicated citations</li>
+      <li>retrieval date and scope</li>
+    </ul>
+  </article>
+  <div class="flex items-center text-2xl text-[var(--tulip-purple)]" aria-hidden="true">&rarr;</div>
+  <article class="tulip-card tulip-card--soft tulip-fill-card" data-semantic-role="process">
+    <div class="tulip-purpose">TRANSFORMATION</div>
+    <h2>Eligibility filter</h2>
+    <p>Published criteria determine what remains visible:</p>
+    <ul>
+      <li>relevance to the question</li>
+      <li>method and evidence quality</li>
+      <li>recorded exclusion reason</li>
+    </ul>
+  </article>
+  <div class="flex items-center text-2xl text-[var(--tulip-purple)]" aria-hidden="true">&rarr;</div>
+  <article class="tulip-card tulip-card--strong tulip-fill-card" data-semantic-role="outcome">
+    <div class="tulip-purpose">OUTCOME</div>
+    <h2>Interpretable evidence set</h2>
+    <p><strong>Included:</strong> evidence supporting the synthesis.</p>
+    <p><strong>Excluded:</strong> evidence made less visible by the filter.</p>
+    <p><strong>Trace:</strong> each claim links back to a recorded decision.</p>
+  </article>
+</div>
+
+<div class="tulip-takeaway tulip-takeaway--bottom"><strong>Takeaway:</strong> A meaningful visual exposes what enters, what changes it, and what becomes visible.</div>
+
+---
 layout: references
 section: References
-block: 2
+block: 3
 navigation: false
 ---
 
@@ -103,7 +219,7 @@ navigation: false
 ---
 layout: contact
 section: Contact
-block: 3
+block: 4
 ---
 
 # Contact
