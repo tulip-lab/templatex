@@ -4,6 +4,7 @@ import test from 'node:test'
 import { asCollaborationRegions, asSpeakerServiceSections, resolveContactQrTarget } from '../utils/config'
 
 const packageJson = JSON.parse(readFileSync(new URL('../package.json', import.meta.url), 'utf8'))
+const readme = readFileSync(new URL('../README.md', import.meta.url), 'utf8')
 const layouts = [
   'tulip-speaker',
   'tulip-deakin',
@@ -16,9 +17,10 @@ const layouts = [
 
 test('publishes the canonical TULIP Lab pages addon', () => {
   assert.equal(packageJson.name, 'slidev-addon-tulip-lab-pages')
-  assert.equal(packageJson.version, '0.3.0')
+  assert.equal(packageJson.version, '0.3.1')
   assert.equal(packageJson.dependencies['qrcode.vue'], '3.10.0')
   assert.equal(packageJson.peerDependencies['slidev-theme-tulip-lab'], '>=0.3.0 <0.4.0')
+  assert.match(readme, new RegExp(`slidev-addon-tulip-lab-pages@${packageJson.version.replaceAll('.', '\\.')}`))
 
   for (const name of layouts)
     assert.ok(existsSync(new URL(`../layouts/${name}.vue`, import.meta.url)), `missing ${name} layout`)
@@ -105,8 +107,6 @@ test('resolves generated contact QR targets in explicit profile and website orde
 })
 
 test('documents the canonical shared-page section and session structure', () => {
-  const readme = readFileSync(new URL('../README.md', import.meta.url), 'utf8')
-
   assert.match(readme, /section: TULIP Lab\ntocExpand: false\nsession: Gang Li/)
   assert.match(readme, /session: Deakin/)
   assert.match(readme, /session: TULIP Lab/)

@@ -12,8 +12,8 @@ This workspace develops the reusable Slidev system for TULIP Lab courses and tal
 - `templates/`: private source templates used by the project creator
 - `examples/`: private Course, Talk, and layout examples
 
-The public packages currently remain on their reviewed `0.2.x` versions. Their
-exact versions live in the package manifests and are checked by the workspace
+The public packages use independently reviewed release versions. Their exact
+versions live in the package manifests and are checked by the workspace
 validator.
 
 ## Ownership
@@ -140,6 +140,8 @@ only when the isolated copy is needed for debugging.
 - Consumer projects pin exact package versions and keep independent lockfiles.
 - Stable `0.1.0` established the initial package baseline. Release `0.2.0` standardises addon names and shared presentation pages.
 - Release `0.3.0` coordinates the Theme and pages visual contract and strengthens shared deck validation. The unchanged live addon remains at `0.2.0`.
+- Release `0.3.1` refines TOC branding, responsive and keyboard navigation,
+  and packaged media size while preserving the `0.3.x` visual contract.
 - Publishing, tagging, and deployment require an explicit release approval.
 
 ## Licensing

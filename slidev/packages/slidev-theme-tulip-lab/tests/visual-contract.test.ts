@@ -6,6 +6,7 @@ const packageJson = JSON.parse(readFileSync(new URL('../package.json', import.me
 const readme = readFileSync(new URL('../README.md', import.meta.url), 'utf8')
 const contract = readFileSync(new URL('../docs/visual-contract.md', import.meta.url), 'utf8')
 const themeCss = readFileSync(new URL('../styles/theme.css', import.meta.url), 'utf8')
+const tocLayout = readFileSync(new URL('../layouts/toc.vue', import.meta.url), 'utf8')
 const sectionLayout = readFileSync(new URL('../layouts/section.vue', import.meta.url), 'utf8')
 const referencesLayout = readFileSync(new URL('../layouts/references.vue', import.meta.url), 'utf8')
 const gallery = readFileSync(new URL('../../../examples/layouts/slides.md', import.meta.url), 'utf8')
@@ -104,6 +105,13 @@ test('keeps the flat surface and semantic state mappings stable', () => {
   assert.match(themeCss, /\.tulip-card--green,[\s\S]*\.tulip-card--outcome/)
   assert.match(themeCss, /\.tulip-evidence-panel,[\s\S]*\.tulip-case-panel--prose/)
   assert.doesNotMatch(sectionLayout, /letter-spacing:\s*-/)
+})
+
+test('keeps section and table of contents watermarks decorative', () => {
+  for (const layout of [sectionLayout, tocLayout]) {
+    assert.match(layout, /<img[^>]+alt=""[^>]+aria-hidden="true"/)
+  }
+  assert.match(tocLayout, /\.tulip-toc-watermark\s*\{[\s\S]*pointer-events:\s*none/)
 })
 
 test('ships deterministic fonts and opt-in reference balancing', () => {

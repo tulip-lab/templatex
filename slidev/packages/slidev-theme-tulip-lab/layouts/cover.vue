@@ -1,7 +1,7 @@
 <script setup lang="ts">
 import { useNav, useSlideContext } from '@slidev/client'
 import { computed } from 'vue'
-import gangLiPhoto from '../assets/gangli-author.png?inline'
+import gangLiPhoto from '../assets/gangli-author.webp'
 import logo from '../assets/tulip-logo.png'
 import { normaliseCoverConfig, resolvePublicAssetPath } from '../utils/coverConfig'
 

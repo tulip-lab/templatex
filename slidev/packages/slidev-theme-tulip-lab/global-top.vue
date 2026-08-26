@@ -151,8 +151,15 @@ function goToSession(session: DeckSession) {
   cursor: pointer;
 }
 
-.tulip-location-current:hover {
+.tulip-location-current:hover,
+.tulip-location-current:focus-visible {
   background: color-mix(in srgb, var(--tulip-shell-ink) 17%, transparent);
+}
+
+.tulip-location-current:focus-visible,
+.tulip-session-node:focus-visible {
+  outline: 2px solid var(--tulip-shell-ink);
+  outline-offset: 2px;
 }
 
 .tulip-session-nodes {
@@ -174,6 +181,7 @@ function goToSession(session: DeckSession) {
 }
 
 .tulip-session-node:hover,
+.tulip-session-node:focus-visible,
 .tulip-session-node.active {
   background: var(--tulip-shell-ink);
   transform: scale(1.18);
@@ -185,6 +193,7 @@ function goToSession(session: DeckSession) {
 }
 
 .tulip-session-node.optional:hover,
+.tulip-session-node.optional:focus-visible,
 .tulip-session-node.optional.active {
   background: var(--tulip-shell-ink);
 }

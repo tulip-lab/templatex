@@ -71,6 +71,21 @@ test('shared packaged identity media loads successfully', async ({ page }) => {
   expect(await deakinMark.evaluate((image: HTMLImageElement) => image.naturalWidth)).toBeGreaterThan(0)
 })
 
+test('narrow viewport keeps essential footer controls without section crowding', async ({ page }) => {
+  await page.setViewportSize({ width: 390, height: 844 })
+  await preparePage(page, '/2', 'Table of Contents')
+
+  const footer = page.locator('.tulip-bottom-shell')
+  await expect(footer).toBeVisible()
+  await expect(footer.locator('.tulip-footer-leading')).toBeVisible()
+  await expect(footer.locator('.tulip-page-position')).toBeVisible()
+  await expect(footer.locator('.tulip-section-links')).toBeHidden()
+  expect(await footer.evaluate(element => element.scrollWidth <= element.clientWidth)).toBe(true)
+
+  if (process.platform === 'darwin')
+    await expect(page).toHaveScreenshot('theme-toc-mobile.png')
+})
+
 for (const visualCase of visualCases) {
   test(`${visualCase.name} matches the reviewed theme contract`, async ({ page }) => {
     await preparePage(page, visualCase.path, visualCase.heading)

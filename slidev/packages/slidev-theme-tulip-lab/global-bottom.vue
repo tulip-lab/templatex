@@ -35,30 +35,32 @@ function returnToPreviousLocation() {
 
 <template>
   <footer v-if="visibility.showBottom" class="tulip-bottom-shell">
-    <a
-      href="https://www.tulip.academy/"
-      class="tulip-footer-wordmark-link"
-      aria-label="TULIP Lab Home"
-      title="TULIP Lab Home"
-      target="_blank"
-      rel="noopener noreferrer"
-    >
-      <img
-        :src="wordmark"
-        class="tulip-footer-wordmark"
-        alt="TULIP Lab"
+    <div class="tulip-footer-leading">
+      <a
+        href="https://www.tulip.academy/"
+        class="tulip-footer-wordmark-link"
+        aria-label="TULIP Lab Home"
+        title="TULIP Lab Home"
+        target="_blank"
+        rel="noopener noreferrer"
       >
-    </a>
-    <button
-      class="tulip-history-back"
-      type="button"
-      title="Return to previous location"
-      aria-label="Return to previous location"
-      :disabled="!canGoBack"
-      @click="returnToPreviousLocation"
-    >
-      <carbon-undo aria-hidden="true" />
-    </button>
+        <img
+          :src="wordmark"
+          class="tulip-footer-wordmark"
+          alt="TULIP Lab"
+        >
+      </a>
+      <button
+        class="tulip-history-back"
+        type="button"
+        title="Return to previous location"
+        aria-label="Return to previous location"
+        :disabled="!canGoBack"
+        @click="returnToPreviousLocation"
+      >
+        <carbon-undo aria-hidden="true" />
+      </button>
+    </div>
     <nav class="tulip-section-links" aria-label="Deck sections">
       <button
         v-for="section in visibleSections"
@@ -89,7 +91,8 @@ function returnToPreviousLocation() {
   height: var(--tulip-shell-bottom-height);
   box-sizing: border-box;
   z-index: 60;
-  display: flex;
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) minmax(0, 2fr) minmax(0, 1fr);
   align-items: center;
   gap: 0.85rem;
   padding: 0.52rem var(--tulip-shell-x) 0.38rem;
@@ -98,6 +101,13 @@ function returnToPreviousLocation() {
   font-family: var(--tulip-reference-serif);
   font-size: var(--tulip-caption-size);
   line-height: 1;
+}
+
+.tulip-footer-leading {
+  display: flex;
+  min-width: 0;
+  align-items: center;
+  gap: 0.85rem;
 }
 
 .tulip-footer-wordmark-link {
@@ -161,13 +171,15 @@ function returnToPreviousLocation() {
 
 .tulip-section-links {
   display: flex;
+  width: 100%;
+  justify-content: center;
   gap: 0.38rem;
-  margin-left: auto;
   min-width: 0;
   overflow: hidden;
 }
 
 .tulip-section-link {
+  min-width: 0;
   overflow: hidden;
   border: 0;
   border-radius: 0.16rem;
@@ -181,9 +193,15 @@ function returnToPreviousLocation() {
   cursor: pointer;
 }
 
-.tulip-section-link:hover {
+.tulip-section-link:hover,
+.tulip-section-link:focus-visible {
   opacity: 1;
   text-decoration: underline;
+}
+
+.tulip-section-link:focus-visible {
+  outline: 2px solid var(--tulip-shell-ink);
+  outline-offset: 2px;
 }
 
 .tulip-section-link.active {
@@ -196,7 +214,7 @@ function returnToPreviousLocation() {
 }
 
 .tulip-page-position {
-  margin-left: auto;
+  justify-self: end;
   padding-left: 0.75rem;
   color: var(--tulip-shell-ink);
   white-space: nowrap;
@@ -214,6 +232,16 @@ function returnToPreviousLocation() {
 .tulip-progress-bar {
   height: 100%;
   background: var(--tulip-shell-ink);
+}
+
+@media (max-width: 720px) {
+  .tulip-bottom-shell {
+    grid-template-columns: minmax(0, 1fr) auto;
+  }
+
+  .tulip-section-links {
+    display: none;
+  }
 }
 </style>
 

@@ -1,9 +1,13 @@
 import assert from 'node:assert/strict'
+import { readFileSync } from 'node:fs'
 import { mkdtemp, mkdir, readFile, writeFile } from 'node:fs/promises'
 import { tmpdir } from 'node:os'
 import { join } from 'node:path'
 import test from 'node:test'
 import { createProject, PACKAGE_VERSIONS } from '../src/create-project.mjs'
+
+const packageJson = JSON.parse(readFileSync(new URL('../package.json', import.meta.url), 'utf8'))
+const readme = readFileSync(new URL('../README.md', import.meta.url), 'utf8')
 
 async function temporaryTarget(name) {
   const parent = await mkdtemp(join(tmpdir(), 'create-tulip-slides-'))
@@ -23,6 +27,10 @@ function assertSharedPageSessions(slides, { acknowledgements = false } = {}) {
   assert.match(slides, /layout: tulip-questions\nsection: Closing\ntocExpand: false\nsession: Questions\nnavigation: false/)
   assert.match(slides, /layout: tulip-contact\ntitle: Contact\nsession: Contact/)
 }
+
+test('documents the current creator release', () => {
+  assert.ok(readme.includes(`create-tulip-slides@${packageJson.version}`))
+})
 
 test('creates a Course with exact versions and the standard addons', async () => {
   const target = await temporaryTarget('Example Course')

@@ -90,8 +90,15 @@ const columns = computed(() => {
   cursor: pointer;
 }
 
-.tulip-toc-section:hover {
+.tulip-toc-section:hover,
+.tulip-toc-section:focus-visible {
   background: var(--tulip-block-surface-soft);
+}
+
+.tulip-toc-section:focus-visible,
+.tulip-toc-session:focus-visible {
+  outline: 2px solid var(--tulip-purple-dark);
+  outline-offset: 2px;
 }
 
 .tulip-toc-number {
@@ -134,7 +141,8 @@ const columns = computed(() => {
   cursor: pointer;
 }
 
-.tulip-toc-session:hover {
+.tulip-toc-session:hover,
+.tulip-toc-session:focus-visible {
   background: var(--tulip-block-surface-soft);
 }
 
