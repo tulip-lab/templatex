@@ -63,7 +63,7 @@ importers:
         specifier: 3.5.41
         version: 3.5.41(typescript@6.0.3)
 
-  packages/create-tulip-slides: {}
+  packages/create-tulip-lab-slides: {}
 
   packages/slidev-addon-tulip-lab-live:
     devDependencies:
@@ -77,7 +77,7 @@ importers:
         specifier: 3.10.0
         version: 3.10.0(vue@3.5.41(typescript@6.0.3))
       slidev-theme-tulip-lab:
-        specifier: '>=0.3.0 <0.4.0'
+        specifier: '>=0.4.0 <0.5.0'
         version: link:../slidev-theme-tulip-lab
     devDependencies:
       tsx:
@@ -100,7 +100,7 @@ importers:
         specifier: 4.23.12
         version: 4.23.12
 
-  packages/tulip-slidev-check:
+  packages/tulip-lab-slidev-check:
     dependencies:
       yaml:
         specifier: 2.9.0
@@ -120,9 +120,9 @@ importers:
       slidev-theme-tulip-lab:
         specifier: workspace:*
         version: link:../../packages/slidev-theme-tulip-lab
-      tulip-slidev-check:
+      tulip-lab-slidev-check:
         specifier: workspace:*
-        version: link:../../packages/tulip-slidev-check
+        version: link:../../packages/tulip-lab-slidev-check
       vue:
         specifier: 3.5.41
         version: 3.5.41(typescript@6.0.3)
@@ -138,9 +138,9 @@ importers:
       slidev-theme-tulip-lab:
         specifier: workspace:*
         version: link:../../packages/slidev-theme-tulip-lab
-      tulip-slidev-check:
+      tulip-lab-slidev-check:
         specifier: workspace:*
-        version: link:../../packages/tulip-slidev-check
+        version: link:../../packages/tulip-lab-slidev-check
       vue:
         specifier: 3.5.41
         version: 3.5.41(typescript@6.0.3)

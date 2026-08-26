@@ -1,3 +1,3 @@
-# TULIP Slidev Talk Example
+# TULIP Lab Slidev Talk Example
 
 Private validation workspace for an example Talk deck.

@@ -5,14 +5,19 @@ import { spawn } from 'node:child_process'
 import { fileURLToPath, pathToFileURL } from 'node:url'
 
 const workspaceRoot = fileURLToPath(new URL('../', import.meta.url))
-const packageStore = join(tmpdir(), 'tulip-slidev-pnpm-store')
+const packageStore = join(tmpdir(), 'tulip-lab-slidev-pnpm-store')
 const localPackages = new Map([
   ['slidev-theme-tulip-lab', 'packages/slidev-theme-tulip-lab'],
   ['slidev-addon-tulip-lab-pages', 'packages/slidev-addon-tulip-lab-pages'],
   ['slidev-addon-tulip-lab-live', 'packages/slidev-addon-tulip-lab-live'],
-  ['tulip-slidev-check', 'packages/tulip-slidev-check'],
+  ['tulip-lab-slidev-check', 'packages/tulip-lab-slidev-check'],
 ])
-const ignoredDirectories = new Set(['.git', '.playwright-cli', '.slidev', 'dist', 'node_modules', 'output'])
+const ignoredDirectories = new Set(['.git', '.playwright-cli', '.pnpm-store', '.slidev', 'dist', 'node_modules', 'output'])
+
+export function shouldCopyPath(root, path) {
+  const pathFromRoot = relative(root, path)
+  return !pathFromRoot.split(sep).some(segment => ignoredDirectories.has(segment))
+}
 
 export function parseArguments(argv) {
   let profile = ''
@@ -76,7 +81,7 @@ export function declaredLocalPackages(manifest) {
   }
 
   if (!names.size)
-    throw new Error('Consumer does not declare any TULIP Slidev packages')
+    throw new Error('Consumer does not declare any TULIP Lab Slidev packages')
 
   return [...names]
 }
@@ -104,7 +109,7 @@ export function usePackedPackages(manifest, archives) {
   }
 
   if (!replacements)
-    throw new Error('Consumer does not declare any TULIP Slidev packages')
+    throw new Error('Consumer does not declare any TULIP Lab Slidev packages')
 
   return updated
 }
@@ -137,10 +142,7 @@ async function copyConsumer(source, destination) {
   await cp(source, destination, {
     dereference: true,
     recursive: true,
-    filter(path) {
-      const pathFromRoot = relative(source, path)
-      return !pathFromRoot.split(sep).some(segment => ignoredDirectories.has(segment))
-    },
+    filter: path => shouldCopyPath(source, path),
   })
 }
 
@@ -156,17 +158,14 @@ async function copyIncludes(consumer, temporaryDeck, includes) {
     await cp(source, join(destinationParent, pathFromParent), {
       dereference: true,
       recursive: true,
-      filter(path) {
-        const pathFromRoot = relative(source, path)
-        return !pathFromRoot.split(sep).some(segment => ignoredDirectories.has(segment))
-      },
+      filter: path => shouldCopyPath(source, path),
     })
   }
 }
 
 export async function validateConsumer({ consumer, includes = [], keep, profile }) {
   const sourceManifest = JSON.parse(await readFile(join(consumer, 'package.json'), 'utf8'))
-  const temporaryRoot = await mkdtemp(join(tmpdir(), 'tulip-slidev-consumer-'))
+  const temporaryRoot = await mkdtemp(join(tmpdir(), 'tulip-lab-slidev-consumer-'))
   const temporaryDeck = join(temporaryRoot, basename(consumer))
 
   try {
@@ -177,9 +176,9 @@ export async function validateConsumer({ consumer, includes = [], keep, profile 
     const localManifest = usePackedPackages(sourceManifest, archives)
     await writeFile(join(temporaryDeck, 'package.json'), `${JSON.stringify(localManifest, null, 2)}\n`)
 
-    console.log(`Validating ${consumer} with packed local TULIP packages in ${temporaryDeck}`)
+    console.log(`Validating ${consumer} with packed local TULIP Lab Slidev packages in ${temporaryDeck}`)
     await run('pnpm', ['install', '--no-frozen-lockfile', '--lockfile=false', '--store-dir', packageStore], temporaryDeck)
-    await run('pnpm', ['exec', 'tulip-slidev-check', '--profile', profile, '.'], temporaryDeck)
+    await run('pnpm', ['exec', 'tulip-lab-slidev-check', '--profile', profile, '.'], temporaryDeck)
     await run('pnpm', ['exec', 'slidev', 'build', '--out', 'dist'], temporaryDeck)
     console.log(`Consumer validation passed: ${consumer}`)
   }

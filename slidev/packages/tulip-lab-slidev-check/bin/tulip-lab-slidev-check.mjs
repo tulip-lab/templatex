@@ -3,9 +3,9 @@
 import { readFile } from 'node:fs/promises'
 import { checkDeck } from '../src/check-deck.mjs'
 
-const usage = `Usage: tulip-slidev-check --profile <course|talk> [directory]
+const usage = `Usage: tulip-lab-slidev-check --profile <course|talk> [directory]
 
-Validate a TULIP Slidev deck. The directory defaults to the current directory.`
+Validate a TULIP Lab Slidev deck. The directory defaults to the current directory.`
 
 async function version() {
   const packageJson = JSON.parse(await readFile(new URL('../package.json', import.meta.url), 'utf8'))
@@ -57,13 +57,13 @@ try {
   else {
     const result = await checkDeck(options.directory, { profile: options.profile })
     if (result.errors.length > 0) {
-      console.error(`TULIP Slidev check failed with ${result.errors.length} issue(s):`)
+      console.error(`TULIP Lab Slidev check failed with ${result.errors.length} issue(s):`)
       for (const error of result.errors)
         console.error(`- ${error}`)
       process.exitCode = 1
     }
     else {
-      console.log(`TULIP Slidev ${result.profile} check passed for ${result.root}.`)
+      console.log(`TULIP Lab Slidev ${result.profile} check passed for ${result.root}.`)
     }
   }
 }

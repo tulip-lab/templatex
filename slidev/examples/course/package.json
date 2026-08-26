@@ -2,7 +2,7 @@
   "name": "@tulip-lab/slidev-example-course",
   "version": "0.0.0",
   "private": true,
-  "description": "Example TULIP Slidev Course deck.",
+  "description": "Example TULIP Lab Slidev Course deck.",
   "type": "module",
   "license": "CC-BY-4.0",
   "scripts": {

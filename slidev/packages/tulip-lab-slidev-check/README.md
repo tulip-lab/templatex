@@ -1,14 +1,14 @@
-# tulip-slidev-check
+# tulip-lab-slidev-check
 
-Shared structure and metadata checks for TULIP Slidev courses and talks.
+Shared structure and metadata checks for TULIP Lab Slidev courses and talks.
 
 ## Usage
 
 Install the checker in a deck and pin its exact version:
 
 ```sh
-pnpm add -D tulip-slidev-check@0.3.0
-pnpm exec tulip-slidev-check --profile talk .
+pnpm add -D tulip-lab-slidev-check@0.4.0
+pnpm exec tulip-lab-slidev-check --profile talk .
 ```
 
 Use `--profile course` for Course decks. The checker validates:
@@ -20,6 +20,6 @@ Use `--profile course` for Course decks. The checker validates:
 - required package declarations with exact or local development versions;
 - non-empty alt text for Markdown and HTML images;
 - the standard pages addon for all decks and the live addon for the Course profile;
-- matching exact release versions for the Theme and standard pages addon.
+- matching exact release versions across declared TULIP Lab Slidev packages.
 
 The command exits with status 1 and reports all detected issues when validation fails.

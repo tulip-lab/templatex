@@ -5,8 +5,16 @@ import { parseDocument } from 'yaml'
 const REQUIRED_LAYOUTS = ['toc', 'tulip-questions', 'tulip-contact']
 const TALK_REQUIRED_LAYOUTS = ['tulip-lab-acknowledgements']
 const REQUIRED_METADATA = ['title', 'subtitle', 'course', 'author', 'affiliation']
-const REQUIRED_DEPENDENCIES = ['@slidev/cli', 'slidev-theme-tulip-lab', 'vue']
-const SKIPPED_DIRECTORIES = new Set(['.git', '.slidev', 'dist', 'node_modules', 'output'])
+const CHECKER_PACKAGE = 'tulip-lab-slidev-check'
+const LEGACY_CHECKER_PACKAGE = 'tulip-slidev-check'
+const REQUIRED_DEPENDENCIES = ['@slidev/cli', 'slidev-theme-tulip-lab', CHECKER_PACKAGE, 'vue']
+const COORDINATED_DEPENDENCIES = [
+  'slidev-theme-tulip-lab',
+  'slidev-addon-tulip-lab-live',
+  'slidev-addon-tulip-lab-pages',
+  CHECKER_PACKAGE,
+]
+const SKIPPED_DIRECTORIES = new Set(['.git', '.pnpm-store', '.slidev', 'dist', 'node_modules', 'output'])
 const EXACT_VERSION = /^\d+\.\d+\.\d+(?:-[0-9A-Za-z.-]+)?$/
 
 function displayPath(root, path) {
@@ -250,18 +258,23 @@ export async function checkDeck(directory, { profile } = {}) {
     for (const name of required) {
       const specifier = dependencies[name]
       if (!isNonEmptyString(specifier)) {
-        errors.push(`package.json: required dependency "${name}" is missing`)
+        if (name === CHECKER_PACKAGE && isNonEmptyString(dependencies[LEGACY_CHECKER_PACKAGE])) {
+          errors.push(`package.json: replace legacy dependency "${LEGACY_CHECKER_PACKAGE}" with "${CHECKER_PACKAGE}"`)
+        }
+        else {
+          errors.push(`package.json: required dependency "${name}" is missing`)
+        }
         continue
       }
       if (!isLocalOrExactVersion(specifier))
         errors.push(`package.json: dependency "${name}" must use an exact version or a local workspace/file specifier`)
     }
 
-    const themeVersion = dependencies['slidev-theme-tulip-lab']
-    const pagesVersion = dependencies['slidev-addon-tulip-lab-pages']
-    if (EXACT_VERSION.test(themeVersion) && EXACT_VERSION.test(pagesVersion) && themeVersion !== pagesVersion) {
-      errors.push('package.json: "slidev-theme-tulip-lab" and "slidev-addon-tulip-lab-pages" must use the same release version')
-    }
+    const releaseVersions = COORDINATED_DEPENDENCIES
+      .map(name => dependencies[name])
+      .filter(specifier => EXACT_VERSION.test(specifier))
+    if (new Set(releaseVersions).size > 1)
+      errors.push('package.json: all TULIP Lab Slidev packages with exact versions must use the same release version')
   }
 
   const files = new Set([...await markdownFiles(root), ...deckSources.keys()])

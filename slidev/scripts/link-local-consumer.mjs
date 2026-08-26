@@ -15,7 +15,6 @@ export const visualPackages = new Map([
 const requiredPagesAssets = [
   'assets/deakin-mark.png',
   'assets/gangli-photo.jpg',
-  'assets/questions.gif',
   'assets/tulip-logo.png',
 ]
 

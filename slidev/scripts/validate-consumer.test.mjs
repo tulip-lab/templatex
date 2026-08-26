@@ -1,7 +1,7 @@
 import assert from 'node:assert/strict'
 import { resolve } from 'node:path'
 import test from 'node:test'
-import { declaredLocalPackages, parseArguments, usePackedPackages } from './validate-consumer.mjs'
+import { declaredLocalPackages, parseArguments, shouldCopyPath, usePackedPackages } from './validate-consumer.mjs'
 
 test('requires an explicit profile and resolves consumer and include paths', () => {
   const parsed = parseArguments([
@@ -28,12 +28,12 @@ test('finds TULIP packages declared across dependency groups', () => {
       'slidev-theme-tulip-lab': '0.2.2',
     },
     devDependencies: {
-      'tulip-slidev-check': '0.2.1',
+      'tulip-lab-slidev-check': '0.2.1',
     },
   }), [
     'slidev-theme-tulip-lab',
     'slidev-addon-tulip-lab-pages',
-    'tulip-slidev-check',
+    'tulip-lab-slidev-check',
   ])
 })
 
@@ -61,4 +61,13 @@ test('requires an archive for every declared local package', () => {
       'slidev-theme-tulip-lab': '0.2.2',
     },
   }, new Map()), /Missing packed archive for slidev-theme-tulip-lab/)
+})
+
+test('excludes generated and local package-store directories from consumer copies', () => {
+  const root = resolve('/tmp/example-deck')
+
+  assert.equal(shouldCopyPath(root, root), true)
+  assert.equal(shouldCopyPath(root, resolve(root, 'slides.md')), true)
+  assert.equal(shouldCopyPath(root, resolve(root, '.pnpm-store/v10/files/README.md')), false)
+  assert.equal(shouldCopyPath(root, resolve(root, 'node_modules/package/README.md')), false)
 })

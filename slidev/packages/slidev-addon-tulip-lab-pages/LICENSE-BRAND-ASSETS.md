@@ -4,7 +4,7 @@ Copyright (c) TULIP Lab. All rights reserved.
 
 TULIP Lab logos, wordmarks, and other assets identified as TULIP brand assets
 are excluded from the MIT License and the Creative Commons Attribution 4.0
-International License in this workspace.
+International License in the TULIP Lab Slidev workspace.
 
 Permission is granted to reproduce and distribute the unmodified assets as
 part of the official TULIP Lab Slidev Theme and addons, and in presentations

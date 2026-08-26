@@ -92,7 +92,7 @@ function returnToPreviousLocation() {
   box-sizing: border-box;
   z-index: 60;
   display: grid;
-  grid-template-columns: minmax(0, 1fr) minmax(0, 2fr) minmax(0, 1fr);
+  grid-template-columns: auto minmax(0, 1fr) auto;
   align-items: center;
   gap: 0.85rem;
   padding: 0.52rem var(--tulip-shell-x) 0.38rem;
@@ -173,12 +173,14 @@ function returnToPreviousLocation() {
   display: flex;
   width: 100%;
   justify-content: center;
-  gap: 0.38rem;
+  gap: 0.5rem;
   min-width: 0;
   overflow: hidden;
 }
 
 .tulip-section-link {
+  flex: 1 1 auto;
+  max-width: 9rem;
   min-width: 0;
   overflow: hidden;
   border: 0;
@@ -187,6 +189,7 @@ function returnToPreviousLocation() {
   background: transparent;
   color: inherit;
   font: inherit;
+  text-align: center;
   text-overflow: ellipsis;
   white-space: nowrap;
   opacity: 0.66;

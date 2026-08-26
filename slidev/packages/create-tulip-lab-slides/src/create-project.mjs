@@ -1,12 +1,14 @@
 import { lstat, mkdir, readFile, readdir, writeFile } from 'node:fs/promises'
 import { basename, join, resolve } from 'node:path'
 
+export const TULIP_LAB_SLIDEV_VERSION = '0.4.0'
+
 export const PACKAGE_VERSIONS = Object.freeze({
   '@slidev/cli': '52.19.0',
-  'slidev-addon-tulip-lab-live': '0.2.0',
-  'slidev-addon-tulip-lab-pages': '0.3.1',
-  'slidev-theme-tulip-lab': '0.3.1',
-  'tulip-slidev-check': '0.3.0',
+  'slidev-addon-tulip-lab-live': TULIP_LAB_SLIDEV_VERSION,
+  'slidev-addon-tulip-lab-pages': TULIP_LAB_SLIDEV_VERSION,
+  'slidev-theme-tulip-lab': TULIP_LAB_SLIDEV_VERSION,
+  'tulip-lab-slidev-check': TULIP_LAB_SLIDEV_VERSION,
   'vue': '3.5.41',
 })
 
@@ -16,7 +18,7 @@ function packageName(target) {
     .replace(/[^a-z0-9]+/g, '-')
     .replace(/^-+|-+$/g, '')
 
-  return normalized || 'tulip-slides'
+  return normalized || 'tulip-lab-slides'
 }
 
 async function targetState(target) {
@@ -42,7 +44,7 @@ function manifest(profile, target) {
     '@slidev/cli': PACKAGE_VERSIONS['@slidev/cli'],
     'slidev-addon-tulip-lab-pages': PACKAGE_VERSIONS['slidev-addon-tulip-lab-pages'],
     'slidev-theme-tulip-lab': PACKAGE_VERSIONS['slidev-theme-tulip-lab'],
-    'tulip-slidev-check': PACKAGE_VERSIONS['tulip-slidev-check'],
+    'tulip-lab-slidev-check': PACKAGE_VERSIONS['tulip-lab-slidev-check'],
     'vue': PACKAGE_VERSIONS.vue,
   }
 
@@ -53,12 +55,12 @@ function manifest(profile, target) {
     name: packageName(target),
     version: '0.0.0',
     private: true,
-    description: `TULIP Slidev ${profile} presentation.`,
+    description: `TULIP Lab Slidev ${profile} presentation.`,
     type: 'module',
     license: 'UNLICENSED',
     scripts: {
       build: 'slidev build',
-      check: `tulip-slidev-check --profile ${profile} .`,
+      check: `tulip-lab-slidev-check --profile ${profile} .`,
       dev: 'slidev --open',
     },
     dependencies,

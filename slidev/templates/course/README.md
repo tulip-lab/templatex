@@ -1,4 +1,4 @@
-# TULIP Slidev Course Template
+# TULIP Lab Slidev Course Template
 
 Edit `slides.md`, then use the standard project commands:
 

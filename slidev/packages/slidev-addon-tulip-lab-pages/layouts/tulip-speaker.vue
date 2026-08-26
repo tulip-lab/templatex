@@ -446,9 +446,9 @@ const editorialItems = computed(() => sections.value.find(section => section.tit
 .speaker-photo {
   display: block;
   width: 100%;
-  height: 24rem;
-  object-fit: cover;
-  object-position: center 24%;
+  height: auto;
+  aspect-ratio: 653 / 900;
+  object-fit: contain;
 }
 
 .portrait-caption {

@@ -2,19 +2,19 @@
   "name": "@tulip-lab/slidev-template-talk",
   "version": "0.0.0",
   "private": true,
-  "description": "Source template for TULIP Slidev Talk projects.",
+  "description": "Source template for TULIP Lab Slidev Talk projects.",
   "type": "module",
   "license": "CC-BY-4.0",
   "scripts": {
     "build": "slidev build --base /templates/talk/ --out ../../dist/templates/talk",
-    "check": "tulip-slidev-check --profile talk .",
+    "check": "tulip-lab-slidev-check --profile talk .",
     "dev": "slidev --open"
   },
   "dependencies": {
     "@slidev/cli": "52.19.0",
     "slidev-addon-tulip-lab-pages": "workspace:*",
     "slidev-theme-tulip-lab": "workspace:*",
-    "tulip-slidev-check": "workspace:*",
+    "tulip-lab-slidev-check": "workspace:*",
     "vue": "3.5.41"
   }
 }

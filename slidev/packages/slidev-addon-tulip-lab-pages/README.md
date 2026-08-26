@@ -8,7 +8,7 @@ media.
 Install the pages addon together with the matching stable Theme release:
 
 ```sh
-pnpm add slidev-theme-tulip-lab@0.3.1 slidev-addon-tulip-lab-pages@0.3.1
+pnpm add slidev-theme-tulip-lab@0.4.0 slidev-addon-tulip-lab-pages@0.4.0
 ```
 
 The addon and Theme share one visual contract and should stay on the same
@@ -130,6 +130,10 @@ academyResearchAreas:
   - title: Artificial Intelligence
     description: Intelligent systems, learning, and automation.
 ```
+
+`questionsImage` is optional. Without it, the Questions layout uses its stable
+typographic question-mark treatment; custom media remains deck-owned and should
+carry its own provenance and reuse permission.
 
 Collaboration photos also remain deck-local. With `includeResearch: true`, the
 `tulip-collaborations` layout keeps the TULIP Lab identity fixed on the left,

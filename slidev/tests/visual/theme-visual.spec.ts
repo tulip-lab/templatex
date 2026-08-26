@@ -4,7 +4,7 @@ import { auditSlide } from '../../scripts/visual-audit.mjs'
 const slideReadyTimeoutMs = 15_000
 
 const visualCases = [
-  { name: 'theme-cover', path: '/1', slide: 1, heading: 'TULIP Slidev Layout Gallery' },
+  { name: 'theme-cover', path: '/1', slide: 1, heading: 'TULIP Lab Slidev Layout Gallery' },
   { name: 'theme-toc', path: '/2', slide: 2, heading: 'Table of Contents' },
   { name: 'theme-section', path: '/3', slide: 3, heading: 'Core Layouts' },
   { name: 'theme-default', path: '/4', slide: 4, heading: 'Default Layout' },
@@ -22,7 +22,7 @@ const visualCases = [
   { name: 'shared-collaboration-region', path: '/12?clicks=1', slide: 12, heading: 'TULIP Lab' },
   { name: 'shared-contact', path: '/13', slide: 13, heading: 'Stay Connected' },
   { name: 'theme-acknowledgements', path: '/14', slide: 14, heading: 'Acknowledgements' },
-  { name: 'shared-questions', path: '/15', slide: 15, heading: 'Questions?', snapshot: false },
+  { name: 'shared-questions', path: '/15', slide: 15, heading: 'Questions?' },
   { name: 'theme-references', path: '/16', slide: 16, heading: 'References' },
   { name: 'theme-contact', path: '/17', slide: 17, heading: 'Contact' },
 ]

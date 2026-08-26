@@ -1,4 +1,4 @@
-# TULIP Slidev Talk Template
+# TULIP Lab Slidev Talk Template
 
 Edit `slides.md`, then use the standard project commands:
 

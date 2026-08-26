@@ -15,7 +15,7 @@ async function fixture({
   layouts = ['tulip-lab-acknowledgements', 'toc', 'tulip-questions', 'tulip-contact'],
   subtitle = 'A test presentation',
 } = {}) {
-  const root = await mkdtemp(join(tmpdir(), 'tulip-slidev-check-'))
+  const root = await mkdtemp(join(tmpdir(), 'tulip-lab-slidev-check-'))
   const slides = `---
 theme: slidev-theme-tulip-lab
 title: Example
@@ -47,6 +47,7 @@ const sharedDependencies = {
   '@slidev/cli': '52.19.0',
   'slidev-addon-tulip-lab-pages': '0.2.0',
   'slidev-theme-tulip-lab': '0.2.0',
+  'tulip-lab-slidev-check': '0.2.0',
   'vue': '3.5.41',
 }
 
@@ -81,7 +82,7 @@ test('accepts a Course with workspace packages and the live addon', async () => 
   assert.deepEqual(result.errors, [])
 })
 
-test('requires the Theme and pages addon to use the same published release', async () => {
+test('requires all exact TULIP Lab dependencies to use the same published release', async () => {
   const root = await fixture({
     addons: `addons:
   - slidev-addon-tulip-lab-pages
@@ -93,7 +94,37 @@ test('requires the Theme and pages addon to use the same published release', asy
   })
   const result = await checkDeck(root, { profile: 'talk' })
 
-  assert.match(result.errors.join('\n'), /must use the same release version/)
+  assert.match(result.errors.join('\n'), /all TULIP Lab Slidev packages with exact versions must use the same release version/)
+})
+
+test('requires the renamed checker dependency and explains legacy migration', async () => {
+  const { 'tulip-lab-slidev-check': checker, ...withoutChecker } = sharedDependencies
+  const missingRoot = await fixture({
+    addons: `addons:\n  - slidev-addon-tulip-lab-pages\n`,
+    dependencies: withoutChecker,
+  })
+  const legacyRoot = await fixture({
+    addons: `addons:\n  - slidev-addon-tulip-lab-pages\n`,
+    dependencies: {
+      ...withoutChecker,
+      'tulip-slidev-check': checker,
+    },
+  })
+
+  assert.match((await checkDeck(missingRoot, { profile: 'talk' })).errors.join('\n'), /required dependency "tulip-lab-slidev-check" is missing/)
+  assert.match((await checkDeck(legacyRoot, { profile: 'talk' })).errors.join('\n'), /replace legacy dependency "tulip-slidev-check" with "tulip-lab-slidev-check"/)
+})
+
+test('ignores Markdown inside a local pnpm store', async () => {
+  const root = await fixture({
+    addons: `addons:\n  - slidev-addon-tulip-lab-pages\n`,
+    dependencies: sharedDependencies,
+  })
+  const storePackage = join(root, '.pnpm-store', 'v10', 'files')
+  await mkdir(storePackage, { recursive: true })
+  await writeFile(join(storePackage, 'README.md'), '![](missing-alt.png)\n')
+
+  assert.deepEqual((await checkDeck(root, { profile: 'talk' })).errors, [])
 })
 
 test('finds required layouts in imported slide sources', async () => {

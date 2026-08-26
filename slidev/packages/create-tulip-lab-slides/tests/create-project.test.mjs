@@ -4,13 +4,17 @@ import { mkdtemp, mkdir, readFile, writeFile } from 'node:fs/promises'
 import { tmpdir } from 'node:os'
 import { join } from 'node:path'
 import test from 'node:test'
-import { createProject, PACKAGE_VERSIONS } from '../src/create-project.mjs'
+import {
+  createProject,
+  PACKAGE_VERSIONS,
+  TULIP_LAB_SLIDEV_VERSION,
+} from '../src/create-project.mjs'
 
 const packageJson = JSON.parse(readFileSync(new URL('../package.json', import.meta.url), 'utf8'))
 const readme = readFileSync(new URL('../README.md', import.meta.url), 'utf8')
 
 async function temporaryTarget(name) {
-  const parent = await mkdtemp(join(tmpdir(), 'create-tulip-slides-'))
+  const parent = await mkdtemp(join(tmpdir(), 'create-tulip-lab-slides-'))
   return join(parent, name)
 }
 
@@ -29,8 +33,9 @@ function assertSharedPageSessions(slides, { acknowledgements = false } = {}) {
 }
 
 test('documents the current creator release', () => {
-  assert.ok(readme.includes(`create-tulip-slides@${packageJson.version}`))
-  assert.equal(packageJson.bin['create-tulip-slides'], 'bin/create-tulip-slides.mjs')
+  assert.ok(readme.includes(`create-tulip-lab-slides@${packageJson.version}`))
+  assert.equal(packageJson.version, TULIP_LAB_SLIDEV_VERSION)
+  assert.equal(packageJson.bin['create-tulip-lab-slides'], 'bin/create-tulip-lab-slides.mjs')
 })
 
 test('creates a Course with exact versions and the standard addons', async () => {
@@ -41,11 +46,11 @@ test('creates a Course with exact versions and the standard addons', async () =>
 
   assert.equal(result.target, target)
   assert.equal(packageJson.name, 'example-course')
-  assert.equal(packageJson.scripts.check, 'tulip-slidev-check --profile course .')
+  assert.equal(packageJson.scripts.check, 'tulip-lab-slidev-check --profile course .')
   assert.equal(packageJson.dependencies['slidev-addon-tulip-lab-live'], PACKAGE_VERSIONS['slidev-addon-tulip-lab-live'])
   assert.equal(packageJson.dependencies['slidev-addon-tulip-lab-pages'], PACKAGE_VERSIONS['slidev-addon-tulip-lab-pages'])
   assert.equal(packageJson.dependencies['slidev-theme-tulip-lab'], PACKAGE_VERSIONS['slidev-theme-tulip-lab'])
-  assert.equal(packageJson.dependencies['tulip-slidev-check'], PACKAGE_VERSIONS['tulip-slidev-check'])
+  assert.equal(packageJson.dependencies['tulip-lab-slidev-check'], PACKAGE_VERSIONS['tulip-lab-slidev-check'])
   assert.match(slides, /slidev-addon-tulip-lab-live/)
   assert.match(slides, /slidev-addon-tulip-lab-pages/)
   assertSharedPageSessions(slides)
@@ -59,7 +64,7 @@ test('creates a Talk without live synchronization by default', async () => {
   const packageJson = await manifest(target)
   const slides = await readFile(join(target, 'slides.md'), 'utf8')
 
-  assert.equal(packageJson.scripts.check, 'tulip-slidev-check --profile talk .')
+  assert.equal(packageJson.scripts.check, 'tulip-lab-slidev-check --profile talk .')
   assert.equal(packageJson.dependencies['slidev-addon-tulip-lab-live'], undefined)
   assert.equal(packageJson.dependencies['slidev-addon-tulip-lab-pages'], PACKAGE_VERSIONS['slidev-addon-tulip-lab-pages'])
   assert.doesNotMatch(slides, /slidev-addon-tulip-lab-live/)

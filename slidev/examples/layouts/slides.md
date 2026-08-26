@@ -2,7 +2,7 @@
 theme: slidev-theme-tulip-lab
 addons:
   - slidev-addon-tulip-lab-pages
-title: TULIP Slidev Layout Gallery
+title: TULIP Lab Slidev Layout Gallery
 subtitle: Shared layouts for courses and talks
 layout: cover
 course: TULIP Lab
@@ -289,7 +289,7 @@ columns: 2
 
 # References
 
-1. TULIP Lab. (2026). *TULIP Slidev layout gallery*.
+1. TULIP Lab. (2026). *TULIP Lab Slidev layout gallery*.
 2. Adobe. (2021). *Source Serif 4*.
 3. Adobe. (2021). *Source Sans 3*.
 4. Slidev. (2026). *Presentation slides for developers*.

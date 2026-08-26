@@ -1,4 +1,4 @@
-# TULIP Slidev Layout Gallery
+# TULIP Lab Slidev Layout Gallery
 
 Private validation workspace covering the public layouts and visual primitives
 of `slidev-theme-tulip-lab`. The balanced surface and staged-switch slides are

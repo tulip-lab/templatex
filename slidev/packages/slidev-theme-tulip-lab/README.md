@@ -2,7 +2,7 @@
 
 TULIP Lab's shared 16:10 Slidev Theme for courses and talks. It provides the branded Cover, acknowledgements, navigation shell, table of contents, section pages, references, contact page, QR code, and reusable content layouts.
 
-Install the exact stable release with `pnpm add slidev-theme-tulip-lab@0.3.1`.
+Install the exact stable release with `pnpm add slidev-theme-tulip-lab@0.4.0`.
 
 Workspace projects can use it with:
 
@@ -57,6 +57,8 @@ requirements, and the [section/session/title hierarchy](docs/visual-contract.md#
 The Theme bundles OFL-licensed Source Serif 4 and Source Sans 3 at pinned
 versions. Consumers therefore get the reviewed typography without depending on
 fonts installed on the presenting machine. See `THIRD_PARTY_NOTICES.md`.
+Bundled TULIP marks and the default portrait are outside the software licence;
+see `LICENSE-BRAND-ASSETS.md` and `ASSET-NOTICES.md`.
 
 Use the shared tokens and classes for reusable structure. Keep domain-specific
 grids, figures, and dense-state adjustments in the deck that owns them.

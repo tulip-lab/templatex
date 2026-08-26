@@ -21,6 +21,8 @@ test('ships the required layouts and brand assets', () => {
   assert.ok(existsSync(new URL('../assets/tulip-logo.png', import.meta.url)))
   assert.ok(existsSync(new URL('../assets/tulip-wordmark.png', import.meta.url)))
   assert.ok(existsSync(new URL('../assets/gangli-author.webp', import.meta.url)))
+  assert.ok(existsSync(new URL('../LICENSE-BRAND-ASSETS.md', import.meta.url)))
+  assert.ok(existsSync(new URL('../ASSET-NOTICES.md', import.meta.url)))
   assert.ok(existsSync(new URL('../THIRD_PARTY_NOTICES.md', import.meta.url)))
 })
 
@@ -35,10 +37,13 @@ test('keeps navigation and TULIP Home in the theme but live sync in the addon', 
   assert.match(qrCode, /import QrcodeVue from 'qrcode\.vue'/)
 })
 
-test('centres footer navigation and simplifies it on narrow viewports', () => {
+test('centres footer navigation in the space between the leading controls and page number', () => {
   assert.match(bottomShell, /class="tulip-footer-leading"/)
-  assert.match(bottomShell, /grid-template-columns:\s*minmax\(0, 1fr\) minmax\(0, 2fr\) minmax\(0, 1fr\)/)
+  assert.match(bottomShell, /grid-template-columns:\s*auto minmax\(0, 1fr\) auto/)
   assert.match(bottomShell, /\.tulip-section-links\s*\{[\s\S]*justify-content:\s*center/)
+  assert.match(bottomShell, /\.tulip-section-link\s*\{[\s\S]*flex:\s*1 1 auto/)
+  assert.match(bottomShell, /\.tulip-section-link\s*\{[\s\S]*max-width:\s*9rem/)
+  assert.match(bottomShell, /\.tulip-section-link\s*\{[\s\S]*text-align:\s*center/)
   assert.match(bottomShell, /@media \(max-width:\s*720px\)[\s\S]*\.tulip-section-links\s*\{[\s\S]*display:\s*none/)
 })
 

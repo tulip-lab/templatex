@@ -32,7 +32,7 @@ async function fixture() {
   }
 
   const pages = sources.get('slidev-addon-tulip-lab-pages')
-  for (const asset of ['deakin-mark.png', 'gangli-photo.jpg', 'questions.gif', 'tulip-logo.png']) {
+  for (const asset of ['deakin-mark.png', 'gangli-photo.jpg', 'tulip-logo.png']) {
     await mkdir(join(pages, 'assets'), { recursive: true })
     await writeFile(join(pages, 'assets', asset), asset)
   }
