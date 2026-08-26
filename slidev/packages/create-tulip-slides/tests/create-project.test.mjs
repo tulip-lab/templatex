@@ -30,6 +30,7 @@ function assertSharedPageSessions(slides, { acknowledgements = false } = {}) {
 
 test('documents the current creator release', () => {
   assert.ok(readme.includes(`create-tulip-slides@${packageJson.version}`))
+  assert.equal(packageJson.bin['create-tulip-slides'], 'bin/create-tulip-slides.mjs')
 })
 
 test('creates a Course with exact versions and the standard addons', async () => {

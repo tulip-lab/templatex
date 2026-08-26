@@ -14,7 +14,7 @@
   },
   "homepage": "https://github.com/tulip-lab/templatex/tree/main/slidev/packages/create-tulip-slides",
   "bin": {
-    "create-tulip-slides": "./bin/create-tulip-slides.mjs"
+    "create-tulip-slides": "bin/create-tulip-slides.mjs"
   },
   "files": [
     "bin",
