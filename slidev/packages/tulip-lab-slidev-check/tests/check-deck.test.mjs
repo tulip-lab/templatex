@@ -5,6 +5,14 @@ import { join } from 'node:path'
 import test from 'node:test'
 import { checkDeck } from '../src/check-deck.mjs'
 
+const packageJson = JSON.parse(await readFile(new URL('../package.json', import.meta.url), 'utf8'))
+
+test('publishes the renamed checker command from a canonical bin path', () => {
+  assert.deepEqual(packageJson.bin, {
+    'tulip-lab-slidev-check': 'bin/tulip-lab-slidev-check.mjs',
+  })
+})
+
 async function fixture({
   addons = '',
   aspectRatio = '16/10',

@@ -14,7 +14,7 @@
   },
   "homepage": "https://github.com/tulip-lab/templatex/tree/main/slidev/packages/tulip-lab-slidev-check",
   "bin": {
-    "tulip-lab-slidev-check": "./bin/tulip-lab-slidev-check.mjs"
+    "tulip-lab-slidev-check": "bin/tulip-lab-slidev-check.mjs"
   },
   "files": [
     "bin",
