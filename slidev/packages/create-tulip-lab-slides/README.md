@@ -7,13 +7,13 @@ Project creator for TULIP Lab Slidev courses and talks.
 Create a Talk:
 
 ```sh
-pnpm dlx create-tulip-lab-slides@0.4.0 talk walking-and-working-with-ai
+pnpm dlx create-tulip-lab-slides@0.4.1 talk walking-and-working-with-ai
 ```
 
 Create a Course:
 
 ```sh
-pnpm dlx create-tulip-lab-slides@0.4.0 course agentic-ai
+pnpm dlx create-tulip-lab-slides@0.4.1 course agentic-ai
 ```
 
 The command is non-interactive and writes only to a new or empty target directory. Generated projects pin exact versions of Slidev, Vue, the TULIP Lab Theme, standard pages addon, and checker. Course projects also include the live audience addon; Talk projects do not include live synchronization by default.

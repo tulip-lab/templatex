@@ -7,7 +7,7 @@ Shared structure and metadata checks for TULIP Lab Slidev courses and talks.
 Install the checker in a deck and pin its exact version:
 
 ```sh
-pnpm add -D tulip-lab-slidev-check@0.4.0
+pnpm add -D tulip-lab-slidev-check@0.4.1
 pnpm exec tulip-lab-slidev-check --profile talk .
 ```
 

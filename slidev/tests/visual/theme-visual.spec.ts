@@ -22,7 +22,7 @@ const visualCases = [
   { name: 'shared-collaboration-region', path: '/12?clicks=1', slide: 12, heading: 'TULIP Lab' },
   { name: 'shared-contact', path: '/13', slide: 13, heading: 'Stay Connected' },
   { name: 'theme-acknowledgements', path: '/14', slide: 14, heading: 'Acknowledgements' },
-  { name: 'shared-questions', path: '/15', slide: 15, heading: 'Questions?' },
+  { name: 'shared-questions', path: '/15', slide: 15, heading: 'Questions?', snapshot: false },
   { name: 'theme-references', path: '/16', slide: 16, heading: 'References' },
   { name: 'theme-contact', path: '/17', slide: 17, heading: 'Contact' },
 ]
@@ -69,6 +69,14 @@ test('shared packaged identity media loads successfully', async ({ page }) => {
   const deakinMark = page.getByRole('img', { name: 'Deakin University' })
   await expect(deakinMark).toHaveJSProperty('complete', true)
   expect(await deakinMark.evaluate((image: HTMLImageElement) => image.naturalWidth)).toBeGreaterThan(0)
+
+  await preparePage(page, '/15', 'Questions?')
+  const questionsAnimation = page.getByRole('img', { name: 'Questions animation' })
+  await expect(questionsAnimation).toHaveJSProperty('complete', true)
+  expect(await questionsAnimation.evaluate((image: HTMLImageElement) => ({
+    height: image.naturalHeight,
+    width: image.naturalWidth,
+  }))).toEqual({ height: 360, width: 360 })
 })
 
 test('narrow viewport keeps essential footer controls without section crowding', async ({ page }) => {

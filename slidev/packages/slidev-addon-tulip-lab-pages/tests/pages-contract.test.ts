@@ -17,9 +17,9 @@ const layouts = [
 
 test('publishes the canonical TULIP Lab pages addon', () => {
   assert.equal(packageJson.name, 'slidev-addon-tulip-lab-pages')
-  assert.equal(packageJson.version, '0.4.0')
+  assert.equal(packageJson.version, '0.4.1')
   assert.equal(packageJson.dependencies['qrcode.vue'], '3.10.0')
-  assert.equal(packageJson.peerDependencies['slidev-theme-tulip-lab'], '>=0.4.0 <0.5.0')
+  assert.equal(packageJson.peerDependencies['slidev-theme-tulip-lab'], '>=0.4.1 <0.5.0')
   assert.match(readme, new RegExp(`slidev-addon-tulip-lab-pages@${packageJson.version.replaceAll('.', '\\.')}`))
 
   for (const name of layouts)
@@ -30,7 +30,7 @@ test('publishes the canonical TULIP Lab pages addon', () => {
 })
 
 test('ships documented identity media and keeps deck content configurable', () => {
-  for (const name of ['gangli-photo.jpg', 'deakin-mark.png', 'tulip-logo.png'])
+  for (const name of ['gangli-photo.jpg', 'deakin-mark.png', 'tulip-logo.png', 'questions.gif'])
     assert.ok(existsSync(new URL(`../assets/${name}`, import.meta.url)), `missing ${name}`)
 
   const contact = readFileSync(new URL('../layouts/tulip-contact.vue', import.meta.url), 'utf8')
@@ -79,9 +79,9 @@ test('ships documented identity media and keeps deck content configurable', () =
   assert.match(collaborations, /@error="homeQrFailed = true"/)
   assert.match(collaborations, /class="tulip-home-card"/)
   assert.match(questions, /config\.value\.questionsImage/)
-  assert.match(questions, /v-if="questionsImage"/)
-  assert.match(questions, /class="questions-mark"/)
-  assert.doesNotMatch(questions, /questions\.gif/)
+  assert.match(questions, /import defaultQuestionsImage from '\.\.\/assets\/questions\.gif'/)
+  assert.match(questions, /: defaultQuestionsImage/)
+  assert.match(questions, /alt="Questions animation"/)
 })
 
 test('normalizes structured speaker service sections', () => {

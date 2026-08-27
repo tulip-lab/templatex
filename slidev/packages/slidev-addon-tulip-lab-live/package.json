@@ -1,6 +1,6 @@
 {
   "name": "slidev-addon-tulip-lab-live",
-  "version": "0.4.0",
+  "version": "0.4.1",
   "description": "Optional live audience synchronization for TULIP Lab Slidev presentations.",
   "type": "module",
   "license": "MIT",

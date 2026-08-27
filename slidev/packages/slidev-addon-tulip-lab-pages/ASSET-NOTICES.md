@@ -13,6 +13,11 @@ the media files listed below.
   official TULIP Lab pages. It is excluded from the MIT License. No independent
   permission to reuse the portrait outside the official addon or presentations
   created with it is granted by this package.
+- `assets/questions.gif` is the legacy Questions-page animation supplied by
+  TULIP Lab and authorised by the project maintainer for redistribution in the
+  official addon and presentations created with it. It is excluded from the
+  MIT License. No independent permission beyond those uses is granted by this
+  package.
 
 All rights not expressly granted remain with the relevant rights holders. This
 package does not grant rights that its maintainers do not hold.

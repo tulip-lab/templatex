@@ -1,6 +1,6 @@
 {
   "name": "tulip-lab-slidev-check",
-  "version": "0.4.0",
+  "version": "0.4.1",
   "description": "Structure and metadata checks for TULIP Lab Slidev presentations.",
   "type": "module",
   "license": "MIT",

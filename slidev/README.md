@@ -14,7 +14,7 @@ This workspace develops the reusable Slidev system for TULIP Lab courses and tal
 
 The five public packages use one coordinated release version. Their exact
 versions live in the package manifests and are checked by the workspace
-validator. The next release aligns all five packages at `0.4.0`.
+validator. The current coordinated release is `0.4.1`.
 
 ## Ownership
 
@@ -145,6 +145,8 @@ only when the isolated copy is needed for debugging.
   and packaged media size while preserving the `0.3.x` visual contract.
 - Release `0.4.0` aligns all five public packages and renames the checker and
   creator to `tulip-lab-slidev-check` and `create-tulip-lab-slides`.
+- Release `0.4.1` restores the bundled Questions-page animation while retaining
+  deck-level `questionsImage` overrides and the coordinated `0.4.x` contract.
 - Publishing, tagging, and deployment require an explicit release approval.
 
 ### Release order

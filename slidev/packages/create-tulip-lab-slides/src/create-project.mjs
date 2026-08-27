@@ -1,7 +1,7 @@
 import { lstat, mkdir, readFile, readdir, writeFile } from 'node:fs/promises'
 import { basename, join, resolve } from 'node:path'
 
-export const TULIP_LAB_SLIDEV_VERSION = '0.4.0'
+export const TULIP_LAB_SLIDEV_VERSION = '0.4.1'
 
 export const PACKAGE_VERSIONS = Object.freeze({
   '@slidev/cli': '52.19.0',

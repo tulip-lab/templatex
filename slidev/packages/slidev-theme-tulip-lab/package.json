@@ -1,6 +1,6 @@
 {
   "name": "slidev-theme-tulip-lab",
-  "version": "0.4.0",
+  "version": "0.4.1",
   "description": "TULIP Lab theme for 16:10 Slidev courses and talks, including acknowledgements.",
   "type": "module",
   "license": "MIT",
