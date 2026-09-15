@@ -15,5 +15,8 @@
     "check": "pnpm check:workspace && pnpm test && pnpm build:examples && pnpm build:templates",
     "check:workspace": "node scripts/check-workspace.mjs",
     "test": "pnpm --filter './packages/**' --workspace-concurrency=1 --if-present run test"
+  },
+  "devDependencies": {
+    "hono": "4.13.5"
   }
 }
