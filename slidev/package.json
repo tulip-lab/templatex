@@ -22,6 +22,7 @@
     "update:visual": "playwright test --update-snapshots"
   },
   "devDependencies": {
-    "@playwright/test": "1.57.0"
+    "@playwright/test": "1.57.0",
+    "hono": "4.13.5"
   }
 }
