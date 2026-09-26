@@ -9,6 +9,7 @@ saveExact: true
 sharedWorkspaceLockfile: true
 
 overrides:
+  dompurify: 3.4.14
   hono: 4.13.5
   image-size: 2.0.3
   "js-yaml@>=3.0.0 <3.15.2": 3.15.2
