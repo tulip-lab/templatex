@@ -10,8 +10,10 @@ sharedWorkspaceLockfile: true
 
 overrides:
   dompurify: 3.4.16
-  hono: 4.13.5
+  hono: 4.13.7
   image-size: 2.0.3
   "js-yaml@>=3.0.0 <3.15.2": 3.15.2
   "js-yaml@>=4.0.0 <4.3.2": 4.3.2
   markdown-it: 14.3.1
+  postcss-selector-parser: 7.1.6
+  source-map-js: 1.2.2

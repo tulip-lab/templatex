@@ -23,6 +23,6 @@
   },
   "devDependencies": {
     "@playwright/test": "1.57.0",
-    "hono": "4.13.5"
+    "hono": "4.13.7"
   }
 }
