@@ -17,6 +17,6 @@
     "test": "pnpm --filter './packages/**' --workspace-concurrency=1 --if-present run test"
   },
   "devDependencies": {
-    "hono": "4.13.5"
+    "hono": "4.13.11"
   }
 }
